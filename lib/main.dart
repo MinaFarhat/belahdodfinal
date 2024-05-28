@@ -1,5 +1,4 @@
-import 'package:belahododfinal/Features/User/View/navbar.dart';
-import 'package:belahododfinal/Features/User/View/news/presentation/Details%20Of%20Offer/detailofoffer.dart';
+import 'package:belahododfinal/Features/Visitor/navbarvisitor.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: colorCustom,
         useMaterial3: true,
       ),
-      home: Mynavbar(),
+      home:  const Mynavbarvisitor(),
     );
   }
 }

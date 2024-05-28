@@ -1,4 +1,3 @@
-
 import 'package:belahododfinal/Features/Widgets/dialog_delete.dart';
 import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
 import 'package:belahododfinal/Features/Widgets/square_button.dart';

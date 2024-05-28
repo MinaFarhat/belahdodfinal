@@ -2,7 +2,7 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class SimpleTopBar extends StatelessWidget implements PreferredSizeWidget{
+class SimpleTopBar extends StatelessWidget implements PreferredSizeWidget {
   String? name;
   Widget leading;
   List<Widget> action;
@@ -58,6 +58,7 @@ class SimpleTopBar extends StatelessWidget implements PreferredSizeWidget{
                 cursorColor: ColorConstant.mainColor,
                 cursorHeight: 25,
                 textDirection: TextDirection.rtl,
+                textInputAction: TextInputAction.search,
                 enableSuggestions: true,
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10),
@@ -106,6 +107,7 @@ class SimpleTopBar extends StatelessWidget implements PreferredSizeWidget{
             ),
     );
   }
-   @override
+
+  @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
