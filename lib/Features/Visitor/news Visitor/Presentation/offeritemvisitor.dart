@@ -1,25 +1,25 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
-import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/Details%20Of%20Offer%20Visitor/detailsofoffervisitor.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
 class OfferItemVisitor extends StatelessWidget {
-   String image;
+  String image;
   int index;
-   OfferItemVisitor({required this.image,required this.index,super.key});
+  OfferItemVisitor({required this.image, required this.index, super.key});
 
   @override
   Widget build(BuildContext context) {
-      return GestureDetector(
+    return InkWell(
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return DetailsOfOfferVisitor();
-            },
-          ),
-        );
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (context) {
+        //       return DetailsOfOfferVisitor();
+        //     },
+        //   ),
+        // );
       },
       child: Stack(
         children: [

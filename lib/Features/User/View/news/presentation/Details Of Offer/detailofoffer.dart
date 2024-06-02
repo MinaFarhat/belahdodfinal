@@ -68,8 +68,8 @@ class DetailsOfOffer extends StatelessWidget {
                           Navigator.of(context).pop();
                         },
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.09,
-                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.1,
+                          height: MediaQuery.of(context).size.height * 0.045,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white.withOpacity(0.7),

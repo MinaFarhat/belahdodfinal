@@ -1,4 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/Visitor/Cart%20Visitor/Presentation/cartvisitor.dart';
+import 'package:belahododfinal/Features/Visitor/Favorite%20Visitor/Presentation/favoritevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/Details%20Of%20Offer%20Visitor/detailsofoffervisitor.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/newvideovisitor.dart';
 import 'package:belahododfinal/Features/Widgets/top_bar.dart';
@@ -41,18 +43,18 @@ class NewsPageVisitor extends StatelessWidget {
         extendBody: true,
         appBar: TopBar(
           ontapFav: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(builder: (context) {
-            //     return const FavoriteList();
-            //   }),
-            // );
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) {
+                return const FavoriteVisitor();
+              }),
+            );
           },
           ontapwishList: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(builder: (context) {
-            //     return Cart();
-            //   }),
-            // );
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) {
+                return const CartVisitor();
+              }),
+            );
           },
           ontapName: () {
             // Navigator.of(context).push(

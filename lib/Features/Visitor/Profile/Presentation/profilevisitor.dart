@@ -32,7 +32,7 @@ class ProfileVisitor extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(12),
                   gradient: LinearGradient(
                     colors: [
                       Colors.purple,
@@ -45,7 +45,7 @@ class ProfileVisitor extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.5,
                   height: MediaQuery.of(context).size.height * 0.05,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(12),
                     color: Colors.white,
                   ),
                   child: Center(
@@ -58,6 +58,23 @@ class ProfileVisitor extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.018,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: const Text(
+                "أنشئ حساب لتستطيع الدخول الى الصفحة الخاصة بك وعرض المعلومات وإنشاء القسائم و إهدائها كما يمكنك عرض الطلبيات الخاصة بك ",
+                textDirection: TextDirection.rtl,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Color(0xFF898787),
                 ),
               ),
             ),
