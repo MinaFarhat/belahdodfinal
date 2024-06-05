@@ -17,7 +17,8 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {},
       child: Padding(
         padding: const EdgeInsets.only(left: 12, right: 12, top: 12),

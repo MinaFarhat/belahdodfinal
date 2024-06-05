@@ -24,7 +24,8 @@ class OrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(

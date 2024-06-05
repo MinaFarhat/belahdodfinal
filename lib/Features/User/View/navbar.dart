@@ -19,7 +19,7 @@ class Mynavbar extends StatefulWidget {
 class _MynavbarState extends State<Mynavbar> {
   List screens = [
     HomePage(),
-    NewsPage(),
+    const NewsPage(),
     NotificationsPage(),
     Search(),
     const Profile()

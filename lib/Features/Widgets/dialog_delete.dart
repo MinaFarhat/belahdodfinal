@@ -61,7 +61,8 @@ class DeleteDialog extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  GestureDetector(
+                  InkWell(
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
                     onTap: ontapButton1,
                     child: Center(
                       child: Text(
@@ -77,7 +78,8 @@ class DeleteDialog extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.08,
                   ),
-                  GestureDetector(
+                  InkWell(
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
                     onTap: ontapButton2,
                     child: Center(
                       child: Text(

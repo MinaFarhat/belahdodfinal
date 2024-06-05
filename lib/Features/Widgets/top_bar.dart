@@ -37,7 +37,8 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(left: 20),
         child: Row(
           children: [
-            GestureDetector(
+            InkWell(
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: ontapFav,
               child: Icon(
                 PhosphorIcons.heart(PhosphorIconsStyle.regular),
@@ -49,7 +50,8 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.04,
             ),
-            GestureDetector(
+            InkWell(
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: ontapwishList,
               child: Icon(
                 PhosphorIcons.shoppingCart(PhosphorIconsStyle.regular),

@@ -63,7 +63,8 @@ class _FavoriteListState extends State<FavoriteList> {
         backgroundColor: Colors.white,
         extendBody: true,
         appBar: SimpleTopBar(
-          leading: GestureDetector(
+          leading: InkWell(
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
             onTap: () {},
             child: Padding(
               padding: const EdgeInsets.only(left: 16),
@@ -77,7 +78,8 @@ class _FavoriteListState extends State<FavoriteList> {
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: GestureDetector(
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.black),
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -101,7 +103,8 @@ class _FavoriteListState extends State<FavoriteList> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    GestureDetector(
+                    InkWell(
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
                       onTap: () {
                         setState(() {
                           action = false;
@@ -128,7 +131,8 @@ class _FavoriteListState extends State<FavoriteList> {
                         ),
                       ),
                     ),
-                    GestureDetector(
+                    InkWell(
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
                       onTap: () {
                         setState(() {
                           action = true;

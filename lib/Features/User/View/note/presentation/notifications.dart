@@ -48,7 +48,8 @@ class NotificationsPage extends StatelessWidget {
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: GestureDetector(
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {},
                 child: Icon(
                   PhosphorIcons.bellSlash(PhosphorIconsStyle.regular),

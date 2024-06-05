@@ -19,7 +19,8 @@ class SendOrder extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    GestureDetector(
+                    InkWell(
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
                       onTap: () {
                         Navigator.pop(context);
                       },
@@ -203,7 +204,8 @@ class SendOrder extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.04,
               ),
-              GestureDetector(
+              InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {},
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.5,

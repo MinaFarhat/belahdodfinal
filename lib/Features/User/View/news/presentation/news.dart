@@ -9,13 +9,20 @@ import '../../cart/presentation/cart.dart';
 import '../../favorite/presentation/favorite.dart';
 
 // ignore: must_be_immutable
-class NewsPage extends StatelessWidget {
-  NewsPage({super.key});
+class NewsPage extends StatefulWidget {
+  const NewsPage({super.key});
+
+  @override
+  State<NewsPage> createState() => _NewsPageState();
+}
+
+class _NewsPageState extends State<NewsPage> {
   List<String> advertisements = [
     "assets/images/offer1.png",
     "assets/images/offer2.png",
     "assets/images/offer3.png",
   ];
+
   List<Map<String, dynamic>> news = [
     {
       "image": "assets/images/new.png",
@@ -30,11 +37,14 @@ class NewsPage extends StatelessWidget {
       "title": "انطلاق المعرض السنوي في الدوحة"
     },
   ];
+
   List<String> offers = [
     "assets/images/offer1.png",
     "assets/images/offer2.png",
     "assets/images/offer3.png",
   ];
+
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -74,25 +84,28 @@ class NewsPage extends StatelessWidget {
               Center(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.85,
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                      enableInfiniteScroll: true,
-                      enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                      padEnds: true,
-                      initialPage: 1,
-                      height: 200.0,
-                      autoPlay: true,
-                      disableCenter: true,
-                      autoPlayInterval: const Duration(
-                        seconds: 4,
-                      ),
-                    ),
-                    items: advertisements.map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Stack(
-                            children: [
-                              Container(
+                  child: Stack(
+                    children: [
+                      CarouselSlider(
+                        options: CarouselOptions(
+                          enableInfiniteScroll: true,
+                          enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                          padEnds: true,
+                          initialPage: 0,
+                          height: 200.0,
+                          autoPlay: true,
+                          disableCenter: true,
+                          autoPlayInterval: const Duration(seconds: 4),
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              _currentIndex = index;
+                            });
+                          },
+                        ),
+                        items: advertisements.map((i) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Container(
                                 width: MediaQuery.of(context).size.width * 0.85,
                                 margin:
                                     const EdgeInsets.symmetric(horizontal: 6),
@@ -100,51 +113,38 @@ class NewsPage extends StatelessWidget {
                                   color: Colors.transparent,
                                   borderRadius: BorderRadius.circular(20),
                                   image: DecorationImage(
-                                    image: AssetImage(
-                                      i,
-                                    ),
+                                    image: AssetImage(i),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height * 0.2,
-                                left: MediaQuery.of(context).size.width * 0.27,
-                                child: Center(
-                                  child: SizedBox(
-                                    width: 80,
-                                    height: 20,
-                                    child: ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount: advertisements.length,
-                                        itemBuilder: (context, index) {
-                                          return Center(
-                                            child: Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                horizontal: 3,
-                                              ),
-                                              width: 12,
-                                              height: 12,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: advertisements
-                                                            .indexOf(i) ==
-                                                        index
-                                                    ? ColorConstant.mainColor
-                                                    : ColorConstant.darkColor,
-                                              ),
-                                            ),
-                                          );
-                                        }),
-                                  ),
-                                ),
-                              ),
-                            ],
+                              );
+                            },
                           );
-                        },
-                      );
-                    }).toList(),
+                        }).toList(),
+                      ),
+                      Positioned(
+                        bottom: 10,
+                        left: 0,
+                        right: 0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: advertisements.map((url) {
+                            int index = advertisements.indexOf(url);
+                            return Container(
+                              width: 10,
+                              height: 10,
+                              margin: const EdgeInsets.symmetric(horizontal: 3),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: _currentIndex == index
+                                    ? ColorConstant.mainColor
+                                    : Colors.black,
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

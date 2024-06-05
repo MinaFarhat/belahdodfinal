@@ -19,7 +19,8 @@ class PaymentMethods extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    GestureDetector(
+                    InkWell(
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
                       onTap: () {
                         Navigator.pop(context);
                       },

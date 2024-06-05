@@ -15,7 +15,8 @@ class SquareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: onTap,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.45,

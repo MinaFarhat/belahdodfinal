@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Features/User/View/payment/presentation/send_order.dart';
 import 'package:belahododfinal/Features/Widgets/dialog_delete.dart';
 import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
 import 'package:belahododfinal/Features/Widgets/square_button.dart';
@@ -59,7 +60,8 @@ class Cart extends StatelessWidget {
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: GestureDetector(
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -181,7 +183,15 @@ class Cart extends StatelessWidget {
                 SquareButton(
                   icon: PhosphorIcons.handshake(PhosphorIconsStyle.regular),
                   text: "تأكيد الشراء",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const SendOrder();
+                        },
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

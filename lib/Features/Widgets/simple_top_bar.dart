@@ -26,11 +26,12 @@ class SimpleTopBar extends StatelessWidget implements PreferredSizeWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: Colors.grey.shade700,
-                      width: 1.2,
-                    )),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: Colors.grey.shade700,
+                    width: 1.2,
+                  ),
+                ),
               ),
             )
           : PreferredSize(

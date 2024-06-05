@@ -49,7 +49,8 @@ class Orders extends StatelessWidget {
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: GestureDetector(
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {
                   Navigator.pop(context);
                 },

@@ -33,7 +33,8 @@ class FavItem extends StatelessWidget {
             Positioned(
               top: 8,
               left: 8,
-              child: GestureDetector(
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {},
                 child: Icon(
                   PhosphorIcons.heart(PhosphorIconsStyle.fill),

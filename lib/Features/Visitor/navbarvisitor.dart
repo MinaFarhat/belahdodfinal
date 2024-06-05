@@ -18,7 +18,7 @@ class Mynavbarvisitor extends StatefulWidget {
 class _MynavbarvisitorState extends State<Mynavbarvisitor> {
   List screens = [
     HomePageVisitor(),
-    NewsPageVisitor(),
+    const NewsPageVisitor(),
     const NotificationsPageVisitor(),
     const SearchVisitor(),
     const ProfileVisitor()

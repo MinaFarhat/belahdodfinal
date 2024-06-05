@@ -12,7 +12,8 @@ class Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
         if (index == 0) {
           Navigator.of(context).push(
@@ -38,7 +39,8 @@ class Item extends StatelessWidget {
           Positioned(
             top: MediaQuery.of(context).size.height * 0.172,
             left: MediaQuery.of(context).size.width * 0.3,
-            child: GestureDetector(
+            child: InkWell(
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: () {},
               child: Container(
                 decoration: BoxDecoration(

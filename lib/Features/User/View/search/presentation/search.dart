@@ -28,7 +28,8 @@ class Search extends StatelessWidget {
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 12),
-              child: GestureDetector(
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {},
                 child: CircleAvatar(
                   radius: 21,
@@ -56,7 +57,8 @@ class Search extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          GestureDetector(
+                          InkWell(
+                            overlayColor: WidgetStateProperty.all(Colors.transparent),
                             onTap: () {},
                             child: Text(
                               "عرض الكل",
