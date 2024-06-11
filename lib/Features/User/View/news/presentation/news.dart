@@ -5,7 +5,6 @@ import 'package:belahododfinal/Features/Widgets/top_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import '../../../../../Core/constant/colors_constant.dart';
-import '../../Details/presentation/details.dart';
 import '../../cart/presentation/cart.dart';
 import '../../favorite/presentation/favorite.dart';
 

@@ -1,5 +1,3 @@
-import 'package:belahododfinal/Features/User/View/Info/presentation/inof.dart';
-import 'package:belahododfinal/Features/User/View/navbar.dart';
 import 'package:belahododfinal/Features/Visitor/navbarvisitor.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
