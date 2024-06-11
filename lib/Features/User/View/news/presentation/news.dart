@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Features/User/View/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/View/news/presentation/Details%20Of%20Offer/detailofoffer.dart';
 import 'package:belahododfinal/Features/User/View/news/presentation/newvedio.dart';
 import 'package:belahododfinal/Features/Widgets/top_bar.dart';
@@ -70,7 +71,7 @@ class _NewsPageState extends State<NewsPage> {
           ontapName: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return const Details();
+                return const Information();
               }),
             );
           },

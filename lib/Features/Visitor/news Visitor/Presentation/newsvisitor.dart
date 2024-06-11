@@ -1,6 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Visitor/Cart%20Visitor/Presentation/cartvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Favorite%20Visitor/Presentation/favoritevisitor.dart';
+import 'package:belahododfinal/Features/Visitor/InfoVisitor/presentation/inofvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/Details%20Of%20Offer%20Visitor/detailsofoffervisitor.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/newvideovisitor.dart';
 import 'package:belahododfinal/Features/Widgets/top_bar.dart';
@@ -67,11 +68,11 @@ class _NewsPageVisitorState extends State<NewsPageVisitor> {
             );
           },
           ontapName: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(builder: (context) {
-            //     return const Details();
-            //   }),
-            // );
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) {
+                return const InformationVisitor();
+              }),
+            );
           },
         ),
         body: SingleChildScrollView(

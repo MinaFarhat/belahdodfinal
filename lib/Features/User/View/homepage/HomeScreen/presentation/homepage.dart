@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/User/View/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/View/homepage/HomeScreen/presentation/section.dart';
 import 'package:belahododfinal/Features/Widgets/top_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
           ontapName: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return const Details();
+                return const Information();
               }),
             );
           },

@@ -70,9 +70,11 @@ class CartVisitor extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                     colors: [
-                      Colors.purple,
-                      ColorConstant.mainColor,
+                      Colors.purpleAccent.shade400,
+                      Colors.blue,
                     ],
                   ),
                 ),
