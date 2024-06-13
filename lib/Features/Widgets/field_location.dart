@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 
+// ignore: must_be_immutable
 class FieldLocation extends StatelessWidget {
   String? Function(String?)? validatefield;
   String? Function(String?)? validatedropdownbutton;
@@ -115,12 +116,6 @@ class FieldLocation extends StatelessWidget {
                     color: ColorConstant.mainColor,
                   ),
                   validator: validatefield,
-                  // validator: (value) {
-                  //   if (value == null || value.isEmpty) {
-                  //     return "This field is required";
-                  //   }
-                  //   return null;
-                  // },
                 ),
               ),
             ),
@@ -165,12 +160,6 @@ class FieldLocation extends StatelessWidget {
                   value = val;
                 },
                 validator: validatedropdownbutton,
-                // validator: (value) {
-                //   if (value == null) {
-                //     return "Please select a city";
-                //   }
-                //   return null;
-                // },
               ),
             ),
           ],
