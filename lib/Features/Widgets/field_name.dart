@@ -6,10 +6,14 @@ class FieldName extends StatelessWidget {
   String fieldName;
   TextInputType typeKey;
   bool pass;
+  String? Function(String?)? validate;
+  TextEditingController controller;
   FieldName({
     required this.fieldName,
     required this.typeKey,
     required this.pass,
+    required this.validate,
+    required this.controller,
     super.key,
   });
 
@@ -39,18 +43,20 @@ class FieldName extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.065,
+                height: MediaQuery.of(context).size.height * 0.08,
                 width: MediaQuery.of(context).size.width * 0.85,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: TextFormField(
+                  controller: controller,
                   textAlignVertical: TextAlignVertical.center,
                   cursorColor: ColorConstant.mainColor,
                   cursorHeight: 22,
                   keyboardType: typeKey,
                   textDirection: TextDirection.rtl,
                   enableSuggestions: true,
+                  validator: validate,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     prefix: pass == true
@@ -92,7 +98,6 @@ class FieldName extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // obscureText: pass == true ? true : false,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,

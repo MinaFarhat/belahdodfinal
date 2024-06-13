@@ -1,13 +1,13 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
-import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
-import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/Details%20Of%20Offer%20Visitor/pricesectionvisitor.dart';
-import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/offeritemvisitor.dart';
+import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/priceection.dart';
+import 'package:belahododfinal/Features/User/news/presentation/offeritems.dart';
+import 'package:belahododfinal/Features/Widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
-class DetailsOfOfferVisitor extends StatelessWidget {
-  DetailsOfOfferVisitor({super.key});
+class DetailsOfOffer extends StatelessWidget {
+  DetailsOfOffer({super.key});
   List<Map<String, dynamic>> offerProducts = [
     {
       "image": "assets/images/tool1.png",
@@ -152,7 +152,7 @@ class DetailsOfOfferVisitor extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(left: 8),
-                      child: OfferItemVisitor(
+                      child: OfferItems(
                         image: offerProducts[index]['image'],
                         index: index,
                       ),
@@ -217,7 +217,7 @@ class DetailsOfOfferVisitor extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const PriceSectionVisitor(
+                    const PriceSection(
                       originalPrice: 300.000,
                       discountedPrice: 200.000,
                     ),
@@ -225,49 +225,12 @@ class DetailsOfOfferVisitor extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
+                height: MediaQuery.of(context).size.height * 0.013,
               ),
-              InkWell(
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-                onTap: () {
-                   Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const Signup();
-                    },
-                  ),
-                );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.purple,
-                        ColorConstant.mainColor,
-                      ],
-                    ),
-                  ),
-                  padding: const EdgeInsets.all(2),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: MediaQuery.of(context).size.height * 0.05,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "إنشاء حساب",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: ColorConstant.mainColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+              SquareButton(
+                icon: PhosphorIcons.handshake(PhosphorIconsStyle.regular),
+                text: "تأكيد الشراء",
+                onTap: () {},
               ),
             ],
           ),

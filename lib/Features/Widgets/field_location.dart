@@ -1,8 +1,17 @@
-import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:belahododfinal/Core/constant/colors_constant.dart';
 
 class FieldLocation extends StatelessWidget {
-  const FieldLocation({super.key});
+  String? Function(String?)? validatefield;
+  String? Function(String?)? validatedropdownbutton;
+  TextEditingController controller;
+  FieldLocation({
+    super.key,
+    required this.controller,
+    required this.validatefield,
+    required this.validatedropdownbutton,
+  });
+
   static String? value;
   static List<String> cities = [
     "دمشق",
@@ -20,6 +29,7 @@ class FieldLocation extends StatelessWidget {
     "الحسكة",
     "الرقة",
   ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,6 +65,7 @@ class FieldLocation extends StatelessWidget {
                   borderRadius: BorderRadius.circular(0),
                 ),
                 child: TextFormField(
+                  controller: controller,
                   textAlignVertical: TextAlignVertical.center,
                   cursorColor: ColorConstant.mainColor,
                   cursorHeight: 22,
@@ -103,6 +114,13 @@ class FieldLocation extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     color: ColorConstant.mainColor,
                   ),
+                  validator: validatefield,
+                  // validator: (value) {
+                  //   if (value == null || value.isEmpty) {
+                  //     return "This field is required";
+                  //   }
+                  //   return null;
+                  // },
                 ),
               ),
             ),
@@ -144,8 +162,15 @@ class FieldLocation extends StatelessWidget {
                   );
                 }).toList(),
                 onChanged: (val) {
-                  value = val; // Update selected value
+                  value = val;
                 },
+                validator: validatedropdownbutton,
+                // validator: (value) {
+                //   if (value == null) {
+                //     return "Please select a city";
+                //   }
+                //   return null;
+                // },
               ),
             ),
           ],

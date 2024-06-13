@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
 import 'package:flutter/material.dart';
 
 class ProfileVisitor extends StatelessWidget {
@@ -28,7 +29,13 @@ class ProfileVisitor extends StatelessWidget {
             InkWell(
               overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: () {
-                // Handle button tap
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const Signup();
+                    },
+                  ),
+                );
               },
               child: Container(
                 decoration: BoxDecoration(

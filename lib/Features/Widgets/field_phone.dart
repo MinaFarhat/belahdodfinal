@@ -6,10 +6,14 @@ class FieldPhone extends StatelessWidget {
   String fieldName;
   TextInputType typeKey;
   bool pass;
+  String? Function(String?)? validate;
+  TextEditingController phonenumbercontroller;
   FieldPhone({
     required this.fieldName,
     required this.typeKey,
     required this.pass,
+    required this.validate,
+    required this.phonenumbercontroller,
     super.key,
   });
 
@@ -106,6 +110,8 @@ class FieldPhone extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: TextFormField(
+                  controller: phonenumbercontroller,
+                  validator: validate,
                   textAlignVertical: TextAlignVertical.center,
                   cursorColor: ColorConstant.mainColor,
                   cursorHeight: 22,
