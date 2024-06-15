@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/Widgets/field_name.dart';
 import 'package:flutter/material.dart';
 
@@ -108,10 +109,16 @@ class ForgetPassword3 extends StatelessWidget {
                 onTap: () {
                   if (_newpasswordkey.currentState!.validate() &&
                       _confirmpasswordkey.currentState!.validate()) {
-                    Navigator.of(context)
-                        .pushReplacement(MaterialPageRoute(builder: (context) {
-                      return LogIn();
-                    }));
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return WaitingScreen(
+                            screen: LogIn(),
+                            text: "...جارٍ حفظ المعلومات",
+                          );
+                        },
+                      ),
+                    );
                   }
                 },
                 child: Container(

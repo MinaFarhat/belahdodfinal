@@ -1,4 +1,4 @@
-import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
+import 'package:belahododfinal/Features/Visitor/navbarvisitor.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: colorCustom,
         useMaterial3: true,
       ),
-      home: Signup(),
+      home: const Mynavbarvisitor(),
     );
   }
 }

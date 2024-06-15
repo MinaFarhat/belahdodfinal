@@ -139,6 +139,7 @@ class LogIn extends StatelessWidget {
                         builder: (context) {
                           return const WaitingScreen(
                             screen: Mynavbar(),
+                            text: "...جارٍ التحقق",
                           );
                         },
                       ),

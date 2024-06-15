@@ -62,6 +62,7 @@ class ConfirmNumber extends StatelessWidget {
                       builder: (context) {
                         return const WaitingScreen(
                           screen: ChoosePhoto(),
+                          text: "...جارٍ التحقق",
                         );
                       },
                     ),

@@ -68,6 +68,7 @@ class ForgetPassword2 extends StatelessWidget {
                       builder: (context) {
                         return WaitingScreen(
                           screen: ForgetPassword3(),
+                          text: "...جارٍ التحقق",
                         );
                       },
                     ),

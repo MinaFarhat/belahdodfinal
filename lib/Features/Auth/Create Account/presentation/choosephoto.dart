@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -65,7 +66,10 @@ class _ChoosePhotoState extends State<ChoosePhoto> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return const Mynavbar();
+                                return const WaitingScreen(
+                                  screen: Mynavbar(),
+                                  text: "...جارٍ حفظ المعلومات",
+                                );
                               },
                             ),
                           );
@@ -108,7 +112,10 @@ class _ChoosePhotoState extends State<ChoosePhoto> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return const Mynavbar();
+                                return const WaitingScreen(
+                                  screen: Mynavbar(),
+                                  text: "...جارٍ حفظ المعلومات",
+                                );
                               },
                             ),
                           );
@@ -152,7 +159,7 @@ class _ChoosePhotoState extends State<ChoosePhoto> {
                                   Text(
                                     'أختيار من المعرض',
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       color: ColorConstant.darkColor,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -181,7 +188,7 @@ class _ChoosePhotoState extends State<ChoosePhoto> {
                                   Text(
                                     'ألتقاط صورة',
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       color: ColorConstant.darkColor,
                                       fontWeight: FontWeight.bold,
                                     ),
