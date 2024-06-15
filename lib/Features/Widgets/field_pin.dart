@@ -1,10 +1,11 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class FieldPins extends StatelessWidget {
   const FieldPins({super.key});
-  
+
   static FocusNode pin2FocusNode = FocusNode();
 
   static FocusNode? pin3FocusNode = FocusNode();
@@ -95,7 +96,7 @@ class FieldPins extends StatelessWidget {
     FocusNode? focusnode,
   }) {
     return Container(
-      height: MediaQuery.of(context!).size.height * 0.068,
+      height: MediaQuery.of(context!).size.height * 0.06,
       width: MediaQuery.of(context).size.width * 0.14,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -116,7 +117,10 @@ class FieldPins extends StatelessWidget {
         cursorColor: ColorConstant.mainColor,
         cursorHeight: 22,
         keyboardType: TextInputType.number,
+        maxLength: 1,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         decoration: InputDecoration(
+          counterText: "",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(

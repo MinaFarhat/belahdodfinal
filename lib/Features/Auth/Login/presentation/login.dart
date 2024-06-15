@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
 import 'package:belahododfinal/Features/Auth/Forgate%20Password/presentation/forgetpassword1.dart';
+import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/Widgets/field_name.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class LogIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -132,10 +134,15 @@ class LogIn extends StatelessWidget {
                 onTap: () {
                   if (_fullnamekey.currentState!.validate() &&
                       _passwordkey.currentState!.validate()) {
-                    Navigator.of(context)
-                        .pushReplacement(MaterialPageRoute(builder: (context) {
-                      return const Mynavbar();
-                    }));
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const WaitingScreen(
+                            screen: Mynavbar(),
+                          );
+                        },
+                      ),
+                    );
                   }
                 },
                 child: Container(

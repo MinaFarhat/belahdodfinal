@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/choosephoto.dart';
+import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/Widgets/field_pin.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class ConfirmNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -55,10 +57,15 @@ class ConfirmNumber extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context)
-                      .pushReplacement(MaterialPageRoute(builder: (context) {
-                    return const ChoosePhoto();
-                  }));
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const WaitingScreen(
+                          screen: ChoosePhoto(),
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.5,

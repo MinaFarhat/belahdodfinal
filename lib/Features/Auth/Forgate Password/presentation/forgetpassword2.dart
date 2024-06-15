@@ -1,5 +1,5 @@
-
 import 'package:belahododfinal/Features/Auth/Forgate%20Password/presentation/forgetpassword3.dart';
+import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/Widgets/field_pin.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +12,7 @@ class ForgetPassword2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -56,7 +57,7 @@ class ForgetPassword2 extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.07,
               ),
-            const FieldPins(),
+              const FieldPins(),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.09,
               ),
@@ -65,7 +66,9 @@ class ForgetPassword2 extends StatelessWidget {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) {
-                        return  ForgetPassword3();
+                        return WaitingScreen(
+                          screen: ForgetPassword3(),
+                        );
                       },
                     ),
                   );
