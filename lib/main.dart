@@ -1,5 +1,4 @@
 import 'package:belahododfinal/Features/Auth/splashscreen.dart';
-import 'package:belahododfinal/Features/Visitor/navbarvisitor.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
