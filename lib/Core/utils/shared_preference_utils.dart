@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesUtils {
-   SharedPreferences ?_prefs;
+  late SharedPreferences _prefs;
 
   SharedPreferencesUtils._();
 
@@ -22,23 +22,23 @@ class SharedPreferencesUtils {
 
   Future<void> setToken(String token) async {
     await _initialize();
-    _prefs!.setString('token', token);
+    _prefs.setString('token', token);
   }
 
   String? getToken() {
-    if (!isInitialized()) {
+    if (!_isInitialized()) {
       // ignore: avoid_print
       print('SharedPreferences has not been initialized yet.');
     }
-    return _prefs!.getString('token');
+    return _prefs.getString('token');
   }
 
   Future<void> removeToken() async {
     await _initialize();
-    await _prefs!.remove('token');
+    await _prefs.remove('token');
   }
 
-  bool isInitialized() {
+  bool _isInitialized() {
     // ignore: unnecessary_null_comparison
     if (_prefs == null) {
       if (kDebugMode) {

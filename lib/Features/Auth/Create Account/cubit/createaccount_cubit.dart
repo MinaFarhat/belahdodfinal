@@ -30,6 +30,6 @@ class CreateaccountCubit extends Cubit<CreateaccountState> {
       address,
     );
     response.fold((l) => emit(CreateaccountState.error(l)),
-        (r) => emit(const CreateaccountState.success()));
+        (_) => emit(const CreateaccountState.success()));
   }
 }

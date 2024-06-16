@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
 import 'package:belahododfinal/Features/Auth/splashscreen.dart';
@@ -8,6 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   await configureDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesUtils().init();
   runApp(const MyApp());
 }
 

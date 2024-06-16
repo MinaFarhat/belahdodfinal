@@ -70,8 +70,10 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i17.CreateaccountCubit>(
         () => _i17.CreateaccountCubit(gh<_i12.BaseReposotryCreateAccount>()));
-    gh.factory<_i18.LoginCubit>(
-        () => _i18.LoginCubit(gh<_i15.BaseReposotryLogin>()));
+    gh.factory<_i18.LoginCubit>(() => _i18.LoginCubit(
+          gh<_i15.BaseReposotryLogin>(),
+          gh<_i7.SharedPreferencesUtils>(),
+        ));
     return this;
   }
 }

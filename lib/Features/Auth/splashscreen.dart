@@ -5,21 +5,26 @@ import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/Visitor/navbarvisitor.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});
+
   final SharedPreferencesUtils _preferencesUtils = SharedPreferencesUtils();
+
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 5), () {
+    // Delayed navigation logic
+    Future.delayed(const Duration(seconds: 5), () async {
+      await _preferencesUtils.init(); // Initialize SharedPreferences
+      final token = _preferencesUtils.getToken(); // Get stored token
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) {
-            if (!_preferencesUtils.isInitialized()) {
-              return const Mynavbarvisitor();
+            if (token != null) {
+              return const Mynavbar(); // User logged in
             } else {
-              return const Mynavbar();
+              return const Mynavbarvisitor(); // Visitor or not logged in
             }
           },
         ),

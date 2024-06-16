@@ -1,9 +1,13 @@
+import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
 import 'package:belahododfinal/Features/Auth/Forgate%20Password/presentation/forgetpassword1.dart';
+import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
 import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/Widgets/field_name.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../../../Core/constant/colors_constant.dart';
 
 class LogIn extends StatelessWidget {
@@ -130,40 +134,107 @@ class LogIn extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
               ),
-              GestureDetector(
-                onTap: () {
-                  if (_fullnamekey.currentState!.validate() &&
-                      _passwordkey.currentState!.validate()) {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const WaitingScreen(
-                            screen: Mynavbar(),
-                            text: "...جارٍ التحقق",
-                          );
-                        },
+              BlocConsumer<LoginCubit, LoginState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (NetworkExceptions networkExceptions) =>
+                        Fluttertoast.showToast(
+                      msg: NetworkExceptions.getErrorMessage(
+                        networkExceptions,
                       ),
-                    );
-                  }
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  height: MediaQuery.of(context).size.height * 0.065,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: ColorConstant.mainColor,
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "تسجيل الدخول",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.red,
                     ),
-                  ),
-                ),
+                    success: (loginEntity) {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const WaitingScreen(
+                              screen: Mynavbar(),
+                              text: "...جارٍ التحقق",
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          if (_fullnamekey.currentState!.validate() &&
+                              _passwordkey.currentState!.validate()) {
+                            context.read<LoginCubit>().emitLogin(
+                                  _fullnamecontroller.text,
+                                  _passwordcontroller.text,
+                                );
+                          }
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          height: MediaQuery.of(context).size.height * 0.065,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: ColorConstant.mainColor,
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "تسجيل الدخول",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    initial: () {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          if (_fullnamekey.currentState!.validate() &&
+                              _passwordkey.currentState!.validate()) {
+                            context.read<LoginCubit>().emitLogin(
+                                  _fullnamecontroller.text,
+                                  _passwordcontroller.text,
+                                );
+                          }
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          height: MediaQuery.of(context).size.height * 0.065,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: ColorConstant.mainColor,
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "تسجيل الدخول",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return CircularProgressIndicator(
+                        color: ColorConstant.mainColor,
+                      );
+                    },
+                  );
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.015,

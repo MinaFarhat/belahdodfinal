@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/Login/data/Model/loginentity.dart';
 import 'package:belahododfinal/Features/Auth/Login/data/Repostry/basereposotrylogin.dart';
 import 'package:bloc/bloc.dart';
@@ -10,9 +11,11 @@ part 'login_cubit.freezed.dart';
 
 @injectable
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._baseReposotryLogin) : super(const LoginState.initial());
+  LoginCubit(this._baseReposotryLogin, this._sharedPreferencesUtils)
+      : super(const LoginState.initial());
 
   final BaseReposotryLogin _baseReposotryLogin;
+  final SharedPreferencesUtils _sharedPreferencesUtils;
 
   Future<void> emitLogin(
     String name,
@@ -21,7 +24,13 @@ class LoginCubit extends Cubit<LoginState> {
     emit(const LoginState.loading());
     final response = await _baseReposotryLogin.login(name, password);
 
-    response.fold(
-        (l) => emit(LoginState.error(l)), (r) => emit(LoginState.success(r)));
+     response.fold(
+      (l) => emit(LoginState.error(l)),
+      (r) {
+        _sharedPreferencesUtils.setToken(r.token);
+        emit(LoginState.success(r));
+      },
+    );
   }
-}
+  }
+

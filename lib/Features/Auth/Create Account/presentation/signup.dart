@@ -33,149 +33,150 @@ class _SignupState extends State<Signup> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          child: BlocConsumer<CreateaccountCubit, CreateaccountState>(
-            listener: (context, state) {
-              state.when(
-                initial: () {},
-                loading: () {},
-                success: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) {
-                      return const ConfirmNumber();
-                    }),
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.25,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage("assets/images/signup.png"),
+                  fit: BoxFit.cover,
+                )),
+              ),
+              Text(
+                "إنشاء حساب",
+                style: TextStyle(
+                  fontSize: 22,
+                  color: ColorConstant.darkColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.006,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8),
+                child: Text(
+                  "أهلا بك في تطبيق بلا حدود للمعرفة والعلم والترفيه",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: ColorConstant.hintTextColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.015,
+              ),
+              Form(
+                key: _fullnamekey,
+                child: FieldName(
+                  controller: _fullnamecontroller,
+                  fieldName: "الأسم الثلاثي",
+                  typeKey: TextInputType.name,
+                  pass: false,
+                  validate: (String? value) {
+                    if (value!.isEmpty) {
+                      return "This field is required";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Form(
+                key: _passwordkey,
+                child: FieldName(
+                  controller: _passwordcontroller,
+                  fieldName: "كلمة المرور",
+                  typeKey: TextInputType.visiblePassword,
+                  pass: true,
+                  validate: (String? value) {
+                    if (value!.isEmpty) {
+                      return "This field is required";
+                    } else if (value.length < 8) {
+                      return "The Password should be more than 8 characters";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Form(
+                key: _phonenumberkey,
+                child: FieldPhone(
+                  phonenumbercontroller: _phonenumbercontroller,
+                  fieldName: "رقم الهاتف",
+                  typeKey: TextInputType.phone,
+                  pass: false,
+                  validate: (String? value) {
+                    if (value!.isEmpty) {
+                      return "This field is required";
+                    } else if (value.length < 9) {
+                      return "The phone number should be at least 9 digits";
+                    } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                      return "This number is invalid";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Form(
+                key: _regionKey,
+                child: FieldLocation(
+                  controller: _regionController,
+                  validatefield: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "This field is required";
+                    }
+                    return null;
+                  },
+                  validatedropdownbutton: (value) {
+                    if (value == null) {
+                      return "Please select a city";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01,
+              ),
+              BlocConsumer<CreateaccountCubit, CreateaccountState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (NetworkExceptions networkExceptions) =>
+                        Fluttertoast.showToast(
+                      msg: NetworkExceptions.getErrorMessage(
+                        networkExceptions,
+                      ),
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.red,
+                    ),
+                    success: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const ConfirmNumber();
+                          },
+                        ),
+                      );
+                    },
                   );
                 },
-                error: (networkExceptions) {
-                  Fluttertoast.showToast(
-                    msg: NetworkExceptions.getErrorMessage(networkExceptions),
-                    toastLength: Toast.LENGTH_LONG,
-                    gravity: ToastGravity.BOTTOM,
-                    backgroundColor: Colors.red,
-                  );
-                },
-              );
-            },
-            builder: (context, state) {
-              return state.maybeWhen(
-                orElse: () {
-                  return Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.25,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                          image: AssetImage("assets/images/signup.png"),
-                          fit: BoxFit.cover,
-                        )),
-                      ),
-                      Text(
-                        "إنشاء حساب",
-                        style: TextStyle(
-                          fontSize: 22,
-                          color: ColorConstant.darkColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.006,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
-                        child: Text(
-                          "أهلا بك في تطبيق بلا حدود للمعرفة والعلم والترفيه",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: ColorConstant.hintTextColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.015,
-                      ),
-                      Form(
-                        key: _fullnamekey,
-                        child: FieldName(
-                          controller: _fullnamecontroller,
-                          fieldName: "الأسم الثلاثي",
-                          typeKey: TextInputType.name,
-                          pass: false,
-                          validate: (String? value) {
-                            if (value!.isEmpty) {
-                              return "This field is required";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Form(
-                        key: _passwordkey,
-                        child: FieldName(
-                          controller: _passwordcontroller,
-                          fieldName: "كلمة المرور",
-                          typeKey: TextInputType.visiblePassword,
-                          pass: true,
-                          validate: (String? value) {
-                            if (value!.isEmpty) {
-                              return "This field is required";
-                            } else if (value.length < 8) {
-                              return "The Password should be more than 8 characters";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Form(
-                        key: _phonenumberkey,
-                        child: FieldPhone(
-                          phonenumbercontroller: _phonenumbercontroller,
-                          fieldName: "رقم الهاتف",
-                          typeKey: TextInputType.phone,
-                          pass: false,
-                          validate: (String? value) {
-                            if (value!.isEmpty) {
-                              return "This field is required";
-                            } else if (value.length < 9) {
-                              return "The phone number should be at least 9 digits";
-                            } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                              return "This number is invalid";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Form(
-                        key: _regionKey,
-                        child: FieldLocation(
-                          controller: _regionController,
-                          validatefield: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "This field is required";
-                            }
-                            return null;
-                          },
-                          validatedropdownbutton: (value) {
-                            if (value == null) {
-                              return "Please select a city";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      InkWell(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return InkWell(
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
@@ -189,7 +190,7 @@ class _SignupState extends State<Signup> {
                                   name: _fullnamecontroller.text,
                                   password: _passwordcontroller.text,
                                   phoneNumber: _phonenumbercontroller.text,
-                                  city: _regionController.text,
+                                  city: FieldLocation.value.toString(),
                                   address: _regionController.text,
                                 );
                           }
@@ -212,164 +213,10 @@ class _SignupState extends State<Signup> {
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.015,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(builder: (context) {
-                                return LogIn();
-                              }));
-                            },
-                            child: Text(
-                              "تسجيل الدخول",
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: ColorConstant.mainColor,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
-                          ),
-                          Text(
-                            "لديك بالفعل حساب؟",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: ColorConstant.hintTextColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  );
-                },
-                initial: () {
-                  return Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.25,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                          image: AssetImage("assets/images/signup.png"),
-                          fit: BoxFit.cover,
-                        )),
-                      ),
-                      Text(
-                        "إنشاء حساب",
-                        style: TextStyle(
-                          fontSize: 22,
-                          color: ColorConstant.darkColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.006,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
-                        child: Text(
-                          "أهلا بك في تطبيق بلا حدود للمعرفة والعلم والترفيه",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: ColorConstant.hintTextColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.015,
-                      ),
-                      Form(
-                        key: _fullnamekey,
-                        child: FieldName(
-                          controller: _fullnamecontroller,
-                          fieldName: "الأسم الثلاثي",
-                          typeKey: TextInputType.name,
-                          pass: false,
-                          validate: (String? value) {
-                            if (value!.isEmpty) {
-                              return "This field is required";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Form(
-                        key: _passwordkey,
-                        child: FieldName(
-                          controller: _passwordcontroller,
-                          fieldName: "كلمة المرور",
-                          typeKey: TextInputType.visiblePassword,
-                          pass: true,
-                          validate: (String? value) {
-                            if (value!.isEmpty) {
-                              return "This field is required";
-                            } else if (value.length < 8) {
-                              return "The Password should be more than 8 characters";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Form(
-                        key: _phonenumberkey,
-                        child: FieldPhone(
-                          phonenumbercontroller: _phonenumbercontroller,
-                          fieldName: "رقم الهاتف",
-                          typeKey: TextInputType.phone,
-                          pass: false,
-                          validate: (String? value) {
-                            if (value!.isEmpty) {
-                              return "This field is required";
-                            } else if (value.length < 9) {
-                              return "The phone number should be at least 9 digits";
-                            } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                              return "This number is invalid";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Form(
-                        key: _regionKey,
-                        child: FieldLocation(
-                          controller: _regionController,
-                          validatefield: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "This field is required";
-                            }
-                            return null;
-                          },
-                          validatedropdownbutton: (value) {
-                            if (value == null) {
-                              return "Please select a city";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      InkWell(
+                      );
+                    },
+                    initial: () {
+                      return InkWell(
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
@@ -383,7 +230,7 @@ class _SignupState extends State<Signup> {
                                   name: _fullnamecontroller.text,
                                   password: _passwordcontroller.text,
                                   phoneNumber: _phonenumbercontroller.text,
-                                  city: _regionController.text,
+                                  city: FieldLocation.value.toString(),
                                   address: _regionController.text,
                                 );
                           }
@@ -406,52 +253,52 @@ class _SignupState extends State<Signup> {
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.015,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(builder: (context) {
-                                return LogIn();
-                              }));
-                            },
-                            child: Text(
-                              "تسجيل الدخول",
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: ColorConstant.mainColor,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
-                          ),
-                          Text(
-                            "لديك بالفعل حساب؟",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: ColorConstant.hintTextColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                      );
+                    },
+                    loading: () {
+                      return CircularProgressIndicator(
+                        color: ColorConstant.mainColor,
+                      );
+                    },
                   );
                 },
-                loading: () {
-                  return const CircularProgressIndicator(
-                    color: Colors.red,
-                  );
-                },
-              );
-            },
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.015,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) {
+                        return LogIn();
+                      }));
+                    },
+                    child: Text(
+                      "تسجيل الدخول",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.mainColor,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.01,
+                  ),
+                  Text(
+                    "لديك بالفعل حساب؟",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: ColorConstant.hintTextColor,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

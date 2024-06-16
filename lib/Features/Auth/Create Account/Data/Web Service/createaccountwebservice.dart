@@ -20,15 +20,14 @@ class CreateAccountWebServiceImpl implements CreateAccountWebService {
   @override
   Future<void> createaccount(String name, String password, String phoneNumber,
       String city, String address) async {
+    // ignore: unused_local_variable
     final response =
-        await _apiConsumer.post("http://127.0.0.1:8000/api/register", body: {
+        await _apiConsumer.post("http://10.0.2.2:8000/api/register", body: {
       "name": name,
       "password": password,
       "phone_number": phoneNumber,
       "city": city,
       "address": address,
     });
-
-    return response;
   }
 }

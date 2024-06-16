@@ -20,7 +20,7 @@ mixin _$LoginState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(LoginEntity createaccountentity) success,
+    required TResult Function(LoginEntity loginEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$LoginState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(LoginEntity createaccountentity)? success,
+    TResult? Function(LoginEntity loginEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$LoginState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(LoginEntity createaccountentity)? success,
+    TResult Function(LoginEntity loginEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(LoginEntity createaccountentity) success,
+    required TResult Function(LoginEntity loginEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(LoginEntity createaccountentity)? success,
+    TResult? Function(LoginEntity loginEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(LoginEntity createaccountentity)? success,
+    TResult Function(LoginEntity loginEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -240,7 +240,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(LoginEntity createaccountentity) success,
+    required TResult Function(LoginEntity loginEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(LoginEntity createaccountentity)? success,
+    TResult? Function(LoginEntity loginEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return loading?.call();
@@ -262,7 +262,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(LoginEntity createaccountentity)? success,
+    TResult Function(LoginEntity loginEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -320,7 +320,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LoginEntity createaccountentity});
+  $Res call({LoginEntity loginEntity});
 }
 
 /// @nodoc
@@ -334,12 +334,12 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? createaccountentity = null,
+    Object? loginEntity = null,
   }) {
     return _then(_$SuccessImpl(
-      null == createaccountentity
-          ? _value.createaccountentity
-          : createaccountentity // ignore: cast_nullable_to_non_nullable
+      null == loginEntity
+          ? _value.loginEntity
+          : loginEntity // ignore: cast_nullable_to_non_nullable
               as LoginEntity,
     ));
   }
@@ -348,14 +348,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.createaccountentity);
+  const _$SuccessImpl(this.loginEntity);
 
   @override
-  final LoginEntity createaccountentity;
+  final LoginEntity loginEntity;
 
   @override
   String toString() {
-    return 'LoginState.success(createaccountentity: $createaccountentity)';
+    return 'LoginState.success(loginEntity: $loginEntity)';
   }
 
   @override
@@ -363,12 +363,12 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.createaccountentity, createaccountentity) ||
-                other.createaccountentity == createaccountentity));
+            (identical(other.loginEntity, loginEntity) ||
+                other.loginEntity == loginEntity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, createaccountentity);
+  int get hashCode => Object.hash(runtimeType, loginEntity);
 
   @JsonKey(ignore: true)
   @override
@@ -381,10 +381,10 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(LoginEntity createaccountentity) success,
+    required TResult Function(LoginEntity loginEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
-    return success(createaccountentity);
+    return success(loginEntity);
   }
 
   @override
@@ -392,10 +392,10 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(LoginEntity createaccountentity)? success,
+    TResult? Function(LoginEntity loginEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
-    return success?.call(createaccountentity);
+    return success?.call(loginEntity);
   }
 
   @override
@@ -403,12 +403,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(LoginEntity createaccountentity)? success,
+    TResult Function(LoginEntity loginEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(createaccountentity);
+      return success(loginEntity);
     }
     return orElse();
   }
@@ -452,9 +452,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements LoginState {
-  const factory _Success(final LoginEntity createaccountentity) = _$SuccessImpl;
+  const factory _Success(final LoginEntity loginEntity) = _$SuccessImpl;
 
-  LoginEntity get createaccountentity;
+  LoginEntity get loginEntity;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -537,7 +537,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(LoginEntity createaccountentity) success,
+    required TResult Function(LoginEntity loginEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return error(networkExceptions);
@@ -548,7 +548,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(LoginEntity createaccountentity)? success,
+    TResult? Function(LoginEntity loginEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return error?.call(networkExceptions);
@@ -559,7 +559,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(LoginEntity createaccountentity)? success,
+    TResult Function(LoginEntity loginEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
