@@ -117,7 +117,7 @@ class _MynavbarvisitorState extends State<Mynavbarvisitor> {
                         width: 2,
                       ),
                       image: const DecorationImage(
-                        image: AssetImage("assets/images/user.png"),
+                        image: AssetImage("assets/images/User-avatar.png"),
                         fit: BoxFit.scaleDown,
                       ),
                     ),

@@ -1,18 +1,27 @@
 import 'dart:async';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
-import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/homepage.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/navbar.dart';
+import 'package:belahododfinal/Features/Visitor/navbarvisitor.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
-
+  SplashScreen({super.key});
+  final SharedPreferencesUtils _preferencesUtils = SharedPreferencesUtils();
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(hours: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) {
+            if (!_preferencesUtils.isInitialized()) {
+              return const Mynavbarvisitor();
+            } else {
+              return const Mynavbar();
+            }
+          },
         ),
       );
     });

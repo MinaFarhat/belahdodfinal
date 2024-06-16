@@ -11,15 +11,19 @@ class DetailsOfOfferVisitor extends StatelessWidget {
   List<Map<String, dynamic>> offerProducts = [
     {
       "image": "assets/images/tool1.png",
+      "isFavorite":false,
     },
     {
       "image": "assets/images/tool2.png",
+      "isFavorite":false,
     },
     {
       "image": "assets/images/tool3.png",
+      "isFavorite":false,
     },
     {
       "image": "assets/images/tool4.png",
+      "isFavorite":false,
     },
   ];
 
@@ -155,6 +159,7 @@ class DetailsOfOfferVisitor extends StatelessWidget {
                       child: OfferItemVisitor(
                         image: offerProducts[index]['image'],
                         index: index,
+                        isFavorite: offerProducts[index]["isFavorite"],
                       ),
                     );
                   },
@@ -230,7 +235,7 @@ class DetailsOfOfferVisitor extends StatelessWidget {
               InkWell(
                 overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {
-                   Navigator.of(context).push(
+                   Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) {
                       return const Signup();

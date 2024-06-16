@@ -6,67 +6,84 @@ import 'package:flutter/material.dart';
 class SectionVisitor extends StatelessWidget {
   String nameOfSection;
   int sectionNumber;
-   SectionVisitor({required this.nameOfSection,required this.sectionNumber,super.key});
- List<Map<String, dynamic>> alhafath = [
+  SectionVisitor(
+      {required this.nameOfSection, required this.sectionNumber, super.key});
+  List<Map<String, dynamic>> alhafath = [
     {
       "image": "assets/images/book1.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/book2.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/book3.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/book4.png",
+      "isFavorite": false,
     },
   ];
   List<Map<String, dynamic>> stationery = [
     {
       "image": "assets/images/tool1.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/tool2.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/tool3.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/tool4.png",
+      "isFavorite": false,
     },
   ];
   List<Map<String, dynamic>> kidsGames = [
     {
       "image": "assets/images/game1.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/game2.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/game3.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/game4.png",
+      "isFavorite": false,
     },
   ];
   List<Map<String, dynamic>> religious = [
     {
       "image": "assets/images/religious1.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/religious2.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/religious3.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/religious4.png",
+      "isFavorite": false,
     },
   ];
 
   @override
   Widget build(BuildContext context) {
-     return Column(
+    return Column(
       children: [
         Padding(
           padding: const EdgeInsets.only(right: 12, top: 16),
@@ -116,6 +133,13 @@ class SectionVisitor extends StatelessWidget {
                           : sectionNumber == 2
                               ? 2
                               : 3,
+                  isFavorite: sectionNumber == 0
+                      ? alhafath[i]["isFavorite"]
+                      : sectionNumber == 1
+                          ? stationery[i]["isFavorite"]
+                          : sectionNumber == 2
+                              ? kidsGames[i]["isFavorite"]
+                              : religious[i]["isFavorite"],
                 ),
               );
             },
@@ -123,5 +147,5 @@ class SectionVisitor extends StatelessWidget {
         ),
       ],
     );
- }
+  }
 }

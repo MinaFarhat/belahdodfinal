@@ -4,55 +4,68 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class SectionAlhafathVisitor extends StatelessWidget {
-   String nameOfSection;
+  String nameOfSection;
   int sectionNumber;
-   SectionAlhafathVisitor({required this.nameOfSection,required this.sectionNumber,super.key});
-List<Map<String, dynamic>> childbooks = [
+  SectionAlhafathVisitor(
+      {required this.nameOfSection, required this.sectionNumber, super.key});
+  List<Map<String, dynamic>> childbooks = [
     {
       "image": "assets/images/book1.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/book2.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/book3.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/book4.png",
+      "isFavorite": false,
     },
   ];
   List<Map<String, dynamic>> articals = [
     {
       "image": "assets/images/tool1.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/tool2.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/tool3.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/tool4.png",
+      "isFavorite": false,
     },
   ];
   List<Map<String, dynamic>> religiousbooks = [
     {
       "image": "assets/images/game1.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/game2.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/game3.png",
+      "isFavorite": false,
     },
     {
       "image": "assets/images/game4.png",
+      "isFavorite": false,
     },
   ];
 
   @override
   Widget build(BuildContext context) {
-      return Column(
+    return Column(
       children: [
         Padding(
           padding: const EdgeInsets.only(right: 12, top: 16),
@@ -88,13 +101,21 @@ List<Map<String, dynamic>> childbooks = [
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: AlhafathItemVisitor(
-                    image: sectionNumber == 0
-                        ? childbooks[i]["image"]
-                        : sectionNumber == 1
-                            ? articals[i]["image"]
-                            : sectionNumber == 2
-                                ? religiousbooks[i]["image"]
-                                : null),
+                  image: sectionNumber == 0
+                      ? childbooks[i]["image"]
+                      : sectionNumber == 1
+                          ? articals[i]["image"]
+                          : sectionNumber == 2
+                              ? religiousbooks[i]["image"]
+                              : null,
+                  isFavorite: sectionNumber == 0
+                      ? childbooks[i]["isFavorite"]
+                      : sectionNumber == 1
+                          ? articals[i]["isFavorite"]
+                          : sectionNumber == 2
+                              ? religiousbooks[i]["isFavorite"]
+                              : null,
+                ),
               );
             },
           ),

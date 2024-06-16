@@ -65,7 +65,7 @@ class CartVisitor extends StatelessWidget {
             child: InkWell(
               overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: () {
-                Navigator.of(context).push(
+                Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) {
                       return const Signup();

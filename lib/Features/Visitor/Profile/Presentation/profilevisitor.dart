@@ -29,7 +29,7 @@ class ProfileVisitor extends StatelessWidget {
             InkWell(
               overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: () {
-                Navigator.of(context).push(
+                Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) {
                       return const Signup();
@@ -74,14 +74,14 @@ class ProfileVisitor extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               height: MediaQuery.of(context).size.height * 0.3,
-              child: const Text(
+              child: Text(
                 "أنشئ حساب لتستطيع الدخول الى الصفحة الخاصة بك وعرض المعلومات وإنشاء القسائم و إهدائها كما يمكنك عرض الطلبيات الخاصة بك ",
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
-                  color: Color(0xFF898787),
+                  color: ColorConstant.darkColor,
                 ),
               ),
             ),
