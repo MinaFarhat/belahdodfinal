@@ -51,14 +51,15 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
 
     switch (statusCode) {
       case 400:
-        return const NetworkExceptions.badRequest('bad request');
+        return const NetworkExceptions.badRequest('إرسال غير جيد');
       case 401:
-        return const NetworkExceptions.unauthorizedRequest('unauthorized');
+        return const NetworkExceptions.unauthorizedRequest(
+            'لا يوجد حساب بهذا الأسم');
       case 403:
         return const NetworkExceptions.forbidden();
 
       case 404:
-        return const NetworkExceptions.notFound('not found');
+        return const NetworkExceptions.notFound('لا يوجد');
       case 405:
         return const NetworkExceptions.methodNotAllowed();
       case 409:
@@ -66,7 +67,7 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
       case 408:
         return const NetworkExceptions.requestTimeout();
       case 422:
-        return const NetworkExceptions.unprocessableEntity('invalid data');
+        return const NetworkExceptions.unprocessableEntity('بيانات غير صالحة');
       case 500:
         return const NetworkExceptions.internalServerError();
       case 503:
@@ -139,22 +140,22 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
     String errorMessage = '';
     networkExceptions.when(
       notImplemented: () {
-        errorMessage = 'Not Implemented';
+        errorMessage = 'لم يتم تنفيذها';
       },
       requestCancelled: () {
-        errorMessage = 'Request Cancelled';
+        errorMessage = 'تم إلغاء الطلب';
       },
       internalServerError: () {
-        errorMessage = 'Internal Server Error';
+        errorMessage = 'خطأ في الخادم الداخلي';
       },
       notFound: (String reason) {
         errorMessage = reason;
       },
       serviceUnavailable: () {
-        errorMessage = 'Service unavailable';
+        errorMessage = 'الخدمة غير متوفرة';
       },
       methodNotAllowed: () {
-        errorMessage = 'Method Not Allowed';
+        errorMessage = 'الطريقة غير مسموحة';
       },
       badRequest: (String message) {
         errorMessage = message;
@@ -166,40 +167,40 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
         errorMessage = error;
       },
       unexpectedError: () {
-        errorMessage = 'Unexpected error occurred';
+        errorMessage = 'حدث خطأ غير متوقع';
       },
       requestTimeout: () {
-        errorMessage = 'Connection request timeout';
+        errorMessage = 'انتهت مهلة طلب الاتصال';
       },
       noInternetConnection: () {
-        errorMessage = 'No internet connection';
+        errorMessage = 'لا يوجد اتصال بالإنترنت';
       },
       conflict: () {
-        errorMessage = 'Error due to a conflict';
+        errorMessage = 'خطأ بسبب الأزدحام';
       },
       sendTimeout: () {
-        errorMessage = 'Send timeout in connection with API server';
+        errorMessage = 'إرسال المهلة فيما يتعلق بخادم API';
       },
       unableToProcess: () {
-        errorMessage = 'Unable to process the data';
+        errorMessage = 'غير قادر على معالجة البيانات';
       },
       defaultError: (String error) {
         errorMessage = error;
       },
       formatException: () {
-        errorMessage = 'Unexpected error occurred';
+        errorMessage = 'حدث خطأ غير متوقع';
       },
       notAcceptable: () {
-        errorMessage = 'Not acceptable';
+        errorMessage = 'غير مقبول به';
       },
       forbidden: () {
-        errorMessage = 'Forbidden';
+        errorMessage = 'محظور';
       },
       firebasePlatformException: () {
-        errorMessage = 'Platform Exception';
+        errorMessage = 'خطأ في المنصة';
       },
       canceledByUser: () {
-        errorMessage = 'Canceled By The User';
+        errorMessage = 'تم الإلغاء بواسطة المستخدم';
       },
     );
     return errorMessage;
