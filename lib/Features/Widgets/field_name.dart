@@ -1,8 +1,9 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
-class FieldName extends StatelessWidget {
+class FieldName extends StatefulWidget {
   String fieldName;
   TextInputType typeKey;
   bool pass;
@@ -18,6 +19,13 @@ class FieldName extends StatelessWidget {
   });
 
   @override
+  State<FieldName> createState() => _FieldNameState();
+}
+
+class _FieldNameState extends State<FieldName> {
+  bool visibility = true;
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -27,7 +35,7 @@ class FieldName extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                fieldName,
+                widget.fieldName,
                 style: TextStyle(
                   color: ColorConstant.darkColor,
                   fontSize: 17,
@@ -49,25 +57,48 @@ class FieldName extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: TextFormField(
-                  controller: controller,
+                  controller: widget.controller,
                   textAlignVertical: TextAlignVertical.center,
                   cursorColor: ColorConstant.mainColor,
                   cursorHeight: 22,
-                  keyboardType: typeKey,
+                  keyboardType: widget.typeKey,
                   textDirection: TextDirection.rtl,
                   enableSuggestions: true,
-                  validator: validate,
+                  validator: widget.validate,
+                  obscureText: visibility == false ? false : true,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
-                    prefix: pass == true
-                        ? GestureDetector(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.visibility_rounded,
-                              color: ColorConstant.mainColor,
-                              size: 24,
-                            ),
-                          )
+                    prefix: widget.pass == true
+                        ? visibility == false
+                            ? InkWell(
+                                overlayColor:
+                                    WidgetStateProperty.all(Colors.transparent),
+                                onTap: () {
+                                  setState(() {
+                                    visibility = true;
+                                  });
+                                },
+                                child: Icon(
+                                  PhosphorIcons.eye(PhosphorIconsStyle.regular),
+                                  color: ColorConstant.mainColor,
+                                  size: 24,
+                                ),
+                              )
+                            : InkWell(
+                                overlayColor:
+                                    WidgetStateProperty.all(Colors.transparent),
+                                onTap: () {
+                                  setState(() {
+                                    visibility = false;
+                                  });
+                                },
+                                child: Icon(
+                                  PhosphorIcons.eyeSlash(
+                                      PhosphorIconsStyle.regular),
+                                  color: ColorConstant.mainColor,
+                                  size: 24,
+                                ),
+                              )
                         : null,
                     border: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
