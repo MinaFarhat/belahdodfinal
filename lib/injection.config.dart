@@ -19,14 +19,18 @@ import 'Core/api/dio_consumer.dart' as _i10;
 import 'Core/api/logging_interceptor.dart' as _i3;
 import 'Core/error/error_interceptor.dart' as _i4;
 import 'Core/Network/network_info.dart' as _i8;
-import 'Core/third_party_injection.dart' as _i14;
+import 'Core/third_party_injection.dart' as _i18;
 import 'Core/utils/shared_preference_utils.dart' as _i7;
+import 'Features/Auth/Create%20Account/cubit/createaccount_cubit.dart' as _i17;
 import 'Features/Auth/Create%20Account/Data/Repostry/basereposotrycreateaccount.dart'
     as _i12;
 import 'Features/Auth/Create%20Account/Data/Repostry/createaccountrepostry.dart'
     as _i13;
 import 'Features/Auth/Create%20Account/Data/Web%20Service/createaccountwebservice.dart'
     as _i11;
+import 'Features/Auth/Login/data/Repostry/basereposotrylogin.dart' as _i15;
+import 'Features/Auth/Login/data/Repostry/loginreposotry.dart' as _i16;
+import 'Features/Auth/Login/data/Web%20Service/loginwebservice.dart' as _i14;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -57,8 +61,16 @@ extension GetItInjectableX on _i1.GetIt {
               networkInfo: gh<_i8.NetworkInfo>(),
               accountWebService: gh<_i11.CreateAccountWebService>(),
             ));
+    gh.singleton<_i14.LoginWebService>(
+        () => _i14.LoginWebServiceImpl(gh<_i9.ApiConsumer>()));
+    gh.singleton<_i15.BaseReposotryLogin>(() => _i16.LoginReposotryImpl(
+          networkInfo: gh<_i8.NetworkInfo>(),
+          loginWebService: gh<_i14.LoginWebService>(),
+        ));
+    gh.factory<_i17.CreateaccountCubit>(
+        () => _i17.CreateaccountCubit(gh<_i12.BaseReposotryCreateAccount>()));
     return this;
   }
 }
 
-class _$ThirdPartyInjection extends _i14.ThirdPartyInjection {}
+class _$ThirdPartyInjection extends _i18.ThirdPartyInjection {}

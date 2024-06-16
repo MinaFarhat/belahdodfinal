@@ -6,9 +6,9 @@ part 'createaccountentity.g.dart';
 @JsonSerializable()
 class CreateAccountEntity {
   @JsonKey(name: "data")
-  final List<CreateAccountData> resultsClinical;
+  final List<CreateAccountData> createaccount;
 
-  CreateAccountEntity(this.resultsClinical);
+  CreateAccountEntity(this.createaccount);
 
   factory CreateAccountEntity.fromJson(Map<String, dynamic> json) =>
       _$CreateAccountEntityFromJson(json);

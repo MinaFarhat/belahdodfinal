@@ -16,7 +16,7 @@ CreateAccountEntity _$CreateAccountEntityFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CreateAccountEntityToJson(
         CreateAccountEntity instance) =>
     <String, dynamic>{
-      'data': instance.resultsClinical,
+      'data': instance.createaccount,
     };
 
 CreateAccountData _$CreateAccountDataFromJson(Map<String, dynamic> json) =>
