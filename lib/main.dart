@@ -1,7 +1,10 @@
+import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
+import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
 import 'package:belahododfinal/Features/Auth/splashscreen.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   await configureDependencies();
@@ -36,14 +39,24 @@ class MyApp extends StatelessWidget {
         statusBarColor: Colors.white,
       ),
     );
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: colorCustom,
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<CreateaccountCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<LoginCubit>(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: colorCustom,
+          useMaterial3: true,
+        ),
+        home: SplashScreen(),
       ),
-      home:  SplashScreen(),
     );
   }
 }

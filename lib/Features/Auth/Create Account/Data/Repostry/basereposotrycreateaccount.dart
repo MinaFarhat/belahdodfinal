@@ -1,9 +1,8 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
-import 'package:belahododfinal/Features/Auth/Create%20Account/Data/Model/createaccountentity.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class BaseReposotryCreateAccount {
-  Future<Either<NetworkExceptions, CreateAccountEntity>> createaccount(
+  Future<Either<NetworkExceptions, void>> createaccount(
     String name,
     String password,
     String phoneNumber,

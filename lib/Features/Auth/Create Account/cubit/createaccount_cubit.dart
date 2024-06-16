@@ -1,5 +1,4 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
-import 'package:belahododfinal/Features/Auth/Create%20Account/Data/Model/createaccountentity.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/Data/Repostry/basereposotrycreateaccount.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,6 +30,6 @@ class CreateaccountCubit extends Cubit<CreateaccountState> {
       address,
     );
     response.fold((l) => emit(CreateaccountState.error(l)),
-        (r) => emit(CreateaccountState.success(r)));
+        (r) => emit(const CreateaccountState.success()));
   }
 }

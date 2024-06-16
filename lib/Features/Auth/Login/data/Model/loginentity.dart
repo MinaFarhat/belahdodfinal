@@ -5,10 +5,10 @@ part 'loginentity.g.dart';
 
 @JsonSerializable()
 class LoginEntity {
-  @JsonKey(name: "data")
-  final List<LoginData> login;
+  @JsonKey(name: "token")
+ final String token;
 
-  LoginEntity(this.login);
+  LoginEntity(this.token);
 
   factory LoginEntity.fromJson(Map<String, dynamic> json) =>
       _$LoginEntityFromJson(json);
@@ -16,16 +16,3 @@ class LoginEntity {
   Map<String, dynamic> toJson() => _$LoginEntityToJson(this);
 }
 
-@JsonSerializable()
-class LoginData {
-  @JsonKey(name: "token")
-  final String token;
-
-  LoginData({
-    required this.token,
-  });
-  factory LoginData.fromJson(Map<String, dynamic> json) =>
-      _$LoginDataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LoginDataToJson(this);
-}

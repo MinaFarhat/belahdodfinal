@@ -1,6 +1,5 @@
 import 'package:belahododfinal/Core/Network/network_info.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
-import 'package:belahododfinal/Features/Auth/Create%20Account/Data/Model/createaccountentity.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/Data/Repostry/basereposotrycreateaccount.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/Data/Web%20Service/createaccountwebservice.dart';
 import 'package:dartz/dartz.dart';
@@ -18,7 +17,7 @@ class CreateAccountRepostryImpl implements BaseReposotryCreateAccount {
         _accountWebService = accountWebService;
 
   @override
-  Future<Either<NetworkExceptions, CreateAccountEntity>> createaccount(
+  Future<Either<NetworkExceptions, void>> createaccount(
     String name,
     String password,
     String phoneNumber,
@@ -29,12 +28,14 @@ class CreateAccountRepostryImpl implements BaseReposotryCreateAccount {
       try {
         final response = await _accountWebService.createaccount(
             name, password, phoneNumber, city, address);
-
+        print("Mina");
         return Right(response);
       } catch (e) {
+        print("Mina not");
         return Left(NetworkExceptions.getException(e));
       }
     } else {
+      print("Mina not noooot");
       return const Left(NetworkExceptions.noInternetConnection());
     }
   }

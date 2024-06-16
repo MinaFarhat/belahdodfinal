@@ -19,7 +19,7 @@ import 'Core/api/dio_consumer.dart' as _i10;
 import 'Core/api/logging_interceptor.dart' as _i3;
 import 'Core/error/error_interceptor.dart' as _i4;
 import 'Core/Network/network_info.dart' as _i8;
-import 'Core/third_party_injection.dart' as _i18;
+import 'Core/third_party_injection.dart' as _i19;
 import 'Core/utils/shared_preference_utils.dart' as _i7;
 import 'Features/Auth/Create%20Account/cubit/createaccount_cubit.dart' as _i17;
 import 'Features/Auth/Create%20Account/Data/Repostry/basereposotrycreateaccount.dart'
@@ -28,6 +28,7 @@ import 'Features/Auth/Create%20Account/Data/Repostry/createaccountrepostry.dart'
     as _i13;
 import 'Features/Auth/Create%20Account/Data/Web%20Service/createaccountwebservice.dart'
     as _i11;
+import 'Features/Auth/Login/cubit/login_cubit.dart' as _i18;
 import 'Features/Auth/Login/data/Repostry/basereposotrylogin.dart' as _i15;
 import 'Features/Auth/Login/data/Repostry/loginreposotry.dart' as _i16;
 import 'Features/Auth/Login/data/Web%20Service/loginwebservice.dart' as _i14;
@@ -69,8 +70,10 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i17.CreateaccountCubit>(
         () => _i17.CreateaccountCubit(gh<_i12.BaseReposotryCreateAccount>()));
+    gh.factory<_i18.LoginCubit>(
+        () => _i18.LoginCubit(gh<_i15.BaseReposotryLogin>()));
     return this;
   }
 }
 
-class _$ThirdPartyInjection extends _i18.ThirdPartyInjection {}
+class _$ThirdPartyInjection extends _i19.ThirdPartyInjection {}
