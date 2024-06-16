@@ -83,11 +83,11 @@ class ForgetPassword1 extends StatelessWidget {
                   pass: false,
                   validate: (String? value) {
                     if (value!.isEmpty) {
-                      return "This field is required";
+                      return "هذا الحقل مطلوب";
                     } else if (value.length < 9) {
-                      return "The phone number should be at least 9 digits";
+                      return "رقم الهاتف يجب ان يكون على الأقل 9 أرقام";
                     } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                      return "This number is invalid";
+                      return "هذا الرقم غير صالح";
                     }
                     return null;
                   },

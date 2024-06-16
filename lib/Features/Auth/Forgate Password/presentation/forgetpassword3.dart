@@ -73,9 +73,9 @@ class ForgetPassword3 extends StatelessWidget {
                   pass: true,
                   validate: (String? value) {
                     if (value!.isEmpty) {
-                      return "This field is required";
+                      return "هذا الحقل مطلوب";
                     } else if (value.length < 8) {
-                      return "The Password should be more than 8 characters";
+                      return "كلمة المرور يجب ان تكون أكثر من 8 أحرف";
                     }
                     return null;
                   },
@@ -93,10 +93,10 @@ class ForgetPassword3 extends StatelessWidget {
                   pass: true,
                   validate: (String? value) {
                     if (value == null || value.isEmpty) {
-                      return "Please confirm your password";
+                      return "رجاءً أدخل كلمة المرور مرة أخرى";
                     }
                     if (value != _newpasswordcontroller.text) {
-                      return "There is no matching between the passwords you entered";
+                      return "لايوجد تطابق بين كلمة المرور التي أدخلتها حالياً والتي أدخلتها سابقاً";
                     }
                     return null;
                   },

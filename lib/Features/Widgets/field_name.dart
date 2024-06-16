@@ -65,7 +65,7 @@ class _FieldNameState extends State<FieldName> {
                   textDirection: TextDirection.rtl,
                   enableSuggestions: true,
                   validator: widget.validate,
-                  obscureText: visibility == false ? false : true,
+                  obscureText:widget.pass==true? visibility == false ? false : true:false,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     prefix: widget.pass == true

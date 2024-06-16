@@ -78,7 +78,7 @@ class _SignupState extends State<Signup> {
                   pass: false,
                   validate: (String? value) {
                     if (value!.isEmpty) {
-                      return "This field is required";
+                      return "هذا الحقل مطلوب";
                     }
                     return null;
                   },
@@ -96,9 +96,9 @@ class _SignupState extends State<Signup> {
                   pass: true,
                   validate: (String? value) {
                     if (value!.isEmpty) {
-                      return "This field is required";
+                      return "هذا الحقل مطلوب";
                     } else if (value.length < 8) {
-                      return "The Password should be more than 8 characters";
+                      return "كلمة المرور يجب ان تكون أكثر من 8 أحرف";
                     }
                     return null;
                   },
@@ -116,11 +116,11 @@ class _SignupState extends State<Signup> {
                   pass: false,
                   validate: (String? value) {
                     if (value!.isEmpty) {
-                      return "This field is required";
+                      return "هذا الحقل مطلوب";
                     } else if (value.length < 9) {
-                      return "The phone number should be at least 9 digits";
+                      return "رقم الهاتف يجب ان يكون على الأقل 9 أرقام";
                     } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                      return "This number is invalid";
+                      return "هذا الرقم غير صالح";
                     }
                     return null;
                   },
@@ -135,13 +135,13 @@ class _SignupState extends State<Signup> {
                   controller: _regionController,
                   validatefield: (value) {
                     if (value == null || value.isEmpty) {
-                      return "This field is required";
+                      return "هذا الحقل مطلوب";
                     }
                     return null;
                   },
                   validatedropdownbutton: (value) {
                     if (value == null) {
-                      return "Please select a city";
+                      return "رجاءً اختر مدينة";
                     }
                     return null;
                   },

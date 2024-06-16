@@ -75,7 +75,7 @@ class LogIn extends StatelessWidget {
                   pass: false,
                   validate: (String? value) {
                     if (value!.isEmpty) {
-                      return "This field is required";
+                      return "هذا الحقل مطلوب";
                     }
                     return null;
                   },
@@ -93,9 +93,9 @@ class LogIn extends StatelessWidget {
                   pass: true,
                   validate: (String? value) {
                     if (value!.isEmpty) {
-                      return "This field is required";
+                      return "هذا الحقل مطلوب";
                     } else if (value.length < 8) {
-                      return "The Password should be more than 8 characters";
+                      return "كلمة المرور يجب ان تكون أكثر من 8 أحرف";
                     }
                     return null;
                   },
