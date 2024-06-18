@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Features/User/favorite/presentation/favlibrary.dart';
+import 'package:belahododfinal/Features/User/favorite/presentation/favoritesearch.dart';
 import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -65,7 +66,13 @@ class _FavoriteListState extends State<FavoriteList> {
         appBar: SimpleTopBar(
           leading: InkWell(
             overlayColor: WidgetStateProperty.all(Colors.transparent),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) {
+                  return const FavoriteSearch();
+                }),
+              );
+            },
             child: Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Icon(

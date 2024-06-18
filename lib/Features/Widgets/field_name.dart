@@ -61,11 +61,16 @@ class _FieldNameState extends State<FieldName> {
                   textAlignVertical: TextAlignVertical.center,
                   cursorColor: ColorConstant.mainColor,
                   cursorHeight: 22,
+                  cursorRadius: const Radius.circular(50),
                   keyboardType: widget.typeKey,
                   textDirection: TextDirection.rtl,
                   enableSuggestions: true,
                   validator: widget.validate,
-                  obscureText:widget.pass==true? visibility == false ? false : true:false,
+                  obscureText: widget.pass == true
+                      ? visibility == false
+                          ? false
+                          : true
+                      : false,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     prefix: widget.pass == true

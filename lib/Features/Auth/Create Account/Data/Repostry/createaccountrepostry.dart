@@ -28,14 +28,12 @@ class CreateAccountRepostryImpl implements BaseReposotryCreateAccount {
       try {
         final response = await _accountWebService.createaccount(
             name, password, phoneNumber, city, address);
-        print("Mina");
+
         return Right(response);
       } catch (e) {
-        print("Mina not");
         return Left(NetworkExceptions.getException(e));
       }
     } else {
-      print("Mina not noooot");
       return const Left(NetworkExceptions.noInternetConnection());
     }
   }

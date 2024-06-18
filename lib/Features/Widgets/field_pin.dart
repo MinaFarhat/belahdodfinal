@@ -116,6 +116,7 @@ class FieldPins extends StatelessWidget {
         textAlignVertical: TextAlignVertical.center,
         cursorColor: ColorConstant.mainColor,
         cursorHeight: 22,
+        cursorRadius: const Radius.circular(50),
         keyboardType: TextInputType.number,
         maxLength: 1,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
