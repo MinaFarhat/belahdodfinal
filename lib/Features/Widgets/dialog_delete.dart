@@ -24,53 +24,69 @@ class DeleteDialog extends StatelessWidget {
     return Dialog(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.2,
+        height: MediaQuery.of(context).size.height * 0.17,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Column(
+            children: [
+              Text(
                 title,
                 textDirection: TextDirection.rtl,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: ColorConstant.darkColor,
+                  color: Colors.black,
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 4, left: 8, right: 8),
-              child: Text(
-                subTitle,
-                textDirection: TextDirection.rtl,
-                maxLines: 3,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade500,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.003,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      subTitle,
+                      textDirection: TextDirection.rtl,
+                      maxLines: 3,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade700,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 23, right: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(
-                    overlayColor: WidgetStateProperty.all(Colors.transparent),
-                    onTap: ontapButton1,
-                    child: Center(
-                      child: Text(
-                        button1,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: ColorConstant.darkColor,
-                          fontWeight: FontWeight.bold,
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.25,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: ColorConstant.mainColor,
+                    ),
+                    child: InkWell(
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                      onTap: ontapButton1,
+                      child: Center(
+                        child: Text(
+                          button1,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -78,24 +94,32 @@ class DeleteDialog extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.08,
                   ),
-                  InkWell(
-                    overlayColor: WidgetStateProperty.all(Colors.transparent),
-                    onTap: ontapButton2,
-                    child: Center(
-                      child: Text(
-                        button2,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.red.shade500,
-                          fontWeight: FontWeight.bold,
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.25,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: ColorConstant.darkColor,
+                    ),
+                    child: InkWell(
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                      onTap: ontapButton2,
+                      child: Center(
+                        child: Text(
+                          button2,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

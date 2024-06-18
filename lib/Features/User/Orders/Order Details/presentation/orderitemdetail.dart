@@ -17,7 +17,8 @@ class OrderItemDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {},
       child: Padding(
         padding: const EdgeInsets.only(top: 12),
@@ -31,7 +32,7 @@ class OrderItemDetails extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: MediaQuery.of(context).size.width * 0.4,
+                width: MediaQuery.of(context).size.width * 0.41,
                 height: MediaQuery.of(context).size.height * 0.2,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(

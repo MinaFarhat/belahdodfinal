@@ -72,37 +72,39 @@ class OrderDetails extends StatelessWidget {
         backgroundColor: ColorConstant.shadowColor,
         appBar: SimpleTopBar(
           name: "تفاصيل الطلبية",
-          leading: GestureDetector(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return DeleteDialog(
-                    title: "حذف الطلبية",
-                    subTitle: "هل تريد بالتأكيد حذف الطلبية؟",
-                    button1: "إلغاء",
-                    button2: "حذف",
-                    ontapButton1: () {
-                      Navigator.of(context).pop();
-                    },
-                    ontapButton2: () {},
-                  );
-                },
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20),
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: InkWell(
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (_) {
+                    return DeleteDialog(
+                      title: "حذف الطلبية",
+                      subTitle: "هل تريد بالتأكيد حذف الطلبية؟",
+                      button1: "إلغاء",
+                      button2: "حذف",
+                      ontapButton1: () {
+                        Navigator.of(context).pop();
+                      },
+                      ontapButton2: () {},
+                    );
+                  },
+                );
+              },
               child: Icon(
-                PhosphorIcons.trashSimple(PhosphorIconsStyle.regular),
-                color: Colors.red.shade600,
-                size: 26,
+                PhosphorIcons.trash(PhosphorIconsStyle.regular),
+                color: Colors.black,
+                size: 24,
               ),
             ),
           ),
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: GestureDetector(
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {
                   Navigator.pop(context);
                 },

@@ -81,7 +81,8 @@ class OrderItem extends StatelessWidget {
             Positioned(
               right: 2,
               top: 1,
-              child: GestureDetector(
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {
                   showDialog(
                     context: context,
@@ -117,7 +118,7 @@ class OrderItem extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade600,
+                                        color: Colors.grey.shade700,
                                       ),
                                     ),
                                     const SizedBox(
@@ -143,7 +144,7 @@ class OrderItem extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade600,
+                                        color: Colors.grey.shade700,
                                       ),
                                     ),
                                     const SizedBox(

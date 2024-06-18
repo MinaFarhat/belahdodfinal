@@ -19,7 +19,7 @@ class SimpleTopBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: leading,
-      leadingWidth: name == null ? 10 : 0,
+      leadingWidth: name == null ? 10 : 50,
       bottom: isBottom == true
           ? PreferredSize(
               preferredSize: const Size(double.infinity, 1),
