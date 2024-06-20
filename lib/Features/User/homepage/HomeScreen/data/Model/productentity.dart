@@ -6,8 +6,8 @@ part 'productentity.g.dart';
 class ProductEntity {
   @JsonKey(name: "id")
   final int id;
-  @JsonKey(name: "images")
-  final List<String> image;
+  @JsonKey(name: "first_image")
+  final String image;
 
   ProductEntity(this.id, this.image);
   factory ProductEntity.fromJson(Map<String, dynamic> json) =>

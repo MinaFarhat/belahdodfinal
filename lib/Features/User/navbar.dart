@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/homepage.dart';
 import 'package:belahododfinal/Features/User/news/presentation/news.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/profile.dart';
 import 'package:belahododfinal/Features/User/search/presentation/search.dart';
@@ -17,7 +18,7 @@ class Mynavbar extends StatefulWidget {
 
 class _MynavbarState extends State<Mynavbar> {
   List screens = [
-  
+    const HomePage(),
     const NewsPage(),
     NotificationsPage(),
     Search(),

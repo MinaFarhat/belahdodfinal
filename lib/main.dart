@@ -2,7 +2,7 @@ import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
-import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/homepage.dart';
+import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: const HomePage(),
+        home: const Mynavbar(),
       ),
     );
   }

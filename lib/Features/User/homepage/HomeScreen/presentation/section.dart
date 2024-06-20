@@ -45,23 +45,12 @@ class Section extends StatelessWidget {
             shrinkWrap: true,
             itemCount: products.length,
             itemBuilder: (context, i) {
-              // ignore: avoid_print
-              print(products[i].image[0]);
-              String imageUrl =
-                  'http://localhost:8000/api/section-product/${products[i].image[0]}';
+              String imageUrl = 'http://10.0.2.2:8000${products[i].image}';
 
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Item(
                   image: imageUrl,
-
-                  // image: sectionNumber == 0
-                  //     ? products[i].image.first
-                  //     : sectionNumber == 1
-                  //         ? products[i].image.first
-                  //         : sectionNumber == 2
-                  //             ? products[i].image.first
-                  //             : products[i].image.first,
                   index: sectionNumber == 0
                       ? 0
                       : sectionNumber == 1

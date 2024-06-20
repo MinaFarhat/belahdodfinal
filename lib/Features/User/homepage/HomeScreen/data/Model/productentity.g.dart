@@ -9,11 +9,11 @@ part of 'productentity.dart';
 ProductEntity _$ProductEntityFromJson(Map<String, dynamic> json) =>
     ProductEntity(
       (json['id'] as num).toInt(),
-      (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      json['first_image'] as String,
     );
 
 Map<String, dynamic> _$ProductEntityToJson(ProductEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'images': instance.image,
+      'first_image': instance.image,
     };
