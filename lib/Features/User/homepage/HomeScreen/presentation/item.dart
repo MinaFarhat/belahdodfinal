@@ -12,6 +12,7 @@ class Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: avoid_print
     print(image);
     return InkWell(
       overlayColor: WidgetStateProperty.all(Colors.transparent),

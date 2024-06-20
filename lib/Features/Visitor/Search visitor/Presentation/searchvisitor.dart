@@ -19,11 +19,13 @@ class _SearchVisitorState extends State<SearchVisitor> {
       var result = await BarcodeScanner.scan();
       setState(() {
         barcodeResult = result.rawContent;
+        // ignore: avoid_print
         print("The barcode is: $barcodeResult");
       });
     } catch (e) {
       setState(() {
         barcodeResult = 'Failed to get barcode';
+        // ignore: avoid_print
         print("Error: $e");
       });
     }
@@ -60,7 +62,7 @@ class _SearchVisitorState extends State<SearchVisitor> {
         body: Center(
           child: Text(
             barcodeResult != null ? 'Barcode: $barcodeResult' : 'Scan a code',
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           ),
         ),
       ),

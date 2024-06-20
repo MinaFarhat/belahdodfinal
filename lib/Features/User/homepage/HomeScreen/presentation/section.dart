@@ -45,6 +45,7 @@ class Section extends StatelessWidget {
             shrinkWrap: true,
             itemCount: products.length,
             itemBuilder: (context, i) {
+              // ignore: avoid_print
               print(products[i].image[0]);
               String imageUrl =
                   'http://localhost:8000/api/section-product/${products[i].image[0]}';
