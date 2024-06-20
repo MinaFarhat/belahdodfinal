@@ -54,6 +54,7 @@ dependencies:
   json_annotation: ^4.9.0
   dartz: ^0.10.1
   fluttertoast: ^8.2.6
+  barcode_scan2: ^4.3.0
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/item.dart';
 import 'package:flutter/material.dart';
 
@@ -5,67 +6,15 @@ import '../../../../../../Core/constant/colors_constant.dart';
 
 // ignore: must_be_immutable
 class Section extends StatelessWidget {
-  List<Map<String, dynamic>> alhafath = [
-    {
-      "image": "assets/images/book1.png",
-    },
-    {
-      "image": "assets/images/book2.png",
-    },
-    {
-      "image": "assets/images/book3.png",
-    },
-    {
-      "image": "assets/images/book4.png",
-    },
-  ];
-  List<Map<String, dynamic>> stationery = [
-    {
-      "image": "assets/images/tool1.png",
-    },
-    {
-      "image": "assets/images/tool2.png",
-    },
-    {
-      "image": "assets/images/tool3.png",
-    },
-    {
-      "image": "assets/images/tool4.png",
-    },
-  ];
-  List<Map<String, dynamic>> kidsGames = [
-    {
-      "image": "assets/images/game1.png",
-    },
-    {
-      "image": "assets/images/game2.png",
-    },
-    {
-      "image": "assets/images/game3.png",
-    },
-    {
-      "image": "assets/images/game4.png",
-    },
-  ];
-  List<Map<String, dynamic>> religious = [
-    {
-      "image": "assets/images/religious1.png",
-    },
-    {
-      "image": "assets/images/religious2.png",
-    },
-    {
-      "image": "assets/images/religious3.png",
-    },
-    {
-      "image": "assets/images/religious4.png",
-    },
-  ];
-
   String nameOfSection;
   int sectionNumber;
-  Section(
-      {required this.nameOfSection, required this.sectionNumber, super.key});
+  List<ProductEntity> products;
+  Section({
+    required this.nameOfSection,
+    required this.sectionNumber,
+    required this.products,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -94,24 +43,24 @@ class Section extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            itemCount: sectionNumber == 0
-                ? alhafath.length
-                : sectionNumber == 1
-                    ? stationery.length
-                    : sectionNumber == 2
-                        ? kidsGames.length
-                        : religious.length,
+            itemCount: products.length,
             itemBuilder: (context, i) {
+              print(products[i].image[0]);
+              String imageUrl =
+                  'http://localhost:8000/api/section-product/${products[i].image[0]}';
+
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Item(
-                  image: sectionNumber == 0
-                      ? alhafath[i]["image"]
-                      : sectionNumber == 1
-                          ? stationery[i]["image"]
-                          : sectionNumber == 2
-                              ? kidsGames[i]["image"]
-                              : religious[i]["image"],
+                  image: imageUrl,
+
+                  // image: sectionNumber == 0
+                  //     ? products[i].image.first
+                  //     : sectionNumber == 1
+                  //         ? products[i].image.first
+                  //         : sectionNumber == 2
+                  //             ? products[i].image.first
+                  //             : products[i].image.first,
                   index: sectionNumber == 0
                       ? 0
                       : sectionNumber == 1

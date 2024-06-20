@@ -12,6 +12,7 @@ class Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(image);
     return InkWell(
       overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
@@ -31,7 +32,7 @@ class Item extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
               color: Colors.white,
               image: DecorationImage(
-                image: AssetImage(image),
+                image: NetworkImage(image),
                 fit: BoxFit.cover,
               ),
             ),

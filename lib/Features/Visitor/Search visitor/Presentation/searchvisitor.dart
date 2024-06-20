@@ -1,10 +1,33 @@
+import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class SearchVisitor extends StatelessWidget {
+class SearchVisitor extends StatefulWidget {
   const SearchVisitor({super.key});
+
+  @override
+  State<SearchVisitor> createState() => _SearchVisitorState();
+}
+
+class _SearchVisitorState extends State<SearchVisitor> {
+  String? barcodeResult;
+
+  Future<void> scanBarcode() async {
+    try {
+      var result = await BarcodeScanner.scan();
+      setState(() {
+        barcodeResult = result.rawContent;
+        print("The barcode is: $barcodeResult");
+      });
+    } catch (e) {
+      setState(() {
+        barcodeResult = 'Failed to get barcode';
+        print("Error: $e");
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +39,9 @@ class SearchVisitor extends StatelessWidget {
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 12),
-              child: GestureDetector(
-                onTap: () {},
+              child: InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
+                onTap: scanBarcode,
                 child: CircleAvatar(
                   radius: 21,
                   backgroundColor: ColorConstant.mainColor,
@@ -32,6 +56,12 @@ class SearchVisitor extends StatelessWidget {
           ],
           isBottom: true,
           name: null,
+        ),
+        body: Center(
+          child: Text(
+            barcodeResult != null ? 'Barcode: $barcodeResult' : 'Scan a code',
+            style: TextStyle(fontSize: 18),
+          ),
         ),
       ),
     );
