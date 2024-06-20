@@ -176,6 +176,12 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               )
                             : Container(),
+                        index == sectionentity.sections.length - 1
+                            ? SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.07,
+                              )
+                            : Container(),
                       ],
                     );
                   },
