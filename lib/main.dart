@@ -7,6 +7,7 @@ import 'package:belahododfinal/Features/User/Details/presentation/details_game.d
 import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
+import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/homepage.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home:  DetailsBase(),
+        home:  HomePage(),
       ),
     );
   }

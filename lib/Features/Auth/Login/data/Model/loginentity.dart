@@ -6,13 +6,13 @@ part 'loginentity.g.dart';
 @JsonSerializable()
 class LoginEntity {
   @JsonKey(name: "token")
- final String token;
-
-  LoginEntity(this.token);
+  final String token;
+  @JsonKey(name: "userid")
+  final String id;
+  LoginEntity(this.token, this.id);
 
   factory LoginEntity.fromJson(Map<String, dynamic> json) =>
       _$LoginEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginEntityToJson(this);
 }
-

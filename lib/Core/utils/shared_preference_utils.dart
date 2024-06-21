@@ -33,12 +33,12 @@ class SharedPreferencesUtils {
     return _prefs.getString('token');
   }
 
-  Future<void> setID(String id) async {
+  Future<void> setId(String id) async {
     await _initialize();
     _prefs.setString('userid', id);
   }
 
-  String? getid() {
+  String? getId() {
     if (!_isInitialized()) {
       // ignore: avoid_print
       print('SharedPreferences has not been initialized yet.');
@@ -49,6 +49,10 @@ class SharedPreferencesUtils {
   Future<void> removeToken() async {
     await _initialize();
     await _prefs.remove('token');
+  }
+
+  Future<void> removeId() async {
+    await _initialize();
     await _prefs.remove('userid');
   }
 
