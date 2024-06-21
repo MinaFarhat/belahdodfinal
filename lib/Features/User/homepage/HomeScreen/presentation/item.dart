@@ -1,5 +1,8 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
-import 'package:belahododfinal/Features/User/Details/presentation/details.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -23,10 +26,28 @@ class Item extends StatelessWidget {
               builder: (context) => const AlhafathPosts(),
             ),
           );
+        } else if (index == 1) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsGame(),
+            ),
+          );
+        } else if (index == 2) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsStationery(),
+            ),
+          );
+        } else if (index == 3) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsQurans(),
+            ),
+          );
         } else {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) =>  Details(),
+              builder: (context) => DetailsBase(),
             ),
           );
         }
