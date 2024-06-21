@@ -14,7 +14,7 @@ class BottomPartStationery extends StatelessWidget {
     required this.gameObjectives,
     required this.amountwhorates,
     required this.amountwhofavorite,
-    required this.useage,
+    required this.specifications,
     required this.materials,
     required this.locations,
     super.key,
@@ -28,7 +28,7 @@ class BottomPartStationery extends StatelessWidget {
   String gameObjectives;
   int amountwhorates;
   int amountwhofavorite;
-  String useage;
+  String specifications;
   String materials;
   List<String> locations;
   @override
@@ -263,7 +263,7 @@ class BottomPartStationery extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                ":الأستخدام",
+                ":التفاصيل",
                 style: TextStyle(
                   color: Colors.grey.shade800,
                   fontSize: 16,
@@ -277,7 +277,7 @@ class BottomPartStationery extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.98,
                 height: MediaQuery.of(context).size.height * 0.07,
                 child: Text(
-                  useage,
+                  specifications,
                   textDirection: TextDirection.rtl,
                   maxLines: 5,
                   style: const TextStyle(

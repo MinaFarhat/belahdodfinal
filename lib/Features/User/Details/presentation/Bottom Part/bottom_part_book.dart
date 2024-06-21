@@ -145,11 +145,11 @@ class BottomPartBook extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.0025,
           ),
-            Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-               targetage,
+                targetage,
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 17,

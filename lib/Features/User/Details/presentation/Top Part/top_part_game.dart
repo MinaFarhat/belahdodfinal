@@ -50,7 +50,9 @@ class TopPartGame extends StatelessWidget {
                 right: 8,
                 child: InkWell(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.1,
                     height: MediaQuery.of(context).size.height * 0.045,

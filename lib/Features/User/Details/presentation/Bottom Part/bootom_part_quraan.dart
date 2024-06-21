@@ -14,6 +14,7 @@ class BootomPartQuraan extends StatelessWidget {
     required this.numberofpages,
     required this.printtype,
     required this.section,
+    required this.size,
     required this.numberwhorates,
     required this.numberwhofavorite,
     required this.locations,
@@ -27,6 +28,7 @@ class BootomPartQuraan extends StatelessWidget {
   String numberofpages;
   String printtype;
   String section;
+  String size;
   int numberwhorates;
   int numberwhofavorite;
   List<String> locations;
@@ -194,6 +196,33 @@ class BootomPartQuraan extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.0025,
           ),
+            Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                size,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.01,
+              ),
+              Text(
+                ":القياس",
+                style: TextStyle(
+                  color: Colors.grey.shade800,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.0025,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -282,7 +311,7 @@ class BootomPartQuraan extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                ":الأستخدام",
+                ":التفاصيل",
                 style: TextStyle(
                   color: Colors.grey.shade800,
                   fontSize: 16,
@@ -304,23 +333,6 @@ class BootomPartQuraan extends StatelessWidget {
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.0025,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                ":المواد المصنع منه المنتج",
-                style: TextStyle(
-                  color: Colors.grey.shade800,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],

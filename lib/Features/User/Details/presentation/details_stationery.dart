@@ -34,7 +34,7 @@ class DetailsStationery extends StatelessWidget {
               price: 100,
               gameObjectives: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               publisher: "دار الحافظ",
-              useage:
+              specifications:
                   "ينصح باستخدامه على الأوراق الجافة ويحفظ بعيدا عن الحرارة.",
               materials: "الخشب, البلاستيك, السيلكون",
               section: "قسم الأطفال",

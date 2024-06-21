@@ -32,6 +32,7 @@ class DetailsQurans extends StatelessWidget {
               title: "الطائر الأزرق",
               subTitle: "قصة خيالية تحكي عن رحلة الطائر الأزرق في التعلم",
               price: 99,
+              size: "25*20",
               publisher: "dar alhafeth",
               numberofpages: "100",
               printtype: "أبيض & أسود",

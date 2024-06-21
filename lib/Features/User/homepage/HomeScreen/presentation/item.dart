@@ -1,13 +1,12 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-
-import '../../alhafath/presentation/alhafathposts.dart';
 
 // ignore: must_be_immutable
 class Item extends StatelessWidget {
@@ -23,7 +22,7 @@ class Item extends StatelessWidget {
         if (index == 0) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const AlhafathPosts(),
+              builder: (context) => DetailsBook(),
             ),
           );
         } else if (index == 1) {
