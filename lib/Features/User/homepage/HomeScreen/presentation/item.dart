@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -20,6 +21,12 @@ class Item extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => const AlhafathPosts(),
+            ),
+          );
+        } else {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) =>  Details(),
             ),
           );
         }
