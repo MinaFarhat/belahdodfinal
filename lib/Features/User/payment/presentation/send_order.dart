@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class SendOrder extends StatelessWidget {
-   SendOrder({super.key});
-final GlobalKey<FormState> _regionKey = GlobalKey<FormState>();
+  SendOrder({super.key});
+  final GlobalKey<FormState> _regionKey = GlobalKey<FormState>();
   final TextEditingController _regionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ final GlobalKey<FormState> _regionKey = GlobalKey<FormState>();
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
+                height: MediaQuery.of(context).size.height * 0.04,
               ),
               Text(
                 "إرسال الطلب",
@@ -69,69 +69,24 @@ final GlobalKey<FormState> _regionKey = GlobalKey<FormState>();
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
+                height: MediaQuery.of(context).size.height * 0.025,
               ),
-               Form(
+              Form(
                 key: _regionKey,
-                 child: FieldLocation(
+                child: FieldLocation(
                   controller: _regionController,
-                    validatefield: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "This field is required";
-                      }
-                      return null;
-                    },
-                    validatedropdownbutton: (value) {
-                      if (value == null) {
-                        return "Please select a city";
-                      }
-                      return null;
-                    },
-                 ),
-               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.75,
-                      child: const Text(
-                        "اذا لم تقم بتحديد العنوان سيتم رفع الطلبية بالموقع الحالي لك ",
-                        textDirection: TextDirection.rtl,
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.visible,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF898787),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.015,
-                    ),
-                    const Text(
-                      ":ملاحظة",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 216, 12, 12),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.015,
-                    ),
-                    const CircleAvatar(
-                      radius: 3,
-                      backgroundColor: Color.fromARGB(255, 216, 12, 12),
-                    ),
-                  ],
+                  validatefield: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "This field is required";
+                    }
+                    return null;
+                  },
+                  validatedropdownbutton: (value) {
+                    if (value == null) {
+                      return "Please select a city";
+                    }
+                    return null;
+                  },
                 ),
               ),
               SizedBox(
@@ -224,7 +179,9 @@ final GlobalKey<FormState> _regionKey = GlobalKey<FormState>();
               ),
               InkWell(
                 overlayColor: WidgetStateProperty.all(Colors.transparent),
-                onTap: () {},
+                onTap: () {
+                  if (_regionKey.currentState!.validate()) {}
+                },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.5,
                   height: MediaQuery.of(context).size.height * 0.06,
