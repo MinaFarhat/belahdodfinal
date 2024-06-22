@@ -1,6 +1,8 @@
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/item.dart';
+import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/subsectionsandproducts.dart';
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../../../Core/constant/colors_constant.dart';
 
@@ -10,11 +12,13 @@ class Section extends StatelessWidget {
   final int sectionNumber;
   final List<ProductEntity> products;
   final int? productID;
+  final int? sectionId;
   const Section({
     required this.nameOfSection,
     required this.sectionNumber,
     required this.products,
     required this.productID,
+    required this.sectionId,
     super.key,
   });
 
@@ -24,19 +28,51 @@ class Section extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(right: 12, top: 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                nameOfSection,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: ColorConstant.darkColor,
-                  fontWeight: FontWeight.bold,
+          child: InkWell(
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SubSectionsAndProducts(
+                      nameOfSection: nameOfSection,
+                      sectionId: sectionId!,
+                    );
+                  },
                 ),
-              ),
-            ],
+              );
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: CircleAvatar(
+                    backgroundColor: ColorConstant.mainColor,
+                    radius: 15,
+                    child: Center(
+                      child: Icon(
+                        PhosphorIcons.arrowLeft(PhosphorIconsStyle.regular),
+                        size: 22,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Text(
+                  nameOfSection,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: ColorConstant.darkColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.01,
         ),
         SizedBox(
           width: double.infinity,

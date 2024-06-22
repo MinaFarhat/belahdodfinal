@@ -18,12 +18,15 @@ class SectionEntity {
 
 @JsonSerializable()
 class SectionData {
+   @JsonKey(name: "id")
+  final int sectionId;
   @JsonKey(name: "name")
   final String name;
   @JsonKey(name: "products")
   final List<ProductEntity> products;
 
   SectionData({
+    required this.sectionId,
     required this.name,
     required this.products,
   });

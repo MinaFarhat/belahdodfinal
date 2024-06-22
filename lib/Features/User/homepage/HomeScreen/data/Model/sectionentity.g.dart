@@ -19,6 +19,7 @@ Map<String, dynamic> _$SectionEntityToJson(SectionEntity instance) =>
     };
 
 SectionData _$SectionDataFromJson(Map<String, dynamic> json) => SectionData(
+      sectionId: (json['id'] as num).toInt(),
       name: json['name'] as String,
       products: (json['products'] as List<dynamic>)
           .map((e) => ProductEntity.fromJson(e as Map<String, dynamic>))
@@ -27,6 +28,7 @@ SectionData _$SectionDataFromJson(Map<String, dynamic> json) => SectionData(
 
 Map<String, dynamic> _$SectionDataToJson(SectionData instance) =>
     <String, dynamic>{
+      'id': instance.sectionId,
       'name': instance.name,
       'products': instance.products,
     };

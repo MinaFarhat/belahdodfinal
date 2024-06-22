@@ -114,6 +114,7 @@ class _HomePageState extends State<HomePage> {
                           sectionNumber: index,
                           products: products,
                           productID: hasProducts ? products[0].id : null,
+                          sectionId: sectionentity.sections[index].sectionId,
                         ),
                         index == 0
                             ? Column(
