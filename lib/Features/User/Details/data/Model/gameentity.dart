@@ -10,7 +10,7 @@ class GameEntity {
   @JsonKey(name: "description")
   final String subTitle;
   @JsonKey(name: "price")
-  final double price;
+  final int price;
   @JsonKey(name: "images")
   final List<String> images;
   @JsonKey(name: "game_target_age")
@@ -22,7 +22,7 @@ class GameEntity {
   @JsonKey(name: "game_manufacturer")
   final String publisher;
   @JsonKey(name: "game_num_of_players")
-  final String numofplayers;
+  final int numofplayers;
 
   GameEntity(
     this.title,

@@ -18,10 +18,10 @@ class QuraanRepository implements BaseRepositoryQuraan {
         _quraanWebService = quraanWebService;
 
   @override
-  Future<Either<NetworkExceptions, QuraanEntity>> quraanDetails() async {
+  Future<Either<NetworkExceptions, QuraanEntity>> quraanDetails(int productID) async {
     if (await _networkInfo.isConnected) {
       try {
-        final response = await _quraanWebService.quraanDetails();
+        final response = await _quraanWebService.quraanDetails(productID);
 
         return Right(response);
       } catch (e) {

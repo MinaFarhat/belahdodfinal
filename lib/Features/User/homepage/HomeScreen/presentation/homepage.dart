@@ -104,12 +104,16 @@ class _HomePageState extends State<HomePage> {
                   itemCount: sectionentity.sections.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
+                    final products = sectionentity.sections[index].products;
+                    final hasProducts = products.isNotEmpty;
+
                     return Column(
                       children: [
                         Section(
                           nameOfSection: sectionentity.sections[index].name,
                           sectionNumber: index,
-                          products: sectionentity.sections[index].products,
+                          products: products,
+                          productID: hasProducts ? products[0].id : null,
                         ),
                         index == 0
                             ? Column(
@@ -149,9 +153,8 @@ class _HomePageState extends State<HomePage> {
                                       height: 280.0,
                                       autoPlay: true,
                                       disableCenter: true,
-                                      autoPlayInterval: const Duration(
-                                        seconds: 4,
-                                      ),
+                                      autoPlayInterval:
+                                          const Duration(seconds: 4),
                                     ),
                                     items: offers.map((i) {
                                       return Builder(
@@ -162,9 +165,7 @@ class _HomePageState extends State<HomePage> {
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               image: DecorationImage(
-                                                image: AssetImage(
-                                                  i,
-                                                ),
+                                                image: AssetImage(i),
                                                 fit: BoxFit.contain,
                                               ),
                                             ),

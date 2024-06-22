@@ -12,7 +12,13 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 class Item extends StatelessWidget {
   String image;
   int index;
-  Item({required this.image, required this.index, super.key});
+  int productID;
+  Item({
+    required this.image,
+    required this.index,
+    required this.productID,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,31 +28,41 @@ class Item extends StatelessWidget {
         if (index == 0) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => DetailsBook(),
+              builder: (context) => DetailsBook(
+                productID: productID,
+              ),
             ),
           );
         } else if (index == 1) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => DetailsGame(),
+              builder: (context) => DetailsGame(
+                productID: productID,
+              ),
             ),
           );
         } else if (index == 2) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => DetailsStationery(),
+              builder: (context) => DetailsStationery(
+                productID: productID,
+              ),
             ),
           );
         } else if (index == 3) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => DetailsQurans(),
+              builder: (context) => DetailsQurans(
+                productID: productID,
+              ),
             ),
           );
-        } else {
+        } else if (index == 4 || index > 4) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => DetailsBase(),
+              builder: (context) => DetailsBase(
+                productID: productID,
+              ),
             ),
           );
         }

@@ -10,7 +10,8 @@ part 'section_cubit.freezed.dart';
 
 @injectable
 class SectionCubit extends Cubit<SectionState> {
-  SectionCubit(this._baseRepositorySection) : super(const SectionState.initial());
+  SectionCubit(this._baseRepositorySection)
+      : super(const SectionState.initial());
 
   final BaseRepositorySection _baseRepositorySection;
 

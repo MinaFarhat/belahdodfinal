@@ -1,22 +1,21 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
 import 'package:belahododfinal/Features/User/Details/data/Model/quraanentity.dart';
-import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class QuraanWebService {
-  Future<QuraanEntity> quraanDetails();
+  Future<QuraanEntity> quraanDetails(int productID);
 }
 
 @Singleton(as: QuraanWebService)
 class QuraanWebServiceImpl implements QuraanWebService {
   final ApiConsumer _apiConsumer;
-  final ProductEntity _productentity;
-  QuraanWebServiceImpl(this._apiConsumer, this._productentity);
+
+  QuraanWebServiceImpl(this._apiConsumer);
 
   @override
-  Future<QuraanEntity> quraanDetails() async {
-    final response = await _apiConsumer
-        .get("http://localhost:8000/api/products/${_productentity.id}");
+  Future<QuraanEntity> quraanDetails(int productID) async {
+    final response =
+        await _apiConsumer.get("http://10.0.2.2:8000/api/products/$productID");
 
     return QuraanEntity.fromJson(response);
   }

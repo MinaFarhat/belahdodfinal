@@ -1,22 +1,21 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
 import 'package:belahododfinal/Features/User/Details/data/Model/bookentity.dart';
-import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class BookWebService {
-  Future<BookEntity> bookDetails();
+  Future<BookEntity> bookDetails(int productID);
 }
 
 @Singleton(as: BookWebService)
 class BookWebServiceImpl implements BookWebService {
   final ApiConsumer _apiConsumer;
-final ProductEntity _productentity;
-  BookWebServiceImpl(this._apiConsumer,this._productentity);
+
+  BookWebServiceImpl(this._apiConsumer);
 
   @override
-  Future<BookEntity> bookDetails() async {
+  Future<BookEntity> bookDetails(int productID) async {
     final response =
-        await _apiConsumer.get("http://localhost:8000/api/products/${_productentity.id}");
+        await _apiConsumer.get("http://10.0.2.2:8000/api/products/$productID");
 
     return BookEntity.fromJson(response);
   }

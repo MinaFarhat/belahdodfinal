@@ -1,22 +1,21 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
 import 'package:belahododfinal/Features/User/Details/data/Model/stationeryentity.dart';
-import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class StationeryWebService {
-  Future<StationeryEntity> stationeryDetails();
+  Future<StationeryEntity> stationeryDetails(int productID);
 }
 
 @Singleton(as: StationeryWebService)
 class StationeryWebServiceImpl implements StationeryWebService {
   final ApiConsumer _apiConsumer;
-  final ProductEntity _productentity;
-  StationeryWebServiceImpl(this._apiConsumer, this._productentity);
+
+  StationeryWebServiceImpl(this._apiConsumer);
 
   @override
-  Future<StationeryEntity> stationeryDetails() async {
-    final response = await _apiConsumer
-        .get("http://localhost:8000/api/products/${_productentity.id}");
+  Future<StationeryEntity> stationeryDetails(int productID) async {
+    final response =
+        await _apiConsumer.get("http://10.0.2.2:8000/api/products/$productID");
 
     return StationeryEntity.fromJson(response);
   }

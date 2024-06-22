@@ -10,7 +10,7 @@ class StationeryEntity {
   @JsonKey(name: "description")
   final String subTitle;
   @JsonKey(name: "price")
-  final double price;
+  final int price;
   @JsonKey(name: "images")
   final List<String> images;
   @JsonKey(name: "stationery_goals")

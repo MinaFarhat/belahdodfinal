@@ -10,7 +10,7 @@ class QuraanEntity {
   @JsonKey(name: "description")
   final String subTitle;
   @JsonKey(name: "price")
-  final double price;
+  final int price;
   @JsonKey(name: "images")
   final List<String> images;
   @JsonKey(name: "quran_publisher")
@@ -18,7 +18,7 @@ class QuraanEntity {
   @JsonKey(name: "quran_size")
   final String size;
   @JsonKey(name: "quran_num_of_pages")
-  final String numberofpages;
+  final int numberofpages;
   @JsonKey(name: "quran_print_type")
   final String printtype;
   @JsonKey(name: "quran_specifications")

@@ -24,7 +24,7 @@ class BottomPartBook extends StatelessWidget {
 
   String title;
   String subTitle;
-  double price;
+  int price;
   String auther;
   String translater;
   String measurements;
@@ -415,51 +415,6 @@ class BottomPartBook extends StatelessWidget {
                 ),
               );
             },
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.025,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-                onTap: () {},
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: MediaQuery.of(context).size.height * 0.057,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: ColorConstant.mainColor,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "إضافة الى السلة",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.008,
-                      ),
-                      Icon(
-                        PhosphorIcons.shoppingCartSimple(
-                            PhosphorIconsStyle.regular),
-                        size: 24,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.005,
           ),
         ],
       ),

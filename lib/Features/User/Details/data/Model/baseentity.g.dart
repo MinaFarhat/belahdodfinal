@@ -9,7 +9,7 @@ part of 'baseentity.dart';
 BaseEntity _$BaseEntityFromJson(Map<String, dynamic> json) => BaseEntity(
       json['name'] as String,
       json['description'] as String,
-      (json['price'] as num).toDouble(),
+      (json['price'] as num).toInt(),
       (json['images'] as List<dynamic>).map((e) => e as String).toList(),
     );
 

@@ -1,13 +1,13 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
-import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
-import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
-import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
-import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
-import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Base%20Cubit/base_cubit.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_cubit.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
-import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/homepage.dart';
+import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -59,6 +59,21 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<SectionCubit>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<BaseCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<BookCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<GameCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<QuraanCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<StationeryCubit>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -67,7 +82,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home:  HomePage(),
+        home: const Mynavbar(),
       ),
     );
   }

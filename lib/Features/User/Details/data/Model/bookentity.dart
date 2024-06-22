@@ -10,14 +10,14 @@ class BookEntity {
   @JsonKey(name: "description")
   final String subTitle;
   @JsonKey(name: "price")
-  final double price;
+  final int price;
   @JsonKey(name: "images")
   final List<String> images;
   @JsonKey(name: "book_author")
   final String auther;
   @JsonKey(name: "book_translator")
   final String translater;
-  @JsonKey(name: "book_dimenions")
+  @JsonKey(name: "book_dimensions")
   final String measurements;
   @JsonKey(name: "book_num_of_pages")
   final int numberofpages;

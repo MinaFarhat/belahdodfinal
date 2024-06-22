@@ -9,13 +9,13 @@ part of 'gameentity.dart';
 GameEntity _$GameEntityFromJson(Map<String, dynamic> json) => GameEntity(
       json['name'] as String,
       json['description'] as String,
-      (json['price'] as num).toDouble(),
+      (json['price'] as num).toInt(),
       (json['images'] as List<dynamic>).map((e) => e as String).toList(),
       json['game_target_age'] as String,
       json['game_goals'] as String,
       json['game_materials'] as String,
       json['game_manufacturer'] as String,
-      json['game_num_of_players'] as String,
+      (json['game_num_of_players'] as num).toInt(),
     );
 
 Map<String, dynamic> _$GameEntityToJson(GameEntity instance) =>

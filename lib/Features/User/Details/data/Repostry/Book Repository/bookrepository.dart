@@ -18,10 +18,11 @@ class Bookrepository implements BaseRepositoryBook {
         _bookWebService = bookWebService;
 
   @override
-  Future<Either<NetworkExceptions, BookEntity>> bookDetails() async {
+  Future<Either<NetworkExceptions, BookEntity>> bookDetails(
+      int productID) async {
     if (await _networkInfo.isConnected) {
       try {
-        final response = await _bookWebService.bookDetails();
+        final response = await _bookWebService.bookDetails(productID);
 
         return Right(response);
       } catch (e) {

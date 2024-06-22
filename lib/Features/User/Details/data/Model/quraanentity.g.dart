@@ -9,11 +9,11 @@ part of 'quraanentity.dart';
 QuraanEntity _$QuraanEntityFromJson(Map<String, dynamic> json) => QuraanEntity(
       json['name'] as String,
       json['description'] as String,
-      (json['price'] as num).toDouble(),
+      (json['price'] as num).toInt(),
       (json['images'] as List<dynamic>).map((e) => e as String).toList(),
       json['quran_publisher'] as String,
       json['quran_size'] as String,
-      json['quran_num_of_pages'] as String,
+      (json['quran_num_of_pages'] as num).toInt(),
       json['quran_print_type'] as String,
       json['quran_specifications'] as String,
     );

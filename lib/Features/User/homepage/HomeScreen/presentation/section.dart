@@ -6,13 +6,15 @@ import '../../../../../../Core/constant/colors_constant.dart';
 
 // ignore: must_be_immutable
 class Section extends StatelessWidget {
-  String nameOfSection;
-  int sectionNumber;
-  List<ProductEntity> products;
-  Section({
+  final String nameOfSection;
+  final int sectionNumber;
+  final List<ProductEntity> products;
+  final int? productID;
+  const Section({
     required this.nameOfSection,
     required this.sectionNumber,
     required this.products,
+    required this.productID,
     super.key,
   });
 
@@ -50,6 +52,7 @@ class Section extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Item(
+                  productID: productID!,
                   image: imageUrl,
                   index: sectionNumber == 0
                       ? 0
@@ -57,7 +60,9 @@ class Section extends StatelessWidget {
                           ? 1
                           : sectionNumber == 2
                               ? 2
-                              : 3,
+                              : sectionNumber == 3
+                                  ? 3
+                                  : 4,
                 ),
               );
             },

@@ -18,11 +18,12 @@ class StationeryRepository implements BaseRepositoryStationery {
         _stationeryWebService = stationeryWebService;
 
   @override
-  Future<Either<NetworkExceptions, StationeryEntity>>
-      stationeryDetails() async {
+  Future<Either<NetworkExceptions, StationeryEntity>> stationeryDetails(
+      int productID) async {
     if (await _networkInfo.isConnected) {
       try {
-        final response = await _stationeryWebService.stationeryDetails();
+        final response =
+            await _stationeryWebService.stationeryDetails(productID);
 
         return Right(response);
       } catch (e) {

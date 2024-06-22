@@ -3,5 +3,5 @@ import 'package:belahododfinal/Features/User/Details/data/Model/stationeryentity
 import 'package:dartz/dartz.dart';
 
 abstract class BaseRepositoryStationery {
-  Future<Either<NetworkExceptions, StationeryEntity>> stationeryDetails();
+  Future<Either<NetworkExceptions, StationeryEntity>> stationeryDetails(int productID);
 }

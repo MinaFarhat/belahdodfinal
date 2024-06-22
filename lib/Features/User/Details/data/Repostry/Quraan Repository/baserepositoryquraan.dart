@@ -3,5 +3,5 @@ import 'package:belahododfinal/Features/User/Details/data/Model/quraanentity.dar
 import 'package:dartz/dartz.dart';
 
 abstract class BaseRepositoryQuraan {
-  Future<Either<NetworkExceptions, QuraanEntity>> quraanDetails();
+  Future<Either<NetworkExceptions, QuraanEntity>> quraanDetails(int productID);
 }
