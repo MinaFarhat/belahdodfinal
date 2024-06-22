@@ -62,8 +62,16 @@ class BottomPartStationery extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              const Text(
+                "ألف ليرة سورية",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Text(
-                "ل.س $price",
+                " $price",
                 style: TextStyle(
                   color: ColorConstant.mainColor,
                   fontSize: 17,
@@ -378,7 +386,7 @@ class BottomPartStationery extends StatelessWidget {
               );
             },
           ),
-         ],
+        ],
       ),
     );
   }

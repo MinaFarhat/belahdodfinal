@@ -57,8 +57,16 @@ class BottomPartBase extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              const Text(
+                "ألف ليرة سورية",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Text(
-                "$price ل.س",
+                " $price",
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 17,
