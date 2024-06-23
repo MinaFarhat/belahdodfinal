@@ -17,19 +17,25 @@ class CreateaccountCubit extends Cubit<CreateaccountState> {
   Future<void> emitCreateAccount({
     required String name,
     required String password,
+    required String confirmPassword,
     required String phoneNumber,
     required String city,
     required String address,
+    required String role,
   }) async {
     emit(const CreateaccountState.loading());
     final response = await _baseReposotryCreateAccount.createaccount(
       name,
       password,
+      confirmPassword,
       phoneNumber,
       city,
       address,
+      role,
     );
-    response.fold((l) => emit(CreateaccountState.error(l)),
-        (_) => emit(const CreateaccountState.success()));
+    response.fold(
+      (l) => emit(CreateaccountState.error(l)),
+      (_) => emit(const CreateaccountState.success()),
+    );
   }
 }

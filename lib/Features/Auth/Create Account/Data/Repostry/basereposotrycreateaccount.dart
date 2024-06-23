@@ -5,8 +5,10 @@ abstract class BaseReposotryCreateAccount {
   Future<Either<NetworkExceptions, void>> createaccount(
     String name,
     String password,
+    String confirmPassword,
     String phoneNumber,
     String city,
     String address,
+    String role,
   );
 }

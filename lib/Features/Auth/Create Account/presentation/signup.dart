@@ -21,12 +21,16 @@ class _SignupState extends State<Signup> {
   final bool showpass = false;
   final TextEditingController _fullnamecontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
+  final TextEditingController _confirmpasswordcontroller =
+      TextEditingController();
   final TextEditingController _phonenumbercontroller = TextEditingController();
   final GlobalKey<FormState> _fullnamekey = GlobalKey<FormState>();
   final GlobalKey<FormState> _passwordkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _confirmpasswordkey = GlobalKey<FormState>();
   final GlobalKey<FormState> _phonenumberkey = GlobalKey<FormState>();
   final GlobalKey<FormState> _regionKey = GlobalKey<FormState>();
   final TextEditingController _regionController = TextEditingController();
+  final String role = "زبون";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -99,6 +103,27 @@ class _SignupState extends State<Signup> {
                       return "هذا الحقل مطلوب";
                     } else if (value.length < 8) {
                       return "كلمة المرور يجب ان تكون أكثر من 8 أحرف";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Form(
+                key: _confirmpasswordkey,
+                child: FieldName(
+                  controller: _confirmpasswordcontroller,
+                  fieldName: "تأكيد كلمة المرور",
+                  typeKey: TextInputType.visiblePassword,
+                  pass: true,
+                  validate: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "رجاءً أدخل كلمة المرور مرة أخرى";
+                    }
+                    if (value != _passwordcontroller.text) {
+                      return "لايوجد تطابق بين كلمة المرور التي أدخلتها حالياً والتي أدخلتها سابقاً";
                     }
                     return null;
                   },
@@ -182,6 +207,7 @@ class _SignupState extends State<Signup> {
                         onTap: () {
                           if (_fullnamekey.currentState!.validate() &&
                               _passwordkey.currentState!.validate() &&
+                              _confirmpasswordkey.currentState!.validate() &&
                               _phonenumberkey.currentState!.validate() &&
                               _regionKey.currentState!.validate()) {
                             context
@@ -189,10 +215,14 @@ class _SignupState extends State<Signup> {
                                 .emitCreateAccount(
                                   name: _fullnamecontroller.text,
                                   password: _passwordcontroller.text,
+                                  confirmPassword:
+                                      _confirmpasswordcontroller.text,
                                   phoneNumber: _phonenumbercontroller.text,
                                   city: FieldLocation.value.toString(),
                                   address: _regionController.text,
+                                  role: role,
                                 );
+                           
                           }
                         },
                         child: Container(
@@ -222,6 +252,7 @@ class _SignupState extends State<Signup> {
                         onTap: () {
                           if (_fullnamekey.currentState!.validate() &&
                               _passwordkey.currentState!.validate() &&
+                              _confirmpasswordkey.currentState!.validate() &&
                               _phonenumberkey.currentState!.validate() &&
                               _regionKey.currentState!.validate()) {
                             context
@@ -229,10 +260,14 @@ class _SignupState extends State<Signup> {
                                 .emitCreateAccount(
                                   name: _fullnamecontroller.text,
                                   password: _passwordcontroller.text,
+                                  confirmPassword:
+                                      _confirmpasswordcontroller.text,
                                   phoneNumber: _phonenumbercontroller.text,
                                   city: FieldLocation.value.toString(),
                                   address: _regionController.text,
+                                  role: role,
                                 );
+                            
                           }
                         },
                         child: Container(

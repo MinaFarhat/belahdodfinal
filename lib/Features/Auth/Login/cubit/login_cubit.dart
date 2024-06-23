@@ -28,7 +28,7 @@ class LoginCubit extends Cubit<LoginState> {
       (l) => emit(LoginState.error(l)),
       (r) {
         _sharedPreferencesUtils.setToken(r.token);
-        _sharedPreferencesUtils.setId(r.id);
+        _sharedPreferencesUtils.setId(r.id.toString());
         emit(LoginState.success(r));
       },
     );

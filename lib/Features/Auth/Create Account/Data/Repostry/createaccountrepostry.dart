@@ -20,14 +20,23 @@ class CreateAccountRepostryImpl implements BaseReposotryCreateAccount {
   Future<Either<NetworkExceptions, void>> createaccount(
     String name,
     String password,
+    String confirmPassword,
     String phoneNumber,
     String city,
     String address,
+    String role,
   ) async {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _accountWebService.createaccount(
-            name, password, phoneNumber, city, address);
+          name,
+          password,
+          confirmPassword,
+          phoneNumber,
+          city,
+          address,
+          role,
+        );
 
         return Right(response);
       } catch (e) {

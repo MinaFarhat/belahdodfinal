@@ -7,8 +7,8 @@ part 'loginentity.g.dart';
 class LoginEntity {
   @JsonKey(name: "token")
   final String token;
-  @JsonKey(name: "userid")
-  final String id;
+  @JsonKey(name: "user_id")
+  final int id;
   LoginEntity(this.token, this.id);
 
   factory LoginEntity.fromJson(Map<String, dynamic> json) =>
