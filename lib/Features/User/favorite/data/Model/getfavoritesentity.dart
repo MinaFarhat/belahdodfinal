@@ -20,18 +20,18 @@ class GetFavoritesEntity {
 class GetFavoritesData {
   @JsonKey(name: "id")
   final int favoriteProductId;
-   @JsonKey(name: "name")
+  @JsonKey(name: "name")
   final String name;
-   @JsonKey(name: "description")
+  @JsonKey(name: "description")
   final String description;
-   @JsonKey(name: "image")
+  @JsonKey(name: "image")
   final String image;
 
-  GetFavoritesData(this.favoriteProductId, this.name, this.description, this.image);
+  GetFavoritesData(
+      this.favoriteProductId, this.name, this.description, this.image);
 
-   factory GetFavoritesData.fromJson(Map<String, dynamic> json) =>
+  factory GetFavoritesData.fromJson(Map<String, dynamic> json) =>
       _$GetFavoritesDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetFavoritesDataToJson(this);
-
 }

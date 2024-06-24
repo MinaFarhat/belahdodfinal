@@ -1,8 +1,14 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Features/User/favorite/Manager/Get%20Favorites%20Cubit/getfavorites_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/stars_rate.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+import '../../Manager/Add To Favorites Cubit/addtofavorite_cubit.dart';
 
 // ignore: must_be_immutable
 class FavItem extends StatelessWidget {
@@ -36,14 +42,101 @@ class FavItem extends StatelessWidget {
             Positioned(
               top: 8,
               left: 8,
-              child: InkWell(
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-                onTap: () {},
-                child: Icon(
-                  PhosphorIcons.heart(PhosphorIconsStyle.fill),
-                  size: 26,
-                  color: ColorConstant.mainColor,
-                ),
+              child: BlocConsumer<AddtofavoriteCubit, AddtofavoriteState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (networkExceptions) {
+                      Fluttertoast.showToast(
+                        msg: NetworkExceptions.getErrorMessage(
+                          networkExceptions,
+                        ),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                      );
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          context
+                              .read<AddtofavoriteCubit>()
+                              .addtofavorites(favoriteProductIid);
+                          Fluttertoast.showToast(
+                            msg: "تم إزالة المنتج من القائمة المفضلة",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.green,
+                          );
+                          context.read<GetfavoritesCubit>().getFavorites();
+                        },
+                        child: Icon(
+                          PhosphorIcons.heart(PhosphorIconsStyle.fill),
+                          size: 26,
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    initial: () {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          context
+                              .read<AddtofavoriteCubit>()
+                              .addtofavorites(favoriteProductIid);
+                          Fluttertoast.showToast(
+                            msg: "تم إزالة المنتج من القائمة المفضلة",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.green,
+                          );
+                          context.read<GetfavoritesCubit>().getFavorites();
+                        },
+                        child: Icon(
+                          PhosphorIcons.heart(PhosphorIconsStyle.fill),
+                          size: 26,
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    success: (addtofavoritesentity) {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          context
+                              .read<AddtofavoriteCubit>()
+                              .addtofavorites(favoriteProductIid);
+                          Fluttertoast.showToast(
+                            msg: "تم إزالة المنتج من القائمة المفضلة",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.green,
+                          );
+                          context.read<GetfavoritesCubit>().getFavorites();
+                        },
+                        child: Icon(
+                          PhosphorIcons.heart(PhosphorIconsStyle.fill),
+                          size: 26,
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
             ),
             Row(
