@@ -89,7 +89,7 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
                         index == getfavoritesentity.favorites.length - 1
                             ? SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.2,
+                                    MediaQuery.of(context).size.height * 0.25,
                               )
                             : Container(),
                       ],

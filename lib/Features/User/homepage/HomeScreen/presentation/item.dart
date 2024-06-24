@@ -4,15 +4,19 @@ import 'package:belahododfinal/Features/User/Details/presentation/details_book.d
 import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
+import 'package:belahododfinal/Features/User/favorite/Manager/Add%20To%20Favorites%20Cubit/addtofavorite_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
-class Item extends StatelessWidget {
+class Item extends StatefulWidget {
   String image;
   int index;
   int productID;
+
   Item({
     required this.image,
     required this.index,
@@ -21,49 +25,56 @@ class Item extends StatelessWidget {
   });
 
   @override
+  State<Item> createState() => _ItemState();
+}
+
+class _ItemState extends State<Item> {
+  bool isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: InkWell(
         overlayColor: WidgetStateProperty.all(Colors.transparent),
         onTap: () {
-          if (index == 0) {
+          if (widget.index == 0) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => DetailsBook(
-                  productID: productID,
+                  productID: widget.productID,
                 ),
               ),
             );
-          } else if (index == 1) {
+          } else if (widget.index == 1) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => DetailsGame(
-                  productID: productID,
+                  productID: widget.productID,
                 ),
               ),
             );
-          } else if (index == 2) {
+          } else if (widget.index == 2) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => DetailsStationery(
-                  productID: productID,
+                  productID: widget.productID,
                 ),
               ),
             );
-          } else if (index == 3) {
+          } else if (widget.index == 3) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => DetailsQurans(
-                  productID: productID,
+                  productID: widget.productID,
                 ),
               ),
             );
-          } else if (index == 4 || index > 4) {
+          } else if (widget.index == 4 || widget.index > 4) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => DetailsBase(
-                  productID: productID,
+                  productID: widget.productID,
                 ),
               ),
             );
@@ -77,7 +88,7 @@ class Item extends StatelessWidget {
                 borderRadius: BorderRadius.circular(25),
                 color: Colors.white,
                 image: DecorationImage(
-                  image: CachedNetworkImageProvider(image),
+                  image: CachedNetworkImageProvider(widget.image),
                   fit: BoxFit.cover,
                   onError: (exception, stackTrace) {
                     Stack(
@@ -111,7 +122,37 @@ class Item extends StatelessWidget {
               left: MediaQuery.of(context).size.width * 0.29,
               child: InkWell(
                 overlayColor: WidgetStateProperty.all(Colors.transparent),
-                onTap: () {},
+                onTap: () {
+                  if (isFavorite == false) {
+                    setState(() {
+                      isFavorite = true;
+                    });
+                    Fluttertoast.showToast(
+                      msg: "تم إضافة المنتج الى القائمة المفضلة",
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: ColorConstant.mainColor,
+                    );
+
+                    context
+                        .read<AddtofavoriteCubit>()
+                        .addtofavorites(widget.productID);
+                  } else {
+                    setState(() {
+                      isFavorite = false;
+                    });
+                    Fluttertoast.showToast(
+                      msg: "تم إزالة المنتج من القائمة المفضلة",
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: ColorConstant.mainColor,
+                    );
+
+                    context
+                        .read<AddtofavoriteCubit>()
+                        .addtofavorites(widget.productID);
+                  }
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -128,17 +169,29 @@ class Item extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: CircleAvatar(
-                    radius: 18,
-                    backgroundColor: Colors.white,
-                    child: Center(
-                      child: Icon(
-                        PhosphorIcons.heart(PhosphorIconsStyle.fill),
-                        color: ColorConstant.mainColor,
-                        size: 25,
-                      ),
-                    ),
-                  ),
+                  child: isFavorite == false
+                      ? CircleAvatar(
+                          radius: 18,
+                          backgroundColor: Colors.white,
+                          child: Center(
+                            child: Icon(
+                              PhosphorIcons.heart(PhosphorIconsStyle.regular),
+                              color: ColorConstant.mainColor,
+                              size: 25,
+                            ),
+                          ),
+                        )
+                      : CircleAvatar(
+                          radius: 18,
+                          backgroundColor: Colors.white,
+                          child: Center(
+                            child: Icon(
+                              PhosphorIcons.heart(PhosphorIconsStyle.fill),
+                              color: ColorConstant.mainColor,
+                              size: 25,
+                            ),
+                          ),
+                        ),
                 ),
               ),
             ),

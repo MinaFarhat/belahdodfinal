@@ -13,6 +13,7 @@ class Section extends StatelessWidget {
   final List<ProductEntity> products;
   final List<int> productIDs;
   final int? sectionId;
+
   const Section({
     required this.nameOfSection,
     required this.sectionNumber,
