@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:belahododfinal/Core/api/api_consumer.dart';
 import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/strings_constants.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -30,6 +31,8 @@ class DioConsumer implements ApiConsumer {
     _headers = {
       StringsConstants.accept: StringsConstants.applicationJson,
       StringsConstants.contentType: StringsConstants.applicationJson,
+      StringsConstants.authorization:
+          "Bearer ${SharedPreferencesUtils().getToken()}" ?? " ",
     };
   }
 

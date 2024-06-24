@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -137,6 +138,7 @@ class _CartItemState extends State<CartItem> {
                   height: MediaQuery.of(context).size.height * 0.008,
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "ل.س",
@@ -147,7 +149,15 @@ class _CartItemState extends State<CartItem> {
                       ),
                     ),
                     Text(
-                      widget.price.ceilToDouble().toString(),
+                      " ألف",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.darkColor,
+                      ),
+                    ),
+                    Text(
+                      " ${widget.price.ceilToDouble().toString()}",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -169,8 +179,32 @@ class _CartItemState extends State<CartItem> {
                 bottomRight: Radius.circular(13),
               ),
               image: DecorationImage(
-                image: AssetImage(widget.image),
+                image: CachedNetworkImageProvider(widget.image),
                 fit: BoxFit.cover,
+                onError: (exception, stackTrace) {
+                  Stack(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.white,
+                          image: const DecorationImage(
+                            image: AssetImage("assets/images/logo.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.black.withOpacity(0.3),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),

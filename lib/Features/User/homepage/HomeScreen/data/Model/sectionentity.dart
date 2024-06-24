@@ -18,7 +18,7 @@ class SectionEntity {
 
 @JsonSerializable()
 class SectionData {
-   @JsonKey(name: "id")
+  @JsonKey(name: "id")
   final int sectionId;
   @JsonKey(name: "name")
   final String name;

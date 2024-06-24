@@ -3,6 +3,7 @@ import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Base%20Cubit/base_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/Bottom%20Part/bottom_part_base.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/Top%20Part/top_part_base.dart';
+import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -21,12 +22,6 @@ class DetailsBase extends StatefulWidget {
 }
 
 class _DetailsBaseState extends State<DetailsBase> {
-  final List<String> images = [
-    "assets/images/book5.png",
-    "assets/images/book6.png",
-    "assets/images/book7.png",
-  ];
-
   List<String> locations = [
     "دار الحافظ(دمشق)",
     "العلماء الصغار(دمشق)",
@@ -105,41 +100,135 @@ class _DetailsBaseState extends State<DetailsBase> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        InkWell(
-                          overlayColor:
-                              WidgetStateProperty.all(Colors.transparent),
-                          onTap: () {},
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.7,
-                            height: MediaQuery.of(context).size.height * 0.057,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: ColorConstant.mainColor,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  "إضافة الى السلة",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                        BlocBuilder<AddtocartCubit, AddtocartState>(
+                          builder: (context, state) {
+                            return state.maybeWhen(
+                              orElse: () {
+                                return InkWell(
+                                  overlayColor: WidgetStateProperty.all(
+                                      Colors.transparent),
+                                  onTap: () {
+                                    context
+                                        .read<AddtocartCubit>()
+                                        .addtocart(widget.productID);
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.7,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.057,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: ColorConstant.mainColor,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          "إضافة الى السلة",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.008,
+                                        ),
+                                        Icon(
+                                          PhosphorIcons.shoppingCartSimple(
+                                              PhosphorIconsStyle.regular),
+                                          size: 24,
+                                          color: Colors.white,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.008,
-                                ),
-                                Icon(
-                                  PhosphorIcons.shoppingCartSimple(
-                                      PhosphorIconsStyle.regular),
-                                  size: 24,
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ),
-                          ),
+                                );
+                              },
+                              error: (networkExceptions) {
+                                Fluttertoast.showToast(
+                                  msg: NetworkExceptions.getErrorMessage(
+                                    networkExceptions,
+                                  ),
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  backgroundColor: Colors.red,
+                                );
+                                return Container();
+                              },
+                              success: (addtocartentity) {
+                                WidgetsBinding.instance.addPostFrameCallback(
+                                  (_) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(addtocartentity.message),
+                                      ),
+                                    );
+                                  },
+                                );
+                                return Container();
+                              },
+                              loading: () {
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    color: ColorConstant.mainColor,
+                                  ),
+                                );
+                              },
+                              initial: () {
+                                return InkWell(
+                                  overlayColor: WidgetStateProperty.all(
+                                      Colors.transparent),
+                                  onTap: () {
+                                    context
+                                        .read<AddtocartCubit>()
+                                        .addtocart(widget.productID);
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.7,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.057,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: ColorConstant.mainColor,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          "إضافة الى السلة",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.008,
+                                        ),
+                                        Icon(
+                                          PhosphorIcons.shoppingCartSimple(
+                                              PhosphorIconsStyle.regular),
+                                          size: 24,
+                                          color: Colors.white,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
                       ],
                     ),

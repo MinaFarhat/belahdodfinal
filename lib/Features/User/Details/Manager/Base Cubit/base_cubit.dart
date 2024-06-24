@@ -19,7 +19,7 @@ class BaseCubit extends Cubit<BaseState> {
 
     final response = await _baseRepositoryBase.baseDetails(productID);
 
-    response.fold((l) => emit(BaseState.error(l)),
-        (r) => emit(BaseState.success(r)));
+    response.fold(
+        (l) => emit(BaseState.error(l)), (r) => emit(BaseState.success(r)));
   }
 }

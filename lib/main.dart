@@ -1,12 +1,14 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
-import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
+import 'package:belahododfinal/Features/Auth/Login/presentation/login.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Base%20Cubit/base_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart';
+import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
+import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/injection.dart';
@@ -75,6 +77,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<StationeryCubit>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<AddtocartCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<CartitemsCubit>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -83,7 +91,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: const Signup(),
+        home:  LogIn(),
       ),
     );
   }
