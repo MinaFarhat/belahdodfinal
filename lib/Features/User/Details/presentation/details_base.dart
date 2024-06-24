@@ -77,75 +77,94 @@ class _DetailsBaseState extends State<DetailsBase> {
                 );
               },
               success: (baseentity) {
-                return ListView(
-                  children: [
-                    TopPartBase(
-                      photos: baseentity.images,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    BottomPartBase(
-                      title: baseentity.title,
-                      subTitle: baseentity.subTitle,
-                      price: baseentity.price,
-                      section: "قسم الأطفال",
-                      numberwhorates: 500,
-                      numberwhofavorite: 500,
-                      locations: locations,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          overlayColor:
-                              WidgetStateProperty.all(Colors.transparent),
-                          onTap: () {
-                            context
-                                .read<AddtocartCubit>()
-                                .addtocart(widget.productID);
-                          },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.7,
-                            height: MediaQuery.of(context).size.height * 0.057,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: ColorConstant.mainColor,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  "إضافة الى السلة",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.008,
-                                ),
-                                Icon(
-                                  PhosphorIcons.shoppingCartSimple(
-                                      PhosphorIconsStyle.regular),
-                                  size: 24,
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ),
+                return BlocConsumer<AddtocartCubit, AddtocartState>(
+                  listener: (context, state) {
+                    state.whenOrNull(
+                      error: (networkExceptions) {
+                        Fluttertoast.showToast(
+                          msg: NetworkExceptions.getErrorMessage(
+                            networkExceptions,
                           ),
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                        );
+                      },
+                    );
+                  },
+                  builder: (context, state) {
+                    return ListView(
+                      children: [
+                        TopPartBase(
+                          photos: baseentity.images,
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        BottomPartBase(
+                          title: baseentity.title,
+                          subTitle: baseentity.subTitle,
+                          price: baseentity.price,
+                          section: "قسم الأطفال",
+                          numberwhorates: 500,
+                          numberwhofavorite: 500,
+                          locations: locations,
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.025,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
+                              onTap: () {
+                                context
+                                    .read<AddtocartCubit>()
+                                    .addtocart(widget.productID);
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.057,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: ColorConstant.mainColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "إضافة الى السلة",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.008,
+                                    ),
+                                    Icon(
+                                      PhosphorIcons.shoppingCartSimple(
+                                          PhosphorIconsStyle.regular),
+                                      size: 24,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.005,
                         ),
                       ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.005,
-                    ),
-                  ],
+                    );
+                  },
                 );
               },
             );

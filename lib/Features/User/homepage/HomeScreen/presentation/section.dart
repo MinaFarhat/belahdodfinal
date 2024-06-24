@@ -31,6 +31,7 @@ class Section extends StatelessWidget {
           child: InkWell(
             overlayColor: WidgetStateProperty.all(Colors.transparent),
             onTap: () {
+              print(sectionId);
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {

@@ -12,6 +12,7 @@ import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/c
 import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Quantitiy%20Update%20Cubit/quantitiyupdate_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
+import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Get%20SubSections%20Cubit/getsubsections_cubit.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
@@ -88,8 +89,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<DeleteitemfromcartCubit>(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => getIt<QuantitiyupdateCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<GetsubsectionsCubit>(),
         ),
       ],
       child: MaterialApp(
