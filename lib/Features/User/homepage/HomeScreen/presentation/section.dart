@@ -11,13 +11,13 @@ class Section extends StatelessWidget {
   final String nameOfSection;
   final int sectionNumber;
   final List<ProductEntity> products;
-  final int? productID;
+  final List<int> productIDs;
   final int? sectionId;
   const Section({
     required this.nameOfSection,
     required this.sectionNumber,
     required this.products,
-    required this.productID,
+    required this.productIDs,
     required this.sectionId,
     super.key,
   });
@@ -31,7 +31,7 @@ class Section extends StatelessWidget {
           child: InkWell(
             overlayColor: WidgetStateProperty.all(Colors.transparent),
             onTap: () {
-             // print(sectionId);
+              // print(sectionId);
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
@@ -89,7 +89,7 @@ class Section extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Item(
-                  productID: productID!,
+                  productID: productIDs[i],
                   image: imageUrl,
                   index: sectionNumber == 0
                       ? 0

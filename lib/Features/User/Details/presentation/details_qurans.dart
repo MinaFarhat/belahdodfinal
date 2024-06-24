@@ -81,6 +81,7 @@ class _DetailsQuransState extends State<DetailsQurans> {
                   children: [
                     TopPartQuraan(
                       photos: quraanentity.images,
+                      productId: widget.productID,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,

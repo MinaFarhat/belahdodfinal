@@ -81,6 +81,7 @@ class _DetailsBookState extends State<DetailsBook> {
                   children: [
                     TopPartBook(
                       photos: bookentity.images,
+                      productId: widget.productID,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,

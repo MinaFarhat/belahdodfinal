@@ -81,6 +81,7 @@ class _DetailsStationeryState extends State<DetailsStationery> {
                   children: [
                     TopPartStationery(
                       photos: stationeryentity.images,
+                      productId: widget.productID,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,

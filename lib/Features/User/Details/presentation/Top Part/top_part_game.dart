@@ -2,15 +2,23 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_state.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../favorite/Manager/Add To Favorites Cubit/addtofavorite_cubit.dart';
+
 // ignore: must_be_immutable
 class TopPartGame extends StatelessWidget {
-  TopPartGame({required this.photos, super.key});
+  TopPartGame({
+    required this.photos,
+    required this.productId,
+    super.key,
+  });
   List<String> photos;
+  int productId;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -126,7 +134,31 @@ class TopPartGame extends StatelessWidget {
                 child: InkWell(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
                   onTap: () {
-                    context.read<ReactionCubit>().toggleFavorite();
+                    if (state.isFavorite == false) {
+                      context.read<ReactionCubit>().toggleFavorite();
+                      Fluttertoast.showToast(
+                        msg: "تم إضافة المنتج الى القائمة المفضلة",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: ColorConstant.mainColor,
+                      );
+
+                      context
+                          .read<AddtofavoriteCubit>()
+                          .addtofavorites(productId);
+                    } else {
+                      context.read<ReactionCubit>().toggleFavorite();
+                      Fluttertoast.showToast(
+                        msg: "تم إزالة المنتج من القائمة المفضلة",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: ColorConstant.mainColor,
+                      );
+
+                      context
+                          .read<AddtofavoriteCubit>()
+                          .addtofavorites(productId);
+                    }
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.1,

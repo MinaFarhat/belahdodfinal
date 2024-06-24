@@ -81,6 +81,7 @@ class _DetailsGameState extends State<DetailsGame> {
                   children: [
                     TopPartGame(
                       photos: gameentity.images,
+                      productId: widget.productID,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,

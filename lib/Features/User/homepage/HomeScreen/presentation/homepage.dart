@@ -105,7 +105,9 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     final products = sectionentity.sections[index].products;
-                    final hasProducts = products.isNotEmpty;
+
+                    final productIDs =
+                        products.map((product) => product.id).toList();
 
                     return Column(
                       children: [
@@ -113,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                           nameOfSection: sectionentity.sections[index].name,
                           sectionNumber: index,
                           products: products,
-                          productID: hasProducts ? products[0].id : null,
+                          productIDs: productIDs,
                           sectionId: sectionentity.sections[index].sectionId,
                         ),
                         index == 0
