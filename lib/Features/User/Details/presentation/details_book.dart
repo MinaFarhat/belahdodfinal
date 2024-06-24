@@ -106,136 +106,46 @@ class _DetailsBookState extends State<DetailsBook> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        BlocBuilder<AddtocartCubit, AddtocartState>(
-                          builder: (context, state) {
-                            return state.maybeWhen(
-                              orElse: () {
-                                return InkWell(
-                                  overlayColor: WidgetStateProperty.all(
-                                      Colors.transparent),
-                                  onTap: () {
-                                    context
-                                        .read<AddtocartCubit>()
-                                        .addtocart(widget.productID);
-                                  },
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.7,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.057,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: ColorConstant.mainColor,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const Text(
-                                          "إضافة الى السلة",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.008,
-                                        ),
-                                        Icon(
-                                          PhosphorIcons.shoppingCartSimple(
-                                              PhosphorIconsStyle.regular),
-                                          size: 24,
-                                          color: Colors.white,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                               error: (networkExceptions) {
-                                Fluttertoast.showToast(
-                                  msg: NetworkExceptions.getErrorMessage(
-                                    networkExceptions,
-                                  ),
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.BOTTOM,
-                                  backgroundColor: Colors.red,
-                                );
-                                return Container();
-                              },
-                              success: (addtocartentity) {
-                                WidgetsBinding.instance.addPostFrameCallback(
-                                  (_) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(addtocartentity.message),
-                                      ),
-                                    );
-                                  },
-                                );
-                                return Container();
-                              },
-                              loading: () {
-                                return Center(
-                                  child: CircularProgressIndicator(
-                                    color: ColorConstant.mainColor,
-                                  ),
-                                );
-                              },
-                              initial: () {
-                                return InkWell(
-                                  overlayColor: WidgetStateProperty.all(
-                                      Colors.transparent),
-                                  onTap: () {
-                                    context
-                                        .read<AddtocartCubit>()
-                                        .addtocart(widget.productID);
-                                  },
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.7,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.057,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: ColorConstant.mainColor,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const Text(
-                                          "إضافة الى السلة",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.008,
-                                        ),
-                                        Icon(
-                                          PhosphorIcons.shoppingCartSimple(
-                                              PhosphorIconsStyle.regular),
-                                          size: 24,
-                                          color: Colors.white,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
+                        InkWell(
+                          overlayColor:
+                              WidgetStateProperty.all(Colors.transparent),
+                          onTap: () {
+                            context
+                                .read<AddtocartCubit>()
+                                .addtocart(widget.productID);
                           },
-                        ),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            height: MediaQuery.of(context).size.height * 0.057,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: ColorConstant.mainColor,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  "إضافة الى السلة",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.008,
+                                ),
+                                Icon(
+                                  PhosphorIcons.shoppingCartSimple(
+                                      PhosphorIconsStyle.regular),
+                                  size: 24,
+                                  color: Colors.white,
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
                       ],
                     ),
                     SizedBox(
