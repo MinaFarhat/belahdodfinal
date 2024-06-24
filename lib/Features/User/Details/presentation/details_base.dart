@@ -7,7 +7,6 @@ import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
 class DetailsBase extends StatefulWidget {
@@ -110,58 +109,6 @@ class _DetailsBaseState extends State<DetailsBase> {
                           numberwhorates: 500,
                           numberwhofavorite: 500,
                           locations: locations,
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              overlayColor:
-                                  WidgetStateProperty.all(Colors.transparent),
-                              onTap: () {
-                                context
-                                    .read<AddtocartCubit>()
-                                    .addtocart(widget.productID);
-                              },
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.7,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.057,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: ColorConstant.mainColor,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "إضافة الى السلة",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.008,
-                                    ),
-                                    Icon(
-                                      PhosphorIcons.shoppingCartSimple(
-                                          PhosphorIconsStyle.regular),
-                                      size: 24,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.005,
                         ),
                       ],
                     );

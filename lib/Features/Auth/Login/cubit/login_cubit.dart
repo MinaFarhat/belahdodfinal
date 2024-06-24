@@ -24,14 +24,12 @@ class LoginCubit extends Cubit<LoginState> {
     emit(const LoginState.loading());
     final response = await _baseReposotryLogin.login(name, password);
 
-     response.fold(
+    response.fold(
       (l) => emit(LoginState.error(l)),
       (r) {
         _sharedPreferencesUtils.setToken(r.token);
-        _sharedPreferencesUtils.setId(r.id.toString());
         emit(LoginState.success(r));
       },
     );
   }
-  }
-
+}
