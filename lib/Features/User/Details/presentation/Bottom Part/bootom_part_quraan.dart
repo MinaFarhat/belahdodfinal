@@ -435,6 +435,12 @@ class BootomPartQuraan extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
+                          Fluttertoast.showToast(
+                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: ColorConstant.mainColor,
+                          );
                           context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(
@@ -475,6 +481,12 @@ class BootomPartQuraan extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
+                          Fluttertoast.showToast(
+                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: ColorConstant.mainColor,
+                          );
                           context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(
@@ -520,6 +532,12 @@ class BootomPartQuraan extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
+                          Fluttertoast.showToast(
+                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: ColorConstant.mainColor,
+                          );
                           context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(

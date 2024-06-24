@@ -85,6 +85,7 @@ class _DetailsBookState extends State<DetailsBook> {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     BottomPartBook(
+                      productId: widget.productID,
                       title: bookentity.title,
                       subTitle: bookentity.subTitle,
                       price: bookentity.price,

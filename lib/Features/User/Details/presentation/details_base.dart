@@ -102,6 +102,7 @@ class _DetailsBaseState extends State<DetailsBase> {
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
                         BottomPartBase(
+                          productId: widget.productID,
                           title: baseentity.title,
                           subTitle: baseentity.subTitle,
                           price: baseentity.price,

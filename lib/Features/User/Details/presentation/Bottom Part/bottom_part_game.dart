@@ -1,11 +1,17 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+import '../../../cart/Manager/Add To Cart Cubit/addtocart_cubit.dart';
 
 // ignore: must_be_immutable
 class BottomPartGame extends StatelessWidget {
   BottomPartGame({
+    required this.productId,
     required this.title,
     required this.subTitle,
     required this.price,
@@ -20,7 +26,7 @@ class BottomPartGame extends StatelessWidget {
     required this.locations,
     super.key,
   });
-
+  int productId;
   String title;
   String subTitle;
   int price;
@@ -412,43 +418,168 @@ class BottomPartGame extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-                onTap: () {
-                  // context
-                  //     .read<AddtocartCubit>()
-                  //     .addtocart(widget.productID);
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: MediaQuery.of(context).size.height * 0.057,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: ColorConstant.mainColor,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "إضافة الى السلة",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+              BlocConsumer<AddtocartCubit, AddtocartState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (networkExceptions) {
+                      Fluttertoast.showToast(
+                        msg: NetworkExceptions.getErrorMessage(
+                          networkExceptions,
                         ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.008,
-                      ),
-                      Icon(
-                        PhosphorIcons.shoppingCartSimple(
-                            PhosphorIconsStyle.regular),
-                        size: 24,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                      );
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          Fluttertoast.showToast(
+                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: ColorConstant.mainColor,
+                          );
+                          context.read<AddtocartCubit>().addtocart(productId);
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.057,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: ColorConstant.mainColor,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "إضافة الى السلة",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width:
+                                    MediaQuery.of(context).size.width * 0.008,
+                              ),
+                              Icon(
+                                PhosphorIcons.shoppingCartSimple(
+                                    PhosphorIconsStyle.regular),
+                                size: 24,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    initial: () {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          Fluttertoast.showToast(
+                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: ColorConstant.mainColor,
+                          );
+                          context.read<AddtocartCubit>().addtocart(productId);
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.057,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: ColorConstant.mainColor,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "إضافة الى السلة",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width:
+                                    MediaQuery.of(context).size.width * 0.008,
+                              ),
+                              Icon(
+                                PhosphorIcons.shoppingCartSimple(
+                                    PhosphorIconsStyle.regular),
+                                size: 24,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return CircularProgressIndicator(
+                        color: ColorConstant.mainColor,
+                      );
+                    },
+                    success: (addtocartentity) {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          Fluttertoast.showToast(
+                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: ColorConstant.mainColor,
+                          );
+                          context.read<AddtocartCubit>().addtocart(productId);
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.057,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: ColorConstant.mainColor,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "إضافة الى السلة",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width:
+                                    MediaQuery.of(context).size.width * 0.008,
+                              ),
+                              Icon(
+                                PhosphorIcons.shoppingCartSimple(
+                                    PhosphorIconsStyle.regular),
+                                size: 24,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),

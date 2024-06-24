@@ -85,6 +85,7 @@ class _DetailsGameState extends State<DetailsGame> {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     BottomPartGame(
+                      productId: widget.productID,
                       title: gameentity.title,
                       subTitle: gameentity.subTitle,
                       age: gameentity.age,

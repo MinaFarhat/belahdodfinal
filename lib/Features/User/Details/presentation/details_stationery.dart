@@ -85,6 +85,7 @@ class _DetailsStationeryState extends State<DetailsStationery> {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     BottomPartStationery(
+                      productId: widget.productID,
                       title: stationeryentity.title,
                       subTitle: stationeryentity.subTitle,
                       price: stationeryentity.price,
