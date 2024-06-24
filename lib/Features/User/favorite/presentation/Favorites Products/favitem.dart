@@ -11,12 +11,14 @@ class FavItem extends StatelessWidget {
   String subtitle;
   int numberofstars;
   int numberwhorates;
+  int favoriteProductIid;
   FavItem(
       {required this.image,
       required this.title,
       required this.subtitle,
       required this.numberofstars,
       required this.numberwhorates,
+      required this.favoriteProductIid,
       super.key});
 
   @override

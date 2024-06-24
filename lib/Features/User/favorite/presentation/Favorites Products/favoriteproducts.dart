@@ -83,6 +83,8 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
                               getfavoritesentity.favorites[index].description,
                           numberofstars: 5,
                           numberwhorates: 500,
+                          favoriteProductIid: getfavoritesentity
+                              .favorites[index].favoriteProductId,
                         ),
                         index == getfavoritesentity.favorites.length - 1
                             ? SizedBox(
