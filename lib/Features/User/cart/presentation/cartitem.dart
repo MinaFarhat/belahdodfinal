@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
+import 'package:belahododfinal/Features/User/cart/Manager/Quantitiy%20Update%20Cubit/quantitiyupdate_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/dialog_delete.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import '../../../../../Core/constant/colors_constant.dart';
 import '../Manager/Cart Items Cubit/cartitems_cubit.dart';
 
 // ignore: must_be_immutable
-class CartItem extends StatefulWidget {
+class CartItem extends StatelessWidget {
   String image;
   String title;
   int quantity;
@@ -23,11 +24,6 @@ class CartItem extends StatefulWidget {
       required this.id,
       super.key});
 
-  @override
-  State<CartItem> createState() => _CartItemState();
-}
-
-class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -45,9 +41,7 @@ class _CartItemState extends State<CartItem> {
                 Navigator.of(context).pop();
               },
               ontapButton2: () {
-                context
-                    .read<DeleteitemfromcartCubit>()
-                    .deleteitemfromcart(widget.id);
+                context.read<DeleteitemfromcartCubit>().deleteitemfromcart(id);
                 Navigator.of(context).pop();
                 context.read<CartitemsCubit>().getcartitems();
               },
@@ -72,11 +66,14 @@ class _CartItemState extends State<CartItem> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  GestureDetector(
+                  InkWell(
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
                     onTap: () {
-                      setState(() {
-                        widget.quantity++;
-                      });
+                      quantity++;
+                      context
+                          .read<QuantitiyupdateCubit>()
+                          .quantityupdate(id, quantity);
+                      context.read<CartitemsCubit>().getcartitems();
                     },
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.035,
@@ -107,18 +104,32 @@ class _CartItemState extends State<CartItem> {
                     ),
                   ),
                   Text(
-                    widget.quantity.toString(),
+                    quantity.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: ColorConstant.darkColor,
                     ),
                   ),
-                  GestureDetector(
+                  InkWell(
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
                     onTap: () {
-                      setState(() {
-                        widget.quantity--;
-                      });
+                      if (quantity >= 2) {
+                        quantity--;
+                        context
+                            .read<QuantitiyupdateCubit>()
+                            .quantityupdate(id, quantity);
+                        context.read<CartitemsCubit>().getcartitems();
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              "لا يمكنك إنقاص من كمية هذا المنتج ",
+                              textDirection: TextDirection.rtl,
+                            ),
+                          ),
+                        );
+                      }
                     },
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.035,
@@ -158,7 +169,7 @@ class _CartItemState extends State<CartItem> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    widget.title,
+                    title,
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -188,7 +199,7 @@ class _CartItemState extends State<CartItem> {
                         ),
                       ),
                       Text(
-                        " ${widget.price.ceilToDouble().toString()}",
+                        " ${price.ceilToDouble().toString()}",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -201,7 +212,7 @@ class _CartItemState extends State<CartItem> {
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width * 0.35,
+              width: MediaQuery.of(context).size.width * 0.32,
               height: MediaQuery.of(context).size.height * 0.15,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -210,7 +221,7 @@ class _CartItemState extends State<CartItem> {
                   bottomRight: Radius.circular(13),
                 ),
                 image: DecorationImage(
-                  image: CachedNetworkImageProvider(widget.image),
+                  image: CachedNetworkImageProvider(image),
                   fit: BoxFit.cover,
                   onError: (exception, stackTrace) {
                     Stack(
