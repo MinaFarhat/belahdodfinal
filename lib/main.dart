@@ -9,6 +9,7 @@ import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/qura
 import 'package:belahododfinal/Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
+import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/injection.dart';
@@ -83,6 +84,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<CartitemsCubit>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<DeleteitemfromcartCubit>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -91,7 +95,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home:  LogIn(),
+        home: LogIn(),
       ),
     );
   }
