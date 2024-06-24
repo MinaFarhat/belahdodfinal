@@ -19,21 +19,6 @@ class AllSubSections extends StatefulWidget {
 }
 
 class _AllSubSectionsState extends State<AllSubSections> {
-  // List<Map<String, dynamic>> allsubsections = [
-  //   {
-  //     "name": "aaaaaaaaaaaa",
-  //   },
-  //   {
-  //     "name": "aaaaaaaaaaaa",
-  //   },
-  //   {
-  //     "name": "aaaaaaaaaaaa",
-  //   },
-  //   {
-  //     "name": "aaaaaaaaaaaa",
-  //   },
-  // ];
-
   @override
   void initState() {
     context.read<GetsubsectionsCubit>().getsubsections(widget.sectionId);
@@ -103,8 +88,9 @@ class _AllSubSectionsState extends State<AllSubSections> {
                           return SubSectionItem(
                             name:
                                 getsubsectionsentity.getsubsections[index].name,
-                            sectionId:
+                            subsectionId:
                                 getsubsectionsentity.getsubsections[index].id,
+                            sectionId: widget.sectionId,
                           );
                         },
                       )

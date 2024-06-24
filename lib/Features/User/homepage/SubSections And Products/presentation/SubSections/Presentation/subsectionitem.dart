@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/Products%20Of%20SubSections/Presentation/productsofsubsection.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -6,15 +7,29 @@ class SubSectionItem extends StatelessWidget {
   SubSectionItem({
     required this.name,
     required this.sectionId,
+    required this.subsectionId,
     super.key,
   });
   String name;
   int sectionId;
+  int subsectionId;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       overlayColor: WidgetStateProperty.all(Colors.transparent),
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) {
+              return ProductsOfSubSection(
+                subSectionId: subsectionId,
+                sectionId: sectionId,
+                nameSubSection: name,
+              );
+            },
+          ),
+        );
+      },
       child: Stack(
         children: [
           Container(
