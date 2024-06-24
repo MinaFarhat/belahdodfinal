@@ -1,22 +1,19 @@
-import 'package:belahododfinal/Core/constant/colors_constant.dart';
-import 'package:belahododfinal/Features/Widgets/stars_rate.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+import '../../../../../../Core/constant/colors_constant.dart';
+
 // ignore: must_be_immutable
-class FavItem extends StatelessWidget {
+class FavLibrary extends StatelessWidget {
   String image;
   String title;
-  String subtitle;
-  int numberofstars;
-  int numberwhorates;
-  FavItem(
-      {required this.image,
-      required this.title,
-      required this.subtitle,
-      required this.numberofstars,
-      required this.numberwhorates,
-      super.key});
+  String location;
+  FavLibrary({
+    required this.image,
+    required this.title,
+    required this.location,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +48,7 @@ class FavItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 14),
+                      padding: const EdgeInsets.only(top: 25),
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
                         child: Text(
@@ -68,30 +65,11 @@ class FavItem extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 4),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "(${numberwhorates.toString()})",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: ColorConstant.darkColor,
-                            ),
-                          ),
-                          StarsRate(
-                            numberofstars: numberofstars,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
                       padding: const EdgeInsets.only(top: 6),
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.52,
                         child: Text(
-                          subtitle,
+                          location,
                           maxLines: 3,
                           textDirection: TextDirection.rtl,
                           overflow: TextOverflow.clip,

@@ -19,89 +19,97 @@ import 'Core/api/dio_consumer.dart' as _i10;
 import 'Core/api/logging_interceptor.dart' as _i3;
 import 'Core/error/error_interceptor.dart' as _i4;
 import 'Core/Network/network_info.dart' as _i8;
-import 'Core/third_party_injection.dart' as _i63;
+import 'Core/third_party_injection.dart' as _i67;
 import 'Core/utils/shared_preference_utils.dart' as _i7;
-import 'Features/Auth/Create%20Account/cubit/createaccount_cubit.dart' as _i54;
+import 'Features/Auth/Create%20Account/cubit/createaccount_cubit.dart' as _i55;
 import 'Features/Auth/Create%20Account/Data/Repostry/basereposotrycreateaccount.dart'
     as _i21;
 import 'Features/Auth/Create%20Account/Data/Repostry/createaccountrepostry.dart'
     as _i22;
 import 'Features/Auth/Create%20Account/Data/Web%20Service/createaccountwebservice.dart'
     as _i14;
-import 'Features/Auth/Login/cubit/login_cubit.dart' as _i55;
-import 'Features/Auth/Login/data/Repostry/basereposotrylogin.dart' as _i32;
-import 'Features/Auth/Login/data/Repostry/loginreposotry.dart' as _i33;
-import 'Features/Auth/Login/data/Web%20Service/loginwebservice.dart' as _i27;
+import 'Features/Auth/Login/cubit/login_cubit.dart' as _i58;
+import 'Features/Auth/Login/data/Repostry/basereposotrylogin.dart' as _i33;
+import 'Features/Auth/Login/data/Repostry/loginreposotry.dart' as _i34;
+import 'Features/Auth/Login/data/Web%20Service/loginwebservice.dart' as _i28;
 import 'Features/User/cart/data/Repostry/Add%20To%20Cart/addtocartrepository.dart'
-    as _i51;
+    as _i52;
 import 'Features/User/cart/data/Repostry/Add%20To%20Cart/baserepositoryaddtocart.dart'
-    as _i50;
+    as _i51;
 import 'Features/User/cart/data/Repostry/Cart%20Items/baserepositorycartitems.dart'
-    as _i36;
-import 'Features/User/cart/data/Repostry/Cart%20Items/getcartitemsrepository.dart'
     as _i37;
+import 'Features/User/cart/data/Repostry/Cart%20Items/getcartitemsrepository.dart'
+    as _i38;
 import 'Features/User/cart/data/Repostry/Delete%20Item%20From%20Cart/baserepositorydeleteitemfromcart.dart'
-    as _i30;
-import 'Features/User/cart/data/Repostry/Delete%20Item%20From%20Cart/deleteitemfromcartrepository.dart'
     as _i31;
+import 'Features/User/cart/data/Repostry/Delete%20Item%20From%20Cart/deleteitemfromcartrepository.dart'
+    as _i32;
 import 'Features/User/cart/data/Repostry/Quantity%20Update/baserepositoryquantityupdate.dart'
-    as _i24;
-import 'Features/User/cart/data/Repostry/Quantity%20Update/quantitiyupdaterepository.dart'
     as _i25;
+import 'Features/User/cart/data/Repostry/Quantity%20Update/quantitiyupdaterepository.dart'
+    as _i26;
 import 'Features/User/cart/data/Web%20Service/Add%20To%20Cart/addtocartwebservice.dart'
     as _i17;
 import 'Features/User/cart/data/Web%20Service/Cart%20Items/cartitemswebservice.dart'
-    as _i28;
+    as _i29;
 import 'Features/User/cart/data/Web%20Service/Delete%20Item%20From%20Cart/deleteitemfromcartwebservice.dart'
     as _i15;
 import 'Features/User/cart/data/Web%20Service/Quantiity%20Update/quantityupdatewebservice.dart'
     as _i23;
 import 'Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart'
-    as _i53;
+    as _i54;
 import 'Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart'
-    as _i58;
+    as _i61;
 import 'Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart'
-    as _i60;
+    as _i63;
 import 'Features/User/cart/Manager/Quantitiy%20Update%20Cubit/quantitiyupdate_cubit.dart'
-    as _i44;
-import 'Features/User/Details/data/Repostry/Base%20Repository/baserepository.dart'
-    as _i49;
-import 'Features/User/Details/data/Repostry/Base%20Repository/baserepositorybase.dart'
-    as _i48;
-import 'Features/User/Details/data/Repostry/Book%20Repository/baserepositorybook.dart'
-    as _i56;
-import 'Features/User/Details/data/Repostry/Book%20Repository/bookrepository.dart'
-    as _i57;
-import 'Features/User/Details/data/Repostry/Game%20Repository/baserepositorygame.dart'
-    as _i34;
-import 'Features/User/Details/data/Repostry/Game%20Repository/gamerepository.dart'
-    as _i35;
-import 'Features/User/Details/data/Repostry/Quraan%20Repository/baserepositoryquraan.dart'
     as _i45;
-import 'Features/User/Details/data/Repostry/Quraan%20Repository/quraanrepository.dart'
+import 'Features/User/Details/data/Repostry/Base%20Repository/baserepository.dart'
+    as _i50;
+import 'Features/User/Details/data/Repostry/Base%20Repository/baserepositorybase.dart'
+    as _i49;
+import 'Features/User/Details/data/Repostry/Book%20Repository/baserepositorybook.dart'
+    as _i59;
+import 'Features/User/Details/data/Repostry/Book%20Repository/bookrepository.dart'
+    as _i60;
+import 'Features/User/Details/data/Repostry/Game%20Repository/baserepositorygame.dart'
+    as _i35;
+import 'Features/User/Details/data/Repostry/Game%20Repository/gamerepository.dart'
+    as _i36;
+import 'Features/User/Details/data/Repostry/Quraan%20Repository/baserepositoryquraan.dart'
     as _i46;
+import 'Features/User/Details/data/Repostry/Quraan%20Repository/quraanrepository.dart'
+    as _i47;
 import 'Features/User/Details/data/Repostry/Stationery%20Repository/baserepositorystationery.dart'
-    as _i39;
-import 'Features/User/Details/data/Repostry/Stationery%20Repository/stationeryrepository.dart'
     as _i40;
+import 'Features/User/Details/data/Repostry/Stationery%20Repository/stationeryrepository.dart'
+    as _i41;
 import 'Features/User/Details/data/Web%20Service/base_webservice.dart' as _i16;
-import 'Features/User/Details/data/Web%20Service/book_webservice.dart' as _i29;
+import 'Features/User/Details/data/Web%20Service/book_webservice.dart' as _i30;
 import 'Features/User/Details/data/Web%20Service/game_webservice.dart' as _i20;
 import 'Features/User/Details/data/Web%20Service/quraan_webservice.dart'
     as _i11;
 import 'Features/User/Details/data/Web%20Service/stationery_webservice.dart'
-    as _i26;
-import 'Features/User/Details/Manager/Base%20Cubit/base_cubit.dart' as _i52;
-import 'Features/User/Details/Manager/Book%20Cubit/book_cubit.dart' as _i62;
-import 'Features/User/Details/Manager/Game%20Cubit/game_cubit.dart' as _i41;
-import 'Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart' as _i61;
+    as _i27;
+import 'Features/User/Details/Manager/Base%20Cubit/base_cubit.dart' as _i53;
+import 'Features/User/Details/Manager/Book%20Cubit/book_cubit.dart' as _i66;
+import 'Features/User/Details/Manager/Game%20Cubit/game_cubit.dart' as _i42;
+import 'Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart' as _i64;
 import 'Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart'
-    as _i59;
-import 'Features/User/homepage/HomeScreen/cubit/section_cubit.dart' as _i47;
+    as _i62;
+import 'Features/User/favorite/data/Repostry/Get%20Favorites/baserepositorygetfavorites.dart'
+    as _i56;
+import 'Features/User/favorite/data/Repostry/Get%20Favorites/getfavoritesrepository.dart'
+    as _i57;
+import 'Features/User/favorite/data/Web%20Service/Get%20Favorites/getfavoriteswebservice.dart'
+    as _i24;
+import 'Features/User/favorite/Manager/Get%20Favorites%20Cubit/getfavorites_cubit.dart'
+    as _i65;
+import 'Features/User/homepage/HomeScreen/cubit/section_cubit.dart' as _i48;
 import 'Features/User/homepage/HomeScreen/data/Repostitory/baserepositorysection.dart'
-    as _i42;
-import 'Features/User/homepage/HomeScreen/data/Repostitory/sectionrepository.dart'
     as _i43;
+import 'Features/User/homepage/HomeScreen/data/Repostitory/sectionrepository.dart'
+    as _i44;
 import 'Features/User/homepage/HomeScreen/data/Web%20Service/sectionwebservice.dart'
     as _i13;
 import 'Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/data/Repostry/baserepositorygetsubsections.dart'
@@ -111,7 +119,7 @@ import 'Features/User/homepage/SubSections%20And%20Products/presentation/SubSect
 import 'Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/data/Web%20Service/getsubsectionswebservice.dart'
     as _i12;
 import 'Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Get%20SubSections%20Cubit/getsubsections_cubit.dart'
-    as _i38;
+    as _i39;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -163,92 +171,101 @@ extension GetItInjectableX on _i1.GetIt {
             ));
     gh.singleton<_i23.QuantityUpdateWebService>(
         () => _i23.QuantityUpdateWebServiceImpl(gh<_i9.ApiConsumer>()));
-    gh.singleton<_i24.BaseRepositoryQuantityUpdate>(
-        () => _i25.QuantityUpdateRepositoryImpl(
+    gh.singleton<_i24.GetFavoritesWebService>(
+        () => _i24.GetFavoritesWebServiceImpl(gh<_i9.ApiConsumer>()));
+    gh.singleton<_i25.BaseRepositoryQuantityUpdate>(
+        () => _i26.QuantityUpdateRepositoryImpl(
               networkInfo: gh<_i8.NetworkInfo>(),
               quantityUpdateWebService: gh<_i23.QuantityUpdateWebService>(),
             ));
-    gh.singleton<_i26.StationeryWebService>(
-        () => _i26.StationeryWebServiceImpl(gh<_i9.ApiConsumer>()));
-    gh.singleton<_i27.LoginWebService>(
-        () => _i27.LoginWebServiceImpl(gh<_i9.ApiConsumer>()));
-    gh.singleton<_i28.CartItemsWebService>(
-        () => _i28.CartItemsWebServiceImpl(gh<_i9.ApiConsumer>()));
-    gh.singleton<_i29.BookWebService>(
-        () => _i29.BookWebServiceImpl(gh<_i9.ApiConsumer>()));
-    gh.singleton<_i30.BaseRepositoryDeleteItemFromCart>(() =>
-        _i31.DeleteItemFromCartRepositoryImpl(
+    gh.singleton<_i27.StationeryWebService>(
+        () => _i27.StationeryWebServiceImpl(gh<_i9.ApiConsumer>()));
+    gh.singleton<_i28.LoginWebService>(
+        () => _i28.LoginWebServiceImpl(gh<_i9.ApiConsumer>()));
+    gh.singleton<_i29.CartItemsWebService>(
+        () => _i29.CartItemsWebServiceImpl(gh<_i9.ApiConsumer>()));
+    gh.singleton<_i30.BookWebService>(
+        () => _i30.BookWebServiceImpl(gh<_i9.ApiConsumer>()));
+    gh.singleton<_i31.BaseRepositoryDeleteItemFromCart>(() =>
+        _i32.DeleteItemFromCartRepositoryImpl(
           networkInfo: gh<_i8.NetworkInfo>(),
           deleteItemFromCartWebService: gh<_i15.DeleteItemFromCartWebService>(),
         ));
-    gh.singleton<_i32.BaseReposotryLogin>(() => _i33.LoginReposotryImpl(
+    gh.singleton<_i33.BaseReposotryLogin>(() => _i34.LoginReposotryImpl(
           networkInfo: gh<_i8.NetworkInfo>(),
-          loginWebService: gh<_i27.LoginWebService>(),
+          loginWebService: gh<_i28.LoginWebService>(),
         ));
-    gh.singleton<_i34.BaseRepositoryGame>(() => _i35.GameRepository(
+    gh.singleton<_i35.BaseRepositoryGame>(() => _i36.GameRepository(
           networkInfo: gh<_i8.NetworkInfo>(),
           gameWebService: gh<_i20.GameWebService>(),
         ));
-    gh.singleton<_i36.BaseRepositoryCartItems>(
-        () => _i37.GetCartItemsRepositoryImpl(
+    gh.singleton<_i37.BaseRepositoryCartItems>(
+        () => _i38.GetCartItemsRepositoryImpl(
               networkInfo: gh<_i8.NetworkInfo>(),
-              cartItemsWebService: gh<_i28.CartItemsWebService>(),
+              cartItemsWebService: gh<_i29.CartItemsWebService>(),
             ));
-    gh.factory<_i38.GetsubsectionsCubit>(() =>
-        _i38.GetsubsectionsCubit(gh<_i18.BaseRepositoryGetSubSections>()));
-    gh.singleton<_i39.BaseRepositoryStationery>(() => _i40.StationeryRepository(
+    gh.factory<_i39.GetsubsectionsCubit>(() =>
+        _i39.GetsubsectionsCubit(gh<_i18.BaseRepositoryGetSubSections>()));
+    gh.singleton<_i40.BaseRepositoryStationery>(() => _i41.StationeryRepository(
           networkInfo: gh<_i8.NetworkInfo>(),
-          stationeryWebService: gh<_i26.StationeryWebService>(),
+          stationeryWebService: gh<_i27.StationeryWebService>(),
         ));
-    gh.factory<_i41.GameCubit>(
-        () => _i41.GameCubit(gh<_i34.BaseRepositoryGame>()));
-    gh.singleton<_i42.BaseRepositorySection>(() => _i43.SectionRepositoryImpl(
+    gh.factory<_i42.GameCubit>(
+        () => _i42.GameCubit(gh<_i35.BaseRepositoryGame>()));
+    gh.singleton<_i43.BaseRepositorySection>(() => _i44.SectionRepositoryImpl(
           networkInfo: gh<_i8.NetworkInfo>(),
           sectionWebService: gh<_i13.SectionWebService>(),
         ));
-    gh.factory<_i44.QuantitiyupdateCubit>(() =>
-        _i44.QuantitiyupdateCubit(gh<_i24.BaseRepositoryQuantityUpdate>()));
-    gh.singleton<_i45.BaseRepositoryQuraan>(() => _i46.QuraanRepository(
+    gh.factory<_i45.QuantitiyupdateCubit>(() =>
+        _i45.QuantitiyupdateCubit(gh<_i25.BaseRepositoryQuantityUpdate>()));
+    gh.singleton<_i46.BaseRepositoryQuraan>(() => _i47.QuraanRepository(
           networkInfo: gh<_i8.NetworkInfo>(),
           quraanWebService: gh<_i11.QuraanWebService>(),
         ));
-    gh.factory<_i47.SectionCubit>(
-        () => _i47.SectionCubit(gh<_i42.BaseRepositorySection>()));
-    gh.singleton<_i48.BaseRepositoryBase>(() => _i49.BaseRepositoryImpl(
+    gh.factory<_i48.SectionCubit>(
+        () => _i48.SectionCubit(gh<_i43.BaseRepositorySection>()));
+    gh.singleton<_i49.BaseRepositoryBase>(() => _i50.BaseRepositoryImpl(
           networkInfo: gh<_i8.NetworkInfo>(),
           baseWebService: gh<_i16.BaseWebService>(),
         ));
-    gh.singleton<_i50.BaseRepositoryAddtoCart>(
-        () => _i51.AddtoCartRepositoryImpl(
+    gh.singleton<_i51.BaseRepositoryAddtoCart>(
+        () => _i52.AddtoCartRepositoryImpl(
               networkInfo: gh<_i8.NetworkInfo>(),
               addtoCartWebService: gh<_i17.AddtoCartWebService>(),
             ));
-    gh.factory<_i52.BaseCubit>(
-        () => _i52.BaseCubit(gh<_i48.BaseRepositoryBase>()));
-    gh.factory<_i53.AddtocartCubit>(
-        () => _i53.AddtocartCubit(gh<_i50.BaseRepositoryAddtoCart>()));
-    gh.factory<_i54.CreateaccountCubit>(
-        () => _i54.CreateaccountCubit(gh<_i21.BaseReposotryCreateAccount>()));
-    gh.factory<_i55.LoginCubit>(() => _i55.LoginCubit(
-          gh<_i32.BaseReposotryLogin>(),
+    gh.factory<_i53.BaseCubit>(
+        () => _i53.BaseCubit(gh<_i49.BaseRepositoryBase>()));
+    gh.factory<_i54.AddtocartCubit>(
+        () => _i54.AddtocartCubit(gh<_i51.BaseRepositoryAddtoCart>()));
+    gh.factory<_i55.CreateaccountCubit>(
+        () => _i55.CreateaccountCubit(gh<_i21.BaseReposotryCreateAccount>()));
+    gh.singleton<_i56.BaseRepositoryGetFavorites>(
+        () => _i57.GetFavoritesRepositoryImpl(
+              networkInfo: gh<_i8.NetworkInfo>(),
+              getFavoritesWebService: gh<_i24.GetFavoritesWebService>(),
+            ));
+    gh.factory<_i58.LoginCubit>(() => _i58.LoginCubit(
+          gh<_i33.BaseReposotryLogin>(),
           gh<_i7.SharedPreferencesUtils>(),
         ));
-    gh.singleton<_i56.BaseRepositoryBook>(() => _i57.Bookrepository(
+    gh.singleton<_i59.BaseRepositoryBook>(() => _i60.Bookrepository(
           networkInfo: gh<_i8.NetworkInfo>(),
-          bookWebService: gh<_i29.BookWebService>(),
+          bookWebService: gh<_i30.BookWebService>(),
         ));
-    gh.factory<_i58.CartitemsCubit>(
-        () => _i58.CartitemsCubit(gh<_i36.BaseRepositoryCartItems>()));
-    gh.factory<_i59.StationeryCubit>(
-        () => _i59.StationeryCubit(gh<_i39.BaseRepositoryStationery>()));
-    gh.factory<_i60.DeleteitemfromcartCubit>(() => _i60.DeleteitemfromcartCubit(
-        gh<_i30.BaseRepositoryDeleteItemFromCart>()));
-    gh.factory<_i61.QuraanCubit>(
-        () => _i61.QuraanCubit(gh<_i45.BaseRepositoryQuraan>()));
-    gh.factory<_i62.BookCubit>(
-        () => _i62.BookCubit(gh<_i56.BaseRepositoryBook>()));
+    gh.factory<_i61.CartitemsCubit>(
+        () => _i61.CartitemsCubit(gh<_i37.BaseRepositoryCartItems>()));
+    gh.factory<_i62.StationeryCubit>(
+        () => _i62.StationeryCubit(gh<_i40.BaseRepositoryStationery>()));
+    gh.factory<_i63.DeleteitemfromcartCubit>(() => _i63.DeleteitemfromcartCubit(
+        gh<_i31.BaseRepositoryDeleteItemFromCart>()));
+    gh.factory<_i64.QuraanCubit>(
+        () => _i64.QuraanCubit(gh<_i46.BaseRepositoryQuraan>()));
+    gh.factory<_i65.GetfavoritesCubit>(
+        () => _i65.GetfavoritesCubit(gh<_i56.BaseRepositoryGetFavorites>()));
+    gh.factory<_i66.BookCubit>(
+        () => _i66.BookCubit(gh<_i59.BaseRepositoryBook>()));
     return this;
   }
 }
 
-class _$ThirdPartyInjection extends _i63.ThirdPartyInjection {}
+class _$ThirdPartyInjection extends _i67.ThirdPartyInjection {}

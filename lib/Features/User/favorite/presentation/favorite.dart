@@ -1,11 +1,11 @@
-import 'package:belahododfinal/Features/User/favorite/presentation/favlibrary.dart';
-import 'package:belahododfinal/Features/User/favorite/presentation/favoritesearch.dart';
+import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Libraries/favoritelibraries.dart';
+import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Products/favoriteproducts.dart';
+import 'package:belahododfinal/Features/User/favorite/presentation/Favorite%20Search/favoritesearch.dart';
 import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../../Core/constant/colors_constant.dart';
-import 'favitem.dart';
 
 // ignore: must_be_immutable
 class FavoriteList extends StatefulWidget {
@@ -17,46 +17,7 @@ class FavoriteList extends StatefulWidget {
 
 class _FavoriteListState extends State<FavoriteList> {
   bool action = true;
-  List<Map<String, dynamic>> favoritsProducts = [
-    {
-      "image": "assets/images/game1.png",
-      "title": "شطرنج",
-      "subtitle": "لعبة تحاكي العباقرة, يمكنك اللعب بها مع صديقك",
-      "numberofstars": 5,
-      "numberwhorates": 552,
-    },
-    {
-      "image": "assets/images/game1.png",
-      "title": "شطرنج",
-      "subtitle": "لعبة تحاكي العباقرة, يمكنك اللعب بها مع صديقك",
-      "numberofstars": 5,
-      "numberwhorates": 552,
-    },
-    {
-      "image": "assets/images/game1.png",
-      "title": "شطرنج",
-      "subtitle": "لعبة تحاكي العباقرة, يمكنك اللعب بها مع صديقك",
-      "numberofstars": 5,
-      "numberwhorates": 552,
-    },
-  ];
-  List<Map<String, dynamic>> favoriteLibrary = [
-    {
-      "image": "assets/images/game1.png",
-      "title": "مكتبة العلماء الصغار",
-      "location": "دمشق/الحلبوني/شارع المكتبات",
-    },
-    {
-      "image": "assets/images/game1.png",
-      "title": "مكتبة العلماء الصغار",
-      "location": "دمشق/الحلبوني/شارع المكتبات",
-    },
-    {
-      "image": "assets/images/game1.png",
-      "title": "مكتبة العلماء الصغار",
-      "location": "دمشق/الحلبوني/شارع المكتبات",
-    },
-  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -169,49 +130,9 @@ class _FavoriteListState extends State<FavoriteList> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 12),
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: action == true
-                        ? favoritsProducts.length
-                        : favoriteLibrary.length,
-                    itemBuilder: ((context, index) {
-                      if (action == true) {
-                        return Column(
-                          children: [
-                            FavItem(
-                              image: favoritsProducts[index]['image'],
-                              title: favoritsProducts[index]['title'],
-                              subtitle: favoritsProducts[index]['subtitle'],
-                              numberofstars: favoritsProducts[index]
-                                  ['numberofstars'],
-                              numberwhorates: favoritsProducts[index]
-                                  ['numberwhorates'],
-                            ),
-                            index == favoritsProducts.length - 1
-                                ? SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.2,
-                                  )
-                                : Container(),
-                          ],
-                        );
-                      } else {
-                        return FavLibrary(
-                          image: favoriteLibrary[index]['image'],
-                          title: favoriteLibrary[index]['title'],
-                          location: favoriteLibrary[index]['location'],
-                        );
-                      }
-                    }),
-                  ),
-                ),
-              ),
+              action == true
+                  ? const FavoriteProducts()
+                  : const FavoritesLibraries(),
             ],
           ),
         ),

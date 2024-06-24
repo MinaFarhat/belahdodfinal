@@ -1,19 +1,23 @@
+import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/Widgets/stars_rate.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-import '../../../../../Core/constant/colors_constant.dart';
-
 // ignore: must_be_immutable
-class FavLibrary extends StatelessWidget {
+class FavItem extends StatelessWidget {
   String image;
   String title;
-  String location;
-  FavLibrary({
-    required this.image,
-    required this.title,
-    required this.location,
-    super.key,
-  });
+  String subtitle;
+  int numberofstars;
+  int numberwhorates;
+  FavItem(
+      {required this.image,
+      required this.title,
+      required this.subtitle,
+      required this.numberofstars,
+      required this.numberwhorates,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,7 @@ class FavLibrary extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 25),
+                      padding: const EdgeInsets.only(top: 14),
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
                         child: Text(
@@ -65,11 +69,30 @@ class FavLibrary extends StatelessWidget {
                       ),
                     ),
                     Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            "(${numberwhorates.toString()})",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: ColorConstant.darkColor,
+                            ),
+                          ),
+                          StarsRate(
+                            numberofstars: numberofstars,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.only(top: 6),
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.52,
                         child: Text(
-                          location,
+                          subtitle,
                           maxLines: 3,
                           textDirection: TextDirection.rtl,
                           overflow: TextOverflow.clip,
@@ -96,8 +119,32 @@ class FavLibrary extends StatelessWidget {
                       bottomRight: Radius.circular(20),
                     ),
                     image: DecorationImage(
-                      image: AssetImage(image),
+                      image: CachedNetworkImageProvider(image),
                       fit: BoxFit.cover,
+                      onError: (exception, stackTrace) {
+                        Stack(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                color: Colors.white,
+                                image: const DecorationImage(
+                                  image: AssetImage("assets/images/logo.png"),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                color: Colors.black.withOpacity(0.3),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ),
