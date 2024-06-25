@@ -3,8 +3,8 @@ import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Of
 import 'package:flutter/material.dart';
 
 class PriceSection extends StatelessWidget {
-  final double originalPrice;
-  final double discountedPrice;
+  final int originalPrice;
+  final int discountedPrice;
 
   const PriceSection({
     super.key,

@@ -16,6 +16,8 @@ import 'package:belahododfinal/Features/User/favorite/Manager/Get%20Favorites%20
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Get%20SubSections%20Cubit/getsubsections_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/Products%20Of%20SubSections/Get%20Products%20of%20SubSection%20Cubit/getproductsofsubsection_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -105,6 +107,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<GetproductsofsubsectionCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<GetalloffersCubit>(),
+        ),
+         BlocProvider(
+          create: (context) => getIt<DetailsofofferCubit>(),
         ),
       ],
       child: MaterialApp(

@@ -86,7 +86,6 @@ class Section extends StatelessWidget {
             itemCount: products.length,
             itemBuilder: (context, i) {
               String imageUrl = 'http://10.0.2.2:8000${products[i].image}';
-
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Item(
