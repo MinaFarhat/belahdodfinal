@@ -1,7 +1,7 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
-import 'package:belahododfinal/Features/Auth/Login/presentation/login.dart';
+import 'package:belahododfinal/Features/Auth/splashscreen.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Base%20Cubit/base_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
@@ -16,7 +16,6 @@ import 'package:belahododfinal/Features/User/favorite/Manager/Get%20Favorites%20
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Get%20SubSections%20Cubit/getsubsections_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/Products%20Of%20SubSections/Get%20Products%20of%20SubSection%20Cubit/getproductsofsubsection_cubit.dart';
-import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -115,7 +114,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: LogIn(),
+        home: SplashScreen(),
       ),
     );
   }

@@ -222,13 +222,6 @@ class _SignupState extends State<Signup> {
                                   address: _regionController.text,
                                   role: role,
                                 );
-                            print(_fullnamecontroller.text);
-                            print(_passwordcontroller.text);
-                            print(_phonenumbercontroller.text);
-                            print(_confirmpasswordcontroller.text);
-                            print(FieldLocation.value);
-                            print(_regionController.text);
-                            print(role);
                           }
                         },
                         child: Container(
@@ -273,13 +266,6 @@ class _SignupState extends State<Signup> {
                                   address: _regionController.text,
                                   role: role,
                                 );
-                            print(_fullnamecontroller.text);
-                            print(_passwordcontroller.text);
-                            print(_phonenumbercontroller.text);
-                            print(_confirmpasswordcontroller.text);
-                            print(FieldLocation.value);
-                            print(_regionController.text);
-                            print(role);
                           }
                         },
                         child: Container(

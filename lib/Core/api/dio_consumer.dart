@@ -32,7 +32,7 @@ class DioConsumer implements ApiConsumer {
       StringsConstants.accept: StringsConstants.applicationJson,
       StringsConstants.contentType: StringsConstants.applicationJson,
       StringsConstants.authorization:
-          "Bearer ${SharedPreferencesUtils().getToken()}" ?? " ",
+          "Bearer ${SharedPreferencesUtils().getToken()}",
     };
   }
 

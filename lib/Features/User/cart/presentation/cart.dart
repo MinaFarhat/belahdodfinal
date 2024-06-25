@@ -13,7 +13,7 @@ import 'cartitem.dart';
 
 // ignore: must_be_immutable
 class Cart extends StatefulWidget {
-  Cart({super.key});
+  const Cart({super.key});
 
   @override
   State<Cart> createState() => _CartState();

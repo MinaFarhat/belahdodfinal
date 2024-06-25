@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
           ontapwishList: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return Cart();
+                return const Cart();
               }),
             );
           },

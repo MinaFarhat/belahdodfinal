@@ -63,7 +63,7 @@ class _NewsPageState extends State<NewsPage> {
           ontapwishList: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return Cart();
+                return const Cart();
               }),
             );
           },

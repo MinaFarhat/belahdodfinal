@@ -121,8 +121,6 @@ class _ProductsOfSubSectionState extends State<ProductsOfSubSection> {
                             itemCount: getproductsofsubsectionentity
                                 .productsofsubsection.length,
                             itemBuilder: (context, index) {
-                              print(getproductsofsubsectionentity
-                                  .productsofsubsection[index].productsId);
                               String imageUrl =
                                   'http://10.0.2.2:8000${getproductsofsubsectionentity.productsofsubsection[index].image}';
                               return ProductItemOfSubSection(

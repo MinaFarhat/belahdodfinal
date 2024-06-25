@@ -4,6 +4,7 @@ import 'package:belahododfinal/Features/Widgets/dialog_delete.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../../Core/constant/colors_constant.dart';
@@ -69,11 +70,20 @@ class CartItem extends StatelessWidget {
                   InkWell(
                     overlayColor: WidgetStateProperty.all(Colors.transparent),
                     onTap: () {
-                      quantity++;
-                      context
-                          .read<QuantitiyupdateCubit>()
-                          .quantityupdate(id, quantity);
-                      context.read<CartitemsCubit>().getcartitems();
+                      if (quantity <= 30) {
+                        quantity++;
+                        context
+                            .read<QuantitiyupdateCubit>()
+                            .quantityupdate(id, quantity);
+                        context.read<CartitemsCubit>().getcartitems();
+                      } else {
+                        Fluttertoast.showToast(
+                          msg: "لقد وصلت الى الحد المسموح به ",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                        );
+                      }
                     },
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.035,
@@ -121,13 +131,11 @@ class CartItem extends StatelessWidget {
                             .quantityupdate(id, quantity);
                         context.read<CartitemsCubit>().getcartitems();
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              "لا يمكنك إنقاص من كمية هذا المنتج ",
-                              textDirection: TextDirection.rtl,
-                            ),
-                          ),
+                        Fluttertoast.showToast(
+                          msg: "لايمكنك إنقاص من كمية هذا المنتج",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
                         );
                       }
                     },
