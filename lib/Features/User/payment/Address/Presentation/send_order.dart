@@ -1,9 +1,8 @@
-import 'package:another_flushbar/flushbar.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
+import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Presentation/dynamic_location_field.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/failtocreateorderdialog.dart';
-import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_location.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/notesfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -99,8 +98,7 @@ class SendOrder extends StatelessWidget {
               ),
               Form(
                 key: _regionKey,
-                child: FieldLocation(
-                  controller: _regionController,
+                child: DynamicLocationField(
                   validatefield: (value) {
                     if (value == null || value.isEmpty) {
                       return "هذا الحقل مطلوب";
@@ -113,6 +111,7 @@ class SendOrder extends StatelessWidget {
                     }
                     return null;
                   },
+                  controller: _regionController,
                 ),
               ),
               SizedBox(
@@ -158,39 +157,45 @@ class SendOrder extends StatelessWidget {
                     },
                     success: (sendorderentity) {
                       if (sendorderentity.isSend == true) {
-                        Flushbar(
-                          dismissDirection: FlushbarDismissDirection.HORIZONTAL,
-                          textDirection: TextDirection.rtl,
-                          animationDuration: const Duration(milliseconds: 1000),
-                          messageText: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                sendorderentity.message,
-                                textDirection: TextDirection.rtl,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.012,
-                              ),
-                              Icon(
-                                PhosphorIcons.paperPlaneTilt(
-                                    PhosphorIconsStyle.regular),
-                                color: Colors.white,
-                                size: 22,
-                              ),
-                            ],
-                          ),
-                          duration: const Duration(seconds: 3),
-                          flushbarPosition: FlushbarPosition
-                              .TOP, // Positioning the snackbar at the top
-                          backgroundColor: Colors.green.shade700,
-                        ).show(context);
+                        Fluttertoast.showToast(
+                          msg: sendorderentity.message,
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.green,
+                        );
+                        // Flushbar(
+                        //   dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+                        //   textDirection: TextDirection.rtl,
+                        //   animationDuration: const Duration(milliseconds: 1000),
+                        //   messageText: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.end,
+                        //     children: [
+                        //       Text(
+                        //         sendorderentity.message,
+                        //         textDirection: TextDirection.rtl,
+                        //         style: const TextStyle(
+                        //           fontSize: 16,
+                        //           fontWeight: FontWeight.bold,
+                        //           color: Colors.white,
+                        //         ),
+                        //       ),
+                        //       SizedBox(
+                        //         width:
+                        //             MediaQuery.of(context).size.width * 0.012,
+                        //       ),
+                        //       Icon(
+                        //         PhosphorIcons.paperPlaneTilt(
+                        //             PhosphorIconsStyle.regular),
+                        //         color: Colors.white,
+                        //         size: 22,
+                        //       ),
+                        //     ],
+                        //   ),
+                        //   duration: const Duration(seconds: 3),
+                        //   flushbarPosition: FlushbarPosition
+                        //       .TOP,
+                        //   backgroundColor: Colors.green.shade700,
+                        // ).show(context);
                       } else {
                         showDialog(
                           context: context,
