@@ -1,7 +1,6 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/presentation/send_order.dart';
-import 'package:belahododfinal/Features/Widgets/dialog_delete.dart';
 import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
 import 'package:belahododfinal/Features/Widgets/square_button.dart';
 import 'package:flutter/material.dart';
@@ -20,45 +19,6 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  // List<Map<String, dynamic>> cartItems = [
-  //   {
-  //     "image": "assets/images/tool1.png",
-  //     "title": "قلم رصاص",
-  //     "quantity": 5,
-  //     "price": 5000,
-  //   },
-  //   {
-  //     "image": "assets/images/tool1.png",
-  //     "title": "قلم رصاص",
-  //     "quantity": 5,
-  //     "price": 5000,
-  //   },
-  //   {
-  //     "image": "assets/images/tool1.png",
-  //     "title": "قلم رصاص",
-  //     "quantity": 5,
-  //     "price": 5000,
-  //   },
-  //   {
-  //     "image": "assets/images/tool1.png",
-  //     "title": "قلم رصاص",
-  //     "quantity": 5,
-  //     "price": 5000,
-  //   },
-  //   {
-  //     "image": "assets/images/tool1.png",
-  //     "title": "قلم رصاص",
-  //     "quantity": 5,
-  //     "price": 5000,
-  //   },
-  //   {
-  //     "image": "assets/images/tool1.png",
-  //     "title": "قلم رصاص",
-  //     "quantity": 5,
-  //     "price": 5000,
-  //   },
-  // ];
-
   @override
   void initState() {
     context.read<CartitemsCubit>().getcartitems();
@@ -132,33 +92,13 @@ class _CartState extends State<Cart> {
                           if (index < getcartitemsentity.products.length) {
                             String imageUrl =
                                 'http://10.0.2.2:8000${getcartitemsentity.products[index].image}';
-                            return GestureDetector(
-                              onLongPress: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return DeleteDialog(
-                                      title: "حذف منتج",
-                                      subTitle:
-                                          "هل تريد بالتأكيد حذف العنصر من السلة الخاصة بك؟",
-                                      button1: "إلغاء",
-                                      button2: "حذف",
-                                      ontapButton1: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      ontapButton2: () {},
-                                    );
-                                  },
-                                );
-                              },
-                              child: CartItem(
-                                image: imageUrl,
-                                title: getcartitemsentity.products[index].name,
-                                quantity:
-                                    getcartitemsentity.products[index].quantity,
-                                price: getcartitemsentity.products[index].price,
-                                id: getcartitemsentity.products[index].id,
-                              ),
+                            return CartItem(
+                              image: imageUrl,
+                              title: getcartitemsentity.products[index].name,
+                              quantity:
+                                  getcartitemsentity.products[index].quantity,
+                              price: getcartitemsentity.products[index].price,
+                              id: getcartitemsentity.products[index].id,
                             );
                           } else {
                             return SizedBox(

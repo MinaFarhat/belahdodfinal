@@ -356,21 +356,21 @@ class BottomPartStationery extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(top: 6),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12),
-                      child: InkWell(
-                        overlayColor:
-                            WidgetStateProperty.all(Colors.transparent),
-                        onTap: () {},
-                        child: Icon(
-                          PhosphorIcons.heart(PhosphorIconsStyle.regular),
-                          size: 24,
-                          color: ColorConstant.mainColor,
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 12),
+                    //   child: InkWell(
+                    //     overlayColor:
+                    //         WidgetStateProperty.all(Colors.transparent),
+                    //     onTap: () {},
+                    //     child: Icon(
+                    //       PhosphorIcons.heart(PhosphorIconsStyle.regular),
+                    //       size: 24,
+                    //       color: ColorConstant.mainColor,
+                    //     ),
+                    //   ),
+                    // ),
                     Row(
                       children: [
                         Text(
@@ -412,6 +412,14 @@ class BottomPartStationery extends StatelessWidget {
                         backgroundColor: Colors.red,
                       );
                     },
+                    success: (addtocartentity) {
+                      Fluttertoast.showToast(
+                        msg: "تم إضافة المنتج الى السلة الخاصة بك",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: ColorConstant.mainColor,
+                      );
+                    },
                   );
                 },
                 builder: (context, state) {
@@ -421,12 +429,6 @@ class BottomPartStationery extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          Fluttertoast.showToast(
-                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
-                            toastLength: Toast.LENGTH_LONG,
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: ColorConstant.mainColor,
-                          );
                           context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(
@@ -467,12 +469,6 @@ class BottomPartStationery extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          Fluttertoast.showToast(
-                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
-                            toastLength: Toast.LENGTH_LONG,
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: ColorConstant.mainColor,
-                          );
                           context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(
@@ -518,12 +514,6 @@ class BottomPartStationery extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          Fluttertoast.showToast(
-                            msg: "تم إضافة المنتج الى السلة الخاصة بك",
-                            toastLength: Toast.LENGTH_LONG,
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: ColorConstant.mainColor,
-                          );
                           context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(

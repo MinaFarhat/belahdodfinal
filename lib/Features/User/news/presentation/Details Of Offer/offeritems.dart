@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -29,15 +30,40 @@ class OfferItems extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
               color: Colors.white,
               image: DecorationImage(
-                image: AssetImage(image),
+                image: CachedNetworkImageProvider(image),
                 fit: BoxFit.cover,
+                onError: (exception, stackTrace) {
+                  Stack(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.white,
+                          image: const DecorationImage(
+                            image: AssetImage("assets/images/logo.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.black.withOpacity(0.3),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.188,
             left: MediaQuery.of(context).size.width * 0.29,
-            child: GestureDetector(
+            child: InkWell(
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: () {},
               child: Container(
                 decoration: BoxDecoration(

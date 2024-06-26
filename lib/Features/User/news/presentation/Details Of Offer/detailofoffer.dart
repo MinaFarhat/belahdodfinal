@@ -2,8 +2,9 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/priceection.dart';
-import 'package:belahododfinal/Features/User/news/presentation/offeritems.dart';
+import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/offeritems.dart';
 import 'package:belahododfinal/Features/Widgets/square_button.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -102,8 +103,43 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18),
                                   image: DecorationImage(
-                                    image: AssetImage(widget.offerImage),
+                                    image: CachedNetworkImageProvider(
+                                        widget.offerImage),
                                     fit: BoxFit.cover,
+                                    onError: (exception, stackTrace) {
+                                      Stack(
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.4,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                              color: Colors.white,
+                                              image: const DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/logo.png"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.4,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                              color:
+                                                  Colors.black.withOpacity(0.3),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
@@ -276,7 +312,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                 Text(
                                   ':مدة العرض',
                                   style: TextStyle(
-                                     color: Colors.grey.shade900,
+                                    color: Colors.grey.shade900,
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
