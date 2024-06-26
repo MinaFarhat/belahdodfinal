@@ -4,7 +4,7 @@ import 'package:belahododfinal/Features/Auth/Forgate%20Password/presentation/for
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
 import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
-import 'package:belahododfinal/Features/Widgets/field_name.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';

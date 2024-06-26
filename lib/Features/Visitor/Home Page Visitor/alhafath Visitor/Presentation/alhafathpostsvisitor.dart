@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/alhafath%20Visitor/Presentation/sectionalhafthvisitor.dart';
-import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 

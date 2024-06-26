@@ -1,5 +1,5 @@
 import 'package:belahododfinal/Features/User/search/presentation/searchsection.dart';
-import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 

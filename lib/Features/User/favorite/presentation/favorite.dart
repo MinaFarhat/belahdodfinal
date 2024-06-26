@@ -1,7 +1,7 @@
 import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Libraries/favoritelibraries.dart';
 import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Products/favoriteproducts.dart';
 import 'package:belahododfinal/Features/User/favorite/presentation/Favorite%20Search/favoritesearch.dart';
-import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 

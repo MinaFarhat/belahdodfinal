@@ -3,7 +3,7 @@ import 'package:belahododfinal/Features/Visitor/Cart%20Visitor/Presentation/cart
 import 'package:belahododfinal/Features/Visitor/Favorite%20Visitor/Presentation/favoritevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/Presentation/sectionvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/InfoVisitor/presentation/inofvisitor.dart';
-import 'package:belahododfinal/Features/Widgets/top_bar.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 

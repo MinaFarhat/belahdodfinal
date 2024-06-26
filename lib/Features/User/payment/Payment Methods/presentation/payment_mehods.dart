@@ -1,5 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
-import 'package:belahododfinal/Features/Widgets/payment_mehods_check_box.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/payment_mehods_check_box.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 

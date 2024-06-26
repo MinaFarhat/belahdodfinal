@@ -1,8 +1,8 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
-import 'package:belahododfinal/Features/User/payment/presentation/send_order.dart';
-import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
-import 'package:belahododfinal/Features/Widgets/square_button.dart';
+import 'package:belahododfinal/Features/User/payment/Address/Presentation/send_order.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';

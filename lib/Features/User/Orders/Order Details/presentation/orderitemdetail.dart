@@ -1,4 +1,4 @@
-import 'package:belahododfinal/Features/Widgets/fine_of_order.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/fine_of_order.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

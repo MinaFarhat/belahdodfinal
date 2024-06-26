@@ -3,7 +3,7 @@ import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/priceection.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/offeritems.dart';
-import 'package:belahododfinal/Features/Widgets/square_button.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/square_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

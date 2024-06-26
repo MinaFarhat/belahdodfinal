@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Auth/Forgate%20Password/presentation/forgetpassword2.dart';
-import 'package:belahododfinal/Features/Widgets/field_phone.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_phone.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPassword1 extends StatelessWidget {

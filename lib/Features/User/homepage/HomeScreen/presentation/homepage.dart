@@ -3,7 +3,7 @@ import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/section.dart';
-import 'package:belahododfinal/Features/Widgets/top_bar.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

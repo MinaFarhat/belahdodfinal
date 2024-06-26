@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Features/Auth/Forgate%20Password/presentation/forgetpassword3.dart';
 import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
-import 'package:belahododfinal/Features/Widgets/field_pin.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_pin.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Core/constant/colors_constant.dart';

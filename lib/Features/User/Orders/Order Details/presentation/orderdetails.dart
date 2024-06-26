@@ -1,6 +1,6 @@
-import 'package:belahododfinal/Features/Widgets/dialog_delete.dart';
-import 'package:belahododfinal/Features/Widgets/fine_of_order.dart';
-import 'package:belahododfinal/Features/Widgets/simple_top_bar.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/fine_of_order.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 

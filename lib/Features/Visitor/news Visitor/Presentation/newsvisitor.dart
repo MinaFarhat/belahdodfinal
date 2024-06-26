@@ -4,7 +4,7 @@ import 'package:belahododfinal/Features/Visitor/Favorite%20Visitor/Presentation/
 import 'package:belahododfinal/Features/Visitor/InfoVisitor/presentation/inofvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/Details%20Of%20Offer%20Visitor/detailsofoffervisitor.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/newvideovisitor.dart';
-import 'package:belahododfinal/Features/Widgets/top_bar.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 

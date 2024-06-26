@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Quantitiy%20Update%20Cubit/quantitiyupdate_cubit.dart';
-import 'package:belahododfinal/Features/Widgets/dialog_delete.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
