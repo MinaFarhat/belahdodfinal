@@ -181,7 +181,7 @@ class CartItem extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade700,
+                      color: Colors.grey.shade900,
                     ),
                   ),
                   SizedBox(
@@ -195,19 +195,19 @@ class CartItem extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: ColorConstant.darkColor,
+                          color: Colors.grey.shade900,
                         ),
                       ),
+                      // Text(
+                      //   " ألف",
+                      //   style: TextStyle(
+                      //     fontSize: 14,
+                      //     fontWeight: FontWeight.bold,
+                      //     color: ColorConstant.darkColor,
+                      //   ),
+                      // ),
                       Text(
-                        " ألف",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: ColorConstant.darkColor,
-                        ),
-                      ),
-                      Text(
-                        " ${price.ceilToDouble().toString()}",
+                        " ${price.ceilToDouble().toStringAsFixed(3)}",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

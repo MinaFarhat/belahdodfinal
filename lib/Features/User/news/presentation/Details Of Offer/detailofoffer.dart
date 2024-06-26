@@ -180,7 +180,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                 maxLines: 3,
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: ColorConstant.hintTextColor,
+                                  color: Colors.grey.shade900,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -276,7 +276,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                 Text(
                                   ':مدة العرض',
                                   style: TextStyle(
-                                    color: ColorConstant.hintTextColor,
+                                     color: Colors.grey.shade900,
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),

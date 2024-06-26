@@ -1,4 +1,3 @@
-import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/diagonal.dart';
 import 'package:flutter/material.dart';
 
@@ -47,10 +46,10 @@ class PriceSection extends StatelessWidget {
                 const SizedBox(height: 4),
                 Row(
                   children: [
-                    const Text(
+                    Text(
                       'ل.س',
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.grey.shade700,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -58,8 +57,8 @@ class PriceSection extends StatelessWidget {
                     const SizedBox(width: 4),
                     DiagonalStrikethrough(
                       text: originalPrice.toStringAsFixed(3),
-                      style: const TextStyle(
-                        color: Colors.grey,
+                      style: TextStyle(
+                        color: Colors.grey.shade700,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -72,7 +71,7 @@ class PriceSection extends StatelessWidget {
             Text(
               ':السعر',
               style: TextStyle(
-                color: ColorConstant.hintTextColor,
+                color: Colors.grey.shade900,
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),

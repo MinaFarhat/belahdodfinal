@@ -204,22 +204,22 @@ class _CartState extends State<Cart> {
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
-                                color: ColorConstant.darkColor,
+                                color: Colors.grey.shade900,
                               ),
                             ),
-                            Text(
-                              " ألف",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: ColorConstant.darkColor,
-                              ),
-                            ),
+                            // Text(
+                            //   " ألف",
+                            //   style: TextStyle(
+                            //     fontSize: 14,
+                            //     fontWeight: FontWeight.bold,
+                            //     color: ColorConstant.darkColor,
+                            //   ),
+                            // ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.01,
                             ),
                             Text(
-                              getcartitemsentity.totalPrice.toString(),
+                              getcartitemsentity.totalPrice.toStringAsFixed(3),
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
