@@ -1,6 +1,5 @@
 import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Libraries/favoritelibraries.dart';
 import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Products/favoriteproducts.dart';
-import 'package:belahododfinal/Features/User/favorite/presentation/Favorite%20Search/favoritesearch.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -25,24 +24,7 @@ class _FavoriteListState extends State<FavoriteList> {
         backgroundColor: Colors.white,
         extendBody: true,
         appBar: SimpleTopBar(
-          leading: InkWell(
-            overlayColor: WidgetStateProperty.all(Colors.transparent),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return const FavoriteSearch();
-                }),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Icon(
-                PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
-                color: ColorConstant.mainColor,
-                size: 26,
-              ),
-            ),
-          ),
+          leading: Container(),
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 16),

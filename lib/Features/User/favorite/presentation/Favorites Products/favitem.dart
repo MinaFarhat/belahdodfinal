@@ -73,7 +73,7 @@ class FavItem extends StatelessWidget {
                             gravity: ToastGravity.BOTTOM,
                             backgroundColor: Colors.green,
                           );
-                          
+
                           context.read<GetfavoritesCubit>().getFavorites();
                         },
                         child: Icon(
@@ -195,7 +195,7 @@ class FavItem extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey.shade500,
+                            color: Colors.grey.shade900,
                           ),
                         ),
                       ),

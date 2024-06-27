@@ -7,7 +7,6 @@ import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_c
 import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart';
-import 'package:belahododfinal/Features/User/Orders/main%20orders/presentation/order.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
@@ -140,7 +139,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: Orders(),
+        home: SplashScreen(),
       ),
     );
   }

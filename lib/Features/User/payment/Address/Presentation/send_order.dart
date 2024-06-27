@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Presentation/dynamic_location_field.dart';
@@ -139,30 +140,36 @@ class _SendOrderState extends State<SendOrder> {
                 listener: (context, state) {
                   state.whenOrNull(
                     error: (networkExceptions) {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return FialToCreateOrderDialog(
-                            message: "فشل إنشاء الطلب",
-                            detailsOfFail: detailsOfFail,
-                          );
-                        },
+                      Fluttertoast.showToast(
+                        msg: NetworkExceptions.getErrorMessage(
+                          networkExceptions,
+                        ),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
                       );
                     },
                     success: (sendorderentity) {
-                      Fluttertoast.showToast(
-                        msg: sendorderentity.message,
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.green,
-                      );
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const Mynavbar();
-                          },
-                        ),
-                      );
+                      if (sendorderentity.isSend == true) {
+                        Fluttertoast.showToast(
+                          msg: sendorderentity.message,
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.green,
+                        );
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const Mynavbar();
+                            },
+                          ),
+                        );
+                      } else {
+                        FialToCreateOrderDialog(
+                          detailsOfFail: sendorderentity.detailsOfMessage,
+                          message: sendorderentity.message,
+                        );
+                      }
                     },
                   );
                 },
