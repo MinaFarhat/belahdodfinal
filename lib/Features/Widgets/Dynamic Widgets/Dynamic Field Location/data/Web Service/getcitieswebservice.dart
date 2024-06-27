@@ -14,7 +14,7 @@ class GetCitiesWebServiceImpl implements GetCitiesWebService {
 
   @override
   Future<GetCitiesEntity> cities() async {
-    final response = await _apiConsumer.get("");
+    final response = await _apiConsumer.get("http://10.0.2.2:8000/api/city");
     return GetCitiesEntity.fromJson(response);
   }
 }

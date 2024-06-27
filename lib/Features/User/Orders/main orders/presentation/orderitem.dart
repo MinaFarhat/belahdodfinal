@@ -6,19 +6,15 @@ import '../../Order Details/presentation/orderdetails.dart';
 
 // ignore: must_be_immutable
 class OrderItem extends StatelessWidget {
+  int orderId;
   String date;
   String stateDialog;
-  String time;
   int totalPrice;
-  String address;
-  String stateOfOrder;
   OrderItem({
+    required this.orderId,
     required this.date,
     required this.stateDialog,
-    required this.time,
     required this.totalPrice,
-    required this.address,
-    required this.stateOfOrder,
     super.key,
   });
 
@@ -31,10 +27,7 @@ class OrderItem extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return OrderDetails(
-                address: address,
-                date: date,
-                stateOfOrder: stateOfOrder,
-                totalPrice: totalPrice,
+                orderId: orderId,
               );
             },
           ),
@@ -96,15 +89,14 @@ class OrderItem extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8),
                                 child: Text(
                                   "حالة الطلبية",
                                   style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: ColorConstant.darkColor,
-                                  ),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
                                 ),
                               ),
                               Padding(
@@ -118,7 +110,7 @@ class OrderItem extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade700,
+                                        color: Colors.grey.shade900,
                                       ),
                                     ),
                                     const SizedBox(
@@ -140,18 +132,18 @@ class OrderItem extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Text(
-                                      time,
+                                      totalPrice.toStringAsFixed(3),
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade700,
+                                        color: Colors.grey.shade900,
                                       ),
                                     ),
                                     const SizedBox(
                                       width: 2,
                                     ),
                                     Icon(
-                                      PhosphorIcons.clock(
+                                      PhosphorIcons.receipt(
                                           PhosphorIconsStyle.regular),
                                       size: 24,
                                       color: ColorConstant.mainColor,

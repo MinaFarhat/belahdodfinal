@@ -1,5 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
-import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Presentation/dynamic_location_field.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/failtocreateorderdialog.dart';
@@ -9,29 +9,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class SendOrder extends StatelessWidget {
-  SendOrder({super.key});
+class SendOrder extends StatefulWidget {
+  const SendOrder({super.key});
+
+  @override
+  State<SendOrder> createState() => _SendOrderState();
+}
+
+class _SendOrderState extends State<SendOrder> {
   final GlobalKey<FormState> _regionKey = GlobalKey<FormState>();
+
   final TextEditingController _regionController = TextEditingController();
 
   final TextEditingController _notesController = TextEditingController();
-  final List<String> detailsOfFail = [
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-    "لاتوجد كمية كافية من المنتج A",
-  ];
+
+  List<String> detailsOfFail = [];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -146,67 +139,30 @@ class SendOrder extends StatelessWidget {
                 listener: (context, state) {
                   state.whenOrNull(
                     error: (networkExceptions) {
-                      Fluttertoast.showToast(
-                        msg: NetworkExceptions.getErrorMessage(
-                          networkExceptions,
-                        ),
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.red,
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return FialToCreateOrderDialog(
+                            message: "فشل إنشاء الطلب",
+                            detailsOfFail: detailsOfFail,
+                          );
+                        },
                       );
                     },
                     success: (sendorderentity) {
-                      if (sendorderentity.isSend == true) {
-                        Fluttertoast.showToast(
-                          msg: sendorderentity.message,
-                          toastLength: Toast.LENGTH_LONG,
-                          gravity: ToastGravity.BOTTOM,
-                          backgroundColor: Colors.green,
-                        );
-                        // Flushbar(
-                        //   dismissDirection: FlushbarDismissDirection.HORIZONTAL,
-                        //   textDirection: TextDirection.rtl,
-                        //   animationDuration: const Duration(milliseconds: 1000),
-                        //   messageText: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Text(
-                        //         sendorderentity.message,
-                        //         textDirection: TextDirection.rtl,
-                        //         style: const TextStyle(
-                        //           fontSize: 16,
-                        //           fontWeight: FontWeight.bold,
-                        //           color: Colors.white,
-                        //         ),
-                        //       ),
-                        //       SizedBox(
-                        //         width:
-                        //             MediaQuery.of(context).size.width * 0.012,
-                        //       ),
-                        //       Icon(
-                        //         PhosphorIcons.paperPlaneTilt(
-                        //             PhosphorIconsStyle.regular),
-                        //         color: Colors.white,
-                        //         size: 22,
-                        //       ),
-                        //     ],
-                        //   ),
-                        //   duration: const Duration(seconds: 3),
-                        //   flushbarPosition: FlushbarPosition
-                        //       .TOP,
-                        //   backgroundColor: Colors.green.shade700,
-                        // ).show(context);
-                      } else {
-                        showDialog(
-                          context: context,
+                      Fluttertoast.showToast(
+                        msg: sendorderentity.message,
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.green,
+                      );
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
                           builder: (context) {
-                            return FialToCreateOrderDialog(
-                              message: "فشل في إنشاء الطلب",
-                              detailsOfFail: detailsOfFail,
-                            );
+                            return const Mynavbar();
                           },
-                        );
-                      }
+                        ),
+                      );
                     },
                   );
                 },
@@ -218,8 +174,11 @@ class SendOrder extends StatelessWidget {
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
                           if (_regionKey.currentState!.validate()) {
-                            context.read<SendOrderCubit>().sendOrder(1,
-                                _regionController.text, _notesController.text);
+                            context.read<SendOrderCubit>().sendOrder(
+                                  DynamicLocationField.cityId!,
+                                  _regionController.text,
+                                  _notesController.text,
+                                );
                           }
                         },
                         child: Container(
@@ -260,8 +219,11 @@ class SendOrder extends StatelessWidget {
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
                           if (_regionKey.currentState!.validate()) {
-                            context.read<SendOrderCubit>().sendOrder(1,
-                                _regionController.text, _notesController.text);
+                            context.read<SendOrderCubit>().sendOrder(
+                                  DynamicLocationField.cityId!,
+                                  _regionController.text,
+                                  _notesController.text,
+                                );
                           }
                         },
                         child: Container(
@@ -307,7 +269,10 @@ class SendOrder extends StatelessWidget {
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
                           context.read<SendOrderCubit>().sendOrder(
-                              1, _regionController.text, _notesController.text);
+                                DynamicLocationField.cityId!,
+                                _regionController.text,
+                                _notesController.text,
+                              );
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.5,

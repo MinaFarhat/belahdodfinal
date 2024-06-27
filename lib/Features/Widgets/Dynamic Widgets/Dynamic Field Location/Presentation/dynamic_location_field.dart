@@ -26,6 +26,12 @@ class DynamicLocationField extends StatefulWidget {
 
 class _DynamicLocationFieldState extends State<DynamicLocationField> {
   @override
+  void initState() {
+    context.read<GetCitiesCubit>().getCities();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [

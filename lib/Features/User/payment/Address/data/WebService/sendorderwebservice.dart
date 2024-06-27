@@ -16,7 +16,7 @@ class SendOrderWebServiceImpl implements SendOrderWebService {
   Future<SendOrderEntity> sendorder(
       int cityId, String address, String? notes) async {
     final response = await _apiConsumer.post(
-      "http://127.0.0.1:8000/api/register",
+      "http://10.0.2.2:8000/api/order/address",
       body: {
         "city": cityId,
         "address": address,

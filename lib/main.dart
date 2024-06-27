@@ -7,6 +7,7 @@ import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_c
 import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart';
+import 'package:belahododfinal/Features/User/Orders/main%20orders/presentation/order.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
@@ -24,6 +25,9 @@ import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'Features/User/Orders/Order Details/Order Details Cubit/order_details_cubit.dart';
+import 'Features/User/Orders/main orders/Get Orders Cubit/get_orders_cubit.dart';
 
 void main() async {
   await configureDependencies();
@@ -122,6 +126,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<GetCitiesCubit>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<GetOrdersCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<OrderDetailsCubit>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -130,7 +140,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: SplashScreen(),
+        home: Orders(),
       ),
     );
   }

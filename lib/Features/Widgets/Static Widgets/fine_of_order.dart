@@ -31,9 +31,8 @@ class FineOfOrder extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: isDetail == true
-                      ? ColorConstant.darkColor
-                      : ColorConstant.mainColor,
+                  color:
+                      isDetail == true ? Colors.black : ColorConstant.mainColor,
                 ),
               ),
               const SizedBox(
@@ -45,7 +44,7 @@ class FineOfOrder extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade600,
+                  color: Colors.grey.shade900,
                 ),
               ),
             ],
@@ -68,7 +67,7 @@ class FineOfOrder extends StatelessWidget {
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                       color: isDetail == true
-                          ? ColorConstant.darkColor
+                          ? Colors.black
                           : ColorConstant.mainColor,
                     ),
                   ),
@@ -82,7 +81,7 @@ class FineOfOrder extends StatelessWidget {
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: isDetail == true
-                          ? ColorConstant.darkColor
+                          ? Colors.black
                           : ColorConstant.mainColor,
                     ),
                   ),
@@ -97,7 +96,7 @@ class FineOfOrder extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade600,
+                  color: Colors.grey.shade900,
                 ),
               ),
             ],
@@ -117,9 +116,8 @@ class FineOfOrder extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: isDetail == true
-                    ? ColorConstant.darkColor
-                    : ColorConstant.mainColor,
+                color:
+                    isDetail == true ? Colors.black : ColorConstant.mainColor,
               ),
             ),
             const SizedBox(
@@ -131,7 +129,7 @@ class FineOfOrder extends StatelessWidget {
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: Colors.grey.shade600,
+                color: Colors.grey.shade900,
               ),
             ),
           ],
