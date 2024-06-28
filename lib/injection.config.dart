@@ -152,11 +152,11 @@ import 'Features/User/news/data/Web%20Service/Details%20of%20Offer/detailsofoffe
 import 'Features/User/news/data/Web%20Service/Get%20All%20Offers/getallofferswevservice.dart'
     as _i44;
 import 'Features/User/news/data/Web%20Service/News/newswebservice.dart' as _i19;
+import 'Features/User/news/Manager/cubit/news_cubit.dart' as _i109;
 import 'Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart'
     as _i83;
 import 'Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart'
     as _i101;
-import 'Features/User/news/Manager/News%20Cubit/news_cubit.dart' as _i109;
 import 'Features/User/note/cubit/get_notifications_cubit.dart' as _i111;
 import 'Features/User/note/data/Repostry/baserepositorygetnotifications.dart'
     as _i86;

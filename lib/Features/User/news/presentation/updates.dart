@@ -1,7 +1,7 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
-import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/cubit/news_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/detailofoffer.dart';
 import 'package:belahododfinal/Features/User/news/presentation/News/newtitle.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';

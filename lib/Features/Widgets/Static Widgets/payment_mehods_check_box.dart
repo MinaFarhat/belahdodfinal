@@ -219,8 +219,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                     context
                                         .read<TransferCubit>()
                                         .sendTransferImage(
-                                          selectedImage.toString(),
-                                        );
+                                     selectedImage!,
+                                    );
                                   },
                                   child: Container(
                                     width:
@@ -267,8 +267,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                     context
                                         .read<TransferCubit>()
                                         .sendTransferImage(
-                                          selectedImage.toString(),
-                                        );
+                                       selectedImage!,
+                                    );
                                   },
                                   child: Container(
                                     width:
@@ -322,8 +322,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                     context
                                         .read<TransferCubit>()
                                         .sendTransferImage(
-                                          selectedImage.toString(),
-                                        );
+                                       selectedImage!,
+                                    );
                                   },
                                   child: Container(
                                     width:

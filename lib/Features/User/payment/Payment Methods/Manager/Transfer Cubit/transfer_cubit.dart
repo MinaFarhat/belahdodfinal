@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/data/Model/transferentity.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/data/Repository/Transfer/baserepositorytransfer.dart';
@@ -15,7 +17,7 @@ class TransferCubit extends Cubit<TransferState> {
 
   final BaseRepositoryTransfer _baseRepositoryTransfer;
 
-  Future<void> sendTransferImage(String transferImage) async {
+  Future<void> sendTransferImage(File transferImage) async {
     emit(const TransferState.loading());
 
     final response =

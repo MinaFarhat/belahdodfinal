@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:belahododfinal/Core/Network/network_info.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/data/Model/transferentity.dart';
@@ -19,7 +21,7 @@ class TransferRepositoryImpl implements BaseRepositoryTransfer {
 
   @override
   Future<Either<NetworkExceptions, TransferEntity>> sendTransferImage(
-      String transferImage) async {
+      File transferImage) async {
     if (await _networkInfo.isConnected) {
       try {
         final response =
