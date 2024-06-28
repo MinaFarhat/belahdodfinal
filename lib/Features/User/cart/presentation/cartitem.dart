@@ -207,7 +207,7 @@ class CartItem extends StatelessWidget {
                       //   ),
                       // ),
                       Text(
-                        " ${price.ceilToDouble().toStringAsFixed(3)}",
+                        " ${price.ceilToDouble().toStringAsFixed(2)}",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
