@@ -2,10 +2,10 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class NewVideoVisitor extends StatelessWidget {
+class Newtitlevisitor extends StatelessWidget {
   String image;
   String title;
-   NewVideoVisitor({required this.image,required this.title,super.key});
+   Newtitlevisitor({required this.image,required this.title,super.key});
 
   @override
   Widget build(BuildContext context) {

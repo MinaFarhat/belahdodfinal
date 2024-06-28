@@ -2,7 +2,7 @@ import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/detailofoffer.dart';
-import 'package:belahododfinal/Features/User/news/presentation/newvedio.dart';
+import 'package:belahododfinal/Features/User/news/presentation/News/newtitle.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -168,7 +168,7 @@ class _NewsPageState extends State<NewsPage> {
                   shrinkWrap: true,
                   itemCount: news.length,
                   itemBuilder: ((context, index) {
-                    return NewVedio(
+                    return NewTitle(
                       image: news[index]['image'],
                       title: news[index]['title'],
                     );

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../Core/constant/colors_constant.dart';
+import '../../../../../../Core/constant/colors_constant.dart';
 
 // ignore: must_be_immutable
-class NewVedio extends StatelessWidget {
+class NewTitle extends StatelessWidget {
   String image;
   String title;
 
-  NewVedio({required this.image, required this.title, super.key});
+  NewTitle({
+    required this.image,
+    required this.title,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:belahododfinal/Features/Visitor/Cart%20Visitor/Presentation/cart
 import 'package:belahododfinal/Features/Visitor/Favorite%20Visitor/Presentation/favoritevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/InfoVisitor/presentation/inofvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/Details%20Of%20Offer%20Visitor/detailsofoffervisitor.dart';
-import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/newvideovisitor.dart';
+import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/News/newtitlevisitor.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -168,7 +168,7 @@ class _NewsPageVisitorState extends State<NewsPageVisitor> {
                   shrinkWrap: true,
                   itemCount: news.length,
                   itemBuilder: ((context, index) {
-                    return NewVideoVisitor(
+                    return Newtitlevisitor(
                       image: news[index]['image'],
                       title: news[index]['title'],
                     );
