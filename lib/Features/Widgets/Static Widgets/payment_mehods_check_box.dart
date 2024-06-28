@@ -29,10 +29,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
     super.initState();
     buttonActions = [
       (context) {
-        print('Button 0 clicked');
       },
       (context) {
-        print('Button 1 clicked');
       },
       (context) {
         showDialog(
@@ -376,7 +374,6 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
         );
       },
       (context) {
-        print('Button 3 clicked');
       },
       (context) {
         showDialog(

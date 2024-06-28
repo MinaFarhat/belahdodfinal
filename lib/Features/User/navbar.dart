@@ -20,8 +20,8 @@ class _MynavbarState extends State<Mynavbar> {
   List screens = [
     const HomePage(),
     const Updates(),
-    NotificationsPage(),
-    Search(),
+    const NotificationsPage(),
+    const Search(),
     const ScreenProfile()
   ];
   int curentindex = 0;

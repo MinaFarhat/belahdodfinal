@@ -193,7 +193,7 @@ import 'Features/User/payment/Payment%20Methods/data/Repository/On%20Arrival/ona
     as _i104;
 import 'Features/User/payment/Payment%20Methods/data/Repository/Transfer/baserepositorytransfer.dart'
     as _i77;
-import 'Features/User/payment/Payment%20Methods/data/Repository/Transfer/transferRepository.dart'
+import 'Features/User/payment/Payment Methods/data/Repository/Transfer/transferrepository.dart'
     as _i78;
 import 'Features/User/payment/Payment%20Methods/data/Web%20Service/On%20Arrival/onarrivalwebservice.dart'
     as _i45;

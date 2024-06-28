@@ -207,7 +207,6 @@ class _DynamicLocationFieldState extends State<DynamicLocationField> {
                             DynamicLocationField.cityId = val?.cityId;
                             DynamicLocationField.value = val?.name;
                           });
-                          print(DynamicLocationField.cityId);
                         },
                         validator: widget.validatedropdownbutton,
                       );

@@ -197,8 +197,8 @@ class ScreenProfile extends StatelessWidget {
                     ),
                     child: StatefulBuilder(
                       builder: (context, setState) {
-                        bool _isNightMode = false;
-                        bool _isEnglish = false;
+                        bool isNightMode = false;
+                        bool isEnglish = false;
                         return Column(
                           children: [
                             SwitchListTile(
@@ -207,10 +207,10 @@ class ScreenProfile extends StatelessWidget {
                                 textDirection: TextDirection.rtl,
                               ),
                               secondary: const Icon(Icons.nightlight_round),
-                              value: _isNightMode,
+                              value: isNightMode,
                               onChanged: (bool value) {
                                 setState(() {
-                                  _isNightMode = value;
+                                  isNightMode = value;
                                 });
                               },
                             ),
@@ -224,10 +224,10 @@ class ScreenProfile extends StatelessWidget {
                                 children: [
                                   const Text('EN'),
                                   Switch(
-                                    value: _isEnglish,
+                                    value: isEnglish,
                                     onChanged: (bool value) {
                                       setState(() {
-                                        _isEnglish = value;
+                                        isEnglish = value;
                                       });
                                     },
                                   ),

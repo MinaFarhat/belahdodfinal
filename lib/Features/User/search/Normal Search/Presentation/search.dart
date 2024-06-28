@@ -13,7 +13,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   bool isSearching = false;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   List<String> oldsearch = [
     "أقلام تلوين",
     "أقلام تلوين",
@@ -232,9 +232,9 @@ class _SearchState extends State<Search> {
                               ),
                             ],
                           )
-                        : Column(
+                        : const Column(
                             children: [
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.only(
                                     left: 14, right: 12, top: 4),
                                 child: Row(

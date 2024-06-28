@@ -213,8 +213,8 @@ class ProfileSettingsScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            Info()), // افترض أن ChangePasswordScreen هو اسم الواجهة لتغيير كلمة المرور
+                      builder: (context) => const Info(),
+                    ), 
                   );
                 },
                 style: OutlinedButton.styleFrom(

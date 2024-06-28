@@ -176,7 +176,7 @@ class _CartState extends State<Cart> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SendOrder();
+                                  return const SendOrder();
                                 },
                               ),
                             );
