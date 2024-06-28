@@ -1,27 +1,27 @@
-import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
-import 'package:belahododfinal/Features/Visitor/Cart%20Visitor/Presentation/cartvisitor.dart';
-import 'package:belahododfinal/Features/Visitor/Favorite%20Visitor/Presentation/favoritevisitor.dart';
-import 'package:belahododfinal/Features/Visitor/InfoVisitor/presentation/inofvisitor.dart';
-import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/Details%20Of%20Offer%20Visitor/detailsofoffervisitor.dart';
-import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/News/newtitlevisitor.dart';
+import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/detailofoffer.dart';
+import 'package:belahododfinal/Features/User/news/presentation/News/newtitle.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../../../../../Core/constant/colors_constant.dart';
+import '../../cart/presentation/cart.dart';
+import '../../favorite/presentation/favorite.dart';
 
 // ignore: must_be_immutable
-class NewsPageVisitor extends StatefulWidget {
-  const NewsPageVisitor({super.key});
+class Updates extends StatefulWidget {
+  const Updates({super.key});
 
   @override
-  State<NewsPageVisitor> createState() => _NewsPageVisitorState();
+  State<Updates> createState() => _UpdatesState();
 }
 
-class _NewsPageVisitorState extends State<NewsPageVisitor> {
+class _UpdatesState extends State<Updates> {
   List<String> advertisements = [
     "assets/images/offer1.png",
     "assets/images/offer2.png",
@@ -43,11 +43,11 @@ class _NewsPageVisitorState extends State<NewsPageVisitor> {
     },
   ];
 
-  List<String> offers = [
-    "assets/images/offer1.png",
-    "assets/images/offer2.png",
-    "assets/images/offer3.png",
-  ];
+  // List<String> offers = [
+  //   "assets/images/offer1.png",
+  //   "assets/images/offer2.png",
+  //   "assets/images/offer3.png",
+  // ];
 
   int _currentIndex = 0;
 
@@ -67,21 +67,21 @@ class _NewsPageVisitorState extends State<NewsPageVisitor> {
           ontapFav: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return const FavoriteVisitor();
+                return const FavoriteList();
               }),
             );
           },
           ontapwishList: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return const CartVisitor();
+                return const Cart();
               }),
             );
           },
           ontapName: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return const InformationVisitor();
+                return const Information();
               }),
             );
           },
@@ -168,7 +168,7 @@ class _NewsPageVisitorState extends State<NewsPageVisitor> {
                   shrinkWrap: true,
                   itemCount: news.length,
                   itemBuilder: ((context, index) {
-                    return Newtitlevisitor(
+                    return NewTitle(
                       image: news[index]['image'],
                       title: news[index]['title'],
                     );
@@ -248,7 +248,7 @@ class _NewsPageVisitorState extends State<NewsPageVisitor> {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return DetailsOfOfferVisitor(
+                                      return DetailsOfOffer(
                                         offerId: getalloffersentity
                                             .offers[index].offerId,
                                         offerImage: imageUrl,

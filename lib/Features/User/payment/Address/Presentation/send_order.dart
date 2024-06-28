@@ -165,9 +165,14 @@ class _SendOrderState extends State<SendOrder> {
                           ),
                         );
                       } else {
-                        FialToCreateOrderDialog(
-                          detailsOfFail: sendorderentity.detailsOfMessage,
-                          message: sendorderentity.message,
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return FialToCreateOrderDialog(
+                              detailsOfFail: sendorderentity.detailsOfMessage,
+                              message: sendorderentity.message,
+                            );
+                          },
                         );
                       }
                     },

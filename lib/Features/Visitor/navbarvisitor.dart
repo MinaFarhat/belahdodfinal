@@ -2,7 +2,7 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/Presentation/homepagevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Profile/Presentation/profilevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Search%20visitor/Presentation/searchvisitor.dart';
-import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/newsvisitor.dart';
+import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/updatesvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/note%20Visitor/Presentation/notificationvisitor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
@@ -18,7 +18,7 @@ class Mynavbarvisitor extends StatefulWidget {
 class _MynavbarvisitorState extends State<Mynavbarvisitor> {
   List screens = [
     HomePageVisitor(),
-    const NewsPageVisitor(),
+    const UpdatesVisitor(),
     const NotificationsPageVisitor(),
     const SearchVisitor(),
     const ProfileVisitor()
