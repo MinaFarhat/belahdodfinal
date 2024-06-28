@@ -117,7 +117,6 @@ class _HomePageState extends State<HomePage> {
                           products: products,
                           productIDs: productIDs,
                           sectionId: sectionentity.sections[index].sectionId,
-                         
                         ),
                         index == 0
                             ? Column(

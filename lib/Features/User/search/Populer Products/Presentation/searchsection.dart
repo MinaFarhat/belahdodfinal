@@ -1,7 +1,7 @@
-import 'package:belahododfinal/Features/User/search/presentation/popularitem.dart';
+import 'package:belahododfinal/Features/User/search/Populer%20Products/Presentation/popularitem.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../Core/constant/colors_constant.dart';
+import '../../../../../../Core/constant/colors_constant.dart';
 
 // ignore: must_be_immutable
 class SearchSection extends StatelessWidget {

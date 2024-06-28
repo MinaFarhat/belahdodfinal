@@ -19,6 +19,7 @@ import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Produc
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/navbarvisitor.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Get%20Cities%20Cubit/get_cities_cubit.dart';
 import 'package:belahododfinal/injection.dart';
 import 'package:flutter/material.dart';
@@ -131,6 +132,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<OrderDetailsCubit>(),
         ),
+       
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -139,7 +141,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: SplashScreen(),
+        home: Mynavbarvisitor(),
       ),
     );
   }

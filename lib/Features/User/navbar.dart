@@ -2,7 +2,7 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/homepage.dart';
 import 'package:belahododfinal/Features/User/news/presentation/news.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/screen_profile.dart';
-import 'package:belahododfinal/Features/User/search/presentation/search.dart';
+import 'package:belahododfinal/Features/User/search/Normal%20Search/Presentation/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';

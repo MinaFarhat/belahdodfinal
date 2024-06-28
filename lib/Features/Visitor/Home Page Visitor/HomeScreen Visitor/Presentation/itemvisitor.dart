@@ -1,28 +1,73 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
-import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/alhafath%20Visitor/Presentation/alhafathpostsvisitor.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_base.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_book.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_game.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_qurans.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_stationery.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
-class ItemVisitor extends StatelessWidget {
+class ItemVisitor extends StatefulWidget {
   String image;
   int index;
-  bool isFavorite;
-  ItemVisitor(
-      {required this.image,
-      required this.index,
-      required this.isFavorite,
-      super.key});
+  int productID;
+  ItemVisitor({
+    required this.image,
+    required this.index,
+    required this.productID,
+    super.key,
+  });
 
+  @override
+  State<ItemVisitor> createState() => _ItemVisitorState();
+}
+
+class _ItemVisitorState extends State<ItemVisitor> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (index == 0) {
+        if (widget.index == 0) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const AlhafathPostsVisitor(),
+              builder: (context) => DetailsBookVisitor(
+                productID: widget.productID,
+              ),
+            ),
+          );
+        } else if (widget.index == 1) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsGameVisitor(
+                productID: widget.productID,
+              ),
+            ),
+          );
+        } else if (widget.index == 2) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsStationeryVisitor(
+                productID: widget.productID,
+              ),
+            ),
+          );
+        } else if (widget.index == 3) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsQuransVisitor(
+                productID: widget.productID,
+              ),
+            ),
+          );
+        } else if (widget.index == 4 || widget.index > 4) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsBaseVisitor(
+                productID: widget.productID,
+              ),
             ),
           );
         }
@@ -35,8 +80,32 @@ class ItemVisitor extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
               color: Colors.white,
               image: DecorationImage(
-                image: AssetImage(image),
+                image: CachedNetworkImageProvider(widget.image),
                 fit: BoxFit.cover,
+                onError: (exception, stackTrace) {
+                  Stack(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.white,
+                          image: const DecorationImage(
+                            image: AssetImage("assets/images/logo.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.black.withOpacity(0.3),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
@@ -178,17 +247,11 @@ class ItemVisitor extends StatelessWidget {
                   radius: 18,
                   backgroundColor: Colors.white,
                   child: Center(
-                    child: isFavorite == true
-                        ? Icon(
-                            PhosphorIcons.heart(PhosphorIconsStyle.fill),
-                            color: ColorConstant.mainColor,
-                            size: 25,
-                          )
-                        : Icon(
-                            PhosphorIcons.heart(PhosphorIconsStyle.regular),
-                            color: ColorConstant.mainColor,
-                            size: 25,
-                          ),
+                    child: Icon(
+                      PhosphorIcons.heart(PhosphorIconsStyle.regular),
+                      color: ColorConstant.mainColor,
+                      size: 25,
+                    ),
                   ),
                 ),
               ),

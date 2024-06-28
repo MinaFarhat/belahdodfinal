@@ -1,85 +1,26 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/Presentation/itemvisitor.dart';
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+import '../../SubSections And Products Visitor/presentation/subsectionsandproductsvisitor.dart';
 
 // ignore: must_be_immutable
 class SectionVisitor extends StatelessWidget {
-  String nameOfSection;
-  int sectionNumber;
-  SectionVisitor(
-      {required this.nameOfSection, required this.sectionNumber, super.key});
-  List<Map<String, dynamic>> alhafath = [
-    {
-      "image": "assets/images/book1.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/book2.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/book3.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/book4.png",
-      "isFavorite": false,
-    },
-  ];
-  List<Map<String, dynamic>> stationery = [
-    {
-      "image": "assets/images/tool1.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/tool2.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/tool3.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/tool4.png",
-      "isFavorite": false,
-    },
-  ];
-  List<Map<String, dynamic>> kidsGames = [
-    {
-      "image": "assets/images/game1.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/game2.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/game3.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/game4.png",
-      "isFavorite": false,
-    },
-  ];
-  List<Map<String, dynamic>> religious = [
-    {
-      "image": "assets/images/religious1.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/religious2.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/religious3.png",
-      "isFavorite": false,
-    },
-    {
-      "image": "assets/images/religious4.png",
-      "isFavorite": false,
-    },
-  ];
+  final String nameOfSection;
+  final int sectionNumber;
+  final List<ProductEntity> products;
+  final List<int> productIDs;
+  final int? sectionId;
+  const SectionVisitor({
+    required this.nameOfSection,
+    required this.sectionNumber,
+    required this.products,
+    required this.productIDs,
+    required this.sectionId,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -87,19 +28,52 @@ class SectionVisitor extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(right: 12, top: 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                nameOfSection,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: ColorConstant.darkColor,
-                  fontWeight: FontWeight.bold,
+          child: InkWell(
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
+            onTap: () {
+              // print(sectionId);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SubSectionsAndProductsVisitor(
+                      nameOfSection: nameOfSection,
+                      sectionId: sectionId!,
+                    );
+                  },
                 ),
-              ),
-            ],
+              );
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: CircleAvatar(
+                    backgroundColor: ColorConstant.mainColor,
+                    radius: 15,
+                    child: Center(
+                      child: Icon(
+                        PhosphorIcons.arrowLeft(PhosphorIconsStyle.regular),
+                        size: 22,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Text(
+                  nameOfSection,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: ColorConstant.darkColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.01,
         ),
         SizedBox(
           width: double.infinity,
@@ -108,38 +82,23 @@ class SectionVisitor extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            itemCount: sectionNumber == 0
-                ? alhafath.length
-                : sectionNumber == 1
-                    ? stationery.length
-                    : sectionNumber == 2
-                        ? kidsGames.length
-                        : religious.length,
+            itemCount: products.length,
             itemBuilder: (context, i) {
+              String imageUrl = 'http://10.0.2.2:8000${products[i].image}';
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: ItemVisitor(
-                  image: sectionNumber == 0
-                      ? alhafath[i]["image"]
-                      : sectionNumber == 1
-                          ? stationery[i]["image"]
-                          : sectionNumber == 2
-                              ? kidsGames[i]["image"]
-                              : religious[i]["image"],
+                  productID: productIDs[i],
+                  image: imageUrl,
                   index: sectionNumber == 0
                       ? 0
                       : sectionNumber == 1
                           ? 1
                           : sectionNumber == 2
                               ? 2
-                              : 3,
-                  isFavorite: sectionNumber == 0
-                      ? alhafath[i]["isFavorite"]
-                      : sectionNumber == 1
-                          ? stationery[i]["isFavorite"]
-                          : sectionNumber == 2
-                              ? kidsGames[i]["isFavorite"]
-                              : religious[i]["isFavorite"],
+                              : sectionNumber == 3
+                                  ? 3
+                                  : 4,
                 ),
               );
             },
