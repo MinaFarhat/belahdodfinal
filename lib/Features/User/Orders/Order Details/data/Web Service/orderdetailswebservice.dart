@@ -14,8 +14,8 @@ class OrderDetailsWebServiceImpl implements OrderDetailsWebService {
 
   @override
   Future<OrderDetailsEntity> orderDetails(int orderId) async {
-    final response = await _apiConsumer
-        .get("http://10.0.2.2:8000/api/order/details/$orderId");
+    final response =
+        await _apiConsumer.get("http://10.0.2.2:8000/api/orders/$orderId");
     return OrderDetailsEntity.fromJson(response);
   }
 }

@@ -14,7 +14,7 @@ class OrderProductsEntity {
   @JsonKey(name: "first_image")
   final String firstImage;
   @JsonKey(name: "price")
-  final int price;
+  final String price;
   @JsonKey(name: "quantity")
   final int quantity;
 
@@ -26,7 +26,7 @@ class OrderProductsEntity {
     this.price,
     this.quantity,
   );
-   factory OrderProductsEntity.fromJson(Map<String, dynamic> json) =>
+  factory OrderProductsEntity.fromJson(Map<String, dynamic> json) =>
       _$OrderProductsEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderProductsEntityToJson(this);

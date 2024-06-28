@@ -14,8 +14,7 @@ class GetOrdersWebServiceImpl implements GetOrdersWebService {
 
   @override
   Future<GetOrdersEntity> getOrders() async {
-    final response =
-        await _apiConsumer.get("http://10.0.2.2:8000/api/order/get");
+    final response = await _apiConsumer.get("http://10.0.2.2:8000/api/orders");
     return GetOrdersEntity.fromJson(response);
   }
 }

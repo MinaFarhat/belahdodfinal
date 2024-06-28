@@ -63,11 +63,11 @@ import 'Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart'
 import 'Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart'
     as _i106;
 import 'Features/User/cart/Manager/Quantitiy%20Update%20Cubit/quantitiyupdate_cubit.dart'
-    as _i71;
+    as _i73;
 import 'Features/User/Details/data/Repostry/Base%20Repository/baserepository.dart'
-    as _i76;
+    as _i78;
 import 'Features/User/Details/data/Repostry/Base%20Repository/baserepositorybase.dart'
-    as _i75;
+    as _i77;
 import 'Features/User/Details/data/Repostry/Book%20Repository/baserepositorybook.dart'
     as _i99;
 import 'Features/User/Details/data/Repostry/Book%20Repository/bookrepository.dart'
@@ -77,9 +77,9 @@ import 'Features/User/Details/data/Repostry/Game%20Repository/baserepositorygame
 import 'Features/User/Details/data/Repostry/Game%20Repository/gamerepository.dart'
     as _i60;
 import 'Features/User/Details/data/Repostry/Quraan%20Repository/baserepositoryquraan.dart'
-    as _i72;
+    as _i74;
 import 'Features/User/Details/data/Repostry/Quraan%20Repository/quraanrepository.dart'
-    as _i73;
+    as _i75;
 import 'Features/User/Details/data/Repostry/Stationery%20Repository/baserepositorystationery.dart'
     as _i66;
 import 'Features/User/Details/data/Repostry/Stationery%20Repository/stationeryrepository.dart'
@@ -114,7 +114,7 @@ import 'Features/User/favorite/Manager/Add%20To%20Favorites%20Cubit/addtofavorit
     as _i82;
 import 'Features/User/favorite/Manager/Get%20Favorites%20Cubit/getfavorites_cubit.dart'
     as _i113;
-import 'Features/User/homepage/HomeScreen/cubit/section_cubit.dart' as _i74;
+import 'Features/User/homepage/HomeScreen/cubit/section_cubit.dart' as _i76;
 import 'Features/User/homepage/HomeScreen/data/Repostitory/baserepositorysection.dart'
     as _i69;
 import 'Features/User/homepage/HomeScreen/data/Repostitory/sectionrepository.dart'
@@ -192,9 +192,9 @@ import 'Features/User/payment/Payment%20Methods/data/Repository/On%20Arrival/bas
 import 'Features/User/payment/Payment%20Methods/data/Repository/On%20Arrival/onarrivalrepository.dart'
     as _i104;
 import 'Features/User/payment/Payment%20Methods/data/Repository/Transfer/baserepositorytransfer.dart'
-    as _i77;
-import 'Features/User/payment/Payment Methods/data/Repository/Transfer/transferrepository.dart'
-    as _i78;
+    as _i71;
+import 'Features/User/payment/Payment%20Methods/data/Repository/Transfer/transferrepository.dart'
+    as _i72;
 import 'Features/User/payment/Payment%20Methods/data/Web%20Service/On%20Arrival/onarrivalwebservice.dart'
     as _i45;
 import 'Features/User/payment/Payment%20Methods/data/Web%20Service/Transfer/transferwebservice.dart'
@@ -367,21 +367,21 @@ extension GetItInjectableX on _i1.GetIt {
           networkInfo: gh<_i8.NetworkInfo>(),
           sectionWebService: gh<_i13.SectionWebService>(),
         ));
-    gh.factory<_i71.QuantitiyupdateCubit>(() =>
-        _i71.QuantitiyupdateCubit(gh<_i32.BaseRepositoryQuantityUpdate>()));
-    gh.singleton<_i72.BaseRepositoryQuraan>(() => _i73.QuraanRepository(
+    gh.singleton<_i71.BaseRepositoryTransfer>(() => _i72.TransferRepositoryImpl(
+          networkInfo: gh<_i8.NetworkInfo>(),
+          transferWebService: gh<_i27.TransferWebService>(),
+        ));
+    gh.factory<_i73.QuantitiyupdateCubit>(() =>
+        _i73.QuantitiyupdateCubit(gh<_i32.BaseRepositoryQuantityUpdate>()));
+    gh.singleton<_i74.BaseRepositoryQuraan>(() => _i75.QuraanRepository(
           networkInfo: gh<_i8.NetworkInfo>(),
           quraanWebService: gh<_i11.QuraanWebService>(),
         ));
-    gh.factory<_i74.SectionCubit>(
-        () => _i74.SectionCubit(gh<_i69.BaseRepositorySection>()));
-    gh.singleton<_i75.BaseRepositoryBase>(() => _i76.BaseRepositoryImpl(
+    gh.factory<_i76.SectionCubit>(
+        () => _i76.SectionCubit(gh<_i69.BaseRepositorySection>()));
+    gh.singleton<_i77.BaseRepositoryBase>(() => _i78.BaseRepositoryImpl(
           networkInfo: gh<_i8.NetworkInfo>(),
           baseWebService: gh<_i20.BaseWebService>(),
-        ));
-    gh.singleton<_i77.BaseRepositoryTransfer>(() => _i78.TransferRepositoryImpl(
-          networkInfo: gh<_i8.NetworkInfo>(),
-          transferWebService: gh<_i27.TransferWebService>(),
         ));
     gh.singleton<_i79.BaseRepositoryAddtoCart>(
         () => _i80.AddtoCartRepositoryImpl(
@@ -389,7 +389,7 @@ extension GetItInjectableX on _i1.GetIt {
               addtoCartWebService: gh<_i21.AddtoCartWebService>(),
             ));
     gh.factory<_i81.BaseCubit>(
-        () => _i81.BaseCubit(gh<_i75.BaseRepositoryBase>()));
+        () => _i81.BaseCubit(gh<_i77.BaseRepositoryBase>()));
     gh.factory<_i82.AddtofavoriteCubit>(
         () => _i82.AddtofavoriteCubit(gh<_i55.BaseRepositoryAddToFavorites>()));
     gh.factory<_i83.DetailsofofferCubit>(() =>
@@ -397,7 +397,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i84.AddtocartCubit>(
         () => _i84.AddtocartCubit(gh<_i79.BaseRepositoryAddtoCart>()));
     gh.factory<_i85.TransferCubit>(
-        () => _i85.TransferCubit(gh<_i77.BaseRepositoryTransfer>()));
+        () => _i85.TransferCubit(gh<_i71.BaseRepositoryTransfer>()));
     gh.singleton<_i86.BaseRepositoryGetNotifications>(
         () => _i87.GetNotificationsRepositoryImpl(
               networkInfo: gh<_i8.NetworkInfo>(),
@@ -459,7 +459,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i111.GetNotificationsCubit>(() =>
         _i111.GetNotificationsCubit(gh<_i86.BaseRepositoryGetNotifications>()));
     gh.factory<_i112.QuraanCubit>(
-        () => _i112.QuraanCubit(gh<_i72.BaseRepositoryQuraan>()));
+        () => _i112.QuraanCubit(gh<_i74.BaseRepositoryQuraan>()));
     gh.factory<_i113.GetfavoritesCubit>(
         () => _i113.GetfavoritesCubit(gh<_i89.BaseRepositoryGetFavorites>()));
     gh.factory<_i114.BookCubit>(

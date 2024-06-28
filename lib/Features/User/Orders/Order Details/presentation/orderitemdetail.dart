@@ -13,7 +13,7 @@ class OrderItemDetails extends StatelessWidget {
   int sectionId;
   String image;
   String name;
-  int price;
+  String price;
   int quantity;
 
   OrderItemDetails({

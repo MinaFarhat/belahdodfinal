@@ -12,7 +12,7 @@ OrderProductsEntity _$OrderProductsEntityFromJson(Map<String, dynamic> json) =>
       (json['section_id'] as num).toInt(),
       json['product_name'] as String,
       json['first_image'] as String,
-      (json['price'] as num).toInt(),
+      json['price'] as String,
       (json['quantity'] as num).toInt(),
     );
 
