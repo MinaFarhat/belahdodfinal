@@ -1,41 +1,29 @@
+import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../../Core/constant/colors_constant.dart';
 import 'noteitem.dart';
 
 // ignore: must_be_immutable
-class NotificationsPage extends StatelessWidget {
-  NotificationsPage({super.key});
-  List<Map<String, dynamic>> notifications = [
-    {
-      "image": "assets/images/notification.png",
-      "title": "تم إضافة حزمة جديدة",
-      "subTitle": "تم إضافة كمية جديدة من الكمية المفضلة لديك",
-      "isRead": false,
-    },
-    {
-      "image": "assets/images/notification.png",
-      "title": "تمت الموافقة على طلبك",
-      "subTitle":
-          "كلفة الشحن هي 10000 ليرة سورية والرقم السري هو 1265612 يمكنك استخدام هذا الرقم عند استلام الطلبية",
-      "isRead": false,
-    },
-    {
-      "image": "assets/images/notification.png",
-      "title": "المنتج غير متوفر حاليا",
-      "subTitle":
-          "لا تتوفر حاليا كمية أحد المنتجات التي أخترتها عند أنشاء الطلبية أضغط لحذف المنتج او الغاء الطلبية",
-      "isRead": true,
-    },
-    {
-      "image": "assets/images/notification.png",
-      "title": "تمت الموافقة على طلبك",
-      "subTitle": "أن المبلغ الإجمالي هو 500000 ليرة سورية",
-      "isRead": true,
-    },
-  ];
+class NotificationsPage extends StatefulWidget {
+  const NotificationsPage({super.key});
+
+  @override
+  State<NotificationsPage> createState() => _NotificationsPageState();
+}
+
+class _NotificationsPageState extends State<NotificationsPage> {
+  @override
+  void initState() {
+    context.read<GetNotificationsCubit>().getNotifications();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -61,36 +49,82 @@ class NotificationsPage extends StatelessWidget {
           ],
           isBottom: true,
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.9,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: notifications.length,
-                  itemBuilder: ((context, index) {
-                    return Column(
-                      children: [
-                        NotificationItem(
-                          image: notifications[index]['image'],
-                          title: notifications[index]['title'],
-                          subtitle: notifications[index]['subTitle'],
-                          isRead: notifications[index]['isRead'],
-                        ),
-                        index == notifications.length - 1
-                            ? SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.08,
-                              )
-                            : Container(),
-                      ],
-                    );
-                  }),
-                ),
-              ),
-            ],
-          ),
+        body: BlocConsumer<GetNotificationsCubit, GetNotificationsState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              error: (networkExceptions) {
+                Fluttertoast.showToast(
+                  msg: NetworkExceptions.getErrorMessage(
+                    networkExceptions,
+                  ),
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  backgroundColor: Colors.red,
+                );
+              },
+            );
+          },
+          builder: (context, state) {
+            return state.maybeWhen(
+              orElse: () {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: ColorConstant.mainColor,
+                  ),
+                );
+              },
+              initial: () {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: ColorConstant.mainColor,
+                  ),
+                );
+              },
+              loading: () {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: ColorConstant.mainColor,
+                  ),
+                );
+              },
+              success: (getnotificationsentity) {
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.9,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: getnotificationsentity.getNotifications.length,
+                    itemBuilder: ((context, index) {
+                      return Column(
+                        children: [
+                          NotificationItem(
+                            noteId: getnotificationsentity
+                                .getNotifications[index].noteId,
+                            noteType: getnotificationsentity
+                                .getNotifications[index].noteType,
+                            title: getnotificationsentity
+                                .getNotifications[index].noteTitle,
+                            subtitle: getnotificationsentity
+                                .getNotifications[index].noteDescription,
+                            isRead: getnotificationsentity
+                                .getNotifications[index].isRead,
+                          ),
+                          index ==
+                                  getnotificationsentity
+                                          .getNotifications.length -
+                                      1
+                              ? SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.08,
+                                )
+                              : Container(),
+                        ],
+                      );
+                    }),
+                  ),
+                );
+              },
+            );
+          },
         ),
       ),
     );

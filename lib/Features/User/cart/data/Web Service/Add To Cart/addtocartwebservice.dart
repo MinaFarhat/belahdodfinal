@@ -14,8 +14,8 @@ class AddtoCartWebServiceImpl implements AddtoCartWebService {
 
   @override
   Future<AddtoCartEntity> addtocart(int productID) async {
-    final response = await _apiConsumer
-        .post("http://10.0.2.2:8000/api/cart/$productID/add");
+    final response =
+        await _apiConsumer.post("http://10.0.2.2:8000/api/cart/$productID/add");
 
     return AddtoCartEntity.fromJson(response);
   }
