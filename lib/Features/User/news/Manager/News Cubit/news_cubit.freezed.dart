@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'on_arrival_cubit.dart';
+part of 'news_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$OnArrivalState {
+mixin _$NewsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnArrivalEntity onarrivalentity) success,
+    required TResult Function(GetNewsEntity getnewsentity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$OnArrivalState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnArrivalEntity onarrivalentity)? success,
+    TResult? Function(GetNewsEntity getnewsentity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$OnArrivalState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnArrivalEntity onarrivalentity)? success,
+    TResult Function(GetNewsEntity getnewsentity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) =>
@@ -69,16 +69,15 @@ mixin _$OnArrivalState {
 }
 
 /// @nodoc
-abstract class $OnArrivalStateCopyWith<$Res> {
-  factory $OnArrivalStateCopyWith(
-          OnArrivalState value, $Res Function(OnArrivalState) then) =
-      _$OnArrivalStateCopyWithImpl<$Res, OnArrivalState>;
+abstract class $NewsStateCopyWith<$Res> {
+  factory $NewsStateCopyWith(NewsState value, $Res Function(NewsState) then) =
+      _$NewsStateCopyWithImpl<$Res, NewsState>;
 }
 
 /// @nodoc
-class _$OnArrivalStateCopyWithImpl<$Res, $Val extends OnArrivalState>
-    implements $OnArrivalStateCopyWith<$Res> {
-  _$OnArrivalStateCopyWithImpl(this._value, this._then);
+class _$NewsStateCopyWithImpl<$Res, $Val extends NewsState>
+    implements $NewsStateCopyWith<$Res> {
+  _$NewsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +94,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$OnArrivalStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$NewsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -109,7 +108,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'OnArrivalState.initial()';
+    return 'NewsState.initial()';
   }
 
   @override
@@ -126,7 +125,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnArrivalEntity onarrivalentity) success,
+    required TResult Function(GetNewsEntity getnewsentity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return initial();
@@ -137,7 +136,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnArrivalEntity onarrivalentity)? success,
+    TResult? Function(GetNewsEntity getnewsentity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return initial?.call();
@@ -148,7 +147,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnArrivalEntity onarrivalentity)? success,
+    TResult Function(GetNewsEntity getnewsentity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -196,7 +195,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements OnArrivalState {
+abstract class _Initial implements NewsState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -209,7 +208,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$OnArrivalStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$NewsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -223,7 +222,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'OnArrivalState.loading()';
+    return 'NewsState.loading()';
   }
 
   @override
@@ -240,7 +239,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnArrivalEntity onarrivalentity) success,
+    required TResult Function(GetNewsEntity getnewsentity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return loading();
@@ -251,7 +250,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnArrivalEntity onarrivalentity)? success,
+    TResult? Function(GetNewsEntity getnewsentity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return loading?.call();
@@ -262,7 +261,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnArrivalEntity onarrivalentity)? success,
+    TResult Function(GetNewsEntity getnewsentity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -310,7 +309,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements OnArrivalState {
+abstract class _Loading implements NewsState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -320,12 +319,12 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OnArrivalEntity onarrivalentity});
+  $Res call({GetNewsEntity getnewsentity});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$OnArrivalStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$NewsStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -334,13 +333,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? onarrivalentity = null,
+    Object? getnewsentity = null,
   }) {
     return _then(_$SuccessImpl(
-      null == onarrivalentity
-          ? _value.onarrivalentity
-          : onarrivalentity // ignore: cast_nullable_to_non_nullable
-              as OnArrivalEntity,
+      null == getnewsentity
+          ? _value.getnewsentity
+          : getnewsentity // ignore: cast_nullable_to_non_nullable
+              as GetNewsEntity,
     ));
   }
 }
@@ -348,14 +347,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.onarrivalentity);
+  const _$SuccessImpl(this.getnewsentity);
 
   @override
-  final OnArrivalEntity onarrivalentity;
+  final GetNewsEntity getnewsentity;
 
   @override
   String toString() {
-    return 'OnArrivalState.success(onarrivalentity: $onarrivalentity)';
+    return 'NewsState.success(getnewsentity: $getnewsentity)';
   }
 
   @override
@@ -363,12 +362,12 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.onarrivalentity, onarrivalentity) ||
-                other.onarrivalentity == onarrivalentity));
+            (identical(other.getnewsentity, getnewsentity) ||
+                other.getnewsentity == getnewsentity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, onarrivalentity);
+  int get hashCode => Object.hash(runtimeType, getnewsentity);
 
   @JsonKey(ignore: true)
   @override
@@ -381,10 +380,10 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnArrivalEntity onarrivalentity) success,
+    required TResult Function(GetNewsEntity getnewsentity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
-    return success(onarrivalentity);
+    return success(getnewsentity);
   }
 
   @override
@@ -392,10 +391,10 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnArrivalEntity onarrivalentity)? success,
+    TResult? Function(GetNewsEntity getnewsentity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
-    return success?.call(onarrivalentity);
+    return success?.call(getnewsentity);
   }
 
   @override
@@ -403,12 +402,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnArrivalEntity onarrivalentity)? success,
+    TResult Function(GetNewsEntity getnewsentity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(onarrivalentity);
+      return success(getnewsentity);
     }
     return orElse();
   }
@@ -451,10 +450,10 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements OnArrivalState {
-  const factory _Success(final OnArrivalEntity onarrivalentity) = _$SuccessImpl;
+abstract class _Success implements NewsState {
+  const factory _Success(final GetNewsEntity getnewsentity) = _$SuccessImpl;
 
-  OnArrivalEntity get onarrivalentity;
+  GetNewsEntity get getnewsentity;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -473,7 +472,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$OnArrivalStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$NewsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -511,7 +510,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'OnArrivalState.error(networkExceptions: $networkExceptions)';
+    return 'NewsState.error(networkExceptions: $networkExceptions)';
   }
 
   @override
@@ -537,7 +536,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnArrivalEntity onarrivalentity) success,
+    required TResult Function(GetNewsEntity getnewsentity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return error(networkExceptions);
@@ -548,7 +547,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnArrivalEntity onarrivalentity)? success,
+    TResult? Function(GetNewsEntity getnewsentity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return error?.call(networkExceptions);
@@ -559,7 +558,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnArrivalEntity onarrivalentity)? success,
+    TResult Function(GetNewsEntity getnewsentity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -607,7 +606,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements OnArrivalState {
+abstract class _Error implements NewsState {
   const factory _Error(final NetworkExceptions networkExceptions) = _$ErrorImpl;
 
   NetworkExceptions get networkExceptions;

@@ -1,6 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Cart%20Visitor/Presentation/cartvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Favorite%20Visitor/Presentation/favoritevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/InfoVisitor/presentation/inofvisitor.dart';
@@ -43,11 +44,11 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
     },
   ];
 
-  List<String> offers = [
-    "assets/images/offer1.png",
-    "assets/images/offer2.png",
-    "assets/images/offer3.png",
-  ];
+  // List<String> offers = [
+  //   "assets/images/offer1.png",
+  //   "assets/images/offer2.png",
+  //   "assets/images/offer3.png",
+  // ];
 
   int _currentIndex = 0;
 
@@ -162,18 +163,63 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,
               ),
-              SizedBox(
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: news.length,
-                  itemBuilder: ((context, index) {
-                    return Newtitlevisitor(
-                      image: news[index]['image'],
-                      title: news[index]['title'],
-                    );
-                  }),
-                ),
+              BlocConsumer<NewsCubit, NewsState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (networkExceptions) {
+                      Fluttertoast.showToast(
+                        msg: NetworkExceptions.getErrorMessage(
+                          networkExceptions,
+                        ),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                      );
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    initial: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    success: (getnewsentity) {
+                      return SizedBox(
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: getnewsentity.news.length,
+                          itemBuilder: ((context, index) {
+                            String imageUrl =
+                                'http://10.0.2.2:8000${getnewsentity.news[index].newsImage}';
+                            return Newtitlevisitor(
+                              image: imageUrl,
+                              title: getnewsentity.news[index].newsDescription,
+                            );
+                          }),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 12, top: 16),

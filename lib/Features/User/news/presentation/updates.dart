@@ -1,6 +1,7 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/detailofoffer.dart';
 import 'package:belahododfinal/Features/User/news/presentation/News/newtitle.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';
@@ -28,20 +29,20 @@ class _UpdatesState extends State<Updates> {
     "assets/images/offer3.png",
   ];
 
-  List<Map<String, dynamic>> news = [
-    {
-      "image": "assets/images/new.png",
-      "title": "انطلاق المعرض السنوي في الدوحة"
-    },
-    {
-      "image": "assets/images/new.png",
-      "title": "انطلاق المعرض السنوي في الدوحة"
-    },
-    {
-      "image": "assets/images/new.png",
-      "title": "انطلاق المعرض السنوي في الدوحة"
-    },
-  ];
+  // List<Map<String, dynamic>> news = [
+  //   {
+  //     "image": "assets/images/new.png",
+  //     "title": "انطلاق المعرض السنوي في الدوحة"
+  //   },
+  //   {
+  //     "image": "assets/images/new.png",
+  //     "title": "انطلاق المعرض السنوي في الدوحة"
+  //   },
+  //   {
+  //     "image": "assets/images/new.png",
+  //     "title": "انطلاق المعرض السنوي في الدوحة"
+  //   },
+  // ];
 
   // List<String> offers = [
   //   "assets/images/offer1.png",
@@ -162,18 +163,63 @@ class _UpdatesState extends State<Updates> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,
               ),
-              SizedBox(
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: news.length,
-                  itemBuilder: ((context, index) {
-                    return NewTitle(
-                      image: news[index]['image'],
-                      title: news[index]['title'],
-                    );
-                  }),
-                ),
+              BlocConsumer<NewsCubit, NewsState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (networkExceptions) {
+                      Fluttertoast.showToast(
+                        msg: NetworkExceptions.getErrorMessage(
+                          networkExceptions,
+                        ),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                      );
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    initial: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    success: (getnewsentity) {
+                      return SizedBox(
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: getnewsentity.news.length,
+                          itemBuilder: ((context, index) {
+                            String imageUrl =
+                                'http://10.0.2.2:8000${getnewsentity.news[index].newsImage}';
+                            return NewTitle(
+                              image: imageUrl,
+                              title: getnewsentity.news[index].newsDescription,
+                            );
+                          }),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 12, top: 16),
