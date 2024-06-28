@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DiagonalStrikethroughVisitor extends StatelessWidget {
-   final String text;
+  final String text;
   final TextStyle style;
-  const DiagonalStrikethroughVisitor({required this.text,required this.style,super.key});
+  const DiagonalStrikethroughVisitor(
+      {required this.text, required this.style, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,9 @@ class DiagonalStrikethroughVisitor extends StatelessWidget {
         ),
       ],
     );
-   }
+  }
 }
+
 class DiagonalLinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

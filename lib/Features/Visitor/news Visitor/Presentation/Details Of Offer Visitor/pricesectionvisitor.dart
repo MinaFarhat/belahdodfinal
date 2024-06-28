@@ -1,15 +1,15 @@
-import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/Details%20Of%20Offer%20Visitor/diagonalvisitor.dart';
 import 'package:flutter/material.dart';
 
 class PriceSectionVisitor extends StatelessWidget {
-   final double originalPrice;
-  final double discountedPrice;
-   const PriceSectionVisitor({required this.discountedPrice,required this.originalPrice,super.key});
+  final int originalPrice;
+  final int discountedPrice;
+  const PriceSectionVisitor(
+      {required this.discountedPrice, required this.originalPrice, super.key});
 
   @override
   Widget build(BuildContext context) {
-      return Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Row(
@@ -42,10 +42,10 @@ class PriceSectionVisitor extends StatelessWidget {
                 const SizedBox(height: 4),
                 Row(
                   children: [
-                    const Text(
+                    Text(
                       'ل.س',
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.grey.shade700,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -53,8 +53,8 @@ class PriceSectionVisitor extends StatelessWidget {
                     const SizedBox(width: 4),
                     DiagonalStrikethroughVisitor(
                       text: originalPrice.toStringAsFixed(3),
-                      style: const TextStyle(
-                        color: Colors.grey,
+                      style: TextStyle(
+                        color: Colors.grey.shade700,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -67,7 +67,7 @@ class PriceSectionVisitor extends StatelessWidget {
             Text(
               ':السعر',
               style: TextStyle(
-                color: ColorConstant.hintTextColor,
+                color: Colors.grey.shade900,
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),
@@ -76,5 +76,5 @@ class PriceSectionVisitor extends StatelessWidget {
         ),
       ],
     );
-}
+  }
 }

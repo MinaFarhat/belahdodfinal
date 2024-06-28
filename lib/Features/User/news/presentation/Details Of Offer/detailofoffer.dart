@@ -25,7 +25,6 @@ class DetailsOfOffer extends StatefulWidget {
 }
 
 class _DetailsOfOfferState extends State<DetailsOfOffer> {
-  // List<Map<String, dynamic>> offerProducts = [
   @override
   void initState() {
     context.read<DetailsofofferCubit>().detailsofOffer(widget.offerId);
