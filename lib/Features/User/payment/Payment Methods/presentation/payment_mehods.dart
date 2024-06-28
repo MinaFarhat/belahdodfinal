@@ -188,39 +188,6 @@ class PaymentMethods extends StatelessWidget {
               //     ],
               //   ),
               // ),
-            
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.04,
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.5,
-                height: MediaQuery.of(context).size.height * 0.06,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: ColorConstant.mainColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "تأكيد",
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.01,
-                    ),
-                    Icon(
-                      PhosphorIcons.handCoins(PhosphorIconsStyle.regular),
-                      size: 22,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),

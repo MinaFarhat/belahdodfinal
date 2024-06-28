@@ -16,10 +16,13 @@ import 'package:belahododfinal/Features/User/favorite/Manager/Get%20Favorites%20
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Get%20SubSections%20Cubit/getsubsections_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/Products%20Of%20SubSections/Get%20Products%20of%20SubSection%20Cubit/getproductsofsubsection_cubit.dart';
+import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
 import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/On%20Arrival%20Cubit/on_arrival_cubit.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/payment_mehods.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Get%20Cities%20Cubit/get_cities_cubit.dart';
 import 'package:belahododfinal/injection.dart';
@@ -136,6 +139,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<GetNotificationsCubit>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<TransferCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<OnArrivalCubit>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -144,7 +153,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: PaymentMethods(),
+        home: SplashScreen(),
       ),
     );
   }

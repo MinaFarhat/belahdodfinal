@@ -15,7 +15,7 @@ class TransferWebServiceImpl implements TransferWebService {
   @override
   Future<TransferEntity> sendTransferImage(String transferImage) async {
     final response = await _apiConsumer.post(
-      "http://127.0.0.1:8000/api/order/transfer",
+      "http://10.0.2.2:8000/api/order/transfer",
       body: {
         "image": transferImage,
       },

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:belahododfinal/Features/User/Orders/main%20orders/presentation/order.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/payment_mehods.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/profile_Settings_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -159,7 +160,15 @@ class ScreenProfile extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                             Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const PaymentMethods();
+                                },
+                              ),
+                            );
+                          },
                           child: ListTile(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),

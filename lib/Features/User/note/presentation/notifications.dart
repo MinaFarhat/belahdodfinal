@@ -4,7 +4,6 @@ import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../../Core/constant/colors_constant.dart';
 import 'noteitem.dart';
@@ -33,21 +32,21 @@ class _NotificationsPageState extends State<NotificationsPage> {
         appBar: SimpleTopBar(
           name: "الإشعارات",
           leading: Container(),
-          action: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: InkWell(
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-                onTap: () {},
-                child: Icon(
-                  PhosphorIcons.bellSlash(PhosphorIconsStyle.regular),
-                  size: 26,
-                  color: ColorConstant.mainColor,
-                ),
-              ),
-            ),
+          action: const [
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 16),
+            //   child: InkWell(
+            //     overlayColor: WidgetStateProperty.all(Colors.transparent),
+            //     onTap: () {},
+            //     child: Icon(
+            //       PhosphorIcons.bellSlash(PhosphorIconsStyle.regular),
+            //       size: 26,
+            //       color: ColorConstant.mainColor,
+            //     ),
+            //   ),
+            // ),
           ],
-          isBottom: true,
+          isBottom: false,
         ),
         body: BlocConsumer<GetNotificationsCubit, GetNotificationsState>(
           listener: (context, state) {
@@ -90,37 +89,50 @@ class _NotificationsPageState extends State<NotificationsPage> {
               success: (getnotificationsentity) {
                 return SizedBox(
                   height: MediaQuery.of(context).size.height * 0.9,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: getnotificationsentity.getNotifications.length,
-                    itemBuilder: ((context, index) {
-                      return Column(
-                        children: [
-                          NotificationItem(
-                            noteId: getnotificationsentity
-                                .getNotifications[index].noteId,
-                            noteType: getnotificationsentity
-                                .getNotifications[index].noteType,
-                            title: getnotificationsentity
-                                .getNotifications[index].noteTitle,
-                            subtitle: getnotificationsentity
-                                .getNotifications[index].noteDescription,
-                            isRead: getnotificationsentity
-                                .getNotifications[index].isRead,
+                  child: getnotificationsentity.getNotifications.isNotEmpty
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          itemCount:
+                              getnotificationsentity.getNotifications.length,
+                          itemBuilder: ((context, index) {
+                            return Column(
+                              children: [
+                                NotificationItem(
+                                  noteId: getnotificationsentity
+                                      .getNotifications[index].noteId,
+                                  noteType: getnotificationsentity
+                                      .getNotifications[index].noteType,
+                                  title: getnotificationsentity
+                                      .getNotifications[index].noteTitle,
+                                  subtitle: getnotificationsentity
+                                      .getNotifications[index].noteDescription,
+                                  isRead: getnotificationsentity
+                                      .getNotifications[index].isRead,
+                                ),
+                                index ==
+                                        getnotificationsentity
+                                                .getNotifications.length -
+                                            1
+                                    ? SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.08,
+                                      )
+                                    : Container(),
+                              ],
+                            );
+                          }),
+                        )
+                      : const Center(
+                          child: Text(
+                            "لاتوجد إشعارات بعد",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          index ==
-                                  getnotificationsentity
-                                          .getNotifications.length -
-                                      1
-                              ? SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.08,
-                                )
-                              : Container(),
-                        ],
-                      );
-                    }),
-                  ),
+                        ),
                 );
               },
             );

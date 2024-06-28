@@ -14,7 +14,7 @@ class GetNotificationsWebServiceImpl implements GetNotificationsWebService {
 
   @override
   Future<GetNotificationsEntity> getNotifications() async {
-    final response = await _apiConsumer.get("");
+    final response = await _apiConsumer.get("http://10.0.2.2:8000/api/notification/index");
     return GetNotificationsEntity.fromJson(response);
   }
 }
