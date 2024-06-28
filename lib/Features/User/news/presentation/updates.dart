@@ -29,32 +29,12 @@ class _UpdatesState extends State<Updates> {
     "assets/images/offer3.png",
   ];
 
-  // List<Map<String, dynamic>> news = [
-  //   {
-  //     "image": "assets/images/new.png",
-  //     "title": "انطلاق المعرض السنوي في الدوحة"
-  //   },
-  //   {
-  //     "image": "assets/images/new.png",
-  //     "title": "انطلاق المعرض السنوي في الدوحة"
-  //   },
-  //   {
-  //     "image": "assets/images/new.png",
-  //     "title": "انطلاق المعرض السنوي في الدوحة"
-  //   },
-  // ];
-
-  // List<String> offers = [
-  //   "assets/images/offer1.png",
-  //   "assets/images/offer2.png",
-  //   "assets/images/offer3.png",
-  // ];
-
   int _currentIndex = 0;
 
   @override
   void initState() {
     context.read<GetalloffersCubit>().offers();
+    context.read<NewsCubit>().getNews();
     super.initState();
   }
 
@@ -211,6 +191,7 @@ class _UpdatesState extends State<Updates> {
                             String imageUrl =
                                 'http://10.0.2.2:8000${getnewsentity.news[index].newsImage}';
                             return NewTitle(
+                              newsId: getnewsentity.news[index].newsId,
                               image: imageUrl,
                               title: getnewsentity.news[index].newsDescription,
                             );

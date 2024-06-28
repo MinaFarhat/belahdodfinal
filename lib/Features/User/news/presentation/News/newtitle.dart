@@ -5,9 +5,11 @@ import '../../../../../../Core/constant/colors_constant.dart';
 
 // ignore: must_be_immutable
 class NewTitle extends StatelessWidget {
-  String image;
-  String title;
-  NewTitle({
+  final int newsId;
+  final String image;
+  final String title;
+  const NewTitle({
+    required this.newsId,
     required this.image,
     required this.title,
     super.key,

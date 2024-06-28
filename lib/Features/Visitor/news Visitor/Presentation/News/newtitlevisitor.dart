@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class Newtitlevisitor extends StatelessWidget {
-  String image;
-  String title;
-  Newtitlevisitor({
+  final int newsId;
+  final String image;
+  final String title;
+  const Newtitlevisitor({
+    required this.newsId,
     required this.image,
     required this.title,
     super.key,

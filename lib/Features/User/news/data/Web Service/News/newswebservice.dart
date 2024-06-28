@@ -14,7 +14,8 @@ class NewsWebServiceImpl implements NewsWebService {
 
   @override
   Future<GetNewsEntity> getNews() async {
-    final response = await _apiConsumer.get("");
+    final response =
+        await _apiConsumer.get("http://10.0.2.2:8000/api/news/index");
     return GetNewsEntity.fromJson(response);
   }
 }
