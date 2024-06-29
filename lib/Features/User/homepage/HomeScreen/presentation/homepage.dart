@@ -22,12 +22,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // List<String> offers = [
-  //   "assets/images/offer1.png",
-  //   "assets/images/offer2.png",
-  //   "assets/images/offer3.png",
-  // ];
-
   @override
   void initState() {
     context.read<SectionCubit>().sections();

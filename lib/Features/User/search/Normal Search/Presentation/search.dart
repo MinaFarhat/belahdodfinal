@@ -10,7 +10,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   bool isSearching = false;
-  final TextEditingController _searchController = TextEditingController();
+  // final TextEditingController _searchController = TextEditingController();
   List<String> oldsearch = [
     "أقلام تلوين",
     "أقلام تلوين",

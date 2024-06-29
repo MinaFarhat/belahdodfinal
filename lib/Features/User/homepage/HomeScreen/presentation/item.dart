@@ -87,7 +87,7 @@ class _ItemState extends State<Item> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 color: Colors.white,
-                image: DecorationImage(
+                 image: DecorationImage(
                   image: CachedNetworkImageProvider(widget.image),
                   fit: BoxFit.cover,
                   onError: (exception, stackTrace) {
@@ -115,7 +115,7 @@ class _ItemState extends State<Item> {
                     );
                   },
                 ),
-              ),
+             ),
             ),
             Positioned(
               top: MediaQuery.of(context).size.height * 0.160,
