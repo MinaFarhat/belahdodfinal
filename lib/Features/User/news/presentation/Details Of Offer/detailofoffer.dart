@@ -3,6 +3,7 @@ import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/priceection.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/offeritems.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/payment_mehods.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/square_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -249,11 +250,12 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                           padding: const EdgeInsets.all(8),
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
+                            String imageUrl =
+                                'http://10.0.2.2:8000${detailsofofferentity.productsofOffer[index]['image']}';
                             return Padding(
                               padding: const EdgeInsets.only(left: 8),
                               child: OfferItems(
-                                image: detailsofofferentity
-                                    .productsofOffer[index]['image'],
+                                image: imageUrl,
                                 index: index,
                               ),
                             );
@@ -333,7 +335,15 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                         icon:
                             PhosphorIcons.handshake(PhosphorIconsStyle.regular),
                         text: "تأكيد الشراء",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return PaymentMethods();
+                              },
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

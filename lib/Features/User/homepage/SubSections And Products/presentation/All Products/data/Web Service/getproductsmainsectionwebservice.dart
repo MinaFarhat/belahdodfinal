@@ -17,7 +17,7 @@ class GetProductsMainSectionWebServiceImpl
   Future<GetProductsMainSectionEntity> productsMainSection(
       int sectionId) async {
     final response = await _apiConsumer
-        .get("http://10.0.2.2:8000/api/section/products/$sectionId");
+        .get("http://10.0.2.2:8000/api/section-products/$sectionId");
     return GetProductsMainSectionEntity.fromJson(response);
   }
 }

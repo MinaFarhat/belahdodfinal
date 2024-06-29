@@ -250,11 +250,12 @@ class _DetailsOfOfferVisitorState extends State<DetailsOfOfferVisitor> {
                           padding: const EdgeInsets.all(8),
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
+                            String imageUrl =
+                                'http://10.0.2.2:8000${detailsofofferentity.productsofOffer[index]['image']}';
                             return Padding(
                               padding: const EdgeInsets.only(left: 8),
                               child: OfferItemVisitor(
-                                image: detailsofofferentity
-                                    .productsofOffer[index]['image'],
+                                image: imageUrl,
                                 index: index,
                               ),
                             );
