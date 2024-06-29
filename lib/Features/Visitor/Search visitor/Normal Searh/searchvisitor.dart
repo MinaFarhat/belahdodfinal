@@ -1,37 +1,10 @@
-import 'package:belahododfinal/Features/User/search/Normal%20Search/Presentation/searchpage.dart';
+import 'package:belahododfinal/Features/Visitor/Search%20visitor/Normal%20Searh/searchpagevisitor.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class Search extends StatefulWidget {
-  const Search({super.key});
+class SearchVisitor extends StatelessWidget {
+  const SearchVisitor({super.key});
 
-  @override
-  State<Search> createState() => _SearchState();
-}
-
-class _SearchState extends State<Search> {
-  bool isSearching = false;
-  // final TextEditingController _searchController = TextEditingController();
-  // List<String> oldsearch = [
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  // ];
-
-  // List<String> resultsofSearching = [
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  // ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -64,7 +37,7 @@ class _SearchState extends State<Search> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return SearchPage();
+                              return SearchPageVisitor();
                             },
                           ),
                         );

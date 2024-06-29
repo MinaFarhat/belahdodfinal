@@ -1,7 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/Presentation/homepagevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Profile/Presentation/profilevisitor.dart';
-import 'package:belahododfinal/Features/Visitor/Search%20visitor/Presentation/searchvisitor.dart';
+import 'package:belahododfinal/Features/Visitor/Search%20visitor/Normal%20Searh/searchvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/updatesvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/note%20Visitor/Presentation/notificationvisitor.dart';
 import 'package:flutter/material.dart';
