@@ -5,7 +5,7 @@ import 'package:belahododfinal/Features/User/Details/presentation/details_qurans
 import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
 import 'package:flutter/material.dart';
 
-class PopularItem extends StatelessWidget {
+class PopularItemVisitor extends StatelessWidget {
   final Map<String, dynamic> image1;
   final Map<String, dynamic> image2;
   final Map<String, dynamic> image3;
@@ -14,7 +14,7 @@ class PopularItem extends StatelessWidget {
   final int listSize;
   final bool isEven;
 
-  const PopularItem({
+  const PopularItemVisitor({
     required this.image1,
     required this.image2,
     required this.image3,
