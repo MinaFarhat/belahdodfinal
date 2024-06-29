@@ -339,7 +339,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
-                                return PaymentMethods();
+                                return const PaymentMethods();
                               },
                             ),
                           );
