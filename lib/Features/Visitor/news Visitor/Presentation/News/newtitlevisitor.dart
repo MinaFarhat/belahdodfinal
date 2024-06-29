@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/Visitor/news%20Visitor/Presentation/News/newsdetailsvisitor.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,18 @@ class Newtitlevisitor extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       overlayColor: WidgetStateProperty.all(Colors.transparent),
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return NewsDetailsVisitor(
+                image: image,
+                text: title,
+              );
+            },
+          ),
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.only(right: 12, left: 12, top: 12),
         child: Row(

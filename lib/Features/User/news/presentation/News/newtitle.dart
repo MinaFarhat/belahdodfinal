@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Features/User/news/presentation/News/newsdetails.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,18 @@ class NewTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       overlayColor: WidgetStateProperty.all(Colors.transparent),
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return NewsDetails(
+                image: image,
+                text: title,
+              );
+            },
+          ),
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.only(right: 12, left: 12, top: 12),
         child: Row(
