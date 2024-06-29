@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Auth/Login/presentation/login.dart';
 import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
-import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -113,8 +112,8 @@ class _ChoosePhotoState extends State<ChoosePhoto> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return const WaitingScreen(
-                                  screen: Mynavbar(),
+                                return WaitingScreen(
+                                  screen: LogIn(),
                                   text: "...جارٍ حفظ المعلومات",
                                 );
                               },
