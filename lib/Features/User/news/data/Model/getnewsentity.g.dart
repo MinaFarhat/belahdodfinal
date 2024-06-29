@@ -27,6 +27,6 @@ GetNewsData _$GetNewsDataFromJson(Map<String, dynamic> json) => GetNewsData(
 Map<String, dynamic> _$GetNewsDataToJson(GetNewsData instance) =>
     <String, dynamic>{
       'id': instance.newsId,
-      'image': instance.newsImage,
       'description': instance.newsDescription,
+      'image': instance.newsImage,
     };

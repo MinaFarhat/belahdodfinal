@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
+import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/detailofoffer.dart';
@@ -23,18 +24,13 @@ class Updates extends StatefulWidget {
 }
 
 class _UpdatesState extends State<Updates> {
-  List<String> advertisements = [
-    "assets/images/offer1.png",
-    "assets/images/offer2.png",
-    "assets/images/offer3.png",
-  ];
-
   int _currentIndex = 0;
 
   @override
   void initState() {
     context.read<GetalloffersCubit>().offers();
     context.read<NewsCubit>().getNews();
+    context.read<AdsCubit>().getAds();
     super.initState();
   }
 
@@ -73,72 +69,161 @@ class _UpdatesState extends State<Updates> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.016,
               ),
-              Center(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.85,
-                  child: Stack(
-                    children: [
-                      CarouselSlider(
-                        options: CarouselOptions(
-                          enableInfiniteScroll: true,
-                          enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                          padEnds: true,
-                          initialPage: 0,
-                          height: 200.0,
-                          autoPlay: true,
-                          disableCenter: true,
-                          autoPlayInterval: const Duration(seconds: 4),
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              _currentIndex = index;
-                            });
-                          },
+              BlocConsumer<AdsCubit, AdsState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (networkExceptions) {
+                      Fluttertoast.showToast(
+                        msg: NetworkExceptions.getErrorMessage(
+                            networkExceptions),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                      );
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
                         ),
-                        items: advertisements.map((i) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return Container(
-                                width: MediaQuery.of(context).size.width * 0.85,
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 6),
-                                decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                    image: AssetImage(i),
-                                    fit: BoxFit.cover,
-                                  ),
+                      );
+                    },
+                    initial: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.mainColor,
+                        ),
+                      );
+                    },
+                    success: (getadsentity) {
+                      return Center(
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.85,
+                          child: Stack(
+                            children: [
+                              CarouselSlider(
+                                options: CarouselOptions(
+                                  enableInfiniteScroll: true,
+                                  enlargeStrategy:
+                                      CenterPageEnlargeStrategy.zoom,
+                                  padEnds: true,
+                                  initialPage: 0,
+                                  height: 200.0,
+                                  autoPlay: true,
+                                  disableCenter: true,
+                                  autoPlayInterval: const Duration(seconds: 4),
+                                  onPageChanged: (index, reason) {
+                                    setState(() {
+                                      _currentIndex = index;
+                                    });
+                                  },
                                 ),
-                              );
-                            },
-                          );
-                        }).toList(),
-                      ),
-                      Positioned(
-                        bottom: 10,
-                        left: 0,
-                        right: 0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: advertisements.map((url) {
-                            int index = advertisements.indexOf(url);
-                            return Container(
-                              width: 10,
-                              height: 10,
-                              margin: const EdgeInsets.symmetric(horizontal: 3),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: _currentIndex == index
-                                    ? ColorConstant.mainColor
-                                    : Colors.black,
+                                items: getadsentity.ads.map((ad) {
+                                  return Builder(
+                                    builder: (BuildContext context) {
+                                      String imageUrl =
+                                          'http://10.0.2.2:8000${ad.adImage}';
+                                      return Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.85,
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 6),
+                                        decoration: BoxDecoration(
+                                          color: Colors.transparent,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          image: DecorationImage(
+                                            image: CachedNetworkImageProvider(
+                                                imageUrl),
+                                            fit: BoxFit.cover,
+                                            onError: (exception, stackTrace) {
+                                              Stack(
+                                                children: [
+                                                  Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.4,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25),
+                                                      color: Colors.white,
+                                                      image:
+                                                          const DecorationImage(
+                                                        image: AssetImage(
+                                                            "assets/images/logo.png"),
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.4,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25),
+                                                      color: Colors.black
+                                                          .withOpacity(0.3),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                }).toList(),
                               ),
-                            );
-                          }).toList(),
+                              Positioned(
+                                bottom: 10,
+                                left: 0,
+                                right: 0,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: getadsentity.ads.map((ad) {
+                                    int index = getadsentity.ads.indexOf(ad);
+                                    return Container(
+                                      width: 10,
+                                      height: 10,
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: _currentIndex == index
+                                            ? ColorConstant.mainColor
+                                            : Colors.black,
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
+                      );
+                    },
+                  );
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,

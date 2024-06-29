@@ -16,6 +16,7 @@ import 'package:belahododfinal/Features/User/favorite/Manager/Get%20Favorites%20
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Get%20SubSections%20Cubit/getsubsections_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/Products%20Of%20SubSections/Get%20Products%20of%20SubSection%20Cubit/getproductsofsubsection_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
@@ -146,6 +147,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<NewsCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AdsCubit>(),
         ),
       ],
       child: MaterialApp(
