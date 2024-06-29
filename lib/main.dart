@@ -33,6 +33,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'Features/User/Orders/Order Details/Order Details Cubit/order_details_cubit.dart';
 import 'Features/User/Orders/main orders/Get Orders Cubit/get_orders_cubit.dart';
+import 'Features/User/search/Normal Search/Searh Results Cubit/search_results_cubit.dart';
 
 void main() async {
   await configureDependencies();
@@ -152,8 +153,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<AdsCubit>(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => getIt<GetProductsMainSectionCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SearchResultsCubit>(),
         ),
       ],
       child: MaterialApp(
