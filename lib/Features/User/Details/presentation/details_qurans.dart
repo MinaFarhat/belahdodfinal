@@ -80,6 +80,7 @@ class _DetailsQuransState extends State<DetailsQurans> {
                     TopPartQuraan(
                       photos: quraanentity.images,
                       productId: widget.productID,
+                      barcode: quraanentity.barcode,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
@@ -99,7 +100,7 @@ class _DetailsQuransState extends State<DetailsQurans> {
                       numberwhofavorite: 500,
                       locations: locations,
                     ),
-                   ],
+                  ],
                 );
               },
             );

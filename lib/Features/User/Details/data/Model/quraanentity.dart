@@ -7,6 +7,8 @@ part 'quraanentity.g.dart';
 class QuraanEntity {
   @JsonKey(name: "name")
   final String title;
+  @JsonKey(name: "barcode")
+  final String barcode;
   @JsonKey(name: "description")
   final String subTitle;
   @JsonKey(name: "price")
@@ -26,6 +28,7 @@ class QuraanEntity {
 
   QuraanEntity(
     this.title,
+    this.barcode,
     this.subTitle,
     this.price,
     this.images,

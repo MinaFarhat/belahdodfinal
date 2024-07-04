@@ -80,6 +80,7 @@ class _DetailsStationeryState extends State<DetailsStationery> {
                     TopPartStationery(
                       photos: stationeryentity.images,
                       productId: widget.productID,
+                      barcode: stationeryentity.barcode,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,

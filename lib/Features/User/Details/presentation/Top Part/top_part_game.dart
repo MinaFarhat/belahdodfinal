@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/QR%20Generate/qrgenerate.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +13,15 @@ import '../../../favorite/Manager/Add To Favorites Cubit/addtofavorite_cubit.dar
 
 // ignore: must_be_immutable
 class TopPartGame extends StatelessWidget {
-  TopPartGame({
+  const TopPartGame({
     required this.photos,
     required this.productId,
+    required this.barcode,
     super.key,
   });
-  List<String> photos;
-  int productId;
+  final List<String> photos;
+  final int productId;
+  final String barcode;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -188,7 +191,15 @@ class TopPartGame extends StatelessWidget {
                 right: 8,
                 child: InkWell(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return QRGenerate(barcode: barcode);
+                        },
+                      ),
+                    );
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.1,
                     height: MediaQuery.of(context).size.height * 0.045,

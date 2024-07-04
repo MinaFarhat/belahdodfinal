@@ -8,6 +8,7 @@ part of 'quraanentity.dart';
 
 QuraanEntity _$QuraanEntityFromJson(Map<String, dynamic> json) => QuraanEntity(
       json['name'] as String,
+      json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
       (json['images'] as List<dynamic>).map((e) => e as String).toList(),
@@ -21,6 +22,7 @@ QuraanEntity _$QuraanEntityFromJson(Map<String, dynamic> json) => QuraanEntity(
 Map<String, dynamic> _$QuraanEntityToJson(QuraanEntity instance) =>
     <String, dynamic>{
       'name': instance.title,
+      'barcode': instance.barcode,
       'description': instance.subTitle,
       'price': instance.price,
       'images': instance.images,

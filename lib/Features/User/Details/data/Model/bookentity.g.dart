@@ -8,6 +8,7 @@ part of 'bookentity.dart';
 
 BookEntity _$BookEntityFromJson(Map<String, dynamic> json) => BookEntity(
       json['name'] as String,
+      json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
       (json['images'] as List<dynamic>).map((e) => e as String).toList(),
@@ -22,6 +23,7 @@ BookEntity _$BookEntityFromJson(Map<String, dynamic> json) => BookEntity(
 Map<String, dynamic> _$BookEntityToJson(BookEntity instance) =>
     <String, dynamic>{
       'name': instance.title,
+      'barcode': instance.barcode,
       'description': instance.subTitle,
       'price': instance.price,
       'images': instance.images,

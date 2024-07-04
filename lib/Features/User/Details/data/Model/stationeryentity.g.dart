@@ -9,6 +9,7 @@ part of 'stationeryentity.dart';
 StationeryEntity _$StationeryEntityFromJson(Map<String, dynamic> json) =>
     StationeryEntity(
       json['name'] as String,
+      json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
       (json['images'] as List<dynamic>).map((e) => e as String).toList(),
@@ -21,6 +22,7 @@ StationeryEntity _$StationeryEntityFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$StationeryEntityToJson(StationeryEntity instance) =>
     <String, dynamic>{
       'name': instance.title,
+      'barcode': instance.barcode,
       'description': instance.subTitle,
       'price': instance.price,
       'images': instance.images,

@@ -7,6 +7,8 @@ part 'stationeryentity.g.dart';
 class StationeryEntity {
   @JsonKey(name: "name")
   final String title;
+  @JsonKey(name: "barcode")
+  final String barcode;
   @JsonKey(name: "description")
   final String subTitle;
   @JsonKey(name: "price")
@@ -24,6 +26,7 @@ class StationeryEntity {
 
   StationeryEntity(
     this.title,
+    this.barcode,
     this.subTitle,
     this.price,
     this.images,
@@ -33,7 +36,7 @@ class StationeryEntity {
     this.specifications,
   );
 
-   factory StationeryEntity.fromJson(Map<String, dynamic> json) =>
+  factory StationeryEntity.fromJson(Map<String, dynamic> json) =>
       _$StationeryEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$StationeryEntityToJson(this);

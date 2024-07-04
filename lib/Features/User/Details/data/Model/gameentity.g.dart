@@ -8,6 +8,7 @@ part of 'gameentity.dart';
 
 GameEntity _$GameEntityFromJson(Map<String, dynamic> json) => GameEntity(
       json['name'] as String,
+      json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
       (json['images'] as List<dynamic>).map((e) => e as String).toList(),
@@ -21,6 +22,7 @@ GameEntity _$GameEntityFromJson(Map<String, dynamic> json) => GameEntity(
 Map<String, dynamic> _$GameEntityToJson(GameEntity instance) =>
     <String, dynamic>{
       'name': instance.title,
+      'barcode': instance.barcode,
       'description': instance.subTitle,
       'price': instance.price,
       'images': instance.images,

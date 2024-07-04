@@ -97,6 +97,7 @@ class _DetailsBaseState extends State<DetailsBase> {
                         TopPartBase(
                           photos: baseentity.images,
                           productId: widget.productID,
+                          barcode: baseentity.barcode,
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,

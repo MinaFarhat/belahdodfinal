@@ -7,6 +7,8 @@ part 'baseentity.g.dart';
 class BaseEntity {
   @JsonKey(name: "name")
   final String title;
+  @JsonKey(name: "barcode")
+  final String barcode;
   @JsonKey(name: "description")
   final String subTitle;
   @JsonKey(name: "price")
@@ -16,6 +18,7 @@ class BaseEntity {
 
   BaseEntity(
     this.title,
+    this.barcode,
     this.subTitle,
     this.price,
     this.images,
