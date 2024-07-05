@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/Details/data/Model/baseentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,8 +15,8 @@ class BaseWebServiceImpl implements BaseWebService {
 
   @override
   Future<BaseEntity> baseDetails(int productID) async {
-    final response =
-        await _apiConsumer.get("http://10.0.2.2:8000/api/products/$productID");
+    final response = await _apiConsumer
+        .get(EndPoints.productDetailsUrl + productID.toString());
 
     return BaseEntity.fromJson(response);
   }

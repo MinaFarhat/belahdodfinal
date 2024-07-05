@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/cart/data/Model/quantityupdateentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,7 +18,7 @@ class QuantityUpdateWebServiceImpl implements QuantityUpdateWebService {
       int productId, int quantity) async {
     // ignore: unused_local_variable
     final response = await _apiConsumer.post(
-      "http://10.0.2.2:8000/api/cart/$productId/add",
+      "${EndPoints.quantityUpdaeUrl}$productId/add",
       body: {
         "quantity": quantity,
       },

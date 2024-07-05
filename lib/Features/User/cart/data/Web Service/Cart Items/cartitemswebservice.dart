@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/cart/data/Model/getcartitemsentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,7 +15,7 @@ class CartItemsWebServiceImpl implements CartItemsWebService {
 
   @override
   Future<GetCartItemsEntity> getcartitems() async {
-    final response = await _apiConsumer.get("http://10.0.2.2:8000/api/cart");
+    final response = await _apiConsumer.get(EndPoints.cartItemsUrl);
 
     return GetCartItemsEntity.fromJson(response);
   }

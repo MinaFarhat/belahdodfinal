@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/news/data/Model/getalloffersentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,8 +15,7 @@ class GetAllOffersWebServiceImpl implements GetAllOffersWebService {
 
   @override
   Future<GetAllOffersEntity> offers() async {
-    final response =
-        await _apiConsumer.get("http://10.0.2.2:8000/api/offer/index");
+    final response = await _apiConsumer.get(EndPoints.getAllOffersUrl);
     return GetAllOffersEntity.fromJson(response);
   }
 }

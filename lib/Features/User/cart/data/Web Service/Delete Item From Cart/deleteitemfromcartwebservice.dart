@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/cart/data/Model/deleteitemfromcartentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,8 +15,8 @@ class DeleteItemFromCartWebServiceImpl implements DeleteItemFromCartWebService {
 
   @override
   Future<DeleteItemFromCartEntity> deleteitemfromcart(int productId) async {
-    final response =
-        await _apiConsumer.delete("http://10.0.2.2:8000/api/cart/$productId");
+    final response = await _apiConsumer
+        .delete(EndPoints.deleteItemFromCartUrl + productId.toString());
 
     return DeleteItemFromCartEntity.fromJson(response);
   }

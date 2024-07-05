@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/note/data/Model/getnotificationsentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,7 +15,7 @@ class GetNotificationsWebServiceImpl implements GetNotificationsWebService {
 
   @override
   Future<GetNotificationsEntity> getNotifications() async {
-    final response = await _apiConsumer.get("http://10.0.2.2:8000/api/notification/index");
+    final response = await _apiConsumer.get(EndPoints.getAllNotificationsUrl);
     return GetNotificationsEntity.fromJson(response);
   }
 }

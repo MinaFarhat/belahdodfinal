@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/news/data/Model/detailsofoffer.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,7 +16,7 @@ class DetailsofOfferWebServiceImpl implements DetailsofOfferWebService {
   @override
   Future<DetailsofOfferEntity> detailsOfOffer(int offerId) async {
     final response = await _apiConsumer
-        .get("http://10.0.2.2:8000/api/offer/mobile/$offerId");
+        .get(EndPoints.getDetailsOfOfferUrl + offerId.toString());
     return DetailsofOfferEntity.fromJson(response);
   }
 }

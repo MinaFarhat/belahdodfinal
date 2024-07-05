@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/favorite/data/Model/addtofavoriteentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,7 +16,7 @@ class AddToFavoriteWebServiceImpl implements AddToFavoritesWebService {
   @override
   Future<AddToFavoritesEntity> addtofavorite(int favoriteProductId) async {
     final response = await _apiConsumer
-        .post("http://10.0.2.2:8000/api/favorite-products/$favoriteProductId");
+        .post(EndPoints.addToFavoriteUrl + favoriteProductId.toString());
     return AddToFavoritesEntity.fromJson(response);
   }
 }

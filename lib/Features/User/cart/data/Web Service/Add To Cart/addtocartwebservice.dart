@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/cart/data/Model/addtocartentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,7 +16,7 @@ class AddtoCartWebServiceImpl implements AddtoCartWebService {
   @override
   Future<AddtoCartEntity> addtocart(int productID) async {
     final response =
-        await _apiConsumer.post("http://10.0.2.2:8000/api/cart/$productID/add");
+        await _apiConsumer.post("${EndPoints.addToCartUrl}$productID/add");
 
     return AddtoCartEntity.fromJson(response);
   }

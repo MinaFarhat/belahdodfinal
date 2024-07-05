@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/data/Model/getcitiesentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,7 +15,7 @@ class GetCitiesWebServiceImpl implements GetCitiesWebService {
 
   @override
   Future<GetCitiesEntity> cities() async {
-    final response = await _apiConsumer.get("http://10.0.2.2:8000/api/city");
+    final response = await _apiConsumer.get(EndPoints.getAllCitiesUrl);
     return GetCitiesEntity.fromJson(response);
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/data/Model/transferentity.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -26,7 +27,7 @@ class TransferWebServiceImpl implements TransferWebService {
   Future<TransferEntity> sendTransferImage(File transferImage) async {
     final fromData = await formAddFile(transferImage);
     final response = await _apiConsumer.post(
-      "http://10.0.2.2:8000/api/order/transfer",
+      EndPoints.transferPaymentMethodeUrl,
       body: fromData,
     );
     return TransferEntity.fromJson(response);

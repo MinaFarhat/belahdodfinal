@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/sectionentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,7 +16,7 @@ class SectionWebServiceImpl implements SectionWebService {
   @override
   Future<SectionEntity> sections() async {
     final response =
-        await _apiConsumer.get("http://10.0.2.2:8000/api/section-product");
+        await _apiConsumer.get(EndPoints.getSectionsAndProductsUrl);
 
     return SectionEntity.fromJson(response);
   }

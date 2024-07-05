@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/api/api_consumer.dart';
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/data/Model/onarrivalentity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,7 +16,7 @@ class OnArrivalWebServiceImpl implements OnArrivalWebService {
   @override
   Future<OnArrivalEntity> onArrival() async {
     final response = await _apiConsumer.post(
-      "http://10.0.2.2:8000/api/order/on_arrival",
+      EndPoints.onArrivalPaymentMethodeUrl,
     );
     return OnArrivalEntity.fromJson(response);
   }
