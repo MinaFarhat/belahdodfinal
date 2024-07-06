@@ -1,7 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/homepage.dart';
 import 'package:belahododfinal/Features/User/news/presentation/updates.dart';
-import 'package:belahododfinal/Features/User/profile/presentation/screen_profile.dart';
+import 'package:belahododfinal/Features/User/profile/presentation/profile.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Presentation/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,7 +22,7 @@ class _MynavbarState extends State<Mynavbar> {
     const Updates(),
     const NotificationsPage(),
     const Search(),
-    const ScreenProfile()
+    const Profile()
   ];
   int curentindex = 0;
 
