@@ -21,13 +21,15 @@ class _InformationState extends State<Information> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.purpleAccent.shade400,
-                Colors.blue,
+                Color(0xFFEC0E0E),
+                Color(0xFFE0E40E),
+                Color(0xFF10D417),
+                Color(0xFF0D75F0),
               ],
             ),
           ),
@@ -51,12 +53,12 @@ class _InformationState extends State<Information> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
                   ),
-                  const Text(
+                  Text(
                     "دار الحافظ للطباعة و الإنتاج والنشر والتوزيع",
                     maxLines: 2,
                     overflow: TextOverflow.visible,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.grey.shade900,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -67,21 +69,21 @@ class _InformationState extends State<Information> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const Text(
+                      Text(
                         "عن دار الحافظ",
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white,
+                          color: Colors.grey.shade900,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Text(
+                      Text(
                         "بسم الله الرحمن الرحيم",
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white,
+                          color: Colors.grey.shade900,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -90,13 +92,13 @@ class _InformationState extends State<Information> {
                             ? text.length.toDouble() / 2.15
                             : MediaQuery.of(context).size.height * 0.3,
                         width: MediaQuery.of(context).size.width * 0.96,
-                        child: const Text(
+                        child: Text(
                           "( وقل اعملوا فسيرى الله عملكم ورسوله والمؤمنون ) في عام 1993 وبتوفيق من الله عز وجل ثم رضا الوالدين تم تأسيس دار الحافظ للطباعة والإنتاج والنشر والتوزيع والتي اتخذت من دمشق مقراً لها ، ومنذ بداية نشوئها وضعت نصب عينيها خدمة المجتمع العربي في شتى مجالات العلم والمعرفة ، واستمر ذلك المشروع بالنمو والتطور إلى أن اتخذت تلك السفينة المبحرة في عالم الثقافة وميادين العلم اتجاهاً متخصصاً في مجال الطفل وتنمية ثقافته ، وذلك انطلاقاً من وعيها بأن كل أمة طموحة نحو الرقي والتقدم تصب جل اهتمامها بالطفل وثقافته ، فكان العمل الدؤوب في مجال النشر الورقي والالكتروني في كل ما يخص الطفل وإعداد مستقبل ثقافي مشرق معتمد على ما توصل إليه العلم في عصرنا الحاضر ، مع المحافظة على ما تمتلكه أمتنا من إرث حضاري وثقافي ضخم",
                           maxLines: 30,
                           textDirection: TextDirection.rtl,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.grey.shade900,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -113,7 +115,7 @@ class _InformationState extends State<Information> {
                         child: Text(
                           exp ? "إغلاق القراءة" : "متابعة القراءة",
                           style: const TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -128,10 +130,10 @@ class _InformationState extends State<Information> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         "مكان دار الحافظ",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.grey.shade900,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -157,10 +159,10 @@ class _InformationState extends State<Information> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         "معلومات التواصل",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.grey.shade900,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),

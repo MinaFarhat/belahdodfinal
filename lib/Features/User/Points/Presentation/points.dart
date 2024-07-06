@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class PointsScreen extends StatelessWidget {
   const PointsScreen({super.key});
@@ -12,47 +13,113 @@ class PointsScreen extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
+              transform: GradientRotation(50),
               colors: [
-                Color(0xFF7B1FA2),
-                Color(0xFF2196F3),
+                Color(0xFFEC0E0E),
+                Color(0xFFE0E40E),
+                Color(0xFF10D417),
+                Color(0xFF0D75F0),
               ],
             ),
           ),
           padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: [
-              const SizedBox(height: 16.0),
-              const Text(
-                'أصدقاء بلا حدود',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+              const SizedBox(height: 4.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 35),
+                    child: Text(
+                      'أصدقاء بلا حدود',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 2),
+                    child: InkWell(
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
+                        size: 26,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 16.0),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.035,
+              ),
               buildSection(
+                context: context,
                 icon: Icons.info_outline,
                 title: 'معلومات عن نظام أصدقاء بلا حدود',
                 content:
                     'يساعد نظام أصدقاء بلا حدود على إعطاء العملاء نقاط ولاء من أجل استعمالها بعمليات الشراء أو الاستبدال داخل التطبيق.',
               ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.025,
+              ),
               buildSection(
+                context: context,
                 icon: Icons.help_outline,
                 title: 'كيف تحصل على النقاط؟',
                 content:
                     'يمكنك الحصول على نقاط إضافية بعد القيام بعدد معين من عمليات الشراء داخل التطبيق أو من خلال إنفاق مبلغ معين داخل التطبيق أو من خلال مشاركة التطبيق بين أصدقائك.',
               ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.025,
+              ),
               buildSection(
+                context: context,
                 icon: Icons.swap_horiz,
                 title: 'استبدال النقاط',
                 content:
                     'يمكنك استبدال النقاط للحصول على قسائم لأجل إهدائها أو استخدامها عند عملية الدفع لشراء منتج داخل التطبيق.',
                 extraContent: Column(
                   children: [
-                    buildButton('استبدال النقاط للحصول على قسيمة'),
-                    buildButton('استبدال النقاط للحصول على كود خصم'),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.008,
+                    ),
+                    buildButton(
+                      context: context,
+                      text: 'استبدال النقاط للحصول على قسيمة',
+                      ontap: () {},
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.016,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.85,
+                      child: Text(
+                        "يمكنك استبدال النقاط للحصول على كود حسم يسمح لك بالحصول على حسم عند عملية شراء منتج داخل التطبيق.",
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                          color: Colors.grey.shade900,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.008,
+                    ),
+                    buildButton(
+                      context: context,
+                      text: 'استبدال النقاط للحصول على كود خصم',
+                      ontap: () {},
+                    ),
                   ],
                 ),
               ),
@@ -63,71 +130,79 @@ class PointsScreen extends StatelessWidget {
     );
   }
 
-  Widget buildSection(
-      {required IconData icon,
-      required String title,
-      required String content,
-      Widget? extraContent}) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16.0),
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(icon, color: Colors.white),
-              const SizedBox(width: 8.0),
-              Expanded(
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+  Widget buildSection({
+    required BuildContext context,
+    required IconData icon,
+    required String title,
+    required String content,
+    Widget? extraContent,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                title,
+                textDirection: TextDirection.rtl,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ],
-          ),
-          const SizedBox(height: 8.0),
-          Text(
+            ),
+            const SizedBox(width: 4.0),
+            Icon(icon, color: Colors.white),
+          ],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.008,
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.85,
+          child: Text(
             content,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
+            textDirection: TextDirection.rtl,
+            style: TextStyle(
+              color: Colors.grey.shade900,
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          if (extraContent != null) ...[
-            const SizedBox(height: 16.0),
-            extraContent,
-          ],
+        ),
+        if (extraContent != null) ...[
+          const SizedBox(height: 8.0),
+          extraContent,
         ],
-      ),
+      ],
     );
   }
 
-  Widget buildButton(String text) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blueAccent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
+  Widget buildButton({
+    required BuildContext context,
+    required String text,
+    required void Function() ontap,
+  }) {
+    return InkWell(
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
+      onTap: ontap,
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.88,
+        height: MediaQuery.of(context).size.height * 0.055,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          color: Colors.black.withOpacity(0.17),
         ),
-        onPressed: () {},
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

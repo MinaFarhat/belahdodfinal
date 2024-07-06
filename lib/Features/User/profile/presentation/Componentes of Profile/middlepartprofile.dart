@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/User/Orders/main%20orders/presentation/order.dart';
+import 'package:belahododfinal/Features/User/Points/Presentation/points.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -72,7 +73,15 @@ class MiddlePartProfile extends StatelessWidget {
         ),
         InkWell(
           overlayColor: WidgetStateProperty.all(Colors.transparent),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return const PointsScreen();
+                },
+              ),
+            );
+          },
           child: Container(
             width: MediaQuery.of(context).size.width * 0.24,
             height: MediaQuery.of(context).size.height * 0.08,
