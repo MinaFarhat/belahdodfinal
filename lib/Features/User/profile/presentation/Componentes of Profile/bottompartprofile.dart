@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -111,7 +112,15 @@ class BottomPartProfile extends StatelessWidget {
         ),
         InkWell(
           overlayColor: WidgetStateProperty.all(Colors.transparent),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return const Information();
+                },
+              ),
+            );
+          },
           child: Container(
             width: MediaQuery.of(context).size.width * 0.45,
             height: MediaQuery.of(context).size.height * 0.055,
