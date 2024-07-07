@@ -1,6 +1,8 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
+import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
+import 'package:belahododfinal/Features/Auth/Login/presentation/login.dart';
 import 'package:belahododfinal/Features/Auth/splashscreen.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Base%20Cubit/base_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_cubit.dart';
@@ -167,7 +169,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: SplashScreen(),
+        home: LogIn(),
       ),
     );
   }

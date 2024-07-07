@@ -71,7 +71,7 @@ class _SignupState extends State<Signup> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
+                height: MediaQuery.of(context).size.height * 0.02,
               ),
               Form(
                 key: _fullnamekey,

@@ -3,12 +3,8 @@ import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class AccountSettings extends StatelessWidget {
-  AccountSettings({super.key});
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _numberController = TextEditingController();
-  final TextEditingController _regionController = TextEditingController();
-  static String? value;
+class AccountSettings extends StatefulWidget {
+  const AccountSettings({super.key});
   static List<String> cities = [
     "دمشق",
     "حلب",
@@ -25,6 +21,20 @@ class AccountSettings extends StatelessWidget {
     "الحسكة",
     "الرقة",
   ];
+
+  @override
+  State<AccountSettings> createState() => _AccountSettingsState();
+}
+
+class _AccountSettingsState extends State<AccountSettings> {
+  final TextEditingController _nameController = TextEditingController();
+
+  final TextEditingController _numberController = TextEditingController();
+
+  final TextEditingController _regionController = TextEditingController();
+
+  static String? value;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -270,7 +280,7 @@ class AccountSettings extends StatelessWidget {
                         isExpanded: true,
                         alignment: Alignment.center,
                         value: value,
-                        items: cities.map((String city) {
+                        items: AccountSettings.cities.map((String city) {
                           return DropdownMenuItem(
                             enabled: true,
                             value: city,
@@ -291,7 +301,9 @@ class AccountSettings extends StatelessWidget {
                           );
                         }).toList(),
                         onChanged: (val) {
-                          value = val;
+                          setState(() {
+                            value = val;
+                          });
                         },
                       ),
                     ),
@@ -302,7 +314,8 @@ class AccountSettings extends StatelessWidget {
                 ),
                 _nameController.text.isNotEmpty ||
                         _numberController.text.isNotEmpty ||
-                        _regionController.text.isNotEmpty
+                        _regionController.text.isNotEmpty ||
+                        value != null
                     ? InkWell(
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),

@@ -68,9 +68,9 @@ class FieldLocation extends StatelessWidget {
                 child: TextFormField(
                   controller: controller,
                   textAlignVertical: TextAlignVertical.center,
-                  cursorColor: ColorConstant.mainColor,
-                  cursorHeight: 22,
+                  cursorHeight: 20,
                   cursorRadius: const Radius.circular(50),
+                  cursorColor: Colors.grey.shade900,
                   keyboardType: TextInputType.streetAddress,
                   textDirection: TextDirection.rtl,
                   enableSuggestions: true,
@@ -78,36 +78,32 @@ class FieldLocation extends StatelessWidget {
                     hintText: "المنطقة",
                     hintTextDirection: TextDirection.rtl,
                     hintStyle: TextStyle(
-                      fontSize: 18,
-                      color: ColorConstant.hintTextColor,
+                      color: Colors.grey.shade900,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                     border: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(0),
                       borderSide: BorderSide(
-                        width: 1,
-                        color: ColorConstant.mainColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(0),
                       borderSide: BorderSide(
-                        width: 1,
-                        color: ColorConstant.hintTextColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     disabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(0),
                       borderSide: BorderSide(
-                        width: 1,
-                        color: ColorConstant.hintTextColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(0),
                       borderSide: BorderSide(
-                        width: 1,
                         color: ColorConstant.mainColor,
+                        width: 1.5,
                       ),
                     ),
                   ),
@@ -128,12 +124,14 @@ class FieldLocation extends StatelessWidget {
                 hint: Text(
                   "المحافظة",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     color: ColorConstant.hintTextColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 iconSize: 30,
+                iconEnabledColor: ColorConstant.mainColor,
+                iconDisabledColor: Colors.grey.shade900,
                 isExpanded: true,
                 alignment: Alignment.center,
                 value: value,
@@ -148,8 +146,8 @@ class FieldLocation extends StatelessWidget {
                           city,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 17,
-                            color: ColorConstant.mainColor,
+                            fontSize: 16,
+                            color: Colors.grey.shade900,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

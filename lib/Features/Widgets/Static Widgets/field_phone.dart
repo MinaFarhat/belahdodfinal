@@ -51,8 +51,8 @@ class FieldPhone extends StatelessWidget {
                 child: TextFormField(
                   readOnly: true,
                   textAlignVertical: TextAlignVertical.center,
-                  cursorColor: ColorConstant.mainColor,
-                  cursorHeight: 22,
+                  cursorColor: Colors.grey.shade900,
+                  cursorHeight: 20,
                   cursorRadius: const Radius.circular(50),
                   keyboardType: typeKey,
                   textDirection: TextDirection.rtl,
@@ -66,39 +66,30 @@ class FieldPhone extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     border: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     disabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.mainColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                   ),
-                  // style: TextStyle(
-                  //   fontSize: 16,
-                  //   fontWeight: FontWeight.w700,
-                  //   color: Const.mainColor,
-                  // ),
                 ),
               ),
               SizedBox(
@@ -114,8 +105,8 @@ class FieldPhone extends StatelessWidget {
                   controller: phonenumbercontroller,
                   validator: validate,
                   textAlignVertical: TextAlignVertical.center,
-                  cursorColor: ColorConstant.mainColor,
-                  cursorHeight: 22,
+                  cursorColor: Colors.grey.shade900,
+                  cursorHeight: 20,
                   cursorRadius: const Radius.circular(50),
                   keyboardType: typeKey,
                   textDirection: TextDirection.rtl,
@@ -123,31 +114,27 @@ class FieldPhone extends StatelessWidget {
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     border: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     disabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
                         color: ColorConstant.mainColor,
+                        width: 1.5,
                       ),
                     ),
                   ),

@@ -51,7 +51,7 @@ class _FieldNameState extends State<FieldName> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.08,
+                height: MediaQuery.of(context).size.height * 0.05,
                 width: MediaQuery.of(context).size.width * 0.85,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
@@ -59,8 +59,8 @@ class _FieldNameState extends State<FieldName> {
                 child: TextFormField(
                   controller: widget.controller,
                   textAlignVertical: TextAlignVertical.center,
-                  cursorColor: ColorConstant.mainColor,
-                  cursorHeight: 22,
+                  cursorColor: Colors.grey.shade900,
+                  cursorHeight: 20,
                   cursorRadius: const Radius.circular(50),
                   keyboardType: widget.typeKey,
                   textDirection: TextDirection.rtl,
@@ -72,7 +72,7 @@ class _FieldNameState extends State<FieldName> {
                           : true
                       : false,
                   decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                    //contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     prefix: widget.pass == true
                         ? visibility == false
                             ? InkWell(
@@ -106,43 +106,42 @@ class _FieldNameState extends State<FieldName> {
                               )
                         : null,
                     border: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     disabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
+                        width: 1.5,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        width: 2,
                         color: ColorConstant.mainColor,
+                        width: 1.5,
                       ),
                     ),
                   ),
                   style: TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.bold,
                     color: ColorConstant.mainColor,
                   ),
                 ),
               ),
             ],
           ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.002,
         ),
       ],
     );
