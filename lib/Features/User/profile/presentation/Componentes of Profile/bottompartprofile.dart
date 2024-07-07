@@ -59,7 +59,7 @@ class BottomPartProfile extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return AccountSettings();
+                        return const AccountSettings();
                       },
                     ),
                   );

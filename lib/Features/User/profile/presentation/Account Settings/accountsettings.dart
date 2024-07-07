@@ -202,7 +202,7 @@ class _AccountSettingsState extends State<AccountSettings> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.55,
+                      width: MediaQuery.of(context).size.width * 0.6,
                       height: 50,
                       child: TextFormField(
                         controller: _regionController,
