@@ -1,5 +1,10 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
+import 'package:belahododfinal/Features/Auth/Login/presentation/login.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
+import 'package:belahododfinal/Features/User/profile/presentation/Account%20Settings/accountsettings.dart';
+import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -50,7 +55,15 @@ class BottomPartProfile extends StatelessWidget {
                 color: ColorConstant.mainColor,
                 icon: PhosphorIcons.user(PhosphorIconsStyle.regular),
                 text: "إعدادات الحساب",
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return AccountSettings();
+                      },
+                    ),
+                  );
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,
@@ -70,7 +83,33 @@ class BottomPartProfile extends StatelessWidget {
                 color: const Color(0xFFFB7A12),
                 icon: PhosphorIcons.signpost(PhosphorIconsStyle.regular),
                 text: "تسجيل الخروج",
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) {
+                      return DeleteDialog(
+                        title: "تسجيل الخروج",
+                        subTitle: "هل تريد بالتأكيد تسجيل الخروج؟",
+                        button1: "إلغاء",
+                        button2: "خروج",
+                        ontapButton1: () {
+                          Navigator.of(context).pop();
+                        },
+                        ontapButton2: () {
+                          SharedPreferencesUtils().removeToken();
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return LogIn();
+                              },
+                            ),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,
@@ -80,7 +119,33 @@ class BottomPartProfile extends StatelessWidget {
                 color: const Color(0xFFDB0909),
                 icon: PhosphorIcons.userMinus(PhosphorIconsStyle.regular),
                 text: "حذف الحساب",
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) {
+                      return DeleteDialog(
+                        title: "حذف الحساب",
+                        subTitle: "هل تريد بالتأكيد حذف الحساب؟",
+                        button1: "إلغاء",
+                        button2: "حذف",
+                        ontapButton1: () {
+                          Navigator.of(context).pop();
+                        },
+                        ontapButton2: () {
+                          SharedPreferencesUtils().removeToken();
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const Signup();
+                              },
+                            ),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,
@@ -155,7 +220,7 @@ class BottomPartProfile extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16),
       child: InkWell(
         overlayColor: WidgetStateProperty.all(Colors.transparent),
-        onTap: () {},
+        onTap: onTap,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
