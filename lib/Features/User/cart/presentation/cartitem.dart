@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Quantitiy%20Update%20Cubit/quantitiyupdate_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
@@ -56,7 +57,9 @@ class CartItem extends StatelessWidget {
         margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
-          color: Colors.white,
+          color: SharedPreferencesUtils().getisDark() == false
+              ? Colors.white
+              : Colors.grey.shade900,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -91,12 +94,12 @@ class CartItem extends StatelessWidget {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.shade500,
+                            color: Colors.grey.shade800,
                             offset: const Offset(0, 2),
                             blurRadius: 0.9,
                           ),
                           BoxShadow(
-                            color: Colors.grey.shade400,
+                            color: Colors.grey.shade700,
                             offset: const Offset(0, -0.1),
                             blurRadius: 0.9,
                           ),
@@ -118,7 +121,9 @@ class CartItem extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: ColorConstant.darkColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade900
+                          : Colors.white,
                     ),
                   ),
                   InkWell(
@@ -145,12 +150,12 @@ class CartItem extends StatelessWidget {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.shade500,
+                            color: Colors.grey.shade800,
                             offset: const Offset(0, 2),
                             blurRadius: 0.9,
                           ),
                           BoxShadow(
-                            color: Colors.grey.shade400,
+                            color: Colors.grey.shade700,
                             offset: const Offset(0, -0.1),
                             blurRadius: 0.9,
                           ),
@@ -181,7 +186,9 @@ class CartItem extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade900,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade900
+                          : Colors.white,
                     ),
                   ),
                   SizedBox(
@@ -195,7 +202,9 @@ class CartItem extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey.shade900,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                         ),
                       ),
                       // Text(
@@ -211,7 +220,9 @@ class CartItem extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: ColorConstant.darkColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                     ],

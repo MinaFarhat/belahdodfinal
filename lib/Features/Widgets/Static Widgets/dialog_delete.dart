@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -26,7 +27,9 @@ class DeleteDialog extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.17,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: SharedPreferencesUtils().getisDark() == false
+              ? Colors.white
+              : Colors.grey.shade900,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
@@ -36,10 +39,12 @@ class DeleteDialog extends StatelessWidget {
               Text(
                 title,
                 textDirection: TextDirection.rtl,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                 ),
               ),
               SizedBox(
@@ -57,7 +62,9 @@ class DeleteDialog extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                       ),
                     ),
                   ],
@@ -99,7 +106,9 @@ class DeleteDialog extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.05,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: ColorConstant.darkColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.darkColor
+                          : Colors.white,
                     ),
                     child: InkWell(
                       overlayColor: WidgetStateProperty.all(Colors.transparent),
@@ -107,9 +116,11 @@ class DeleteDialog extends StatelessWidget {
                       child: Center(
                         child: Text(
                           button2,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
-                            color: Colors.white,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.white
+                                : Colors.grey.shade900,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

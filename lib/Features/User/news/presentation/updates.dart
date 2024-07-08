@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
@@ -38,7 +39,9 @@ class _UpdatesState extends State<Updates> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         extendBody: true,
         appBar: TopBar(
           ontapFav: () {
@@ -88,21 +91,27 @@ class _UpdatesState extends State<Updates> {
                     orElse: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     initial: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     loading: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
@@ -248,21 +257,27 @@ class _UpdatesState extends State<Updates> {
                     orElse: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     initial: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     loading: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
@@ -296,7 +311,9 @@ class _UpdatesState extends State<Updates> {
                       "العروض",
                       style: TextStyle(
                         fontSize: 18,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -323,21 +340,27 @@ class _UpdatesState extends State<Updates> {
                     orElse: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     initial: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     loading: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },

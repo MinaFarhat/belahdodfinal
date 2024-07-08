@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -15,6 +16,9 @@ class NewsDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         body: Column(
           children: [
             Stack(
@@ -95,7 +99,9 @@ class NewsDetails extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade900,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade900
+                        : Colors.white,
                   ),
                 ),
               ),

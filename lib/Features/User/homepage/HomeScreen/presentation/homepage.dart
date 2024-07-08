@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/section.dart';
@@ -33,7 +34,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         extendBody: true,
         appBar: TopBar(
           ontapFav: () {
@@ -78,21 +81,27 @@ class _HomePageState extends State<HomePage> {
               orElse: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               loading: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               initial: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
@@ -136,21 +145,33 @@ class _HomePageState extends State<HomePage> {
                                     orElse: () {
                                       return Center(
                                         child: CircularProgressIndicator(
-                                          color: ColorConstant.mainColor,
+                                          color: SharedPreferencesUtils()
+                                                      .getisDark() ==
+                                                  false
+                                              ? ColorConstant.mainColor
+                                              : Colors.white,
                                         ),
                                       );
                                     },
                                     initial: () {
                                       return Center(
                                         child: CircularProgressIndicator(
-                                          color: ColorConstant.mainColor,
+                                          color: SharedPreferencesUtils()
+                                                      .getisDark() ==
+                                                  false
+                                              ? ColorConstant.mainColor
+                                              : Colors.white,
                                         ),
                                       );
                                     },
                                     loading: () {
                                       return Center(
                                         child: CircularProgressIndicator(
-                                          color: ColorConstant.mainColor,
+                                          color: SharedPreferencesUtils()
+                                                      .getisDark() ==
+                                                  false
+                                              ? ColorConstant.mainColor
+                                              : Colors.white,
                                         ),
                                       );
                                     },
@@ -168,8 +189,11 @@ class _HomePageState extends State<HomePage> {
                                                   "الإعلانات",
                                                   style: TextStyle(
                                                     fontSize: 18,
-                                                    color:
-                                                        ColorConstant.darkColor,
+                                                    color: SharedPreferencesUtils()
+                                                                .getisDark() ==
+                                                            false
+                                                        ? Colors.grey.shade900
+                                                        : Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),

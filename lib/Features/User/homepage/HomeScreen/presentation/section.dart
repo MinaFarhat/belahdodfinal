@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/item.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/subsectionsandproducts.dart';
@@ -50,13 +51,18 @@ class Section extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 12),
                   child: CircleAvatar(
-                    backgroundColor: ColorConstant.mainColor,
+                    backgroundColor:
+                        SharedPreferencesUtils().getisDark() == false
+                            ? ColorConstant.mainColor
+                            : Colors.white,
                     radius: 15,
                     child: Center(
                       child: Icon(
                         PhosphorIcons.arrowLeft(PhosphorIconsStyle.regular),
                         size: 22,
-                        color: Colors.white,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.white
+                            : Colors.grey.shade900,
                       ),
                     ),
                   ),
@@ -65,7 +71,9 @@ class Section extends StatelessWidget {
                   nameOfSection,
                   style: TextStyle(
                     fontSize: 18,
-                    color: ColorConstant.darkColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade900
+                        : Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

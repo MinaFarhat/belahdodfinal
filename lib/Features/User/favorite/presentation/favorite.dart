@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Libraries/favoritelibraries.dart';
 import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Products/favoriteproducts.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
@@ -21,7 +22,9 @@ class _FavoriteListState extends State<FavoriteList> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == false
+            ? Colors.white
+            : Colors.grey.shade900,
         extendBody: true,
         appBar: SimpleTopBar(
           leading: Container(),
@@ -36,7 +39,9 @@ class _FavoriteListState extends State<FavoriteList> {
                 child: Icon(
                   PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                   size: 26,
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/All%20Products/Get%20Products%20Main%20Section%20Cubit/get_products_main_section_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/All%20Products/Presentation/productitem.dart';
@@ -53,21 +54,27 @@ class _AllProductsState extends State<AllProducts> {
             orElse: () {
               return Center(
                 child: CircularProgressIndicator(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : Colors.white,
                 ),
               );
             },
             initial: () {
               return Center(
                 child: CircularProgressIndicator(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : Colors.white,
                 ),
               );
             },
             loading: () {
               return Center(
                 child: CircularProgressIndicator(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : Colors.white,
                 ),
               );
             },

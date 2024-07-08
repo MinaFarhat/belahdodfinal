@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Get%20SubSections%20Cubit/getsubsections_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/subsectionitem.dart';
 import 'package:flutter/material.dart';
@@ -49,21 +50,27 @@ class _AllSubSectionsState extends State<AllSubSections> {
             orElse: () {
               return Center(
                 child: CircularProgressIndicator(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : Colors.white,
                 ),
               );
             },
             initial: () {
               return Center(
                 child: CircularProgressIndicator(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : Colors.white,
                 ),
               );
             },
             loading: () {
               return Center(
                 child: CircularProgressIndicator(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : Colors.white,
                 ),
               );
             },

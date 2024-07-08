@@ -19,10 +19,10 @@ class SquareButton extends StatelessWidget {
       overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: onTap,
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.45,
-        height: MediaQuery.of(context).size.height * 0.068,
+        width: MediaQuery.of(context).size.width * 0.5,
+        height: MediaQuery.of(context).size.height * 0.065,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(8),
           color: ColorConstant.mainColor,
         ),
         child: Row(

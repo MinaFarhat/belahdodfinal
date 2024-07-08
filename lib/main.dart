@@ -62,13 +62,21 @@ class MyApp extends StatelessWidget {
 
     MaterialColor colorCustom = MaterialColor(0xFF880E4F, color);
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.light.copyWith(
-        systemNavigationBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.dark,
-        statusBarColor: Colors.white,
-      ),
+      SharedPreferencesUtils().getisDark() == false
+          ? SystemUiOverlayStyle.light.copyWith(
+              systemNavigationBarColor: Colors.white,
+              systemNavigationBarIconBrightness: Brightness.dark,
+              statusBarBrightness: Brightness.dark,
+              statusBarIconBrightness: Brightness.dark,
+              statusBarColor: Colors.white,
+            )
+          : SystemUiOverlayStyle.dark.copyWith(
+              systemNavigationBarColor: Colors.grey.shade900,
+              systemNavigationBarIconBrightness: Brightness.light,
+              statusBarBrightness: Brightness.light,
+              statusBarIconBrightness: Brightness.light,
+              statusBarColor: Colors.grey.shade900,
+            ),
     );
     return MultiBlocProvider(
       providers: [
@@ -163,6 +171,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
+        themeMode: SharedPreferencesUtils().getisDark() == true
+            ? ThemeMode.dark
+            : ThemeMode.light,
         theme: ThemeData(
           primarySwatch: colorCustom,
           useMaterial3: true,

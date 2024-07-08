@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Presentation/send_order.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
@@ -47,7 +48,9 @@ class _CartState extends State<Cart> {
           return state.maybeWhen(
             success: (getcartitemsentity) {
               return Scaffold(
-                backgroundColor: Colors.white,
+                backgroundColor: SharedPreferencesUtils().getisDark() == true
+                    ? Colors.grey.shade900
+                    : Colors.white,
                 extendBody: true,
                 appBar: SimpleTopBar(
                   name: "السلة",
@@ -64,7 +67,9 @@ class _CartState extends State<Cart> {
                         child: Icon(
                           PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                           size: 26,
-                          color: ColorConstant.darkColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                         ),
                       ),
                     ),
@@ -126,7 +131,9 @@ class _CartState extends State<Cart> {
                         blurRadius: 0.9,
                       ),
                     ],
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50),
@@ -144,7 +151,10 @@ class _CartState extends State<Cart> {
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey.shade900,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.grey.shade900
+                                    : Colors.white,
                               ),
                             ),
                             // Text(
@@ -163,7 +173,10 @@ class _CartState extends State<Cart> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: ColorConstant.darkColor,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.grey.shade900
+                                    : Colors.white,
                               ),
                             ),
                           ],
@@ -191,9 +204,14 @@ class _CartState extends State<Cart> {
             orElse: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == true
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -202,9 +220,14 @@ class _CartState extends State<Cart> {
             initial: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == true
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -213,9 +236,14 @@ class _CartState extends State<Cart> {
             loading: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == true
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),

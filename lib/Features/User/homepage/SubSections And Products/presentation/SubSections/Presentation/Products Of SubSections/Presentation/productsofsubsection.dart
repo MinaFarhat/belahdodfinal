@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/Products%20Of%20SubSections/Get%20Products%20of%20SubSection%20Cubit/getproductsofsubsection_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,9 @@ class _ProductsOfSubSectionState extends State<ProductsOfSubSection> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         appBar: SimpleTopBar(
           leading: Container(),
           action: [
@@ -52,7 +55,9 @@ class _ProductsOfSubSectionState extends State<ProductsOfSubSection> {
                 child: Icon(
                   PhosphorIcons.arrowRight(PhosphorIconsStyle.bold),
                   size: 26,
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                 ),
               ),
             ),
@@ -83,21 +88,27 @@ class _ProductsOfSubSectionState extends State<ProductsOfSubSection> {
                 orElse: () {
                   return Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   );
                 },
                 initial: () {
                   return Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   );
                 },
                 loading: () {
                   return Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   );
                 },

@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
@@ -87,7 +88,7 @@ class _ItemState extends State<Item> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 color: Colors.white,
-                 image: DecorationImage(
+                image: DecorationImage(
                   image: CachedNetworkImageProvider(widget.image),
                   fit: BoxFit.cover,
                   onError: (exception, stackTrace) {
@@ -115,7 +116,7 @@ class _ItemState extends State<Item> {
                     );
                   },
                 ),
-             ),
+              ),
             ),
             Positioned(
               top: MediaQuery.of(context).size.height * 0.160,
@@ -158,12 +159,16 @@ class _ItemState extends State<Item> {
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.shade500,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade500
+                            : Colors.grey.shade800,
                         offset: const Offset(0, 2.5),
                         blurRadius: 0.9,
                       ),
                       BoxShadow(
-                        color: Colors.grey.shade400,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade400
+                            : Colors.grey.shade700,
                         offset: const Offset(0, -0.1),
                         blurRadius: 0.9,
                       ),
@@ -172,22 +177,34 @@ class _ItemState extends State<Item> {
                   child: isFavorite == false
                       ? CircleAvatar(
                           radius: 18,
-                          backgroundColor: Colors.white,
+                          backgroundColor:
+                              SharedPreferencesUtils().getisDark() == false
+                                  ? Colors.white
+                                  : Colors.grey.shade900,
                           child: Center(
                             child: Icon(
                               PhosphorIcons.heart(PhosphorIconsStyle.regular),
-                              color: ColorConstant.mainColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : ColorConstant.shadowColor,
                               size: 25,
                             ),
                           ),
                         )
                       : CircleAvatar(
                           radius: 18,
-                          backgroundColor: Colors.white,
+                          backgroundColor:
+                              SharedPreferencesUtils().getisDark() == false
+                                  ? Colors.white
+                                  : Colors.grey.shade900,
                           child: Center(
                             child: Icon(
                               PhosphorIcons.heart(PhosphorIconsStyle.fill),
-                              color: ColorConstant.mainColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : ColorConstant.shadowColor,
                               size: 25,
                             ),
                           ),

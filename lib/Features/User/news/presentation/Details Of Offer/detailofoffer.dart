@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/priceection.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/offeritems.dart';
@@ -54,9 +55,14 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
             orElse: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.white
+                      : Colors.grey.shade900,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -65,9 +71,14 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
             initial: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.white
+                      : Colors.grey.shade900,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -76,9 +87,14 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
             loading: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.white
+                      : Colors.grey.shade900,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -86,7 +102,9 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
             },
             success: (detailsofofferentity) {
               return Scaffold(
-                backgroundColor: ColorConstant.shadowColor,
+                backgroundColor: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.white
+                    : Colors.grey.shade900,
                 body: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -195,7 +213,10 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                               detailsofofferentity.offerName,
                               style: TextStyle(
                                 fontSize: 20,
-                                color: ColorConstant.darkColor,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.grey.shade900
+                                    : Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -215,7 +236,10 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                 maxLines: 3,
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.grey.shade900,
+                                  color: SharedPreferencesUtils().getisDark() ==
+                                          false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -232,7 +256,10 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                               ":منتجات العرض",
                               style: TextStyle(
                                 fontSize: 20,
-                                color: ColorConstant.darkColor,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.grey.shade900
+                                    : Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -266,21 +293,20 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                 ),
                 bottomNavigationBar: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.17,
+                  height: MediaQuery.of(context).size.height * 0.175,
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.shade400,
-                        offset: const Offset(0, -2.5),
-                        blurRadius: 0.9,
-                      ),
-                      BoxShadow(
-                        color: Colors.grey.shade300,
-                        offset: const Offset(0, 0),
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade400
+                            : Colors.white,
+                        offset: const Offset(0, -1.5),
                         blurRadius: 0.9,
                       ),
                     ],
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50),
@@ -300,7 +326,11 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                   '${detailsofofferentity.offerDuration} يوماً',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
-                                    color: ColorConstant.darkColor,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? Colors.grey.shade900
+                                            : Colors.white,
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -312,7 +342,11 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                 Text(
                                   ':مدة العرض',
                                   style: TextStyle(
-                                    color: Colors.grey.shade900,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? Colors.grey.shade900
+                                            : Colors.white,
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -328,7 +362,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.013,
+                        height: MediaQuery.of(context).size.height * 0.015,
                       ),
                       SquareButton(
                         icon:

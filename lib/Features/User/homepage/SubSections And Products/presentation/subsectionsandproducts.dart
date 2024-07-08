@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/All%20Products/Presentation/allproducts.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/allsubsections.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
@@ -24,7 +25,9 @@ class _SubSectionsAndProductsState extends State<SubSectionsAndProducts> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         appBar: SimpleTopBar(
           leading: Container(),
           action: [
@@ -38,7 +41,9 @@ class _SubSectionsAndProductsState extends State<SubSectionsAndProducts> {
                 child: Icon(
                   PhosphorIcons.arrowRight(PhosphorIconsStyle.bold),
                   size: 26,
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/diagonal.dart';
 import 'package:flutter/material.dart';
 
@@ -24,10 +25,12 @@ class PriceSection extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Text(
+                    Text(
                       'ل.س',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -35,8 +38,10 @@ class PriceSection extends StatelessWidget {
                     const SizedBox(width: 4),
                     Text(
                       discountedPrice.toStringAsFixed(3),
-                      style: const TextStyle(
-                        color: Colors.black,
+                      style: TextStyle(
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 19,
                         fontWeight: FontWeight.bold,
                       ),
@@ -49,7 +54,9 @@ class PriceSection extends StatelessWidget {
                     Text(
                       'ل.س',
                       style: TextStyle(
-                        color: Colors.grey.shade700,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade700
+                            : Colors.grey.shade400,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -58,7 +65,9 @@ class PriceSection extends StatelessWidget {
                     DiagonalStrikethrough(
                       text: originalPrice.toStringAsFixed(3),
                       style: TextStyle(
-                        color: Colors.grey.shade700,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade700
+                            : Colors.grey.shade400,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -71,7 +80,9 @@ class PriceSection extends StatelessWidget {
             Text(
               ':السعر',
               style: TextStyle(
-                color: Colors.grey.shade900,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.grey.shade900
+                    : Colors.white,
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),

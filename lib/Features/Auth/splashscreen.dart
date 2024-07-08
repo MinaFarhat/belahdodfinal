@@ -34,7 +34,9 @@ class SplashScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         body: Stack(
           children: [
             const SizedBox(

@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/homepage.dart';
 import 'package:belahododfinal/Features/User/news/presentation/updates.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/profile.dart';
@@ -28,13 +29,21 @@ class _MynavbarState extends State<Mynavbar> {
 
   void _setSystemUIOverlayStyle() {
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white,
-      ),
+      SharedPreferencesUtils().getisDark() == false
+          ? SystemUiOverlayStyle.light.copyWith(
+              systemNavigationBarColor: Colors.white,
+              systemNavigationBarIconBrightness: Brightness.dark,
+              statusBarBrightness: Brightness.dark,
+              statusBarIconBrightness: Brightness.dark,
+              statusBarColor: Colors.white,
+            )
+          : SystemUiOverlayStyle.dark.copyWith(
+              systemNavigationBarColor: Colors.grey.shade900,
+              systemNavigationBarIconBrightness: Brightness.light,
+              statusBarBrightness: Brightness.light,
+              statusBarIconBrightness: Brightness.light,
+              statusBarColor: Colors.grey.shade900,
+            ),
     );
   }
 
@@ -45,7 +54,9 @@ class _MynavbarState extends State<Mynavbar> {
       child: Scaffold(
         body: screens[curentindex],
         bottomNavigationBar: BottomBar(
-          barColor: ColorConstant.mainColor,
+          barColor: SharedPreferencesUtils().getisDark() == false
+              ? ColorConstant.mainColor
+              : Colors.white,
           width: MediaQuery.of(context).size.width * 0.85,
           borderRadius: BorderRadius.circular(18),
           body: (context, tabController) {
@@ -67,7 +78,9 @@ class _MynavbarState extends State<Mynavbar> {
                         ? PhosphorIcons.house(PhosphorIconsStyle.fill)
                         : PhosphorIcons.house(PhosphorIconsStyle.regular),
                     size: 28,
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                   ),
                 ),
                 IconButton(
@@ -81,7 +94,9 @@ class _MynavbarState extends State<Mynavbar> {
                         ? PhosphorIcons.cloud(PhosphorIconsStyle.fill)
                         : PhosphorIcons.cloud(PhosphorIconsStyle.regular),
                     size: 28,
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                   ),
                 ),
                 IconButton(
@@ -95,7 +110,9 @@ class _MynavbarState extends State<Mynavbar> {
                         ? PhosphorIcons.bell(PhosphorIconsStyle.fill)
                         : PhosphorIcons.bell(PhosphorIconsStyle.regular),
                     size: 28,
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                   ),
                 ),
                 IconButton(
@@ -110,7 +127,9 @@ class _MynavbarState extends State<Mynavbar> {
                         : PhosphorIcons.magnifyingGlass(
                             PhosphorIconsStyle.regular),
                     size: 28,
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                   ),
                 ),
                 IconButton(
@@ -127,7 +146,9 @@ class _MynavbarState extends State<Mynavbar> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: curentindex == 4
-                            ? Colors.white
+                            ? SharedPreferencesUtils().getisDark() == false
+                                ? Colors.white
+                                : Colors.grey.shade900
                             : Colors.transparent,
                         width: 2,
                       ),

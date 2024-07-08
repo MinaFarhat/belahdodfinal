@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -24,7 +25,9 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: Colors.grey.shade700,
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? Colors.grey.shade700
+                  : Colors.grey.shade500,
               width: 1.2,
             ),
           ),
@@ -43,8 +46,9 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
               child: Icon(
                 PhosphorIcons.heart(PhosphorIconsStyle.regular),
                 size: 26,
-                color:
-                    ColorConstant.mainColor, // Adjust according to your needs
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? ColorConstant.mainColor
+                    : ColorConstant.shadowColor,
               ),
             ),
             SizedBox(
@@ -56,7 +60,9 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
               child: Icon(
                 PhosphorIcons.shoppingCart(PhosphorIconsStyle.regular),
                 size: 26,
-                color: Colors.deepOrange, // Adjust according to your needs
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.deepOrange
+                    : Colors.orangeAccent.shade400,
               ),
             ),
           ],
@@ -71,8 +77,9 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
               "بلا حدود",
               style: TextStyle(
                 fontSize: 28,
-                color:
-                    ColorConstant.darkColor, // Adjust according to your needs
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.grey.shade900
+                    : Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

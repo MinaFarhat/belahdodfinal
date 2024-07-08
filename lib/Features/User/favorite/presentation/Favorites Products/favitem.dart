@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/favorite/Manager/Get%20Favorites%20Cubit/getfavorites_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/stars_rate.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -35,7 +36,9 @@ class FavItem extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.15,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: ColorConstant.shadowColor,
+          color: SharedPreferencesUtils().getisDark() == false
+              ? ColorConstant.shadowColor
+              : Colors.grey.shade800,
         ),
         child: Stack(
           children: [
@@ -79,7 +82,9 @@ class FavItem extends StatelessWidget {
                         child: Icon(
                           PhosphorIcons.heart(PhosphorIconsStyle.fill),
                           size: 26,
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : ColorConstant.shadowColor,
                         ),
                       );
                     },
@@ -102,14 +107,18 @@ class FavItem extends StatelessWidget {
                         child: Icon(
                           PhosphorIcons.heart(PhosphorIconsStyle.fill),
                           size: 26,
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : ColorConstant.shadowColor,
                         ),
                       );
                     },
                     loading: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
@@ -132,7 +141,9 @@ class FavItem extends StatelessWidget {
                         child: Icon(
                           PhosphorIcons.heart(PhosphorIconsStyle.fill),
                           size: 26,
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : ColorConstant.shadowColor,
                         ),
                       );
                     },
@@ -159,7 +170,9 @@ class FavItem extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
-                            color: ColorConstant.darkColor,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                           ),
                         ),
                       ),
@@ -174,7 +187,10 @@ class FavItem extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
-                              color: ColorConstant.darkColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                             ),
                           ),
                           StarsRate(
@@ -195,7 +211,9 @@ class FavItem extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey.shade900,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                           ),
                         ),
                       ),

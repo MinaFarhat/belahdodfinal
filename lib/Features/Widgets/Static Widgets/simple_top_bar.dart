@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -48,7 +49,9 @@ class SimpleTopBar extends StatelessWidget implements PreferredSizeWidget {
               name!,
               style: TextStyle(
                 fontSize: 20,
-                color: ColorConstant.darkColor,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.grey.shade900
+                    : Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             )

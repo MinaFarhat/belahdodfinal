@@ -1,8 +1,7 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/news/presentation/News/newsdetails.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../Core/constant/colors_constant.dart';
 
 // ignore: must_be_immutable
 class NewTitle extends StatelessWidget {
@@ -46,7 +45,9 @@ class NewTitle extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/favorite/Manager/Get%20Favorites%20Cubit/getfavorites_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,21 +49,27 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
               orElse: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               initial: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               loading: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
