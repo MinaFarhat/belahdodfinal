@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/payment_mehods.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,10 @@ class NotificationItem extends StatelessWidget {
                 ? Padding(
                     padding: const EdgeInsets.only(top: 25),
                     child: CircleAvatar(
-                      backgroundColor: ColorConstant.mainColor,
+                      backgroundColor:
+                          SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                       radius: 4,
                     ),
                   )
@@ -72,7 +76,9 @@ class NotificationItem extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: ColorConstant.darkColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade900
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -89,7 +95,9 @@ class NotificationItem extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade600,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade600
+                          : Colors.grey.shade400,
                     ),
                   ),
                 ),

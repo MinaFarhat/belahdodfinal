@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == false
+            ? Colors.white
+            : Colors.grey.shade900,
         extendBody: true,
         appBar: SimpleTopBar(
           name: "الإشعارات",
@@ -68,21 +71,27 @@ class _NotificationsPageState extends State<NotificationsPage> {
               orElse: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               initial: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               loading: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
@@ -123,12 +132,15 @@ class _NotificationsPageState extends State<NotificationsPage> {
                             );
                           }),
                         )
-                      : const Center(
+                      : Center(
                           child: Text(
                             "لاتوجد إشعارات بعد",
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.black
+                                      : Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

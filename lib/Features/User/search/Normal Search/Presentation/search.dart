@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Presentation/searchpage.dart';
 import 'package:belahododfinal/Features/User/search/Populer%20Products/Presentation/popularproducts.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,9 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == false
+            ? Colors.white
+            : Colors.grey.shade900,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -75,7 +78,9 @@ class _SearchState extends State<Search> {
                           hintText: "أبحث",
                           hintTextDirection: TextDirection.rtl,
                           hintStyle: TextStyle(
-                            color: Colors.grey.shade800,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade800
+                                : Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
                           ),
@@ -85,28 +90,40 @@ class _SearchState extends State<Search> {
                             onTap: () {},
                             child: Icon(
                               PhosphorIcons.qrCode(PhosphorIconsStyle.regular),
-                              color: Colors.grey.shade900,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                               size: 22,
                             ),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: Colors.grey.shade900,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                               width: 1.5,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: Colors.grey.shade900,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                               width: 1.5,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: Colors.grey.shade900,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                               width: 1.5,
                             ),
                           ),

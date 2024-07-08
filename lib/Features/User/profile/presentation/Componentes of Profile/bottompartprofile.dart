@@ -24,7 +24,9 @@ class BottomPartProfile extends StatelessWidget {
               Text(
                 ":الإعدادات العامة",
                 style: TextStyle(
-                  color: Colors.grey.shade900,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -40,11 +42,15 @@ class BottomPartProfile extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.25,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
+            color: SharedPreferencesUtils().getisDark() == false
+                ? Colors.white
+                : Colors.grey.shade900,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.4),
-                blurRadius: 12,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.black.withOpacity(0.4)
+                    : Colors.white.withOpacity(0.4),
+                blurRadius: 4,
                 offset: const Offset(0, 1.5),
               ),
             ],
@@ -78,7 +84,7 @@ class BottomPartProfile extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return  EnterOldPassword();
+                        return EnterOldPassword();
                       },
                     ),
                   );
@@ -173,7 +179,9 @@ class BottomPartProfile extends StatelessWidget {
               Text(
                 ":التواصل والدعم",
                 style: TextStyle(
-                  color: Colors.grey.shade900,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -249,7 +257,9 @@ class BottomPartProfile extends StatelessWidget {
                     text,
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.grey.shade900,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade900
+                          : Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

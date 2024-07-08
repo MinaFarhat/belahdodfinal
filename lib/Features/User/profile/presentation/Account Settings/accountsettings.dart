@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -39,7 +40,9 @@ class _AccountSettingsState extends State<AccountSettings> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == false
+            ? Colors.white
+            : Colors.grey.shade900,
         appBar: SimpleTopBar(
           name: "إعدادات الحساب",
           leading: Container(),
@@ -54,7 +57,9 @@ class _AccountSettingsState extends State<AccountSettings> {
                 child: Icon(
                   PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                   size: 26,
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                 ),
               ),
             ),
@@ -66,13 +71,15 @@ class _AccountSettingsState extends State<AccountSettings> {
             padding: const EdgeInsets.all(12.0),
             child: Column(
               children: [
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
                       "الأسم",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -87,11 +94,15 @@ class _AccountSettingsState extends State<AccountSettings> {
                   height: 20,
                   child: TextFormField(
                     controller: _nameController,
-                    cursorColor: Colors.grey.shade900,
+                    cursorColor: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade900
+                        : Colors.white,
                     cursorHeight: 20,
                     cursorRadius: const Radius.circular(50),
                     style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade900
+                          : Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -104,14 +115,18 @@ class _AccountSettingsState extends State<AccountSettings> {
                       hintText: "Mina Farhat",
                       hintTextDirection: TextDirection.rtl,
                       hintStyle: TextStyle(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                       prefixIcon: Icon(
                         PhosphorIcons.pencil(PhosphorIconsStyle.regular),
                         size: 24,
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                       ),
                     ),
                     keyboardType: TextInputType.name,
@@ -124,13 +139,15 @@ class _AccountSettingsState extends State<AccountSettings> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.025,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
                       "رقم الهاتف",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -145,11 +162,15 @@ class _AccountSettingsState extends State<AccountSettings> {
                   height: 20,
                   child: TextFormField(
                     controller: _numberController,
-                    cursorColor: Colors.grey.shade900,
+                    cursorColor: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade900
+                        : Colors.white,
                     cursorHeight: 20,
                     cursorRadius: const Radius.circular(50),
                     style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade900
+                          : Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -162,14 +183,18 @@ class _AccountSettingsState extends State<AccountSettings> {
                       hintText: "0987654321",
                       hintTextDirection: TextDirection.rtl,
                       hintStyle: TextStyle(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                       prefixIcon: Icon(
                         PhosphorIcons.pencil(PhosphorIconsStyle.regular),
                         size: 24,
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                       ),
                     ),
                     keyboardType: TextInputType.number,
@@ -182,13 +207,15 @@ class _AccountSettingsState extends State<AccountSettings> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.025,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
                       "العنوان",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -207,14 +234,19 @@ class _AccountSettingsState extends State<AccountSettings> {
                       child: TextFormField(
                         controller: _regionController,
                         style: TextStyle(
-                          color: Colors.grey.shade900,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                         textAlignVertical: TextAlignVertical.center,
                         cursorHeight: 20,
                         cursorRadius: const Radius.circular(50),
-                        cursorColor: Colors.grey.shade900,
+                        cursorColor:
+                            SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                         keyboardType: TextInputType.streetAddress,
                         textDirection: TextDirection.rtl,
                         enableSuggestions: true,
@@ -222,7 +254,9 @@ class _AccountSettingsState extends State<AccountSettings> {
                           hintText: "دويلعة/ركن أبو عطاف",
                           hintTextDirection: TextDirection.rtl,
                           hintStyle: TextStyle(
-                            color: Colors.grey.shade900,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -253,7 +287,9 @@ class _AccountSettingsState extends State<AccountSettings> {
                           prefixIcon: Icon(
                             PhosphorIcons.pencil(PhosphorIconsStyle.regular),
                             size: 24,
-                            color: Colors.grey.shade900,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                           ),
                         ),
                       ),
@@ -262,8 +298,14 @@ class _AccountSettingsState extends State<AccountSettings> {
                       height: 50,
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: DropdownButtonFormField(
+                        dropdownColor:
+                            SharedPreferencesUtils().getisDark() == false
+                                ? Colors.white
+                                : Colors.grey.shade900,
                         style: TextStyle(
-                          color: Colors.grey.shade900,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -271,7 +313,9 @@ class _AccountSettingsState extends State<AccountSettings> {
                         hint: Text(
                           "دمشق",
                           style: TextStyle(
-                            color: Colors.grey.shade900,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -292,7 +336,11 @@ class _AccountSettingsState extends State<AccountSettings> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 16,
-                                    color: Colors.grey.shade900,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? Colors.grey.shade900
+                                            : Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),

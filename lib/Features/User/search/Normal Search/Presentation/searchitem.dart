@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
@@ -120,7 +121,9 @@ class SearchItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Colors.grey.shade900,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.grey.shade900
+                    : Colors.white,
               ),
             ),
           ),

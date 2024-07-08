@@ -29,7 +29,9 @@ class SimpleTopBar extends StatelessWidget implements PreferredSizeWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: Colors.grey.shade700,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade700
+                        : Colors.grey.shade500,
                     width: 1.2,
                   ),
                 ),

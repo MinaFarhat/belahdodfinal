@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -53,6 +54,10 @@ class _TopPartProfileState extends State<TopPartProfile> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           ListTile(
+                            tileColor:
+                                SharedPreferencesUtils().getisDark() == false
+                                    ? Colors.white
+                                    : Colors.grey.shade900,
                             title: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -60,7 +65,11 @@ class _TopPartProfileState extends State<TopPartProfile> {
                                   'أختيار من المعرض',
                                   style: TextStyle(
                                     fontSize: 16,
-                                    color: ColorConstant.darkColor,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? ColorConstant.darkColor
+                                            : Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textDirection: TextDirection.rtl,
@@ -69,7 +78,10 @@ class _TopPartProfileState extends State<TopPartProfile> {
                                 Icon(
                                   PhosphorIcons.images(
                                       PhosphorIconsStyle.regular),
-                                  color: ColorConstant.mainColor,
+                                  color: SharedPreferencesUtils().getisDark() ==
+                                          false
+                                      ? ColorConstant.mainColor
+                                      : Colors.white,
                                   size: 30,
                                 ),
                               ],
@@ -81,6 +93,10 @@ class _TopPartProfileState extends State<TopPartProfile> {
                             contentPadding: const EdgeInsets.only(right: 16.0),
                           ),
                           ListTile(
+                            tileColor:
+                                SharedPreferencesUtils().getisDark() == false
+                                    ? Colors.white
+                                    : Colors.grey.shade900,
                             title: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -88,7 +104,11 @@ class _TopPartProfileState extends State<TopPartProfile> {
                                   'ألتقاط صورة',
                                   style: TextStyle(
                                     fontSize: 16,
-                                    color: ColorConstant.darkColor,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? ColorConstant.darkColor
+                                            : Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textDirection: TextDirection.rtl,
@@ -97,7 +117,10 @@ class _TopPartProfileState extends State<TopPartProfile> {
                                 Icon(
                                   PhosphorIcons.aperture(
                                       PhosphorIconsStyle.regular),
-                                  color: ColorConstant.mainColor,
+                                  color: SharedPreferencesUtils().getisDark() ==
+                                          false
+                                      ? ColorConstant.mainColor
+                                      : Colors.white,
                                   size: 30,
                                 ),
                               ],
@@ -118,19 +141,26 @@ class _TopPartProfileState extends State<TopPartProfile> {
                   height: MediaQuery.of(context).size.height * 0.04,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        blurRadius: 8,
-                        offset: const Offset(0, 1.5),
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black.withOpacity(0.4)
+                            : Colors.white.withOpacity(0.4),
+                        offset: SharedPreferencesUtils().getisDark() == false
+                            ? const Offset(0, 1.5)
+                            : const Offset(0, 0.1),
                       ),
                     ],
                   ),
                   child: Center(
                     child: Icon(
                       PhosphorIcons.aperture(PhosphorIconsStyle.regular),
-                      color: const Color(0xFFD90E94),
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? const Color(0xFFD90E94)
+                          : Colors.white,
                       size: 28,
                     ),
                   ),
@@ -144,8 +174,10 @@ class _TopPartProfileState extends State<TopPartProfile> {
         ),
         Text(
           widget.nameUser,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            color: SharedPreferencesUtils().getisDark() == false
+                ? Colors.black
+                : Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -163,7 +195,9 @@ class _TopPartProfileState extends State<TopPartProfile> {
                 overflow: TextOverflow.ellipsis,
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
-                  color: Colors.grey.shade900,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),

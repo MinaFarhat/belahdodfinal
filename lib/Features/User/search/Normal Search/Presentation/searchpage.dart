@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Presentation/searchitem.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Searh%20Results%20Cubit/search_results_cubit.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: SharedPreferencesUtils().getisDark() == false
+            ? Colors.white
+            : Colors.grey.shade900,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -30,12 +34,17 @@ class SearchPage extends StatelessWidget {
                         controller: _searchController,
                         autofocus: true,
                         style: TextStyle(
-                          color: Colors.grey.shade800,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade800
+                              : Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
                         textDirection: TextDirection.rtl,
-                        cursorColor: Colors.grey.shade900,
+                        cursorColor:
+                            SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                         cursorHeight: 20,
                         cursorRadius: const Radius.circular(50),
                         textInputAction: TextInputAction.search,
@@ -49,7 +58,9 @@ class SearchPage extends StatelessWidget {
                           hintText: "أبحث",
                           hintTextDirection: TextDirection.rtl,
                           hintStyle: TextStyle(
-                            color: Colors.grey.shade800,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade800
+                                : Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
                           ),
@@ -57,27 +68,38 @@ class SearchPage extends StatelessWidget {
                             PhosphorIcons.magnifyingGlass(
                               PhosphorIconsStyle.regular,
                             ),
-                            color: Colors.grey.shade900,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                             size: 22,
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: Colors.grey.shade900,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                               width: 1.5,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: Colors.grey.shade900,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                               width: 1.5,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: Colors.grey.shade900,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                               width: 1.5,
                             ),
                           ),
@@ -87,14 +109,17 @@ class SearchPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 12),
                       child: InkWell(
-                        overlayColor: WidgetStateProperty.all(Colors.black),
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
                           Navigator.pop(context);
                         },
                         child: Icon(
                           PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                           size: 26,
-                          color: ColorConstant.darkColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                         ),
                       ),
                     ),
@@ -124,21 +149,27 @@ class SearchPage extends StatelessWidget {
                     orElse: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     initial: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     loading: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
@@ -183,12 +214,16 @@ class SearchPage extends StatelessWidget {
                                   }
                                 },
                               )
-                            : const Center(
+                            : Center(
                                 child: Text(
                                   "لاتوجد عناصر متطابقة",
                                   style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.black,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? Colors.black
+                                            : Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),

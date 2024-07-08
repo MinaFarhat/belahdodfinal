@@ -92,6 +92,11 @@ class _MiddlePartProfileState extends State<MiddlePartProfile> {
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
+              border: Border.all(
+                color: SharedPreferencesUtils().getisDark() == true
+                    ? Colors.white
+                    : Colors.transparent,
+              ),
               color: SharedPreferencesUtils().getisDark() == false
                   ? const Color(0xFFE0E40E)
                   : Colors.grey.shade900,
