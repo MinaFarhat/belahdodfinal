@@ -25,11 +25,11 @@ class ConfirmNumber extends StatelessWidget {
                   fit: BoxFit.cover,
                 )),
               ),
-              Text(
+              const Text(
                 "رمز التحقق",
                 style: TextStyle(
                   fontSize: 22,
-                  color: ColorConstant.darkColor,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -43,7 +43,7 @@ class ConfirmNumber extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: ColorConstant.hintTextColor,
+                    color: Colors.grey.shade900,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

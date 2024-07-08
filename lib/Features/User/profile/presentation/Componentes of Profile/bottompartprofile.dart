@@ -4,6 +4,7 @@ import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signu
 import 'package:belahododfinal/Features/Auth/Login/presentation/login.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Account%20Settings/accountsettings.dart';
+import 'package:belahododfinal/Features/User/profile/presentation/Change%20Password/enteroldpassword.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -73,7 +74,15 @@ class BottomPartProfile extends StatelessWidget {
                 color: const Color(0xFFD90E94),
                 icon: PhosphorIcons.detective(PhosphorIconsStyle.regular),
                 text: "تغيير كلمة المرور",
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return  EnterOldPassword();
+                      },
+                    ),
+                  );
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,

@@ -53,7 +53,7 @@ class PaymentMethods extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: ColorConstant.darkColor,
+                        color: Colors.grey.shade900,
                       ),
                     ),
                   ],

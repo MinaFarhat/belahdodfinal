@@ -1,19 +1,15 @@
-import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
+import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/Auth/splashscreen.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_name.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../Core/constant/colors_constant.dart';
-import '../../Login/presentation/login.dart';
-
-class ForgetPassword3 extends StatelessWidget {
-  ForgetPassword3({super.key});
-
-  final TextEditingController _newpasswordcontroller = TextEditingController();
-  final TextEditingController _confirmpasswordcontroller =
+class EnterNewPassword extends StatelessWidget {
+  EnterNewPassword({super.key});
+  final TextEditingController _newPasswordController = TextEditingController();
+  final TextEditingController _confirmNewPasswordController =
       TextEditingController();
-  final GlobalKey<FormState> _newpasswordkey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _confirmpasswordkey = GlobalKey<FormState>();
-
+  final GlobalKey<FormState> _newPasswordKey = GlobalKey();
+  final GlobalKey<FormState> _confirmNewPasswordKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,51 +19,49 @@ class ForgetPassword3 extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 25),
+                padding: const EdgeInsets.only(top: 12, bottom: 8),
                 child: Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.25,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/forgetpassword3.png"),
+                      image: AssetImage("assets/images/changepassword2.png"),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
+                height: MediaQuery.of(context).size.height * 0.045,
               ),
               const Text(
                 "إعادة تعيين كلمة مرور جديدة",
                 style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.black,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.006,
-              ),
               Padding(
-                padding: const EdgeInsets.only(left: 8, right: 8),
+                padding: const EdgeInsets.only(left: 12, right: 12, top: 6),
                 child: Text(
-                  "يجب عليك إعادة إدخال كلمة مرور جديدة والمتابعة لتسجيل الدخول",
+                  "تم التحقق أدخل كلمة مرور جديدة ملاحظة ستصبح كلمة المرور هذه الكلمة الرسمية للدخول الى هذا الحساب.",
                   textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.grey.shade900,
                     fontWeight: FontWeight.bold,
+                    color: Colors.grey.shade900,
                   ),
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
               Form(
-                key: _newpasswordkey,
+                key: _newPasswordKey,
                 child: FieldName(
-                  controller: _newpasswordcontroller,
+                  controller: _newPasswordController,
                   fieldName: "كلمة المرور الجديدة",
                   typeKey: TextInputType.visiblePassword,
                   pass: true,
@@ -82,12 +76,12 @@ class ForgetPassword3 extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
+                height: MediaQuery.of(context).size.height * 0.025,
               ),
               Form(
-                key: _confirmpasswordkey,
+                key: _confirmNewPasswordKey,
                 child: FieldName(
-                  controller: _confirmpasswordcontroller,
+                  controller: _confirmNewPasswordController,
                   fieldName: "تأكيد كلمة المرور الجديدة",
                   typeKey: TextInputType.visiblePassword,
                   pass: true,
@@ -95,7 +89,7 @@ class ForgetPassword3 extends StatelessWidget {
                     if (value == null || value.isEmpty) {
                       return "رجاءً أدخل كلمة المرور مرة أخرى";
                     }
-                    if (value != _newpasswordcontroller.text) {
+                    if (value != _newPasswordController.text) {
                       return "لايوجد تطابق بين كلمة المرور التي أدخلتها حالياً والتي أدخلتها سابقاً";
                     }
                     return null;
@@ -103,27 +97,25 @@ class ForgetPassword3 extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.15,
+                height: MediaQuery.of(context).size.height * 0.09,
               ),
-              GestureDetector(
+              InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {
-                  if (_newpasswordkey.currentState!.validate() &&
-                      _confirmpasswordkey.currentState!.validate()) {
+                  if (_newPasswordKey.currentState!.validate() &&
+                      _confirmNewPasswordKey.currentState!.validate()) {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (context) {
-                          return WaitingScreen(
-                            screen: LogIn(),
-                            text: "...جارٍ حفظ المعلومات",
-                          );
+                          return SplashScreen();
                         },
                       ),
                     );
                   }
                 },
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: MediaQuery.of(context).size.height * 0.065,
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  height: MediaQuery.of(context).size.height * 0.055,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: ColorConstant.mainColor,
@@ -132,8 +124,8 @@ class ForgetPassword3 extends StatelessWidget {
                     child: Text(
                       "تأكيد",
                       style: TextStyle(
-                        fontSize: 18,
                         color: Colors.white,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

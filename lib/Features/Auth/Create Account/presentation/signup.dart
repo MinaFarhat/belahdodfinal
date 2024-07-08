@@ -48,11 +48,11 @@ class _SignupState extends State<Signup> {
                   fit: BoxFit.cover,
                 )),
               ),
-              Text(
+              const Text(
                 "إنشاء حساب",
                 style: TextStyle(
                   fontSize: 22,
-                  color: ColorConstant.darkColor,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -65,7 +65,7 @@ class _SignupState extends State<Signup> {
                   "أهلا بك في تطبيق بلا حدود للمعرفة والعلم والترفيه",
                   style: TextStyle(
                     fontSize: 16,
-                    color: ColorConstant.hintTextColor,
+                    color: Colors.grey.shade900,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

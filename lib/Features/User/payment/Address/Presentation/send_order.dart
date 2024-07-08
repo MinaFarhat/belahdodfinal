@@ -66,16 +66,16 @@ class _SendOrderState extends State<SendOrder> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.04,
               ),
-              Text(
+              const Text(
                 "إرسال الطلب",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: ColorConstant.darkColor,
+                  color: Colors.black,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 6, right: 6),
+              Padding(
+                padding: const EdgeInsets.only(left: 6, right: 6),
                 child: Text(
                   "سيتم إرسال الطلب الى مدير المنصة ليتم التحقق من الطلبية والعنوان",
                   textAlign: TextAlign.center,
@@ -83,7 +83,7 @@ class _SendOrderState extends State<SendOrder> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF6F6F6F),
+                    color: Colors.grey.shade900,
                   ),
                 ),
               ),

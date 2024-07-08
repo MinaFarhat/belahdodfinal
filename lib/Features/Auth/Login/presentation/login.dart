@@ -41,11 +41,11 @@ class LogIn extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-              Text(
+              const Text(
                 "تسجيل الدخول",
                 style: TextStyle(
                   fontSize: 22,
-                  color: ColorConstant.darkColor,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -58,7 +58,7 @@ class LogIn extends StatelessWidget {
                   "أهلا بك مجدداً في تطبيق بلا حدود",
                   style: TextStyle(
                     fontSize: 16,
-                    color: ColorConstant.hintTextColor,
+                    color: Colors.grey.shade900,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
