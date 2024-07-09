@@ -87,7 +87,7 @@ class MiddlePartProfile extends StatelessWidget {
               borderRadius: BorderRadius.circular(6),
               border: Border.all(
                 color: SharedPreferencesUtils().getisDark() == true
-                    ? Colors.white
+                    ? ColorConstant.shadowColor
                     : Colors.transparent,
               ),
               color: SharedPreferencesUtils().getisDark() == false
@@ -103,7 +103,7 @@ class MiddlePartProfile extends StatelessWidget {
                     )
                   : Icon(
                       PhosphorIcons.moon(PhosphorIconsStyle.regular),
-                      color: Colors.white,
+                      color: ColorConstant.shadowColor,
                       size: 38,
                     ),
             ),

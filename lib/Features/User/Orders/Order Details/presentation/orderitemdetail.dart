@@ -82,7 +82,7 @@ class OrderItemDetails extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: SharedPreferencesUtils().getisDark() == false
-                ? Colors.white
+                ? Colors.grey.shade200
                 : Colors.grey.shade800,
           ),
           child: Row(

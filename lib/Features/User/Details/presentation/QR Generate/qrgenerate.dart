@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -42,7 +43,9 @@ class QRGenerate extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.4,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: Colors.white,
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? Colors.white
+                  : Colors.grey.shade900,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.3),
@@ -62,13 +65,19 @@ class QRGenerate extends StatelessWidget {
                 data: barcode,
                 version: QrVersions.auto,
                 size: 230.0,
-                backgroundColor: Colors.white,
+                backgroundColor: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.white
+                    : Colors.grey.shade900,
                 dataModuleStyle: QrDataModuleStyle(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : ColorConstant.shadowColor,
                   dataModuleShape: QrDataModuleShape.square,
                 ),
                 eyeStyle: QrEyeStyle(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : ColorConstant.shadowColor,
                   eyeShape: QrEyeShape.square,
                 ),
                 semanticsLabel: barcode,

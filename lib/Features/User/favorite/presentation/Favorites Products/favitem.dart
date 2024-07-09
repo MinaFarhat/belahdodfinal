@@ -161,12 +161,11 @@ class FavItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 14),
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
+                        width: MediaQuery.of(context).size.width * 0.4,
                         child: Text(
                           title,
-                          maxLines: 3,
                           textDirection: TextDirection.rtl,
-                          overflow: TextOverflow.visible,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,

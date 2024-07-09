@@ -12,10 +12,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Delayed navigation logic
     Future.delayed(const Duration(seconds: 5), () async {
-      await _preferencesUtils.init(); // Initialize SharedPreferences
-      final token = _preferencesUtils.getToken(); // Get stored token
+      await _preferencesUtils.init();
+      final token = _preferencesUtils.getToken();
 
       Navigator.pushReplacement(
         // ignore: use_build_context_synchronously
@@ -23,9 +22,9 @@ class SplashScreen extends StatelessWidget {
         MaterialPageRoute(
           builder: (context) {
             if (token != null) {
-              return const Mynavbar(); // User logged in
+              return const Mynavbar();
             } else {
-              return const Mynavbarvisitor(); // Visitor or not logged in
+              return const Mynavbarvisitor();
             }
           },
         ),
@@ -50,10 +49,12 @@ class SplashScreen extends StatelessWidget {
             Positioned(
               right: MediaQuery.of(context).size.width * 0.32,
               bottom: MediaQuery.of(context).size.height * 0.16,
-              child: const Text(
+              child: Text(
                 "بلا حدود",
                 style: TextStyle(
-                  color: Colors.black,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
@@ -63,7 +64,9 @@ class SplashScreen extends StatelessWidget {
               right: MediaQuery.of(context).size.width * 0.45,
               bottom: MediaQuery.of(context).size.height * 0.05,
               child: CircularProgressIndicator(
-                color: ColorConstant.mainColor,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? ColorConstant.mainColor
+                    : Colors.white,
               ),
             ),
           ],

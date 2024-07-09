@@ -181,14 +181,19 @@ class CartItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: SharedPreferencesUtils().getisDark() == false
-                          ? Colors.grey.shade900
-                          : Colors.white,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.25,
+                    child: Text(
+                      title,
+                      overflow: TextOverflow.ellipsis,
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -234,7 +239,9 @@ class CartItem extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.32,
               height: MediaQuery.of(context).size.height * 0.15,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.white
+                    : Colors.grey.shade900,
                 borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(13),
                   bottomRight: Radius.circular(13),

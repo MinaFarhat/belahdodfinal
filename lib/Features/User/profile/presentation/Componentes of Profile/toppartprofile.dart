@@ -32,7 +32,9 @@ class _TopPartProfileState extends State<TopPartProfile> {
         Stack(
           children: [
             CircleAvatar(
-              backgroundColor: ColorConstant.mainColor,
+              backgroundColor: SharedPreferencesUtils().getisDark() == false
+                  ? ColorConstant.mainColor
+                  : ColorConstant.shadowColor,
               radius: 55,
               backgroundImage: _selectedImage == null
                   ? AssetImage(widget.imageProfile)
@@ -205,7 +207,9 @@ class _TopPartProfileState extends State<TopPartProfile> {
             ),
             Icon(
               PhosphorIcons.navigationArrow(PhosphorIconsStyle.bold),
-              color: ColorConstant.mainColor,
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? ColorConstant.mainColor
+                  : ColorConstant.shadowColor,
               size: 20,
             ),
           ],

@@ -114,14 +114,14 @@ class _OrderDetailsState extends State<OrderDetails> {
                       onTap: () {
                         showDialog(
                           context: context,
-                          builder: (_) {
+                          builder: (dialogContext) {
                             return DeleteDialog(
                               title: "حذف الطلبية",
                               subTitle: "هل تريد بالتأكيد حذف الطلبية؟",
                               button1: "إلغاء",
                               button2: "حذف",
                               ontapButton1: () {
-                                Navigator.of(context).pop();
+                                Navigator.pop(dialogContext);
                               },
                               ontapButton2: () {},
                             );

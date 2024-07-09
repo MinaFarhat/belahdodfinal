@@ -142,7 +142,9 @@ class _MynavbarState extends State<Mynavbar> {
                     width: MediaQuery.of(context).size.width * 0.09,
                     height: MediaQuery.of(context).size.height * 0.1,
                     decoration: BoxDecoration(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : ColorConstant.shadowColor,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: curentindex == 4
