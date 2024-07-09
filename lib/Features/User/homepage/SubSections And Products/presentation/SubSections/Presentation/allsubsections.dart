@@ -101,12 +101,14 @@ class _AllSubSectionsState extends State<AllSubSections> {
                           );
                         },
                       )
-                    : const Center(
+                    : Center(
                         child: Text(
                           "لا توجد أقسام فرعية في هذا القسم",
                           style: TextStyle(
                             fontSize: 18,
-                            color: Colors.black,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.black
+                                : Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

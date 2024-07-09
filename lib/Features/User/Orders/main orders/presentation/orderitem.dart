@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -85,18 +86,25 @@ class OrderItem extends StatelessWidget {
                           height: MediaQuery.of(context).size.height * 0.16,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(18),
-                            color: Colors.white,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.white
+                                : Colors.grey.shade900,
                           ),
                           child: Column(
                             children: [
-                              const Padding(
-                                padding: EdgeInsets.only(top: 8),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8),
                                 child: Text(
                                   "حالة الطلبية",
                                   style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? Colors.black
+                                            : Colors.white,
+                                  ),
                                 ),
                               ),
                               Padding(
@@ -110,7 +118,11 @@ class OrderItem extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade900,
+                                        color: SharedPreferencesUtils()
+                                                    .getisDark() ==
+                                                false
+                                            ? Colors.grey.shade900
+                                            : Colors.white,
                                       ),
                                     ),
                                     const SizedBox(
@@ -120,7 +132,11 @@ class OrderItem extends StatelessWidget {
                                       PhosphorIcons.truck(
                                           PhosphorIconsStyle.regular),
                                       size: 24,
-                                      color: ColorConstant.mainColor,
+                                      color: SharedPreferencesUtils()
+                                                  .getisDark() ==
+                                              false
+                                          ? ColorConstant.mainColor
+                                          : Colors.white,
                                     ),
                                   ],
                                 ),
@@ -136,7 +152,11 @@ class OrderItem extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade900,
+                                        color: SharedPreferencesUtils()
+                                                    .getisDark() ==
+                                                false
+                                            ? Colors.grey.shade900
+                                            : Colors.white,
                                       ),
                                     ),
                                     const SizedBox(
@@ -146,7 +166,11 @@ class OrderItem extends StatelessWidget {
                                       PhosphorIcons.receipt(
                                           PhosphorIconsStyle.regular),
                                       size: 24,
-                                      color: ColorConstant.mainColor,
+                                      color: SharedPreferencesUtils()
+                                                  .getisDark() ==
+                                              false
+                                          ? ColorConstant.mainColor
+                                          : Colors.white,
                                     ),
                                   ],
                                 ),

@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/Order%20Details/Order%20Details%20Cubit/order_details_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/fine_of_order.dart';
@@ -53,9 +54,14 @@ class _OrderDetailsState extends State<OrderDetails> {
             orElse: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == true
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -64,9 +70,14 @@ class _OrderDetailsState extends State<OrderDetails> {
             initial: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == true
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -75,9 +86,14 @@ class _OrderDetailsState extends State<OrderDetails> {
             loading: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: SharedPreferencesUtils().getisDark() == true
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -86,7 +102,9 @@ class _OrderDetailsState extends State<OrderDetails> {
             success: (orderdetailsentity) {
               return Scaffold(
                 extendBody: true,
-                backgroundColor: ColorConstant.shadowColor,
+                backgroundColor: SharedPreferencesUtils().getisDark() == true
+                    ? Colors.grey.shade900
+                    : Colors.white,
                 appBar: SimpleTopBar(
                   name: "تفاصيل الطلبية",
                   leading: Padding(
@@ -112,7 +130,9 @@ class _OrderDetailsState extends State<OrderDetails> {
                       },
                       child: Icon(
                         PhosphorIcons.trash(PhosphorIconsStyle.regular),
-                        color: Colors.black,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                         size: 24,
                       ),
                     ),
@@ -129,7 +149,9 @@ class _OrderDetailsState extends State<OrderDetails> {
                         child: Icon(
                           PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                           size: 26,
-                          color: ColorConstant.darkColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                         ),
                       ),
                     ),
@@ -175,17 +197,23 @@ class _OrderDetailsState extends State<OrderDetails> {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.shade400,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade400
+                            : Colors.grey.shade700,
                         offset: const Offset(0, -2.5),
                         blurRadius: 0.9,
                       ),
                       BoxShadow(
-                        color: Colors.grey.shade300,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade300
+                            : Colors.grey.shade600,
                         offset: const Offset(0, 0),
                         blurRadius: 0.9,
                       ),
                     ],
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade800,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50),

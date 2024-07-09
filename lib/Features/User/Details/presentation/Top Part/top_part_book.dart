@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_state.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/QR%20Generate/qrgenerate.dart';
@@ -99,13 +100,17 @@ class TopPartBook extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.045,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white.withOpacity(0.9),
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.white.withOpacity(0.9)
+                          : Colors.grey.shade900.withOpacity(0.8),
                     ),
                     child: Center(
                       child: Icon(
                         PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                         size: 28,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                       ),
                     ),
                   ),
@@ -169,19 +174,27 @@ class TopPartBook extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.045,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white.withOpacity(0.9),
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.white.withOpacity(0.9)
+                          : Colors.grey.shade900.withOpacity(0.8),
                     ),
                     child: Center(
                       child: state.isFavorite == false
                           ? Icon(
                               PhosphorIcons.heart(PhosphorIconsStyle.regular),
                               size: 28,
-                              color: ColorConstant.mainColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : ColorConstant.shadowColor,
                             )
                           : Icon(
                               PhosphorIcons.heart(PhosphorIconsStyle.fill),
                               size: 28,
-                              color: ColorConstant.mainColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : ColorConstant.shadowColor,
                             ),
                     ),
                   ),
@@ -206,13 +219,17 @@ class TopPartBook extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.045,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white.withOpacity(0.9),
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.white.withOpacity(0.9)
+                          : Colors.grey.shade900.withOpacity(0.8),
                     ),
                     child: Center(
                       child: Icon(
                         PhosphorIcons.qrCode(PhosphorIconsStyle.regular),
                         size: 28,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                       ),
                     ),
                   ),
@@ -226,7 +243,9 @@ class TopPartBook extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.045,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.white,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.shade500,
@@ -254,13 +273,19 @@ class TopPartBook extends StatelessWidget {
                                 PhosphorIcons.thumbsDown(
                                     PhosphorIconsStyle.regular),
                                 size: 28,
-                                color: Colors.deepOrange,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.deepOrange
+                                    : Colors.orangeAccent.shade400,
                               )
                             : Icon(
                                 PhosphorIcons.thumbsDown(
                                     PhosphorIconsStyle.fill),
                                 size: 28,
-                                color: Colors.deepOrange,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.deepOrange
+                                    : Colors.orangeAccent.shade400,
                               ),
                       ),
                       SizedBox(
@@ -269,7 +294,9 @@ class TopPartBook extends StatelessWidget {
                       Text(
                         state.amountOfReactions.toString(),
                         style: TextStyle(
-                          color: ColorConstant.darkColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -288,12 +315,18 @@ class TopPartBook extends StatelessWidget {
                                 PhosphorIcons.thumbsUp(
                                     PhosphorIconsStyle.regular),
                                 size: 28,
-                                color: ColorConstant.mainColor,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? ColorConstant.mainColor
+                                    : ColorConstant.shadowColor,
                               )
                             : Icon(
                                 PhosphorIcons.thumbsUp(PhosphorIconsStyle.fill),
                                 size: 28,
-                                color: ColorConstant.mainColor,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? ColorConstant.mainColor
+                                    : ColorConstant.shadowColor,
                               ),
                       ),
                     ],

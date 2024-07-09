@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -31,8 +32,13 @@ class FineOfOrder extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color:
-                      isDetail == true ? Colors.black : ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? isDetail == true
+                          ? Colors.black
+                          : ColorConstant.mainColor
+                      : isDetail == true
+                          ? Colors.white
+                          : ColorConstant.shadowColor,
                 ),
               ),
               const SizedBox(
@@ -44,7 +50,9 @@ class FineOfOrder extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade900,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.grey.shade300,
                 ),
               ),
             ],
@@ -66,9 +74,13 @@ class FineOfOrder extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: isDetail == true
-                          ? Colors.black
-                          : ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? isDetail == true
+                              ? Colors.black
+                              : ColorConstant.mainColor
+                          : isDetail == true
+                              ? Colors.white
+                              : ColorConstant.shadowColor,
                     ),
                   ),
                   const SizedBox(
@@ -80,9 +92,13 @@ class FineOfOrder extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: isDetail == true
-                          ? Colors.black
-                          : ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? isDetail == true
+                              ? Colors.black
+                              : ColorConstant.mainColor
+                          : isDetail == true
+                              ? Colors.white
+                              : ColorConstant.shadowColor,
                     ),
                   ),
                 ],
@@ -96,7 +112,9 @@ class FineOfOrder extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade900,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.grey.shade300,
                 ),
               ),
             ],
@@ -110,14 +128,23 @@ class FineOfOrder extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              paramter.toString(),
-              textDirection: TextDirection.rtl,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color:
-                    isDetail == true ? Colors.black : ColorConstant.mainColor,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.3,
+              child: Text(
+                paramter.toString(),
+                textDirection: TextDirection.rtl,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? isDetail == true
+                          ? Colors.black
+                          : ColorConstant.mainColor
+                      : isDetail == true
+                          ? Colors.white
+                          : ColorConstant.shadowColor,
+                ),
               ),
             ),
             const SizedBox(
@@ -129,7 +156,9 @@ class FineOfOrder extends StatelessWidget {
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: Colors.grey.shade900,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.grey.shade900
+                    : Colors.grey.shade300,
               ),
             ),
           ],

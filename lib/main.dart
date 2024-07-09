@@ -39,6 +39,7 @@ void main() async {
   await configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPreferencesUtils().init();
+  await SharedPreferencesUtils().setDark(false);
   runApp(const MyApp());
 }
 

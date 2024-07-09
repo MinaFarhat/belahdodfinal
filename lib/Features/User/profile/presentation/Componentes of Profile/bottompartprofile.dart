@@ -1,11 +1,10 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
-import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
-import 'package:belahododfinal/Features/Auth/Login/presentation/login.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Account%20Settings/accountsettings.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Change%20Password/enteroldpassword.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
+import 'package:belahododfinal/main.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -101,21 +100,23 @@ class BottomPartProfile extends StatelessWidget {
                 onTap: () {
                   showDialog(
                     context: context,
-                    builder: (_) {
+                    builder: (BuildContext dialogContext) {
                       return DeleteDialog(
                         title: "تسجيل الخروج",
                         subTitle: "هل تريد بالتأكيد تسجيل الخروج؟",
                         button1: "إلغاء",
                         button2: "خروج",
                         ontapButton1: () {
-                          Navigator.of(context).pop();
+                          Navigator.pop(dialogContext);
                         },
                         ontapButton2: () {
+                          Navigator.pop(dialogContext);
                           SharedPreferencesUtils().removeToken();
+                          SharedPreferencesUtils().setDark(false);
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                               builder: (context) {
-                                return LogIn();
+                                return const MyApp();
                               },
                             ),
                             (Route<dynamic> route) => false,
@@ -137,21 +138,23 @@ class BottomPartProfile extends StatelessWidget {
                 onTap: () {
                   showDialog(
                     context: context,
-                    builder: (_) {
+                    builder: (BuildContext dialogContext) {
                       return DeleteDialog(
                         title: "حذف الحساب",
                         subTitle: "هل تريد بالتأكيد حذف الحساب؟",
                         button1: "إلغاء",
                         button2: "حذف",
                         ontapButton1: () {
-                          Navigator.of(context).pop();
+                          Navigator.pop(dialogContext);
                         },
                         ontapButton2: () {
+                          Navigator.pop(dialogContext);
                           SharedPreferencesUtils().removeToken();
+                          SharedPreferencesUtils().setDark(false);
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                               builder: (context) {
-                                return const Signup();
+                                return const MyApp();
                               },
                             ),
                             (Route<dynamic> route) => false,

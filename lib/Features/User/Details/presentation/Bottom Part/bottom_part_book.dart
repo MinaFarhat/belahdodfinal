@@ -474,7 +474,9 @@ class BottomPartBook extends StatelessWidget {
                         Icon(
                           PhosphorIcons.mapPin(PhosphorIconsStyle.regular),
                           size: 24,
-                          color: ColorConstant.mainColor,
+                         color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : ColorConstant.shadowColor,
                         ),
                       ],
                     ),

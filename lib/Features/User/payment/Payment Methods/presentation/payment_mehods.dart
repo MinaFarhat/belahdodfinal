@@ -42,13 +42,13 @@ class PaymentMethods extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.25,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/pay.png"),
+                    image: AssetImage("assets/images/paymentmethods.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 16),
+                padding: const EdgeInsets.only(right: 16, top: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [

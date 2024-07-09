@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -42,18 +43,22 @@ class _SearchDialogState extends State<SearchDialog> {
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
+          color: SharedPreferencesUtils().getisDark() == false
+              ? Colors.white
+              : Colors.grey.shade900,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text(
+            Text(
               ":أدخل التاريخ",
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.black
+                    : Colors.white,
               ),
             ),
             SizedBox(
@@ -69,7 +74,9 @@ class _SearchDialogState extends State<SearchDialog> {
                       DateTime.now().day.toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         fontSize: 16,
                       ),
                     ),
@@ -88,7 +95,10 @@ class _SearchDialogState extends State<SearchDialog> {
                           child: Text(
                             value.toString(),
                             style: TextStyle(
-                              color: ColorConstant.mainColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
@@ -96,9 +106,14 @@ class _SearchDialogState extends State<SearchDialog> {
                         ),
                       );
                     }).toList(),
-                    iconEnabledColor: Colors.black,
+                    iconEnabledColor:
+                        SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                     style: const TextStyle(color: Colors.black),
-                    dropdownColor: Colors.white,
+                    dropdownColor: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                     borderRadius: BorderRadius.circular(18),
                     menuMaxHeight: 170,
                     alignment: Alignment.center,
@@ -114,7 +129,9 @@ class _SearchDialogState extends State<SearchDialog> {
                       currentMonth,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         fontSize: 16,
                       ),
                     ),
@@ -133,7 +150,10 @@ class _SearchDialogState extends State<SearchDialog> {
                           child: Text(
                             value,
                             style: TextStyle(
-                              color: ColorConstant.mainColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
@@ -141,9 +161,14 @@ class _SearchDialogState extends State<SearchDialog> {
                         ),
                       );
                     }).toList(),
-                    iconEnabledColor: Colors.black,
+                    iconEnabledColor:
+                        SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                     style: const TextStyle(color: Colors.black),
-                    dropdownColor: Colors.white,
+                    dropdownColor: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                     borderRadius: BorderRadius.circular(18),
                     menuMaxHeight: 170,
                     alignment: Alignment.center,
@@ -159,7 +184,9 @@ class _SearchDialogState extends State<SearchDialog> {
                       DateTime.now().year.toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         fontSize: 16,
                       ),
                     ),
@@ -178,7 +205,10 @@ class _SearchDialogState extends State<SearchDialog> {
                           child: Text(
                             value.toString(),
                             style: TextStyle(
-                              color: ColorConstant.mainColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
@@ -186,9 +216,14 @@ class _SearchDialogState extends State<SearchDialog> {
                         ),
                       );
                     }).toList(),
-                    iconEnabledColor: Colors.black,
+                    iconEnabledColor:
+                        SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                     style: const TextStyle(color: Colors.black),
-                    dropdownColor: Colors.white,
+                    dropdownColor: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                     borderRadius: BorderRadius.circular(18),
                     menuMaxHeight: 170,
                     alignment: Alignment.center,

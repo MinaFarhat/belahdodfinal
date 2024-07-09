@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
@@ -80,7 +81,9 @@ class OrderItemDetails extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.8,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
+            color: SharedPreferencesUtils().getisDark() == false
+                ? Colors.white
+                : Colors.grey.shade800,
           ),
           child: Row(
             children: [
