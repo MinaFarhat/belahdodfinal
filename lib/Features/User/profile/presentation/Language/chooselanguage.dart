@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -17,7 +18,9 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         appBar: SimpleTopBar(
           name: "اللغة",
           leading: Container(),
@@ -32,7 +35,9 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                 child: Icon(
                   PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                   size: 26,
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                 ),
               ),
             ),
@@ -64,7 +69,9 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                       Text(
                         "اللغة العربية",
                         style: TextStyle(
-                          color: Colors.grey.shade900,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -102,7 +109,9 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                       Text(
                         "English",
                         style: TextStyle(
-                          color: Colors.grey.shade900,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),

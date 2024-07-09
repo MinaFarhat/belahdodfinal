@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -37,7 +38,9 @@ class _FieldNameState extends State<FieldName> {
               Text(
                 widget.fieldName,
                 style: TextStyle(
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
                 ),
@@ -59,7 +62,9 @@ class _FieldNameState extends State<FieldName> {
                 child: TextFormField(
                   controller: widget.controller,
                   textAlignVertical: TextAlignVertical.center,
-                  cursorColor: Colors.grey.shade900,
+                  cursorColor: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   cursorHeight: 20,
                   cursorRadius: const Radius.circular(50),
                   keyboardType: widget.typeKey,
@@ -107,19 +112,25 @@ class _FieldNameState extends State<FieldName> {
                         : null,
                     border: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
                     disabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -133,7 +144,9 @@ class _FieldNameState extends State<FieldName> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 ),
               ),

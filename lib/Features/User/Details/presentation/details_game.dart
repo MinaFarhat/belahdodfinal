@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/Bottom%20Part/bottom_part_game.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/Top%20Part/top_part_game.dart';
@@ -35,7 +36,9 @@ class _DetailsGameState extends State<DetailsGame> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         body: BlocConsumer<GameCubit, GameState>(
           listener: (context, state) {
             state.whenOrNull(
@@ -56,21 +59,27 @@ class _DetailsGameState extends State<DetailsGame> {
               orElse: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               initial: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               loading: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },

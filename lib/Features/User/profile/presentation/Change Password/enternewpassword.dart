@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/splashscreen.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_name.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,9 @@ class EnterNewPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -22,7 +25,7 @@ class EnterNewPassword extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 12, bottom: 8),
                 child: Container(
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.25,
+                  height: MediaQuery.of(context).size.height * 0.3,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/images/changepassword2.png"),
@@ -34,12 +37,14 @@ class EnterNewPassword extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.045,
               ),
-              const Text(
+              Text(
                 "إعادة تعيين كلمة مرور جديدة",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                 ),
               ),
               Padding(
@@ -51,7 +56,9 @@ class EnterNewPassword extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade900,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade900
+                        : Colors.white,
                   ),
                 ),
               ),

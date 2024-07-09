@@ -36,7 +36,7 @@ class Profile extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.025,
               ),
-              const MiddlePartProfile(
+              MiddlePartProfile(
                 numberOfOrder: 50,
                 numOfPoints: 250,
               ),

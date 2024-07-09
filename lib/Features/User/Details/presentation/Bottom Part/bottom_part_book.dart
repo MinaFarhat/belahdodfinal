@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -50,10 +51,12 @@ class BottomPartBook extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? Colors.black
+                  : Colors.white,
             ),
           ),
           SizedBox(
@@ -66,7 +69,9 @@ class BottomPartBook extends StatelessWidget {
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: Colors.grey.shade800,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.grey.shade800
+                    : Colors.grey.shade300,
               ),
             ),
           ),
@@ -76,7 +81,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 auther,
                 style: TextStyle(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : ColorConstant.shadowColor,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -87,7 +94,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":المؤلف",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -103,7 +112,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 translater,
                 style: TextStyle(
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : ColorConstant.shadowColor,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -114,7 +125,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":المترجم",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -127,18 +140,22 @@ class BottomPartBook extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Text(
+              Text(
                 "ألف ليرة سورية",
                 style: TextStyle(
-                  color: Colors.black,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 " $price",
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -149,7 +166,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":السعر",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -164,8 +183,10 @@ class BottomPartBook extends StatelessWidget {
             children: [
               Text(
                 targetage,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -176,7 +197,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":الفئة العمرية",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -191,8 +214,10 @@ class BottomPartBook extends StatelessWidget {
             children: [
               Text(
                 measurements,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -203,7 +228,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":حجم وقياس الكتاب",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -218,8 +245,10 @@ class BottomPartBook extends StatelessWidget {
             children: [
               Text(
                 numberofpages,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -230,7 +259,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":عدد الصفحات",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -245,8 +276,10 @@ class BottomPartBook extends StatelessWidget {
             children: [
               Text(
                 printtype,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -257,7 +290,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":نوع الطباعة",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -272,8 +307,10 @@ class BottomPartBook extends StatelessWidget {
             children: [
               Text(
                 section,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
@@ -284,7 +321,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":القسم",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -303,10 +342,12 @@ class BottomPartBook extends StatelessWidget {
                   children: [
                     Text(
                       "($numberwhorates)",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
                       ),
                     ),
                     RatingBar(
@@ -335,7 +376,9 @@ class BottomPartBook extends StatelessWidget {
               Text(
                 ":التقييم",
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -348,11 +391,13 @@ class BottomPartBook extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Text(
+              Text(
                 "مستخدم",
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.black,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -360,15 +405,19 @@ class BottomPartBook extends StatelessWidget {
                 " $numberwhofavorite",
                 style: TextStyle(
                   fontSize: 17,
-                  color: ColorConstant.mainColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : ColorConstant.shadowColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text(
+              Text(
                 " المنتج المفضل لدى",
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.black,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -377,10 +426,12 @@ class BottomPartBook extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.0025,
           ),
-          const Text(
+          Text(
             ":الموقع",
             style: TextStyle(
-              color: Colors.black,
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? Colors.black
+                  : Colors.white,
               fontSize: 17,
               fontWeight: FontWeight.bold,
             ),
@@ -413,7 +464,9 @@ class BottomPartBook extends StatelessWidget {
                         Text(
                           locations[index],
                           style: TextStyle(
-                            color: ColorConstant.darkColor,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.grey.shade900
+                                : Colors.white,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),

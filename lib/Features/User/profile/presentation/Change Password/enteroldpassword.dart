@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Change%20Password/enternewpassword.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_name.dart';
@@ -13,7 +14,9 @@ class EnterOldPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -30,7 +33,9 @@ class EnterOldPassword extends StatelessWidget {
                       child: Icon(
                         PhosphorIcons.arrowRight(PhosphorIconsStyle.bold),
                         size: 26,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                       ),
                     ),
                   ],
@@ -49,12 +54,14 @@ class EnterOldPassword extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.045,
               ),
-              const Text(
+              Text(
                 "إعادة تعيين كلمة مرور جديدة",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                 ),
               ),
               Padding(
@@ -66,7 +73,9 @@ class EnterOldPassword extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade900,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade900
+                        : Colors.white,
                   ),
                 ),
               ),

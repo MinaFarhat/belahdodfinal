@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/Bottom%20Part/bottom_part_book.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/Top%20Part/top_part_book.dart';
@@ -35,7 +36,9 @@ class _DetailsBookState extends State<DetailsBook> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         body: BlocConsumer<BookCubit, BookState>(
           listener: (context, state) {
             state.whenOrNull(
@@ -56,21 +59,27 @@ class _DetailsBookState extends State<DetailsBook> {
               orElse: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               initial: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },
               loading: () {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                 );
               },

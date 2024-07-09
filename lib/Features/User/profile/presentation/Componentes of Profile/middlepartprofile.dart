@@ -7,8 +7,9 @@ import 'package:belahododfinal/main.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class MiddlePartProfile extends StatefulWidget {
-  const MiddlePartProfile({
+// ignore: must_be_immutable
+class MiddlePartProfile extends StatelessWidget {
+  MiddlePartProfile({
     required this.numberOfOrder,
     required this.numOfPoints,
     super.key,
@@ -16,11 +17,6 @@ class MiddlePartProfile extends StatefulWidget {
   final int numberOfOrder;
   final int numOfPoints;
 
-  @override
-  State<MiddlePartProfile> createState() => _MiddlePartProfileState();
-}
-
-class _MiddlePartProfileState extends State<MiddlePartProfile> {
   bool isDark = SharedPreferencesUtils().getisDark()!;
 
   @override
@@ -74,11 +70,8 @@ class _MiddlePartProfileState extends State<MiddlePartProfile> {
         InkWell(
           overlayColor: WidgetStateProperty.all(Colors.transparent),
           onTap: () {
-            setState(() {
-              isDark = !isDark;
-              SharedPreferencesUtils().setDark(isDark);
-            });
-
+            isDark = !isDark;
+            SharedPreferencesUtils().setDark(isDark);
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) {
@@ -157,7 +150,7 @@ class _MiddlePartProfileState extends State<MiddlePartProfile> {
                       ),
                     ),
                     Text(
-                      widget.numOfPoints.toString(),
+                      numOfPoints.toString(),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -202,7 +195,7 @@ class _MiddlePartProfileState extends State<MiddlePartProfile> {
                       ),
                     ),
                     Text(
-                      widget.numberOfOrder.toString(),
+                      numberOfOrder.toString(),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,

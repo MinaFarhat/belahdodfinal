@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/main%20orders/Get%20Orders%20Cubit/get_orders_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_search.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
@@ -28,7 +29,9 @@ class _OrdersState extends State<Orders> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         extendBody: true,
         appBar: SimpleTopBar(
           name: "الطلبات",
@@ -45,7 +48,9 @@ class _OrdersState extends State<Orders> {
               padding: const EdgeInsets.only(left: 16),
               child: Icon(
                 PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
-                color: ColorConstant.mainColor,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? ColorConstant.mainColor
+                    : Colors.white,
                 size: 26,
               ),
             ),
@@ -61,7 +66,9 @@ class _OrdersState extends State<Orders> {
                 child: Icon(
                   PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                   size: 26,
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                 ),
               ),
             ),
@@ -91,21 +98,27 @@ class _OrdersState extends State<Orders> {
                 orElse: () {
                   return Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   );
                 },
                 initial: () {
                   return Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   );
                 },
                 loading: () {
                   return Center(
                     child: CircularProgressIndicator(
-                      color: ColorConstant.mainColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.mainColor
+                          : Colors.white,
                     ),
                   );
                 },
@@ -133,12 +146,14 @@ class _OrdersState extends State<Orders> {
                       }),
                     );
                   } else {
-                    return const Center(
+                    return Center(
                       child: Text(
                         "لاتوجد طلبيات حتى الأن",
                         style: TextStyle(
                           fontSize: 18,
-                          color: Colors.black,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.black
+                              : Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

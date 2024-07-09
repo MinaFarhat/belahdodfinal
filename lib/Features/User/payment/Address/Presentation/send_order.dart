@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Presentation/dynamic_location_field.dart';
@@ -30,7 +31,9 @@ class _SendOrderState extends State<SendOrder> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -47,7 +50,9 @@ class _SendOrderState extends State<SendOrder> {
                       child: Icon(
                         PhosphorIcons.arrowRight(PhosphorIconsStyle.bold),
                         size: 26,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                       ),
                     ),
                   ],
@@ -55,7 +60,7 @@ class _SendOrderState extends State<SendOrder> {
               ),
               Container(
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.2,
+                height: MediaQuery.of(context).size.height * 0.23,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/send_order.png"),
@@ -66,12 +71,14 @@ class _SendOrderState extends State<SendOrder> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.04,
               ),
-              const Text(
+              Text(
                 "إرسال الطلب",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.black
+                      : Colors.white,
                 ),
               ),
               Padding(
@@ -83,7 +90,9 @@ class _SendOrderState extends State<SendOrder> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade900,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade900
+                        : Colors.white,
                   ),
                 ),
               ),
@@ -121,7 +130,9 @@ class _SendOrderState extends State<SendOrder> {
                       style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
-                        color: ColorConstant.darkColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                       ),
                     ),
                   ],
@@ -272,7 +283,9 @@ class _SendOrderState extends State<SendOrder> {
                     },
                     loading: () {
                       return CircularProgressIndicator(
-                        color: ColorConstant.mainColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? ColorConstant.mainColor
+                            : Colors.white,
                       );
                     },
                     success: (sendorderentity) {

@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Get%20Cities%20Cubit/get_cities_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/data/Model/getcitiesentity.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,9 @@ class _DynamicLocationFieldState extends State<DynamicLocationField> {
               Text(
                 "العنوان",
                 style: TextStyle(
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
                 ),
@@ -68,7 +71,9 @@ class _DynamicLocationFieldState extends State<DynamicLocationField> {
                 child: TextFormField(
                   controller: widget.controller,
                   textAlignVertical: TextAlignVertical.center,
-                  cursorColor: ColorConstant.mainColor,
+                  cursorColor: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : Colors.white,
                   cursorHeight: 22,
                   cursorRadius: const Radius.circular(50),
                   keyboardType: TextInputType.streetAddress,
@@ -79,7 +84,9 @@ class _DynamicLocationFieldState extends State<DynamicLocationField> {
                     hintTextDirection: TextDirection.rtl,
                     hintStyle: TextStyle(
                       fontSize: 18,
-                      color: ColorConstant.hintTextColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.hintTextColor
+                          : Colors.grey.shade300,
                       fontWeight: FontWeight.bold,
                     ),
                     border: UnderlineInputBorder(
@@ -93,14 +100,18 @@ class _DynamicLocationFieldState extends State<DynamicLocationField> {
                       borderRadius: BorderRadius.circular(0),
                       borderSide: BorderSide(
                         width: 1,
-                        color: ColorConstant.hintTextColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? ColorConstant.hintTextColor
+                            : Colors.grey.shade300,
                       ),
                     ),
                     disabledBorder: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(0),
                       borderSide: BorderSide(
                         width: 1,
-                        color: ColorConstant.hintTextColor,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? ColorConstant.hintTextColor
+                            : Colors.grey.shade300,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
@@ -114,7 +125,9 @@ class _DynamicLocationFieldState extends State<DynamicLocationField> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
-                    color: ColorConstant.mainColor,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? ColorConstant.mainColor
+                        : Colors.white,
                   ),
                   validator: widget.validatefield,
                 ),
@@ -143,32 +156,44 @@ class _DynamicLocationFieldState extends State<DynamicLocationField> {
                     orElse: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     loading: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     initial: () {
                       return Center(
                         child: CircularProgressIndicator(
-                          color: ColorConstant.mainColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
                         ),
                       );
                     },
                     success: (getcitiesentity) {
                       return DropdownButtonFormField<GetCitiesData>(
+                        dropdownColor:
+                            SharedPreferencesUtils().getisDark() == false
+                                ? Colors.white
+                                : Colors.grey.shade900,
                         menuMaxHeight: 300,
                         hint: Text(
                           "المحافظة",
                           style: TextStyle(
                             fontSize: 18,
-                            color: ColorConstant.hintTextColor,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? ColorConstant.hintTextColor
+                                : Colors.grey.shade300,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -194,7 +219,11 @@ class _DynamicLocationFieldState extends State<DynamicLocationField> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 17,
-                                    color: ColorConstant.mainColor,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? ColorConstant.mainColor
+                                            : Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),

@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
@@ -23,12 +24,21 @@ class _WaitingScreenState extends State<WaitingScreen> {
 
   void _setSystemUIOverlayStyle() {
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark,
-      ),
+      SharedPreferencesUtils().getisDark() == false
+          ? SystemUiOverlayStyle.light.copyWith(
+              systemNavigationBarColor: Colors.white,
+              systemNavigationBarIconBrightness: Brightness.dark,
+              statusBarBrightness: Brightness.dark,
+              statusBarIconBrightness: Brightness.dark,
+              statusBarColor: Colors.white,
+            )
+          : SystemUiOverlayStyle.dark.copyWith(
+              systemNavigationBarColor: Colors.grey.shade900,
+              systemNavigationBarIconBrightness: Brightness.light,
+              statusBarBrightness: Brightness.light,
+              statusBarIconBrightness: Brightness.light,
+              statusBarColor: Colors.grey.shade900,
+            ),
     );
   }
 
@@ -48,7 +58,9 @@ class _WaitingScreenState extends State<WaitingScreen> {
     );
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: SharedPreferencesUtils().getisDark() == true
+            ? Colors.grey.shade900
+            : Colors.white,
         body: Column(
           children: [
             Padding(
@@ -63,9 +75,11 @@ class _WaitingScreenState extends State<WaitingScreen> {
             ),
             Text(
               widget.text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 20,
-                color: Colors.black,
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.black
+                    : Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             )

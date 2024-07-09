@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
 import 'package:flutter/material.dart';
@@ -28,10 +29,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
   void initState() {
     super.initState();
     buttonActions = [
-      (context) {
-      },
-      (context) {
-      },
+      (context) {},
+      (context) {},
       (context) {
         showDialog(
           context: context,
@@ -48,7 +47,9 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                     height: MediaQuery.of(context).size.height * 0.4,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.white
+                          : Colors.grey.shade900,
                     ),
                     child: Column(
                       children: [
@@ -59,7 +60,10 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: ColorConstant.darkColor,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? Colors.grey.shade900
+                                      : Colors.white,
                             ),
                           ),
                         ),
@@ -77,6 +81,11 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     ListTile(
+                                      tileColor: SharedPreferencesUtils()
+                                                  .getisDark() ==
+                                              false
+                                          ? Colors.white
+                                          : Colors.grey.shade900,
                                       title: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
@@ -85,7 +94,11 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                             'أختيار من المعرض',
                                             style: TextStyle(
                                               fontSize: 16,
-                                              color: ColorConstant.darkColor,
+                                              color: SharedPreferencesUtils()
+                                                          .getisDark() ==
+                                                      false
+                                                  ? ColorConstant.darkColor
+                                                  : Colors.white,
                                               fontWeight: FontWeight.bold,
                                             ),
                                             textDirection: TextDirection.rtl,
@@ -94,7 +107,11 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                           Icon(
                                             PhosphorIcons.images(
                                                 PhosphorIconsStyle.regular),
-                                            color: ColorConstant.mainColor,
+                                            color: SharedPreferencesUtils()
+                                                        .getisDark() ==
+                                                    false
+                                                ? ColorConstant.mainColor
+                                                : Colors.white,
                                             size: 30,
                                           ),
                                         ],
@@ -108,6 +125,11 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                           const EdgeInsets.only(right: 16.0),
                                     ),
                                     ListTile(
+                                      tileColor: SharedPreferencesUtils()
+                                                  .getisDark() ==
+                                              false
+                                          ? Colors.white
+                                          : Colors.grey.shade900,
                                       title: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
@@ -116,7 +138,11 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                             'ألتقاط صورة',
                                             style: TextStyle(
                                               fontSize: 16,
-                                              color: ColorConstant.darkColor,
+                                              color: SharedPreferencesUtils()
+                                                          .getisDark() ==
+                                                      false
+                                                  ? Colors.grey.shade900
+                                                  : Colors.white,
                                               fontWeight: FontWeight.bold,
                                             ),
                                             textDirection: TextDirection.rtl,
@@ -125,7 +151,11 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                           Icon(
                                             PhosphorIcons.aperture(
                                                 PhosphorIconsStyle.regular),
-                                            color: ColorConstant.mainColor,
+                                            color: SharedPreferencesUtils()
+                                                        .getisDark() ==
+                                                    false
+                                                ? ColorConstant.mainColor
+                                                : Colors.white,
                                             size: 30,
                                           ),
                                         ],
@@ -217,8 +247,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                     context
                                         .read<TransferCubit>()
                                         .sendTransferImage(
-                                     selectedImage!,
-                                    );
+                                          selectedImage!,
+                                        );
                                   },
                                   child: Container(
                                     width:
@@ -265,8 +295,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                     context
                                         .read<TransferCubit>()
                                         .sendTransferImage(
-                                       selectedImage!,
-                                    );
+                                          selectedImage!,
+                                        );
                                   },
                                   child: Container(
                                     width:
@@ -309,7 +339,11 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                               loading: () {
                                 return Center(
                                   child: CircularProgressIndicator(
-                                    color: ColorConstant.mainColor,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? ColorConstant.mainColor
+                                            : Colors.white,
                                   ),
                                 );
                               },
@@ -320,8 +354,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                     context
                                         .read<TransferCubit>()
                                         .sendTransferImage(
-                                       selectedImage!,
-                                    );
+                                          selectedImage!,
+                                        );
                                   },
                                   child: Container(
                                     width:
@@ -373,8 +407,7 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
           },
         );
       },
-      (context) {
-      },
+      (context) {},
       (context) {
         showDialog(
           context: context,
@@ -389,7 +422,9 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                 height: MediaQuery.of(context).size.height * 0.22,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.white
+                      : Colors.grey.shade900,
                 ),
                 child: Column(
                   children: [
@@ -403,7 +438,9 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: ColorConstant.darkColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                         ),
                       ),
                     ),
@@ -527,7 +564,10 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                           loading: () {
                             return Center(
                               child: CircularProgressIndicator(
-                                color: ColorConstant.mainColor,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? ColorConstant.mainColor
+                                    : Colors.white,
                               ),
                             );
                           },
@@ -612,7 +652,9 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
-              color: ColorConstant.darkColor,
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? Colors.grey.shade900
+                  : Colors.white,
             ),
           ),
           SizedBox(
