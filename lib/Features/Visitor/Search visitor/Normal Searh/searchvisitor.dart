@@ -1,7 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:belahododfinal/Features/Visitor/Search%20visitor/Normal%20Searh/searchpagevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Search%20visitor/Popular%20Products/popularproductsvisitor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_beep/flutter_beep.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class SearchVisitor extends StatefulWidget {
@@ -17,7 +20,7 @@ class _SearchVisitorState extends State<SearchVisitor> {
   Future<void> scanBarcode() async {
     try {
       var result = await BarcodeScanner.scan();
-      //FlutterBeep.beep();
+      FlutterBeep.beep();
       setState(() {
         barcodeResult = result.rawContent;
         print("The barcode is: $barcodeResult");

@@ -1,8 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Presentation/searchpage.dart';
 import 'package:belahododfinal/Features/User/search/Populer%20Products/Presentation/popularproducts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_beep/flutter_beep.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Search extends StatefulWidget {
@@ -18,12 +21,15 @@ class _SearchState extends State<Search> {
   Future<void> scanBarcode() async {
     try {
       var result = await BarcodeScanner.scan();
+      FlutterBeep.beep();
       setState(() {
         barcodeResult = result.rawContent;
+        print("The barcode is: $barcodeResult");
       });
     } catch (e) {
       setState(() {
         barcodeResult = 'Failed to get barcode';
+        print("Error: $e");
       });
     }
   }
