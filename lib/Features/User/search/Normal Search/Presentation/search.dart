@@ -1,3 +1,4 @@
+import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Presentation/searchpage.dart';
 import 'package:belahododfinal/Features/User/search/Populer%20Products/Presentation/popularproducts.dart';
@@ -13,27 +14,20 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   bool isSearching = false;
-  // final TextEditingController _searchController = TextEditingController();
-  // List<String> oldsearch = [
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  // ];
+  String? barcodeResult;
+  Future<void> scanBarcode() async {
+    try {
+      var result = await BarcodeScanner.scan();
+      setState(() {
+        barcodeResult = result.rawContent;
+      });
+    } catch (e) {
+      setState(() {
+        barcodeResult = 'Failed to get barcode';
+      });
+    }
+  }
 
-  // List<String> resultsofSearching = [
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  //   "أقلام تلوين",
-  // ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -87,7 +81,9 @@ class _SearchState extends State<Search> {
                           suffixIcon: InkWell(
                             overlayColor:
                                 WidgetStateProperty.all(Colors.transparent),
-                            onTap: () {},
+                            onTap: () {
+                              scanBarcode();
+                            },
                             child: Icon(
                               PhosphorIcons.qrCode(PhosphorIconsStyle.regular),
                               color:

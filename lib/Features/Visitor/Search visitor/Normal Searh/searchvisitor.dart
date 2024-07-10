@@ -1,10 +1,34 @@
+import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:belahododfinal/Features/Visitor/Search%20visitor/Normal%20Searh/searchpagevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Search%20visitor/Popular%20Products/popularproductsvisitor.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class SearchVisitor extends StatelessWidget {
+class SearchVisitor extends StatefulWidget {
   const SearchVisitor({super.key});
+
+  @override
+  State<SearchVisitor> createState() => _SearchVisitorState();
+}
+
+class _SearchVisitorState extends State<SearchVisitor> {
+  String? barcodeResult;
+
+  Future<void> scanBarcode() async {
+    try {
+      var result = await BarcodeScanner.scan();
+      //FlutterBeep.beep();
+      setState(() {
+        barcodeResult = result.rawContent;
+        print("The barcode is: $barcodeResult");
+      });
+    } catch (e) {
+      setState(() {
+        barcodeResult = 'Failed to get barcode';
+        print("Error: $e");
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +79,9 @@ class SearchVisitor extends StatelessWidget {
                           suffixIcon: InkWell(
                             overlayColor:
                                 WidgetStateProperty.all(Colors.transparent),
-                            onTap: () {},
+                            onTap: () {
+                              scanBarcode();
+                            },
                             child: Icon(
                               PhosphorIcons.qrCode(PhosphorIconsStyle.regular),
                               color: Colors.grey.shade900,
