@@ -26,19 +26,20 @@ class Profile extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.016,
+                height: MediaQuery.of(context).size.height * 0.005,
               ),
               const TopPartProfile(
                 imageProfile: "assets/images/User-avatar.png",
                 nameUser: "Mina Farhat",
                 location: "دمشق/دويلعة/ركن أبو عطاف/دخلة بن كولومبوس",
+                points: "250",
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.025,
+                height: MediaQuery.of(context).size.height * 0.018,
               ),
               MiddlePartProfile(
                 numberOfOrder: 50,
-                numOfPoints: 250,
+                numOfVouchers: 5,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.018,

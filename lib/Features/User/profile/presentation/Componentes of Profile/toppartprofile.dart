@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/Points/Presentation/points.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -11,11 +12,13 @@ class TopPartProfile extends StatefulWidget {
     required this.imageProfile,
     required this.nameUser,
     required this.location,
+    required this.points,
     super.key,
   });
   final String imageProfile;
   final String nameUser;
   final String location;
+  final String points;
   @override
   State<TopPartProfile> createState() => _TopPartProfileState();
 }
@@ -213,6 +216,63 @@ class _TopPartProfileState extends State<TopPartProfile> {
               size: 20,
             ),
           ],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.006,
+        ),
+        InkWell(
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return const PointsScreen();
+                },
+              ),
+            );
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "نقطة",
+                overflow: TextOverflow.ellipsis,
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.01,
+              ),
+              Text(
+                widget.points,
+                overflow: TextOverflow.ellipsis,
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.01,
+              ),
+              Icon(
+                PhosphorIcons.currencyEth(PhosphorIconsStyle.regular),
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? ColorConstant.mainColor
+                    : ColorConstant.shadowColor,
+              ),
+            ],
+          ),
         ),
       ],
     );

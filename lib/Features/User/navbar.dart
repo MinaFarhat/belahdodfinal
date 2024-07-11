@@ -138,27 +138,14 @@ class _MynavbarState extends State<Mynavbar> {
                       curentindex = 4;
                     });
                   },
-                  icon: Container(
-                    width: MediaQuery.of(context).size.width * 0.09,
-                    height: MediaQuery.of(context).size.height * 0.1,
-                    decoration: BoxDecoration(
-                      color: SharedPreferencesUtils().getisDark() == false
-                          ? ColorConstant.mainColor
-                          : ColorConstant.shadowColor,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: curentindex == 4
-                            ? SharedPreferencesUtils().getisDark() == false
-                                ? Colors.white
-                                : Colors.grey.shade900
-                            : Colors.transparent,
-                        width: 2,
-                      ),
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/User-avatar.png"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  icon: Icon(
+                    curentindex == 4
+                        ? PhosphorIcons.legoSmiley(PhosphorIconsStyle.fill)
+                        : PhosphorIcons.legoSmiley(PhosphorIconsStyle.regular),
+                    size: 28,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                   ),
                 ),
               ],

@@ -1,7 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/main%20orders/presentation/order.dart';
-import 'package:belahododfinal/Features/User/Points/Presentation/points.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Language/chooselanguage.dart';
 import 'package:belahododfinal/main.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +10,11 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 class MiddlePartProfile extends StatelessWidget {
   MiddlePartProfile({
     required this.numberOfOrder,
-    required this.numOfPoints,
+    required this.numOfVouchers,
     super.key,
   });
   final int numberOfOrder;
-  final int numOfPoints;
+  final int numOfVouchers;
 
   bool isDark = SharedPreferencesUtils().getisDark()!;
 
@@ -111,15 +110,7 @@ class MiddlePartProfile extends StatelessWidget {
         ),
         InkWell(
           overlayColor: WidgetStateProperty.all(Colors.transparent),
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return const PointsScreen();
-                },
-              ),
-            );
-          },
+          onTap: () {},
           child: Container(
             width: MediaQuery.of(context).size.width * 0.24,
             height: MediaQuery.of(context).size.height * 0.08,
@@ -142,7 +133,7 @@ class MiddlePartProfile extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "النقاط",
+                      "القسائم",
                       style: TextStyle(
                         color: Colors.grey.shade900,
                         fontSize: 18,
@@ -150,7 +141,7 @@ class MiddlePartProfile extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      numOfPoints.toString(),
+                      numOfVouchers.toString(),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,

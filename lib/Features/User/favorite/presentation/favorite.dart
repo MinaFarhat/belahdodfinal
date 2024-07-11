@@ -1,11 +1,8 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
-import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Libraries/favoritelibraries.dart';
 import 'package:belahododfinal/Features/User/favorite/presentation/Favorites%20Products/favoriteproducts.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-
-import '../../../../../Core/constant/colors_constant.dart';
 
 // ignore: must_be_immutable
 class FavoriteList extends StatefulWidget {
@@ -49,79 +46,89 @@ class _FavoriteListState extends State<FavoriteList> {
           name: "القائمة المفضلة",
           isBottom: false,
         ),
-        body: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 12, right: 12, top: 6),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    InkWell(
-                      overlayColor: WidgetStateProperty.all(Colors.transparent),
-                      onTap: () {
-                        setState(() {
-                          action = false;
-                        });
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.07,
-                        decoration: BoxDecoration(
-                          color: action == false
-                              ? ColorConstant.mainColor
-                              : Colors.grey.shade800,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            "المكتبات",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      overlayColor: WidgetStateProperty.all(Colors.transparent),
-                      onTap: () {
-                        setState(() {
-                          action = true;
-                        });
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.07,
-                        decoration: BoxDecoration(
-                          color: action == true
-                              ? ColorConstant.mainColor
-                              : Colors.grey.shade800,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            "المنتجات",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              action == true
-                  ? const FavoriteProducts()
-                  : const FavoritesLibraries(),
-            ],
+        body: const SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.only(left: 12, right: 12, top: 6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FavoriteProducts(),
+              ],
+            ),
           ),
+          //  Column(
+          //   children: [
+          //     Padding(
+          //       padding: const EdgeInsets.only(left: 12, right: 12, top: 6),
+          //       child: Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //         children: [
+          //           InkWell(
+          //             overlayColor: WidgetStateProperty.all(Colors.transparent),
+          //             onTap: () {
+          //               setState(() {
+          //                 action = false;
+          //               });
+          //             },
+          //             child: Container(
+          //               width: MediaQuery.of(context).size.width * 0.4,
+          //               height: MediaQuery.of(context).size.height * 0.07,
+          //               decoration: BoxDecoration(
+          //                 color: action == false
+          //                     ? ColorConstant.mainColor
+          //                     : Colors.grey.shade800,
+          //                 borderRadius: BorderRadius.circular(16),
+          //               ),
+          //               child: const Center(
+          //                 child: Text(
+          //                   "المكتبات",
+          //                   style: TextStyle(
+          //                     fontSize: 16,
+          //                     color: Colors.white,
+          //                     fontWeight: FontWeight.bold,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //           ),
+          //           InkWell(
+          //             overlayColor: WidgetStateProperty.all(Colors.transparent),
+          //             onTap: () {
+          //               setState(() {
+          //                 action = true;
+          //               });
+          //             },
+          //             child: Container(
+          //               width: MediaQuery.of(context).size.width * 0.4,
+          //               height: MediaQuery.of(context).size.height * 0.07,
+          //               decoration: BoxDecoration(
+          //                 color: action == true
+          //                     ? ColorConstant.mainColor
+          //                     : Colors.grey.shade800,
+          //                 borderRadius: BorderRadius.circular(16),
+          //               ),
+          //               child: const Center(
+          //                 child: Text(
+          //                   "المنتجات",
+          //                   style: TextStyle(
+          //                     fontSize: 16,
+          //                     color: Colors.white,
+          //                     fontWeight: FontWeight.bold,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //      action == true
+          //         ? const FavoriteProducts()
+          //         : const FavoritesLibraries(),
+
+          //   ],
+          // ),
         ),
       ),
     );

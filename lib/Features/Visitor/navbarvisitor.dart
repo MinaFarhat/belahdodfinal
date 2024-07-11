@@ -104,23 +104,12 @@ class _MynavbarvisitorState extends State<Mynavbarvisitor> {
                       curentindex = 4;
                     });
                   },
-                  icon: Container(
-                    width: MediaQuery.of(context).size.width * 0.09,
-                    height: MediaQuery.of(context).size.height * 0.1,
-                    decoration: BoxDecoration(
-                      color: ColorConstant.mainColor,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: curentindex == 4
-                            ? Colors.white
-                            : Colors.transparent,
-                        width: 2,
-                      ),
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/User-avatar.png"),
-                        fit: BoxFit.scaleDown,
-                      ),
-                    ),
+                  icon: Icon(
+                    curentindex == 4
+                        ? PhosphorIcons.legoSmiley(PhosphorIconsStyle.fill)
+                        : PhosphorIcons.legoSmiley(PhosphorIconsStyle.regular),
+                    size: 28,
+                    color: Colors.white,
                   ),
                 ),
               ],

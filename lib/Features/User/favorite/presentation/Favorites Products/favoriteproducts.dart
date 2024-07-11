@@ -28,7 +28,7 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
       padding: const EdgeInsets.only(top: 12),
       child: SizedBox(
         height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width * 0.9,
+        width: MediaQuery.of(context).size.width * 0.93,
         child: BlocConsumer<GetfavoritesCubit, GetfavoritesState>(
           listener: (context, state) {
             state.whenOrNull(
