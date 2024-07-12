@@ -115,7 +115,7 @@ class MiddlePartProfile extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return Vouchers();
+                  return const Vouchers();
                 },
               ),
             );

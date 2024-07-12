@@ -5,6 +5,7 @@ import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_phone.dar
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/notesfield.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class AddVoucher extends StatefulWidget {
@@ -18,6 +19,17 @@ class _AddVoucherState extends State<AddVoucher> {
   final TextEditingController _phonenumbercontroller = TextEditingController();
   final GlobalKey<FormState> _phonenumberkey = GlobalKey<FormState>();
   final TextEditingController _notesController = TextEditingController();
+  String selectedVoucher = "";
+  bool isSelectedVoucher = false;
+  void _onVoucherSelected(String voucher) {
+    setState(() {
+      selectedVoucher = voucher;
+      // ignore: avoid_print
+      print(selectedVoucher);
+      isSelectedVoucher = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -72,19 +84,35 @@ class _AddVoucherState extends State<AddVoucher> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.025,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
                       children: [
-                        VourcherTypes(text: "قسيمة 150 ألف ل.س"),
-                        VourcherTypes(text: "قسيمة 250 ألف ل.س"),
+                        VourcherTypes(
+                          number: 150,
+                          selectedVoucher: selectedVoucher,
+                          onSelected: _onVoucherSelected,
+                        ),
+                        VourcherTypes(
+                          number: 250,
+                          selectedVoucher: selectedVoucher,
+                          onSelected: _onVoucherSelected,
+                        ),
                       ],
                     ),
                     Column(
                       children: [
-                        VourcherTypes(text: "قسيمة 100 ألف ل.س"),
-                        VourcherTypes(text: "قسيمة 200 ألف ل.س"),
+                        VourcherTypes(
+                          number: 100,
+                          selectedVoucher: selectedVoucher,
+                          onSelected: _onVoucherSelected,
+                        ),
+                        VourcherTypes(
+                          number: 200,
+                          selectedVoucher: selectedVoucher,
+                          onSelected: _onVoucherSelected,
+                        ),
                       ],
                     ),
                   ],
@@ -153,7 +181,16 @@ class _AddVoucherState extends State<AddVoucher> {
                 InkWell(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
                   onTap: () {
-                    if (_phonenumberkey.currentState!.validate()) {}
+                    if (_phonenumberkey.currentState!.validate()) {
+                      if (selectedVoucher.isEmpty) {
+                        Fluttertoast.showToast(
+                          msg: "الرجاء أختيار نوع قسيمة واحد",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                        );
+                      } else {}
+                    }
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.5,
