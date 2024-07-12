@@ -100,7 +100,7 @@ class TopPartQuraan extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: SharedPreferencesUtils().getisDark() == false
-                          ? Colors.white.withOpacity(0.9)
+                          ? Colors.white.withOpacity(0.8)
                           : Colors.grey.shade900.withOpacity(0.8),
                     ),
                     child: Center(
@@ -174,7 +174,7 @@ class TopPartQuraan extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: SharedPreferencesUtils().getisDark() == false
-                          ? Colors.white.withOpacity(0.9)
+                          ? Colors.white.withOpacity(0.8)
                           : Colors.grey.shade900.withOpacity(0.8),
                     ),
                     child: Center(
@@ -219,7 +219,7 @@ class TopPartQuraan extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: SharedPreferencesUtils().getisDark() == false
-                          ? Colors.white.withOpacity(0.9)
+                          ? Colors.white.withOpacity(0.8)
                           : Colors.grey.shade900.withOpacity(0.8),
                     ),
                     child: Center(
@@ -247,14 +247,14 @@ class TopPartQuraan extends StatelessWidget {
                         : Colors.grey.shade900,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.shade500,
-                        offset: const Offset(0, 3),
-                        blurRadius: 0.9,
+                        color: Colors.grey.shade800,
+                        offset: const Offset(0, 1.5),
+                        blurRadius: 0.5,
                       ),
                       BoxShadow(
-                        color: Colors.grey.shade400,
+                        color: Colors.grey.shade700,
                         offset: const Offset(0, -0.2),
-                        blurRadius: 0.9,
+                        blurRadius: 0.5,
                       ),
                     ],
                   ),

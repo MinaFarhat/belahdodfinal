@@ -188,14 +188,22 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                       0.045,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white.withOpacity(0.7),
+                                    color: SharedPreferencesUtils()
+                                                .getisDark() ==
+                                            false
+                                        ? Colors.white.withOpacity(0.7)
+                                        : Colors.grey.shade900.withOpacity(0.8),
                                   ),
                                   child: Center(
                                     child: Icon(
                                       PhosphorIcons.arrowRight(
                                           PhosphorIconsStyle.regular),
                                       size: 28,
-                                      color: ColorConstant.darkColor,
+                                      color: SharedPreferencesUtils()
+                                                  .getisDark() ==
+                                              false
+                                          ? Colors.grey.shade900
+                                          : Colors.white,
                                     ),
                                   ),
                                 ),
@@ -212,7 +220,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                             Text(
                               detailsofofferentity.offerName,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 18,
                                 color: SharedPreferencesUtils().getisDark() ==
                                         false
                                     ? Colors.grey.shade900
@@ -255,7 +263,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                             Text(
                               ":منتجات العرض",
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 17,
                                 color: SharedPreferencesUtils().getisDark() ==
                                         false
                                     ? Colors.grey.shade900
@@ -282,7 +290,11 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                               padding: const EdgeInsets.only(left: 8),
                               child: OfferItems(
                                 image: imageUrl,
+                                productId: detailsofofferentity
+                                    .productsofOffer[index]['id'],
+                                sectionId: 3,
                                 index: index,
+                                minimumquantity: 5,
                               ),
                             );
                           },
