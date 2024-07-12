@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 
 class NotesField extends StatelessWidget {
@@ -27,7 +28,9 @@ class NotesField extends StatelessWidget {
         textDirection: TextDirection.rtl,
         decoration: InputDecoration(
           filled: true,
-          fillColor: ColorConstant.shadowColor,
+          fillColor: SharedPreferencesUtils().getisDark() == false
+              ? Colors.grey.shade200
+              : const Color(0xFFECF2F8),
           hintText: "أكتب...",
           hintStyle: const TextStyle(
             fontSize: 14,

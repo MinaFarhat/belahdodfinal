@@ -37,7 +37,7 @@ class FavItem extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: SharedPreferencesUtils().getisDark() == false
-              ? ColorConstant.shadowColor
+              ? const Color(0xFFECF2F8)
               : Colors.grey.shade800,
         ),
         child: Stack(

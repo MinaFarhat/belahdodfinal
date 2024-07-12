@@ -81,9 +81,9 @@ class _CartState extends State<Cart> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: double.infinity,
-                    decoration: BoxDecoration(
-                      color: ColorConstant.shadowColor,
-                      borderRadius: const BorderRadius.only(
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFECF2F8),
+                      borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
                       ),

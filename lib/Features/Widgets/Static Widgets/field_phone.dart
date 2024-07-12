@@ -1,4 +1,5 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -29,7 +30,9 @@ class FieldPhone extends StatelessWidget {
               Text(
                 fieldName,
                 style: TextStyle(
-                  color: ColorConstant.darkColor,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
                 ),
@@ -51,7 +54,9 @@ class FieldPhone extends StatelessWidget {
                 child: TextFormField(
                   readOnly: true,
                   textAlignVertical: TextAlignVertical.center,
-                  cursorColor: Colors.grey.shade900,
+                  cursorColor: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   cursorHeight: 20,
                   cursorRadius: const Radius.circular(50),
                   keyboardType: typeKey,
@@ -62,30 +67,40 @@ class FieldPhone extends StatelessWidget {
                     hintText: "    +963",
                     hintStyle: TextStyle(
                       fontSize: 16,
-                      color: ColorConstant.darkColor,
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade900
+                          : Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                     border: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
                     disabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -105,7 +120,9 @@ class FieldPhone extends StatelessWidget {
                   controller: phonenumbercontroller,
                   validator: validate,
                   textAlignVertical: TextAlignVertical.center,
-                  cursorColor: Colors.grey.shade900,
+                  cursorColor: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   cursorHeight: 20,
                   cursorRadius: const Radius.circular(50),
                   keyboardType: typeKey,
@@ -115,19 +132,25 @@ class FieldPhone extends StatelessWidget {
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     border: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
                     disabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade900,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.grey.shade900
+                            : Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -140,8 +163,10 @@ class FieldPhone extends StatelessWidget {
                   ),
                   style: TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: ColorConstant.mainColor,
+                    fontWeight: FontWeight.bold,
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.grey.shade900
+                        : Colors.white,
                   ),
                 ),
               ),
