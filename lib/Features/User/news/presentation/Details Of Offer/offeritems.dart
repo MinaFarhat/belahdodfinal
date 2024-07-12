@@ -60,8 +60,10 @@ class OfferItems extends StatelessWidget {
               child: Center(
                 child: Text(
                   minimumquantity.toString(),
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: TextStyle(
+                    color: SharedPreferencesUtils().getisDark() == false
+                        ? Colors.white
+                        : Colors.grey.shade900,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
