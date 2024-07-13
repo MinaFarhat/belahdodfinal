@@ -158,21 +158,23 @@ class BottomPartBase extends StatelessWidget {
                     RatingBar(
                       minRating: 0,
                       maxRating: 5,
+                      initialRating: 0,
                       itemSize: 18,
                       updateOnDrag: true,
                       itemPadding: const EdgeInsets.symmetric(horizontal: 2),
                       ratingWidget: RatingWidget(
-                          full: Icon(
-                            PhosphorIcons.star(PhosphorIconsStyle.fill),
-                            size: 12,
-                            color: const Color(0xFFFB7A12),
-                          ),
-                          half: Container(),
-                          empty: Icon(
-                            PhosphorIcons.star(PhosphorIconsStyle.regular),
-                            size: 12,
-                            color: const Color(0xFFFB7A12),
-                          )),
+                        full: Icon(
+                          PhosphorIcons.star(PhosphorIconsStyle.fill),
+                          size: 12,
+                          color: const Color(0xFFFB7A12),
+                        ),
+                        half: Container(),
+                        empty: Icon(
+                          PhosphorIcons.star(PhosphorIconsStyle.regular),
+                          size: 12,
+                          color: const Color(0xFFFB7A12),
+                        ),
+                      ),
                       onRatingUpdate: (value) {},
                     ),
                   ],
@@ -193,44 +195,44 @@ class BottomPartBase extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.001,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                "مستخدم",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: SharedPreferencesUtils().getisDark() == false
-                      ? Colors.black
-                      : Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                " $numberwhofavorite",
-                style: TextStyle(
-                  fontSize: 17,
-                  color: SharedPreferencesUtils().getisDark() == false
-                      ? ColorConstant.mainColor
-                      : ColorConstant.shadowColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                " المنتج المفضل لدى",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: SharedPreferencesUtils().getisDark() == false
-                      ? Colors.black
-                      : Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.0025,
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+          //     Text(
+          //       "مستخدم",
+          //       style: TextStyle(
+          //         fontSize: 15,
+          //         color: SharedPreferencesUtils().getisDark() == false
+          //             ? Colors.black
+          //             : Colors.white,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ),
+          //     Text(
+          //       " $numberwhofavorite",
+          //       style: TextStyle(
+          //         fontSize: 17,
+          //         color: SharedPreferencesUtils().getisDark() == false
+          //             ? ColorConstant.mainColor
+          //             : ColorConstant.shadowColor,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ),
+          //     Text(
+          //       " المنتج المفضل لدى",
+          //       style: TextStyle(
+          //         fontSize: 15,
+          //         color: SharedPreferencesUtils().getisDark() == false
+          //             ? Colors.black
+          //             : Colors.white,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // SizedBox(
+          //   height: MediaQuery.of(context).size.height * 0.0025,
+          // ),
           Text(
             ":الموقع",
             style: TextStyle(
