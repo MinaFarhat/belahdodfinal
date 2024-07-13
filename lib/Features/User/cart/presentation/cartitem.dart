@@ -1,6 +1,8 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Quantitiy%20Update%20Cubit/quantitiyupdate_cubit.dart';
+import 'package:belahododfinal/Features/User/cart/Manager/Quantity%20Cubit/quantity_cubit.dart';
+import 'package:belahododfinal/Features/User/cart/Manager/Quantity%20Cubit/quantity_state.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -11,20 +13,49 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../../../Core/constant/colors_constant.dart';
 import '../Manager/Cart Items Cubit/cartitems_cubit.dart';
 
-// ignore: must_be_immutable
 class CartItem extends StatelessWidget {
-  String image;
-  String title;
-  int quantity;
-  int price;
-  int id;
-  CartItem(
-      {required this.image,
-      required this.title,
-      required this.quantity,
-      required this.price,
-      required this.id,
-      super.key});
+  final String image;
+  final String title;
+  final int initialQuantity;
+  final int price;
+  final int id;
+
+  const CartItem({
+    required this.image,
+    required this.title,
+    required this.initialQuantity,
+    required this.price,
+    required this.id,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => QuantityCubit(initialQuantity),
+      child: CartItemView(
+        image: image,
+        title: title,
+        price: price,
+        id: id,
+      ),
+    );
+  }
+}
+
+class CartItemView extends StatelessWidget {
+  final String image;
+  final String title;
+  final int price;
+  final int id;
+
+  const CartItemView({
+    required this.image,
+    required this.title,
+    required this.price,
+    required this.id,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +104,12 @@ class CartItem extends StatelessWidget {
                   InkWell(
                     overlayColor: WidgetStateProperty.all(Colors.transparent),
                     onTap: () {
-                      if (quantity <= 30) {
-                        quantity++;
-                        context
-                            .read<QuantitiyupdateCubit>()
-                            .quantityupdate(id, quantity);
-                        context.read<CartitemsCubit>().getcartitems();
+                      if (context.read<QuantityCubit>().state.quantity <= 30) {
+                        context.read<QuantityCubit>().increment();
+                        context.read<QuantitiyupdateCubit>().quantityupdate(
+                              id,
+                              context.read<QuantityCubit>().state.quantity,
+                            );
                       } else {
                         Fluttertoast.showToast(
                           msg: "لقد وصلت الى الحد المسموح به ",
@@ -116,25 +147,29 @@ class CartItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    quantity.toString(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: SharedPreferencesUtils().getisDark() == false
-                          ? Colors.grey.shade900
-                          : Colors.white,
-                    ),
+                  BlocBuilder<QuantityCubit, QuantityState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.quantity.toString(),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
+                        ),
+                      );
+                    },
                   ),
                   InkWell(
                     overlayColor: WidgetStateProperty.all(Colors.transparent),
                     onTap: () {
-                      if (quantity >= 2) {
-                        quantity--;
-                        context
-                            .read<QuantitiyupdateCubit>()
-                            .quantityupdate(id, quantity);
-                        context.read<CartitemsCubit>().getcartitems();
+                      if (context.read<QuantityCubit>().state.quantity >= 2) {
+                        context.read<QuantityCubit>().decrement();
+                        context.read<QuantitiyupdateCubit>().quantityupdate(
+                              id,
+                              context.read<QuantityCubit>().state.quantity,
+                            );
                       } else {
                         Fluttertoast.showToast(
                           msg: "لايمكنك إنقاص من كمية هذا المنتج",
@@ -212,14 +247,6 @@ class CartItem extends StatelessWidget {
                               : Colors.white,
                         ),
                       ),
-                      // Text(
-                      //   " ألف",
-                      //   style: TextStyle(
-                      //     fontSize: 14,
-                      //     fontWeight: FontWeight.bold,
-                      //     color: ColorConstant.darkColor,
-                      //   ),
-                      // ),
                       Text(
                         " ${price.ceilToDouble().toStringAsFixed(2)}",
                         style: TextStyle(

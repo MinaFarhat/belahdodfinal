@@ -100,7 +100,7 @@ class _CartState extends State<Cart> {
                             return CartItem(
                               image: imageUrl,
                               title: getcartitemsentity.products[index].name,
-                              quantity:
+                              initialQuantity:
                                   getcartitemsentity.products[index].quantity,
                               price: getcartitemsentity.products[index].price,
                               id: getcartitemsentity.products[index].id,
