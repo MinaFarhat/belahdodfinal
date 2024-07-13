@@ -140,8 +140,8 @@ class _MynavbarState extends State<Mynavbar> {
                   },
                   icon: Icon(
                     curentindex == 4
-                        ? PhosphorIcons.legoSmiley(PhosphorIconsStyle.fill)
-                        : PhosphorIcons.legoSmiley(PhosphorIconsStyle.regular),
+                        ? PhosphorIcons.smiley(PhosphorIconsStyle.fill)
+                        : PhosphorIcons.smiley(PhosphorIconsStyle.regular),
                     size: 28,
                     color: SharedPreferencesUtils().getisDark() == false
                         ? Colors.white
