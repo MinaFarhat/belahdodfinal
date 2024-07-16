@@ -245,7 +245,7 @@ class TopPartBase extends StatelessWidget {
                     color: SharedPreferencesUtils().getisDark() == false
                         ? Colors.white
                         : Colors.grey.shade900,
-                     boxShadow: [
+                    boxShadow: [
                       BoxShadow(
                         color: Colors.grey.shade800,
                         offset: const Offset(0, 1.5),

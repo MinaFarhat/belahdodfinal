@@ -292,9 +292,10 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                 image: imageUrl,
                                 productId: detailsofofferentity
                                     .productsofOffer[index]['id'],
-                                sectionId: 3,
-                                index: index,
-                                minimumquantity: 5,
+                                sectionId: detailsofofferentity
+                                    .productsofOffer[index]['section_id'],
+                                minimumquantity: detailsofofferentity
+                                    .productsofOffer[index]['quantity'],
                               ),
                             );
                           },

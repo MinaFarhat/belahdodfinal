@@ -80,6 +80,7 @@ class _DetailsBookVisitorState extends State<DetailsBookVisitor> {
                     TopPartBookVisitor(
                       photos: bookentity.images,
                       productId: widget.productID,
+                      barcode: bookentity.barcode,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,

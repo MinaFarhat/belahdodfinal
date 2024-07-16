@@ -80,6 +80,7 @@ class _DetailsGameVisitorState extends State<DetailsGameVisitor> {
                     TopPartGameVisitor(
                       photos: gameentity.images,
                       productId: widget.productID,
+                      barcode: gameentity.barcode,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,

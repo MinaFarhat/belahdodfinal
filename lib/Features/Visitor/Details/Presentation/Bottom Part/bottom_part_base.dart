@@ -134,25 +134,156 @@ class BottomPartBaseVisitor extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    RatingBar(
-                      minRating: 0,
-                      maxRating: 5,
-                      itemSize: 18,
-                      updateOnDrag: true,
-                      itemPadding: const EdgeInsets.symmetric(horizontal: 2),
-                      ratingWidget: RatingWidget(
-                          full: Icon(
-                            PhosphorIcons.star(PhosphorIconsStyle.fill),
-                            size: 12,
-                            color: const Color(0xFFFB7A12),
-                          ),
-                          half: Container(),
-                          empty: Icon(
-                            PhosphorIcons.star(PhosphorIconsStyle.regular),
-                            size: 12,
-                            color: const Color(0xFFFB7A12),
-                          )),
-                      onRatingUpdate: (value) {},
+                    InkWell(
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) {
+                            return Dialog(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.09,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.26,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 14,
+                                    right: 14,
+                                    left: 14,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor:
+                                            ColorConstant.shadowColor,
+                                        radius: 22,
+                                        child: Center(
+                                          child: Icon(
+                                            PhosphorIcons.cookie(
+                                              PhosphorIconsStyle.regular,
+                                            ),
+                                            color: ColorConstant.mainColor,
+                                            size: 32,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.005,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.75,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.1,
+                                        child: Center(
+                                          child: Text(
+                                            "لايمكنك تقييم المنتج مالم تقم بإنشاء حساب على التطبيق",
+                                            maxLines: 10,
+                                            textDirection: TextDirection.rtl,
+                                            style: TextStyle(
+                                              color: ColorConstant.darkColor,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.01,
+                                      ),
+                                      InkWell(
+                                        overlayColor: WidgetStateProperty.all(
+                                            Colors.transparent),
+                                        onTap: () {
+                                          Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                              builder: (context) {
+                                                return const Signup();
+                                              },
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topLeft,
+                                              end: Alignment.bottomRight,
+                                              colors: [
+                                                Colors.purpleAccent.shade400,
+                                                Colors.blue,
+                                              ],
+                                            ),
+                                          ),
+                                          padding: const EdgeInsets.all(2),
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.5,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.05,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                "إنشاء حساب",
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                  color:
+                                                      ColorConstant.mainColor,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: RatingBar(
+                        initialRating: 0,
+                        minRating: 0,
+                        maxRating: 5,
+                        itemSize: 18,
+                        ignoreGestures: true,
+                        itemPadding: const EdgeInsets.symmetric(horizontal: 2),
+                        ratingWidget: RatingWidget(
+                            full: Icon(
+                              PhosphorIcons.star(PhosphorIconsStyle.fill),
+                              size: 12,
+                              color: const Color(0xFFFB7A12),
+                            ),
+                            half: Container(),
+                            empty: Icon(
+                              PhosphorIcons.star(PhosphorIconsStyle.regular),
+                              size: 12,
+                              color: const Color(0xFFFB7A12),
+                            )),
+                        onRatingUpdate: (value) {},
+                      ),
                     ),
                   ],
                 ),
@@ -169,38 +300,6 @@ class BottomPartBaseVisitor extends StatelessWidget {
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.001,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const Text(
-                "مستخدم",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                " $numberwhofavorite",
-                style: TextStyle(
-                  fontSize: 17,
-                  color: ColorConstant.mainColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Text(
-                " المنتج المفضل لدى",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.0025,
           ),
           const Text(
             ":الموقع",

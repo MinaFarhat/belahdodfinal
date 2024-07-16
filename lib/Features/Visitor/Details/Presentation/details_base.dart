@@ -97,6 +97,7 @@ class _DetailsBaseVisitorState extends State<DetailsBaseVisitor> {
                         TopPartBaseVisitor(
                           photos: baseentity.images,
                           productId: widget.productID,
+                          barcode: baseentity.barcode,
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,

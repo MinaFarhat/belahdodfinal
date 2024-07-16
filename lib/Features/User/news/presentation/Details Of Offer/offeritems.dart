@@ -10,14 +10,12 @@ import 'package:belahododfinal/Features/User/Details/presentation/details_statio
 
 class OfferItems extends StatelessWidget {
   final String image;
-  final int index;
   final int productId;
   final int sectionId;
   final int minimumquantity;
 
   const OfferItems({
     required this.image,
-    required this.index,
     required this.productId,
     required this.sectionId,
     required this.minimumquantity,

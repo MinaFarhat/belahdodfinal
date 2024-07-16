@@ -55,6 +55,7 @@ class _DetailsOfOfferVisitorState extends State<DetailsOfOfferVisitor> {
             orElse: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
                       color: ColorConstant.mainColor,
@@ -66,6 +67,7 @@ class _DetailsOfOfferVisitorState extends State<DetailsOfOfferVisitor> {
             initial: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
                       color: ColorConstant.mainColor,
@@ -77,6 +79,7 @@ class _DetailsOfOfferVisitorState extends State<DetailsOfOfferVisitor> {
             loading: () {
               return SafeArea(
                 child: Scaffold(
+                  backgroundColor: Colors.white,
                   body: Center(
                     child: CircularProgressIndicator(
                       color: ColorConstant.mainColor,
@@ -87,7 +90,7 @@ class _DetailsOfOfferVisitorState extends State<DetailsOfOfferVisitor> {
             },
             success: (detailsofofferentity) {
               return Scaffold(
-                backgroundColor: ColorConstant.shadowColor,
+                backgroundColor: Colors.white,
                 body: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -256,7 +259,12 @@ class _DetailsOfOfferVisitorState extends State<DetailsOfOfferVisitor> {
                               padding: const EdgeInsets.only(left: 8),
                               child: OfferItemVisitor(
                                 image: imageUrl,
-                                index: index,
+                                minimumquantity: detailsofofferentity
+                                    .productsofOffer[index]['quantity'],
+                                productId: detailsofofferentity
+                                    .productsofOffer[index]['id'],
+                                sectionId: detailsofofferentity
+                                    .productsofOffer[index]['section_id'],
                               ),
                             );
                           },
