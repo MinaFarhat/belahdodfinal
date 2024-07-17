@@ -74,35 +74,50 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
                 );
               },
               success: (getfavoritesentity) {
-                return ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: getfavoritesentity.favorites.length,
-                  itemBuilder: ((context, index) {
-                    String imageUrl =
-                        'http://10.0.2.2:8000${getfavoritesentity.favorites[index].image}';
-                    return Column(
-                      children: [
-                        FavItem(
-                          image: imageUrl,
-                          title: getfavoritesentity.favorites[index].name,
-                          subtitle:
-                              getfavoritesentity.favorites[index].description,
-                          numberofstars: 5,
-                          numberwhorates: 500,
-                          favoriteProductIid: getfavoritesentity
-                              .favorites[index].favoriteProductId,
-                        ),
-                        index == getfavoritesentity.favorites.length - 1
-                            ? SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.25,
-                              )
-                            : Container(),
-                      ],
-                    );
-                  }),
-                );
+                if (getfavoritesentity.favorites.isNotEmpty) {
+                  return ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: getfavoritesentity.favorites.length,
+                    itemBuilder: ((context, index) {
+                      String imageUrl =
+                          'http://10.0.2.2:8000${getfavoritesentity.favorites[index].image}';
+                      return Column(
+                        children: [
+                          FavItem(
+                            image: imageUrl,
+                            title: getfavoritesentity.favorites[index].name,
+                            subtitle:
+                                getfavoritesentity.favorites[index].description,
+                            numberofstars: 5,
+                            numberwhorates: 500,
+                            favoriteProductIid: getfavoritesentity
+                                .favorites[index].favoriteProductId,
+                          ),
+                          index == getfavoritesentity.favorites.length - 1
+                              ? SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.25,
+                                )
+                              : Container(),
+                        ],
+                      );
+                    }),
+                  );
+                } else {
+                  return Center(
+                    child: Text(
+                      "لا توجد منتجات مفضلة بعد",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.black
+                            : Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                }
               },
             );
           },

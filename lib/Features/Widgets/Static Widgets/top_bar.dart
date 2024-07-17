@@ -71,7 +71,8 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 12),
-          child: GestureDetector(
+          child: InkWell(
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
             onTap: ontapName,
             child: Text(
               "بلا حدود",

@@ -186,13 +186,22 @@ class _CartState extends State<Cart> {
                               PhosphorIconsStyle.regular),
                           text: "تأكيد الشراء",
                           onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return const SendOrder();
-                                },
-                              ),
-                            );
+                            if (getcartitemsentity.products.isNotEmpty) {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const SendOrder();
+                                  },
+                                ),
+                              );
+                            } else {
+                              Fluttertoast.showToast(
+                                msg: "لا توجد منتجات لتأكيد شرائها",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                              );
+                            }
                           },
                         ),
                       ],
