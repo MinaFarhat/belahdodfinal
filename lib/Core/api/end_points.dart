@@ -6,7 +6,7 @@ class EndPoints {
   static const String cartItemsUrl = "$baseUrl/cart";
   static const String deleteItemFromCartUrl = "$baseUrl/cart/";
   static const String quantityUpdaeUrl = "$baseUrl/cart/";
-  static const String productDetailsUrl = "$baseUrl/products/";
+  static const String productDetailsUrl = "$baseUrl/showUser/";
   static const String getFavotitesUrl = "$baseUrl/favorite-products";
   static const String addToFavoriteUrl = "$baseUrl/favorite-products/";
   static const String getSectionsAndProductsUrl = "$baseUrl/section-product";
