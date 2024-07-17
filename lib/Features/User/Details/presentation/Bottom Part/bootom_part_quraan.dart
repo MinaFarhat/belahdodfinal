@@ -8,9 +8,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-// ignore: must_be_immutable
 class BootomPartQuraan extends StatelessWidget {
-  BootomPartQuraan({
+  const BootomPartQuraan({
     required this.productId,
     required this.title,
     required this.subTitle,
@@ -21,24 +20,24 @@ class BootomPartQuraan extends StatelessWidget {
     required this.printtype,
     required this.section,
     required this.size,
-    required this.numberwhorates,
-    required this.numberwhofavorite,
+    required this.averageRating,
+    required this.userRating,
     required this.locations,
     super.key,
   });
-  int productId;
-  String title;
-  String subTitle;
-  int price;
-  String publisher;
-  String specifications;
-  int numberofpages;
-  String printtype;
-  String section;
-  String size;
-  int numberwhorates;
-  int numberwhofavorite;
-  List<String> locations;
+  final int productId;
+  final String title;
+  final String subTitle;
+  final int price;
+  final String publisher;
+  final String specifications;
+  final int numberofpages;
+  final String printtype;
+  final String section;
+  final String size;
+  final String averageRating;
+  final int userRating;
+  final List<String> locations;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -276,7 +275,7 @@ class BootomPartQuraan extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "($numberwhorates)",
+                      averageRating,
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -288,7 +287,7 @@ class BootomPartQuraan extends StatelessWidget {
                     RatingBar(
                       minRating: 0,
                       maxRating: 5,
-                      initialRating: 0,
+                      initialRating: userRating.toDouble(),
                       itemSize: 18,
                       updateOnDrag: true,
                       itemPadding: const EdgeInsets.symmetric(horizontal: 2),

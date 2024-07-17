@@ -9,27 +9,26 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../cart/Manager/Add To Cart Cubit/addtocart_cubit.dart';
 
-// ignore: must_be_immutable
 class BottomPartBase extends StatelessWidget {
-  BottomPartBase({
+  const BottomPartBase({
     required this.productId,
     required this.title,
     required this.subTitle,
     required this.price,
     required this.section,
-    required this.numberwhorates,
-    required this.numberwhofavorite,
+    required this.averageRating,
+    required this.userRating,
     required this.locations,
     super.key,
   });
-  int productId;
-  String title;
-  String subTitle;
-  int price;
-  String section;
-  int numberwhorates;
-  int numberwhofavorite;
-  List<String> locations;
+  final int productId;
+  final String title;
+  final String subTitle;
+  final int price;
+  final String section;
+  final String averageRating;
+  final int userRating;
+  final List<String> locations;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -146,7 +145,7 @@ class BottomPartBase extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "($numberwhorates)",
+                      averageRating,
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -158,7 +157,7 @@ class BottomPartBase extends StatelessWidget {
                     RatingBar(
                       minRating: 0,
                       maxRating: 5,
-                      initialRating: 0,
+                      initialRating: userRating.toDouble(),
                       itemSize: 18,
                       updateOnDrag: true,
                       itemPadding: const EdgeInsets.symmetric(horizontal: 2),
@@ -195,44 +194,6 @@ class BottomPartBase extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.001,
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.end,
-          //   children: [
-          //     Text(
-          //       "مستخدم",
-          //       style: TextStyle(
-          //         fontSize: 15,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? Colors.black
-          //             : Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //     Text(
-          //       " $numberwhofavorite",
-          //       style: TextStyle(
-          //         fontSize: 17,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? ColorConstant.mainColor
-          //             : ColorConstant.shadowColor,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //     Text(
-          //       " المنتج المفضل لدى",
-          //       style: TextStyle(
-          //         fontSize: 15,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? Colors.black
-          //             : Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // SizedBox(
-          //   height: MediaQuery.of(context).size.height * 0.0025,
-          // ),
           Text(
             ":الموقع",
             style: TextStyle(
@@ -253,19 +214,6 @@ class BottomPartBase extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // Padding(
-                    //   padding: const EdgeInsets.only(left: 12),
-                    //   child: InkWell(
-                    //     overlayColor:
-                    //         WidgetStateProperty.all(Colors.transparent),
-                    //     onTap: () {},
-                    //     child: Icon(
-                    //       PhosphorIcons.heart(PhosphorIconsStyle.regular),
-                    //       size: 24,
-                    //       color: ColorConstant.mainColor,
-                    //     ),
-                    //   ),
-                    // ),
                     Row(
                       children: [
                         Text(

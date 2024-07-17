@@ -17,6 +17,13 @@ StationeryEntity _$StationeryEntityFromJson(Map<String, dynamic> json) =>
       json['stationery_materials'] as String,
       json['stationery_manufacturer'] as String,
       json['stationery_specifications'] as String,
+      json['section_name'] as String,
+      json['is_favorite'] as bool,
+      json['is_liked'] as bool,
+      json['is_disliked'] as bool,
+      (json['like_count'] as num).toInt(),
+      (json['user_rating'] as num).toInt(),
+      json['average_rating'] as String,
     );
 
 Map<String, dynamic> _$StationeryEntityToJson(StationeryEntity instance) =>
@@ -30,4 +37,11 @@ Map<String, dynamic> _$StationeryEntityToJson(StationeryEntity instance) =>
       'stationery_materials': instance.materials,
       'stationery_manufacturer': instance.publisher,
       'stationery_specifications': instance.specifications,
+      'section_name': instance.sectionName,
+      'is_favorite': instance.isFavorite,
+      'is_liked': instance.isLiked,
+      'is_disliked': instance.isDisliked,
+      'like_count': instance.likeCount,
+      'user_rating': instance.userRating,
+      'average_rating': instance.averageRating,
     };

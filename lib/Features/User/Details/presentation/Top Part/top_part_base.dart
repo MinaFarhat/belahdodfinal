@@ -13,19 +13,35 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
 class TopPartBase extends StatelessWidget {
+  final List<String> photos;
+  final int productId;
+  final String barcode;
+  final bool isFavorite;
+  final bool isLike;
+  final bool isDislike;
+  final int likeCount;
+
   const TopPartBase({
     required this.photos,
     required this.productId,
     required this.barcode,
+    required this.isFavorite,
+    required this.isLike,
+    required this.isDislike,
+    required this.likeCount,
     super.key,
   });
-  final List<String> photos;
-  final int productId;
-  final String barcode;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ReactionCubit(),
+      create: (context) => ReactionCubit()
+        ..initialize(
+          isFavorite: isFavorite,
+          isLike: isLike,
+          isDislike: isDislike,
+          likeCount: likeCount,
+        ),
       child: BlocBuilder<ReactionCubit, ReactionState>(
         builder: (context, state) {
           return Stack(
@@ -259,74 +275,70 @@ class TopPartBase extends StatelessWidget {
                     ],
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      InkWell(
-                        overlayColor:
-                            WidgetStateProperty.all(Colors.transparent),
-                        onTap: () {
-                          context.read<ReactionCubit>().dislike();
-                        },
-                        child: state.isDislike == false
-                            ? Icon(
-                                PhosphorIcons.thumbsDown(
-                                    PhosphorIconsStyle.regular),
-                                size: 28,
-                                color: SharedPreferencesUtils().getisDark() ==
-                                        false
-                                    ? Colors.deepOrange
-                                    : Colors.orangeAccent.shade400,
-                              )
-                            : Icon(
-                                PhosphorIcons.thumbsDown(
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            if (state.likeCount == 0) {
+                              Fluttertoast.showToast(
+                                msg:
+                                    "لا يمكنك وضع عدم إعجاب لأن عدد الأعجابات هو 0",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                              );
+                            } else {
+                              context.read<ReactionCubit>().toggleDislike();
+                            }
+                          },
+                          child: Icon(
+                            state.isDislike == false
+                                ? PhosphorIcons.thumbsDown(
+                                    PhosphorIconsStyle.regular)
+                                : PhosphorIcons.thumbsDown(
                                     PhosphorIconsStyle.fill),
-                                size: 28,
-                                color: SharedPreferencesUtils().getisDark() ==
-                                        false
-                                    ? Colors.deepOrange
-                                    : Colors.orangeAccent.shade400,
-                              ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.025,
+                            size: 30,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.deepOrange
+                                : Colors.orangeAccent.shade400,
+                          ),
+                        ),
                       ),
                       Text(
-                        state.amountOfReactions.toString(),
+                        '${state.likeCount}',
                         style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
                           color: SharedPreferencesUtils().getisDark() == false
                               ? Colors.grey.shade900
                               : Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.025,
-                      ),
-                      InkWell(
-                        overlayColor:
-                            WidgetStateProperty.all(Colors.transparent),
-                        onTap: () {
-                          context.read<ReactionCubit>().like();
-                        },
-                        child: state.isLike == false
-                            ? Icon(
-                                PhosphorIcons.thumbsUp(
-                                    PhosphorIconsStyle.regular),
-                                size: 28,
-                                color: SharedPreferencesUtils().getisDark() ==
-                                        false
-                                    ? ColorConstant.mainColor
-                                    : ColorConstant.shadowColor,
-                              )
-                            : Icon(
-                                PhosphorIcons.thumbsUp(PhosphorIconsStyle.fill),
-                                size: 28,
-                                color: SharedPreferencesUtils().getisDark() ==
-                                        false
-                                    ? ColorConstant.mainColor
-                                    : ColorConstant.shadowColor,
-                              ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            context.read<ReactionCubit>().toggleLike();
+                            if (state.isLike == false) {
+                              Fluttertoast.showToast(
+                                msg: "تم تسجيل اعجابك",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: ColorConstant.mainColor,
+                              );
+                            }
+                          },
+                          child: Icon(
+                            state.isLike == false
+                                ? PhosphorIcons.thumbsUp(
+                                    PhosphorIconsStyle.regular)
+                                : PhosphorIcons.thumbsUp(
+                                    PhosphorIconsStyle.fill),
+                            size: 30,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? ColorConstant.mainColor
+                                : ColorConstant.shadowColor,
+                          ),
+                        ),
                       ),
                     ],
                   ),

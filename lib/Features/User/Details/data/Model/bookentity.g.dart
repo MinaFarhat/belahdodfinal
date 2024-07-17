@@ -18,6 +18,13 @@ BookEntity _$BookEntityFromJson(Map<String, dynamic> json) => BookEntity(
       (json['book_num_of_pages'] as num).toInt(),
       json['book_print_type'] as String,
       json['book_target_age'] as String,
+      json['section_name'] as String,
+      json['is_favorite'] as bool,
+      json['is_liked'] as bool,
+      json['is_disliked'] as bool,
+      (json['like_count'] as num).toInt(),
+      (json['user_rating'] as num).toInt(),
+      json['average_rating'] as String,
     );
 
 Map<String, dynamic> _$BookEntityToJson(BookEntity instance) =>
@@ -33,4 +40,11 @@ Map<String, dynamic> _$BookEntityToJson(BookEntity instance) =>
       'book_num_of_pages': instance.numberofpages,
       'book_print_type': instance.printtype,
       'book_target_age': instance.targetage,
+      'section_name': instance.sectionName,
+      'is_favorite': instance.isFavorite,
+      'is_liked': instance.isLiked,
+      'is_disliked': instance.isDisliked,
+      'like_count': instance.likeCount,
+      'user_rating': instance.userRating,
+      'average_rating': instance.averageRating,
     };

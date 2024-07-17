@@ -9,9 +9,8 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../cart/Manager/Add To Cart Cubit/addtocart_cubit.dart';
 
-// ignore: must_be_immutable
 class BottomPartGame extends StatelessWidget {
-  BottomPartGame({
+  const BottomPartGame({
     required this.productId,
     required this.title,
     required this.subTitle,
@@ -19,27 +18,27 @@ class BottomPartGame extends StatelessWidget {
     required this.age,
     required this.publisher,
     required this.section,
-    required this.amountwhorates,
-    required this.amountwhofavorite,
+    required this.averageRating,
+    required this.userRating,
     required this.gameObjectives,
     required this.materials,
     required this.numofplayers,
     required this.locations,
     super.key,
   });
-  int productId;
-  String title;
-  String subTitle;
-  int price;
-  String age;
-  String publisher;
-  String section;
-  int amountwhorates;
-  int amountwhofavorite;
-  String gameObjectives;
-  String materials;
-  int numofplayers;
-  List<String> locations;
+  final int productId;
+  final String title;
+  final String subTitle;
+  final int price;
+  final String age;
+  final String publisher;
+  final String section;
+  final String averageRating;
+  final int userRating;
+  final String gameObjectives;
+  final String materials;
+  final int numofplayers;
+  final List<String> locations;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -243,7 +242,7 @@ class BottomPartGame extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "($amountwhorates)",
+                      averageRating,
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -255,7 +254,7 @@ class BottomPartGame extends StatelessWidget {
                     RatingBar(
                       minRating: 0,
                       maxRating: 5,
-                      initialRating: 0,
+                      initialRating: userRating.toDouble(),
                       itemSize: 18,
                       updateOnDrag: true,
                       itemPadding: const EdgeInsets.symmetric(horizontal: 2),
@@ -292,44 +291,6 @@ class BottomPartGame extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.001,
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.end,
-          //   children: [
-          //     Text(
-          //       "مستخدم",
-          //       style: TextStyle(
-          //         fontSize: 15,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? Colors.black
-          //             : Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //     Text(
-          //       " $amountwhofavorite",
-          //       style: TextStyle(
-          //         fontSize: 17,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? ColorConstant.mainColor
-          //             : ColorConstant.shadowColor,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //     Text(
-          //       " المنتج المفضل لدى",
-          //       style: TextStyle(
-          //         fontSize: 15,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? Colors.black
-          //             : Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // SizedBox(
-          //   height: MediaQuery.of(context).size.height * 0.0025,
-          // ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -426,19 +387,6 @@ class BottomPartGame extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // Padding(
-                    //   padding: const EdgeInsets.only(left: 12),
-                    //   child: InkWell(
-                    //     overlayColor:
-                    //         WidgetStateProperty.all(Colors.transparent),
-                    //     onTap: () {},
-                    //     child: Icon(
-                    //       PhosphorIcons.heart(PhosphorIconsStyle.regular),
-                    //       size: 24,
-                    //       color: ColorConstant.mainColor,
-                    //     ),
-                    //   ),
-                    // ),
                     Row(
                       children: [
                         Text(

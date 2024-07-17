@@ -4,21 +4,33 @@ import 'package:bloc/bloc.dart';
 class ReactionCubit extends Cubit<ReactionState> {
   ReactionCubit() : super(ReactionState());
 
-  void like() {
+  void initialize({
+    required bool isFavorite,
+    required bool isLike,
+    required bool isDislike,
+    required int likeCount,
+  }) {
+    emit(state.copyWith(
+      isFavorite: isFavorite,
+      isLike: isLike,
+      isDislike: isDislike,
+      likeCount: likeCount,
+    ));
+  }
+
+  void toggleLike() {
     if (!state.isLike) {
-      if (state.isDislike) {
-        emit(state.copyWith(isDislike: false, amountOfReactions: state.amountOfReactions + 1));
-      }
-      emit(state.copyWith(isLike: true, amountOfReactions: state.amountOfReactions + 1));
+      emit(state.copyWith(isLike: true, isDislike: false, likeCount: state.likeCount + 1));
+    } else {
+      emit(state.copyWith(isLike: false, likeCount: state.likeCount - 1));
     }
   }
 
-  void dislike() {
-    if (!state.isDislike && state.amountOfReactions > 0) {
-      if (state.isLike) {
-        emit(state.copyWith(isLike: false, amountOfReactions: state.amountOfReactions - 1));
-      }
-      emit(state.copyWith(isDislike: true, amountOfReactions: state.amountOfReactions - 1));
+  void toggleDislike() {
+    if (!state.isDislike) {
+      emit(state.copyWith(isDislike: true, isLike: false, likeCount: state.likeCount - 1));
+    } else {
+      emit(state.copyWith(isDislike: false, likeCount: state.likeCount + 1));
     }
   }
 

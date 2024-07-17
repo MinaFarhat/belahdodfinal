@@ -25,6 +25,20 @@ class GameEntity {
   final String publisher;
   @JsonKey(name: "game_num_of_players")
   final int numofplayers;
+  @JsonKey(name: "section_name")
+  final String sectionName;
+  @JsonKey(name: "is_favorite")
+  final bool isFavorite;
+  @JsonKey(name: "is_liked")
+  final bool isLiked;
+  @JsonKey(name: "is_disliked")
+  final bool isDisliked;
+  @JsonKey(name: "like_count")
+  final int likeCount;
+  @JsonKey(name: "user_rating")
+  final int userRating;
+  @JsonKey(name: "average_rating")
+  final String averageRating;
 
   GameEntity(
     this.title,
@@ -37,6 +51,13 @@ class GameEntity {
     this.materials,
     this.publisher,
     this.numofplayers,
+    this.sectionName,
+    this.isFavorite,
+    this.isLiked,
+    this.isDisliked,
+    this.likeCount,
+    this.userRating,
+    this.averageRating,
   );
 
   factory GameEntity.fromJson(Map<String, dynamic> json) =>
