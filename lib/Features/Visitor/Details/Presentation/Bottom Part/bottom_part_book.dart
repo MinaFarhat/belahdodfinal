@@ -17,8 +17,7 @@ class BottomPartBookVisitor extends StatelessWidget {
     required this.numberofpages,
     required this.printtype,
     required this.section,
-    required this.numberwhorates,
-    required this.numberwhofavorite,
+    required this.averageRating,
     required this.targetage,
     required this.locations,
     super.key,
@@ -33,8 +32,7 @@ class BottomPartBookVisitor extends StatelessWidget {
   String numberofpages;
   String printtype;
   String section;
-  int numberwhorates;
-  int numberwhofavorite;
+  String averageRating;
   String targetage;
   List<String> locations;
   @override
@@ -298,7 +296,7 @@ class BottomPartBookVisitor extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "($numberwhorates)",
+                      averageRating,
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,

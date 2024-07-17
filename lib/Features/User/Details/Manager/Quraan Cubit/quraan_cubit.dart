@@ -14,12 +14,12 @@ class QuraanCubit extends Cubit<QuraanState> {
 
   final BaseRepositoryQuraan _baseRepositoryQuraan;
 
-   Future<void> quraanDetails(int productID) async {
+  Future<void> quraanDetails(int productID) async {
     emit(const QuraanState.loading());
 
     final response = await _baseRepositoryQuraan.quraanDetails(productID);
 
-    response.fold((l) => emit(QuraanState.error(l)),
-        (r) => emit(QuraanState.success(r)));
+    response.fold(
+        (l) => emit(QuraanState.error(l)), (r) => emit(QuraanState.success(r)));
   }
 }

@@ -1,7 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
-import 'package:belahododfinal/Features/User/Details/Manager/Base%20Cubit/base_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Base%20Visitor%20Cubit/base_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/Bottom%20Part/bottom_part_base.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/Top%20Part/top_part_base.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class _DetailsBaseVisitorState extends State<DetailsBaseVisitor> {
 
   @override
   void initState() {
-    context.read<BaseCubit>().baseDetails(widget.productID);
+    context.read<BaseVisitorCubit>().baseDetailsVisitor(widget.productID);
     super.initState();
   }
 
@@ -37,7 +37,7 @@ class _DetailsBaseVisitorState extends State<DetailsBaseVisitor> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: BlocConsumer<BaseCubit, BaseState>(
+        body: BlocConsumer<BaseVisitorCubit, BaseVisitorState>(
           listener: (context, state) {
             state.whenOrNull(
               error: (networkExceptions) {
@@ -75,7 +75,7 @@ class _DetailsBaseVisitorState extends State<DetailsBaseVisitor> {
                   ),
                 );
               },
-              success: (baseentity) {
+              success: (basevisitorentity) {
                 return BlocConsumer<AddtocartCubit, AddtocartState>(
                   listener: (context, state) {
                     state.whenOrNull(
@@ -95,21 +95,21 @@ class _DetailsBaseVisitorState extends State<DetailsBaseVisitor> {
                     return ListView(
                       children: [
                         TopPartBaseVisitor(
-                          photos: baseentity.images,
+                          photos: basevisitorentity.images,
                           productId: widget.productID,
-                          barcode: baseentity.barcode,
+                          barcode: basevisitorentity.barcode,
+                          likeCount: basevisitorentity.likeCount,
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
                         BottomPartBaseVisitor(
                           productId: widget.productID,
-                          title: baseentity.title,
-                          subTitle: baseentity.subTitle,
-                          price: baseentity.price,
-                          section: "قسم الأطفال",
-                          numberwhorates: 500,
-                          numberwhofavorite: 500,
+                          title: basevisitorentity.title,
+                          subTitle: basevisitorentity.subTitle,
+                          price: basevisitorentity.price,
+                          section: basevisitorentity.sectionName,
+                          averageRating: basevisitorentity.averageRating,
                           locations: locations,
                         ),
                       ],

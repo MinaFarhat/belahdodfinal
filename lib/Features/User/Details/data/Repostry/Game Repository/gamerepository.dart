@@ -18,7 +18,8 @@ class GameRepository implements BaseRepositoryGame {
         _gameWebService = gameWebService;
 
   @override
-  Future<Either<NetworkExceptions, GameEntity>> gameDetails(int productID) async {
+  Future<Either<NetworkExceptions, GameEntity>> gameDetails(
+      int productID) async {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _gameWebService.gameDetails(productID);

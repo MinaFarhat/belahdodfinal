@@ -14,8 +14,7 @@ class BottomPartGameVisitor extends StatelessWidget {
     required this.age,
     required this.publisher,
     required this.section,
-    required this.amountwhorates,
-    required this.amountwhofavorite,
+    required this.averageRating,
     required this.gameObjectives,
     required this.materials,
     required this.numofplayers,
@@ -29,8 +28,7 @@ class BottomPartGameVisitor extends StatelessWidget {
   String age;
   String publisher;
   String section;
-  int amountwhorates;
-  int amountwhofavorite;
+  String averageRating;
   String gameObjectives;
   String materials;
   int numofplayers;
@@ -212,7 +210,7 @@ class BottomPartGameVisitor extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "($amountwhorates)",
+                      averageRating,
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -370,7 +368,7 @@ class BottomPartGameVisitor extends StatelessWidget {
                         onRatingUpdate: (value) {},
                       ),
                     ),
-                 ],
+                  ],
                 ),
               ),
               Text(

@@ -25,6 +25,11 @@ import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/On%20Arrival%20Cubit/on_arrival_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Base%20Visitor%20Cubit/base_visitor_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Book%20Visitor%20Cubit/book_visitor_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Game%20Visitor%20Cubit/game_visitor_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Quraan%20Visitor%20Cubit/quraan_visitor_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Stationery%20Visitor%20Cbit/stationery_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/cubit/section_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Get%20Cities%20Cubit/get_cities_cubit.dart';
 import 'package:belahododfinal/injection.dart';
@@ -172,6 +177,21 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<SectionVisitorCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<BaseVisitorCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<BookVisitorCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<GameVisitorCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<QuraanVisitorCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<StationeryVisitorCubit>(),
         ),
       ],
       child: MaterialApp(

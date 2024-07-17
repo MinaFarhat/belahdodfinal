@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
-import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Quraan%20Visitor%20Cubit/quraan_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/Bottom%20Part/bootom_part_quraan.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/Top%20Part/top_part_quraan.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class _DetailsQuransVisitorState extends State<DetailsQuransVisitor> {
 
   @override
   void initState() {
-    context.read<QuraanCubit>().quraanDetails(widget.productID);
+    context.read<QuraanVisitorCubit>().quraanDetailsVisitor(widget.productID);
     super.initState();
   }
 
@@ -36,7 +36,7 @@ class _DetailsQuransVisitorState extends State<DetailsQuransVisitor> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: BlocConsumer<QuraanCubit, QuraanState>(
+        body: BlocConsumer<QuraanVisitorCubit, QuraanVisitorState>(
           listener: (context, state) {
             state.whenOrNull(
               error: (networkExceptions) {
@@ -74,30 +74,30 @@ class _DetailsQuransVisitorState extends State<DetailsQuransVisitor> {
                   ),
                 );
               },
-              success: (quraanentity) {
+              success: (quraanvisitorentity) {
                 return ListView(
                   children: [
                     TopPartQuraanVisitor(
-                      photos: quraanentity.images,
+                      photos: quraanvisitorentity.images,
                       productId: widget.productID,
-                      barcode: quraanentity.barcode,
+                      barcode: quraanvisitorentity.barcode,
+                      likeCount: quraanvisitorentity.likeCount,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     BootomPartQuraanVisitor(
                       productId: widget.productID,
-                      title: quraanentity.title,
-                      subTitle: quraanentity.subTitle,
-                      price: quraanentity.price,
-                      size: quraanentity.size,
-                      publisher: quraanentity.publisher,
-                      numberofpages: quraanentity.numberofpages,
-                      printtype: quraanentity.printtype,
-                      section: "قسم الخدمات الدينية",
-                      specifications: quraanentity.specifications,
-                      numberwhorates: 500,
-                      numberwhofavorite: 500,
+                      title: quraanvisitorentity.title,
+                      subTitle: quraanvisitorentity.subTitle,
+                      price: quraanvisitorentity.price,
+                      size: quraanvisitorentity.size,
+                      publisher: quraanvisitorentity.publisher,
+                      numberofpages: quraanvisitorentity.numberofpages,
+                      printtype: quraanvisitorentity.printtype,
+                      section: quraanvisitorentity.sectionName,
+                      specifications: quraanvisitorentity.specifications,
+                      averageRating: quraanvisitorentity.averageRating,
                       locations: locations,
                     ),
                   ],

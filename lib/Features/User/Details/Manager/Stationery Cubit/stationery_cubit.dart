@@ -10,14 +10,16 @@ part 'stationery_cubit.freezed.dart';
 
 @injectable
 class StationeryCubit extends Cubit<StationeryState> {
-  StationeryCubit(this._baseRepositoryStationery) : super(const StationeryState.initial());
+  StationeryCubit(this._baseRepositoryStationery)
+      : super(const StationeryState.initial());
 
   final BaseRepositoryStationery _baseRepositoryStationery;
 
   Future<void> stationeryDetails(int productID) async {
     emit(const StationeryState.loading());
 
-    final response = await _baseRepositoryStationery.stationeryDetails(productID);
+    final response =
+        await _baseRepositoryStationery.stationeryDetails(productID);
 
     response.fold((l) => emit(StationeryState.error(l)),
         (r) => emit(StationeryState.success(r)));

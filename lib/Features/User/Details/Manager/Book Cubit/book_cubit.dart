@@ -19,7 +19,7 @@ class BookCubit extends Cubit<BookState> {
 
     final response = await _baseRepositoryBook.bookDetails(productID);
 
-    response.fold((l) => emit(BookState.error(l)),
-        (r) => emit(BookState.success(r)));
+    response.fold(
+        (l) => emit(BookState.error(l)), (r) => emit(BookState.success(r)));
   }
 }

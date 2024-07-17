@@ -17,8 +17,7 @@ class BootomPartQuraanVisitor extends StatelessWidget {
     required this.printtype,
     required this.section,
     required this.size,
-    required this.numberwhorates,
-    required this.numberwhofavorite,
+    required this.averageRating,
     required this.locations,
     super.key,
   });
@@ -32,8 +31,7 @@ class BootomPartQuraanVisitor extends StatelessWidget {
   String printtype;
   String section;
   String size;
-  int numberwhorates;
-  int numberwhofavorite;
+  String averageRating;
   List<String> locations;
   @override
   Widget build(BuildContext context) {
@@ -242,7 +240,7 @@ class BootomPartQuraanVisitor extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "($numberwhorates)",
+                      averageRating,
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,

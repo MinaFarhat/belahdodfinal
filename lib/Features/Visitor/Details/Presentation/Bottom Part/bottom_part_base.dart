@@ -12,8 +12,7 @@ class BottomPartBaseVisitor extends StatelessWidget {
     required this.subTitle,
     required this.price,
     required this.section,
-    required this.numberwhorates,
-    required this.numberwhofavorite,
+    required this.averageRating,
     required this.locations,
     super.key,
   });
@@ -22,8 +21,8 @@ class BottomPartBaseVisitor extends StatelessWidget {
   String subTitle;
   int price;
   String section;
-  int numberwhorates;
-  int numberwhofavorite;
+  String averageRating;
+
   List<String> locations;
   @override
   Widget build(BuildContext context) {
@@ -127,7 +126,7 @@ class BottomPartBaseVisitor extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "($numberwhorates)",
+                      averageRating,
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,

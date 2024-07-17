@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
-import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Game%20Visitor%20Cubit/game_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/Bottom%20Part/bottom_part_game.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/Top%20Part/top_part_game.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class _DetailsGameVisitorState extends State<DetailsGameVisitor> {
 
   @override
   void initState() {
-    context.read<GameCubit>().gameDetails(widget.productID);
+    context.read<GameVisitorCubit>().gameDetailsVisitor(widget.productID);
     super.initState();
   }
 
@@ -36,7 +36,7 @@ class _DetailsGameVisitorState extends State<DetailsGameVisitor> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: BlocConsumer<GameCubit, GameState>(
+        body: BlocConsumer<GameVisitorCubit, GameVisitorState>(
           listener: (context, state) {
             state.whenOrNull(
               error: (networkExceptions) {
@@ -74,30 +74,30 @@ class _DetailsGameVisitorState extends State<DetailsGameVisitor> {
                   ),
                 );
               },
-              success: (gameentity) {
+              success: (gamevisitorentity) {
                 return ListView(
                   children: [
                     TopPartGameVisitor(
-                      photos: gameentity.images,
+                      photos: gamevisitorentity.images,
                       productId: widget.productID,
-                      barcode: gameentity.barcode,
+                      barcode: gamevisitorentity.barcode,
+                      likeCount: gamevisitorentity.likeCount,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     BottomPartGameVisitor(
                       productId: widget.productID,
-                      title: gameentity.title,
-                      subTitle: gameentity.subTitle,
-                      age: gameentity.age,
-                      price: gameentity.price,
-                      publisher: gameentity.publisher,
-                      gameObjectives: gameentity.gameObjectives,
-                      materials: gameentity.materials,
-                      section: "الألعاب والوسائل التعليمية",
-                      numofplayers: 5,
-                      amountwhofavorite: 500,
-                      amountwhorates: 500,
+                      title: gamevisitorentity.title,
+                      subTitle: gamevisitorentity.subTitle,
+                      age: gamevisitorentity.age,
+                      price: gamevisitorentity.price,
+                      publisher: gamevisitorentity.publisher,
+                      gameObjectives: gamevisitorentity.gameObjectives,
+                      materials: gamevisitorentity.materials,
+                      section: gamevisitorentity.sectionName,
+                      numofplayers: gamevisitorentity.numofplayers,
+                      averageRating: gamevisitorentity.averageRating,
                       locations: locations,
                     ),
                   ],

@@ -14,8 +14,7 @@ class BottomPartStationeryVisitor extends StatelessWidget {
     required this.publisher,
     required this.section,
     required this.gameObjectives,
-    required this.amountwhorates,
-    required this.amountwhofavorite,
+    required this.averageRating,
     required this.specifications,
     required this.materials,
     required this.locations,
@@ -28,8 +27,7 @@ class BottomPartStationeryVisitor extends StatelessWidget {
   String publisher;
   String section;
   String gameObjectives;
-  int amountwhorates;
-  int amountwhofavorite;
+  String averageRating;
   String specifications;
   String materials;
   List<String> locations;
@@ -193,7 +191,7 @@ class BottomPartStationeryVisitor extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "($amountwhorates)",
+                      averageRating,
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,

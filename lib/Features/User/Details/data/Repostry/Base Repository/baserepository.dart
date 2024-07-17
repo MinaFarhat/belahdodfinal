@@ -18,7 +18,8 @@ class BaseRepositoryImpl implements BaseRepositoryBase {
         _baseWebService = baseWebService;
 
   @override
-  Future<Either<NetworkExceptions, BaseEntity>> baseDetails(int productID) async {
+  Future<Either<NetworkExceptions, BaseEntity>> baseDetails(
+      int productID) async {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _baseWebService.baseDetails(productID);

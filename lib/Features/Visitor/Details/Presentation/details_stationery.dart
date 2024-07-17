@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
-import 'package:belahododfinal/Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart';
+import 'package:belahododfinal/Features/Visitor/Details/Manager/Stationery%20Visitor%20Cbit/stationery_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/Bottom%20Part/bottom_part_stationery.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/Top%20Part/top_part_stationery.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,9 @@ class _DetailsStationeryVisitorState extends State<DetailsStationeryVisitor> {
 
   @override
   void initState() {
-    context.read<StationeryCubit>().stationeryDetails(widget.productID);
+    context
+        .read<StationeryVisitorCubit>()
+        .stationeryDetailsVisitor(widget.productID);
     super.initState();
   }
 
@@ -37,7 +39,7 @@ class _DetailsStationeryVisitorState extends State<DetailsStationeryVisitor> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: BlocConsumer<StationeryCubit, StationeryState>(
+        body: BlocConsumer<StationeryVisitorCubit, StationeryVisitorState>(
           listener: (context, state) {
             state.whenOrNull(
               error: (networkExceptions) {
@@ -75,29 +77,29 @@ class _DetailsStationeryVisitorState extends State<DetailsStationeryVisitor> {
                   ),
                 );
               },
-              success: (stationeryentity) {
+              success: (stationeryvisitorentity) {
                 return ListView(
                   children: [
                     TopPartStationeryVisitor(
-                      photos: stationeryentity.images,
+                      photos: stationeryvisitorentity.images,
                       productId: widget.productID,
-                      barcode: stationeryentity.barcode,
+                      barcode: stationeryvisitorentity.barcode,
+                      likeCount: stationeryvisitorentity.likeCount,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     BottomPartStationeryVisitor(
                       productId: widget.productID,
-                      title: stationeryentity.title,
-                      subTitle: stationeryentity.subTitle,
-                      price: stationeryentity.price,
-                      gameObjectives: stationeryentity.gameObjectives,
-                      publisher: stationeryentity.publisher,
-                      specifications: stationeryentity.specifications,
-                      materials: stationeryentity.materials,
-                      section: "قسم الأطفال",
-                      amountwhorates: 500,
-                      amountwhofavorite: 500,
+                      title: stationeryvisitorentity.title,
+                      subTitle: stationeryvisitorentity.subTitle,
+                      price: stationeryvisitorentity.price,
+                      gameObjectives: stationeryvisitorentity.gameObjectives,
+                      publisher: stationeryvisitorentity.publisher,
+                      specifications: stationeryvisitorentity.specifications,
+                      materials: stationeryvisitorentity.materials,
+                      section: stationeryvisitorentity.sectionName,
+                      averageRating: stationeryvisitorentity.averageRating,
                       locations: locations,
                     ),
                   ],

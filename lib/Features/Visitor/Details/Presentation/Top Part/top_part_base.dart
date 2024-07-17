@@ -14,11 +14,13 @@ class TopPartBaseVisitor extends StatelessWidget {
     required this.photos,
     required this.productId,
     required this.barcode,
+    required this.likeCount,
     super.key,
   });
   final List<String> photos;
   final int productId;
   final String barcode;
+  final int likeCount;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -274,7 +276,7 @@ class TopPartBaseVisitor extends StatelessWidget {
                 child: InkWell(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
                   onTap: () {
-                     Navigator.of(context).push(
+                    Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
                           return QRGenerateVisitor(barcode: barcode);
@@ -470,7 +472,7 @@ class TopPartBaseVisitor extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.025,
                       ),
                       Text(
-                        state.amountOfReactions.toString(),
+                        likeCount.toString(),
                         style: TextStyle(
                           color: ColorConstant.darkColor,
                           fontSize: 16,

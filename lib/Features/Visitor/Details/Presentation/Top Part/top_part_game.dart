@@ -9,17 +9,18 @@ import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/re
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ignore: must_be_immutable
 class TopPartGameVisitor extends StatelessWidget {
   const TopPartGameVisitor({
     required this.photos,
     required this.productId,
     required this.barcode,
+    required this.likeCount,
     super.key,
   });
   final List<String> photos;
   final int productId;
   final String barcode;
+  final int likeCount;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -470,7 +471,7 @@ class TopPartGameVisitor extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.025,
                       ),
                       Text(
-                        state.amountOfReactions.toString(),
+                        likeCount.toString(),
                         style: TextStyle(
                           color: ColorConstant.darkColor,
                           fontSize: 16,
