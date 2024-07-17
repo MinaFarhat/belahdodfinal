@@ -26,4 +26,6 @@ class EndPoints {
   static const String transferPaymentMethodeUrl = "$baseUrl/order/transfer";
   static const String searchResultsUrl = "$baseUrl/search?name=";
   static const String getAllCitiesUrl = "$baseUrl/city";
+  static const String getSectionAndProductsVisitorUrl =
+      "$baseUrl/section-product";
 }

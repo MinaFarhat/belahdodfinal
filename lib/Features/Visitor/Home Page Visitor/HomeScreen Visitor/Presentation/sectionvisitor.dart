@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
-import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/Presentation/itemvisitor.dart';
+import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/data/Model/productvisitorentity.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -10,7 +10,7 @@ import '../../SubSections And Products Visitor/presentation/subsectionsandproduc
 class SectionVisitor extends StatelessWidget {
   final String nameOfSection;
   final int sectionNumber;
-  final List<ProductEntity> products;
+  final List<ProductVisitorEntity> products;
   final List<int> productIDs;
   final int? sectionId;
   const SectionVisitor({

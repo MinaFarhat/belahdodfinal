@@ -1,10 +1,10 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
-import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Cart%20Visitor/Presentation/cartvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Favorite%20Visitor/Presentation/favoritevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/Presentation/sectionvisitor.dart';
+import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/cubit/section_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/InfoVisitor/presentation/inofvisitor.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/top_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -22,15 +22,9 @@ class HomePageVisitor extends StatefulWidget {
 }
 
 class _HomePageVisitorState extends State<HomePageVisitor> {
-  List<String> offers = [
-    "assets/images/offer1.png",
-    "assets/images/offer2.png",
-    "assets/images/offer3.png",
-  ];
-
   @override
   void initState() {
-    context.read<SectionCubit>().sections();
+    context.read<SectionVisitorCubit>().sectionsVisitor();
     context.read<AdsCubit>().getAds();
     super.initState();
   }
@@ -64,7 +58,7 @@ class _HomePageVisitorState extends State<HomePageVisitor> {
             );
           },
         ),
-        body: BlocConsumer<SectionCubit, SectionState>(
+        body: BlocConsumer<SectionVisitorCubit, SectionVisitorState>(
           listener: (context, state) {
             state.whenOrNull(
               error: (networkExceptions) {
@@ -102,12 +96,13 @@ class _HomePageVisitorState extends State<HomePageVisitor> {
                   ),
                 );
               },
-              success: (sectionentity) {
+              success: (sectionvisitorentity) {
                 return ListView.builder(
-                  itemCount: sectionentity.sections.length,
+                  itemCount: sectionvisitorentity.sectionsVisitor.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    final products = sectionentity.sections[index].products;
+                    final products =
+                        sectionvisitorentity.sectionsVisitor[index].products;
 
                     final productIDs =
                         products.map((product) => product.id).toList();
@@ -115,11 +110,13 @@ class _HomePageVisitorState extends State<HomePageVisitor> {
                     return Column(
                       children: [
                         SectionVisitor(
-                          nameOfSection: sectionentity.sections[index].name,
+                          nameOfSection:
+                              sectionvisitorentity.sectionsVisitor[index].name,
                           sectionNumber: index,
                           products: products,
                           productIDs: productIDs,
-                          sectionId: sectionentity.sections[index].sectionId,
+                          sectionId: sectionvisitorentity
+                              .sectionsVisitor[index].sectionId,
                         ),
                         index == 0
                             ? BlocConsumer<AdsCubit, AdsState>(
@@ -286,7 +283,7 @@ class _HomePageVisitorState extends State<HomePageVisitor> {
                                 },
                               )
                             : Container(),
-                        index == sectionentity.sections.length - 1
+                        index == sectionvisitorentity.sectionsVisitor.length - 1
                             ? SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.07,
