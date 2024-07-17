@@ -14,13 +14,14 @@ class Section extends StatelessWidget {
   final List<ProductEntity> products;
   final List<int> productIDs;
   final int? sectionId;
-
+  final List<bool> isFavorite;
   const Section({
     required this.nameOfSection,
     required this.sectionNumber,
     required this.products,
     required this.productIDs,
     required this.sectionId,
+    required this.isFavorite,
     super.key,
   });
 
@@ -99,6 +100,7 @@ class Section extends StatelessWidget {
                 child: Item(
                   productID: productIDs[i],
                   image: imageUrl,
+                  isFavorite: isFavorite[i],
                   index: sectionNumber == 0
                       ? 0
                       : sectionNumber == 1

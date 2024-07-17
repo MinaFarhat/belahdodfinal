@@ -14,14 +14,15 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
 class Item extends StatefulWidget {
-  String image;
-  int index;
-  int productID;
-
+  final String image;
+  final int index;
+  final int productID;
+  bool isFavorite;
   Item({
     required this.image,
     required this.index,
     required this.productID,
+    required this.isFavorite,
     super.key,
   });
 
@@ -30,8 +31,6 @@ class Item extends StatefulWidget {
 }
 
 class _ItemState extends State<Item> {
-  bool isFavorite = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -124,9 +123,9 @@ class _ItemState extends State<Item> {
               child: InkWell(
                 overlayColor: WidgetStateProperty.all(Colors.transparent),
                 onTap: () {
-                  if (isFavorite == false) {
+                  if (widget.isFavorite == false) {
                     setState(() {
-                      isFavorite = true;
+                      widget.isFavorite = true;
                     });
                     Fluttertoast.showToast(
                       msg: "تم إضافة المنتج الى القائمة المفضلة",
@@ -140,7 +139,7 @@ class _ItemState extends State<Item> {
                         .addtofavorites(widget.productID);
                   } else {
                     setState(() {
-                      isFavorite = false;
+                      widget.isFavorite = false;
                     });
                     Fluttertoast.showToast(
                       msg: "تم إزالة المنتج من القائمة المفضلة",
@@ -174,7 +173,7 @@ class _ItemState extends State<Item> {
                       ),
                     ],
                   ),
-                  child: isFavorite == false
+                  child: widget.isFavorite == false
                       ? CircleAvatar(
                           radius: 18,
                           backgroundColor:

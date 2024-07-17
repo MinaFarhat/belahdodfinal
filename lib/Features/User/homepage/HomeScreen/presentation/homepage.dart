@@ -115,6 +115,8 @@ class _HomePageState extends State<HomePage> {
                     final productIDs =
                         products.map((product) => product.id).toList();
 
+                    final isFavorites =
+                        products.map((product) => product.isFavorite).toList();
                     return Column(
                       children: [
                         Section(
@@ -123,6 +125,7 @@ class _HomePageState extends State<HomePage> {
                           products: products,
                           productIDs: productIDs,
                           sectionId: sectionentity.sections[index].sectionId,
+                          isFavorite: isFavorites,
                         ),
                         index == 0
                             ? BlocConsumer<AdsCubit, AdsState>(

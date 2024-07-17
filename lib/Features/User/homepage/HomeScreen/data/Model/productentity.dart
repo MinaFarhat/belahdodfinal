@@ -8,8 +8,14 @@ class ProductEntity {
   final int id;
   @JsonKey(name: "first_image")
   final String image;
+  @JsonKey(name: "is_favorite")
+  final bool isFavorite;
 
-  ProductEntity(this.id, this.image);
+  ProductEntity(
+    this.id,
+    this.image,
+    this.isFavorite,
+  );
   factory ProductEntity.fromJson(Map<String, dynamic> json) =>
       _$ProductEntityFromJson(json);
 
