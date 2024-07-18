@@ -20,7 +20,8 @@ class ReactionCubit extends Cubit<ReactionState> {
 
   void toggleLike() {
     if (!state.isLike) {
-      emit(state.copyWith(isLike: true, isDislike: false, likeCount: state.likeCount + 1));
+      emit(state.copyWith(
+          isLike: true, isDislike: false, likeCount: state.likeCount + 1));
     } else {
       emit(state.copyWith(isLike: false, likeCount: state.likeCount - 1));
     }
@@ -28,7 +29,8 @@ class ReactionCubit extends Cubit<ReactionState> {
 
   void toggleDislike() {
     if (!state.isDislike) {
-      emit(state.copyWith(isDislike: true, isLike: false, likeCount: state.likeCount - 1));
+      emit(state.copyWith(
+          isDislike: true, isLike: false, likeCount: state.likeCount - 1));
     } else {
       emit(state.copyWith(isDislike: false, likeCount: state.likeCount + 1));
     }
