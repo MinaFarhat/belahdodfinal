@@ -10,8 +10,9 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../cart/Manager/Add To Cart Cubit/addtocart_cubit.dart';
 
+// ignore: must_be_immutable
 class BottomPartBook extends StatelessWidget {
-  const BottomPartBook({
+  BottomPartBook({
     required this.productId,
     required this.title,
     required this.subTitle,
@@ -38,7 +39,7 @@ class BottomPartBook extends StatelessWidget {
   final String numberofpages;
   final String printtype;
   final String section;
-  final String averageRating;
+  String averageRating;
   final int userRating;
   final String targetage;
   final List<String> locations;
@@ -350,6 +351,9 @@ class BottomPartBook extends StatelessWidget {
                         backgroundColor: Colors.red,
                       );
                     },
+                    success: (ratingentity) {
+                      averageRating = ratingentity.averageRating;
+                    },
                   );
                 },
                 builder: (context, state) {
@@ -472,7 +476,7 @@ class BottomPartBook extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              ratingentity.averageRating,
+                              averageRating,
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,

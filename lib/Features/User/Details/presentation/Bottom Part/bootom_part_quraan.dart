@@ -9,8 +9,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+// ignore: must_be_immutable
 class BootomPartQuraan extends StatelessWidget {
-  const BootomPartQuraan({
+  BootomPartQuraan({
     required this.productId,
     required this.title,
     required this.subTitle,
@@ -36,7 +37,7 @@ class BootomPartQuraan extends StatelessWidget {
   final String printtype;
   final String section;
   final String size;
-  final String averageRating;
+  String averageRating;
   final int userRating;
   final List<String> locations;
 
@@ -285,6 +286,9 @@ class BootomPartQuraan extends StatelessWidget {
                         backgroundColor: Colors.red,
                       );
                     },
+                    success: (ratingentity) {
+                      averageRating = ratingentity.averageRating;
+                    },
                   );
                 },
                 builder: (context, state) {
@@ -407,7 +411,7 @@ class BootomPartQuraan extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              ratingentity.averageRating,
+                              averageRating,
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,

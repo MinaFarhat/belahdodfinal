@@ -10,8 +10,9 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../cart/Manager/Add To Cart Cubit/addtocart_cubit.dart';
 
+// ignore: must_be_immutable
 class BottomPartStationery extends StatelessWidget {
-  const BottomPartStationery({
+  BottomPartStationery({
     required this.productId,
     required this.title,
     required this.subTitle,
@@ -33,7 +34,7 @@ class BottomPartStationery extends StatelessWidget {
   final String publisher;
   final String section;
   final String gameObjectives;
-  final String averageRating;
+  String averageRating;
   final int userRating;
   final String specifications;
   final String materials;
@@ -229,6 +230,9 @@ class BottomPartStationery extends StatelessWidget {
                         backgroundColor: Colors.red,
                       );
                     },
+                    success: (ratingentity) {
+                      averageRating = ratingentity.averageRating;
+                    },
                   );
                 },
                 builder: (context, state) {
@@ -351,7 +355,7 @@ class BottomPartStationery extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              ratingentity.averageRating,
+                              averageRating,
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
