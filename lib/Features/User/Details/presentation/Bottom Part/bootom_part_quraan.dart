@@ -9,7 +9,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class BootomPartQuraan extends StatelessWidget {
+class BootomPartQuraan extends StatefulWidget {
   const BootomPartQuraan({
     required this.productId,
     required this.title,
@@ -39,6 +39,20 @@ class BootomPartQuraan extends StatelessWidget {
   final String averageRating;
   final int userRating;
   final List<String> locations;
+
+  @override
+  State<BootomPartQuraan> createState() => _BootomPartQuraanState();
+}
+
+class _BootomPartQuraanState extends State<BootomPartQuraan> {
+  late String _averageRating;
+
+  @override
+  void initState() {
+    super.initState();
+    _averageRating = widget.averageRating;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -47,7 +61,7 @@ class BootomPartQuraan extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            title,
+            widget.title,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -60,7 +74,7 @@ class BootomPartQuraan extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.032,
             child: Text(
-              subTitle,
+              widget.subTitle,
               textDirection: TextDirection.rtl,
               maxLines: 5,
               style: TextStyle(
@@ -86,7 +100,7 @@ class BootomPartQuraan extends StatelessWidget {
                 ),
               ),
               Text(
-                " $price",
+                " ${widget.price}",
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -117,7 +131,7 @@ class BootomPartQuraan extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                publisher,
+                widget.publisher,
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -148,7 +162,7 @@ class BootomPartQuraan extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                section,
+                widget.section,
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -179,7 +193,7 @@ class BootomPartQuraan extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                numberofpages.toString(),
+                widget.numberofpages.toString(),
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -210,7 +224,7 @@ class BootomPartQuraan extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                printtype,
+                widget.printtype,
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -241,7 +255,7 @@ class BootomPartQuraan extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                size,
+                widget.size,
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -271,49 +285,74 @@ class BootomPartQuraan extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Row(
-                  children: [
-                    Text(
-                      averageRating,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: SharedPreferencesUtils().getisDark() == false
-                            ? Colors.black
-                            : Colors.white,
-                      ),
-                    ),
-                    RatingBar(
-                      minRating: 0,
-                      maxRating: 5,
-                      initialRating: userRating.toDouble(),
-                      itemSize: 18,
-                      updateOnDrag: true,
-                      itemPadding: const EdgeInsets.symmetric(horizontal: 2),
-                      ratingWidget: RatingWidget(
-                        full: Icon(
-                          PhosphorIcons.star(PhosphorIconsStyle.fill),
-                          size: 12,
-                          color: const Color(0xFFFB7A12),
+              BlocConsumer<RatingCubit, RatingState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (networkExceptions) {
+                      Fluttertoast.showToast(
+                        msg: NetworkExceptions.getErrorMessage(
+                          networkExceptions,
                         ),
-                        half: Container(),
-                        empty: Icon(
-                          PhosphorIcons.star(PhosphorIconsStyle.regular),
-                          size: 12,
-                          color: const Color(0xFFFB7A12),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                      );
+                    },
+                    success: (ratingentity) {
+                      setState(() {
+                        _averageRating = ratingentity.averageRating;
+                      });
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 12),
+                    child: Row(
+                      children: [
+                        Text(
+                          _averageRating,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.black
+                                : Colors.white,
+                          ),
                         ),
-                      ),
-                      onRatingUpdate: (value) {
-                        context.read<RatingCubit>().rating(
-                              productId,
-                              value.toInt(),
-                            );
-                      },
+                        RatingBar(
+                          minRating: 0,
+                          maxRating: 5,
+                          initialRating: widget.userRating.toDouble(),
+                          itemSize: 18,
+                          updateOnDrag: false,
+                          tapOnlyMode: true,
+                          itemPadding:
+                              const EdgeInsets.symmetric(horizontal: 2),
+                          ratingWidget: RatingWidget(
+                            full: Icon(
+                              PhosphorIcons.star(PhosphorIconsStyle.fill),
+                              size: 12,
+                              color: const Color(0xFFFB7A12),
+                            ),
+                            half: Container(),
+                            empty: Icon(
+                              PhosphorIcons.star(PhosphorIconsStyle.regular),
+                              size: 12,
+                              color: const Color(0xFFFB7A12),
+                            ),
+                          ),
+                          onRatingUpdate: (value) {
+                            context.read<RatingCubit>().rating(
+                                  widget.productId,
+                                  value.toInt(),
+                                );
+                          },
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  );
+                },
               ),
               Text(
                 ":التقييم",
@@ -351,7 +390,7 @@ class BootomPartQuraan extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.98,
                 height: MediaQuery.of(context).size.height * 0.07,
                 child: Text(
-                  specifications,
+                  widget.specifications,
                   textDirection: TextDirection.rtl,
                   maxLines: 5,
                   style: TextStyle(
@@ -380,7 +419,7 @@ class BootomPartQuraan extends StatelessWidget {
           ),
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: locations.length,
+            itemCount: widget.locations.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return Padding(
@@ -391,7 +430,7 @@ class BootomPartQuraan extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          locations[index],
+                          widget.locations[index],
                           style: TextStyle(
                             color: SharedPreferencesUtils().getisDark() == false
                                 ? ColorConstant.darkColor
@@ -450,7 +489,9 @@ class BootomPartQuraan extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          context.read<AddtocartCubit>().addtocart(productId);
+                          context
+                              .read<AddtocartCubit>()
+                              .addtocart(widget.productId);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.7,
@@ -490,7 +531,9 @@ class BootomPartQuraan extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          context.read<AddtocartCubit>().addtocart(productId);
+                          context
+                              .read<AddtocartCubit>()
+                              .addtocart(widget.productId);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.7,
@@ -535,7 +578,9 @@ class BootomPartQuraan extends StatelessWidget {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          context.read<AddtocartCubit>().addtocart(productId);
+                          context
+                              .read<AddtocartCubit>()
+                              .addtocart(widget.productId);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.7,

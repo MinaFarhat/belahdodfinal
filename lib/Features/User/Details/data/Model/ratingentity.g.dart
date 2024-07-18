@@ -8,9 +8,11 @@ part of 'ratingentity.dart';
 
 RatingEntity _$RatingEntityFromJson(Map<String, dynamic> json) => RatingEntity(
       json['message'] as String,
+      json['average_rating'] as String,
     );
 
 Map<String, dynamic> _$RatingEntityToJson(RatingEntity instance) =>
     <String, dynamic>{
       'message': instance.message,
+      'average_rating': instance.averageRating,
     };

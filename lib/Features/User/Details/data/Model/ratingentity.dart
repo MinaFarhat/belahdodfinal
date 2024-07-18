@@ -7,9 +7,14 @@ part 'ratingentity.g.dart';
 class RatingEntity {
   @JsonKey(name: "message")
   final String message;
+  @JsonKey(name: "average_rating")
+  final String averageRating;
 
-  RatingEntity(this.message);
-   factory RatingEntity.fromJson(Map<String, dynamic> json) =>
+  RatingEntity(
+    this.message,
+    this.averageRating,
+  );
+  factory RatingEntity.fromJson(Map<String, dynamic> json) =>
       _$RatingEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$RatingEntityToJson(this);
