@@ -74,7 +74,7 @@ class FavItem extends StatelessWidget {
                             msg: "تم إزالة المنتج من القائمة المفضلة",
                             toastLength: Toast.LENGTH_LONG,
                             gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.green,
+                            backgroundColor: Colors.red,
                           );
 
                           context.read<GetfavoritesCubit>().getFavorites();
@@ -100,7 +100,7 @@ class FavItem extends StatelessWidget {
                             msg: "تم إزالة المنتج من القائمة المفضلة",
                             toastLength: Toast.LENGTH_LONG,
                             gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.green,
+                            backgroundColor: Colors.red,
                           );
                           context.read<GetfavoritesCubit>().getFavorites();
                         },
@@ -134,7 +134,7 @@ class FavItem extends StatelessWidget {
                             msg: "تم إزالة المنتج من القائمة المفضلة",
                             toastLength: Toast.LENGTH_LONG,
                             gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.green,
+                            backgroundColor: Colors.red,
                           );
                           context.read<GetfavoritesCubit>().getFavorites();
                         },
