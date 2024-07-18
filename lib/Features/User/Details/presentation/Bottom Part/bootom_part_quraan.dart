@@ -38,7 +38,7 @@ class BootomPartQuraan extends StatelessWidget {
   final String section;
   final String size;
   String averageRating;
-  final int userRating;
+  int userRating;
   final List<String> locations;
 
   @override
@@ -333,6 +333,7 @@ class BootomPartQuraan extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -383,6 +384,7 @@ class BootomPartQuraan extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -445,6 +447,7 @@ class BootomPartQuraan extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),

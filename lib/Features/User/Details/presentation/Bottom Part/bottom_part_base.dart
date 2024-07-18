@@ -29,7 +29,7 @@ class BottomPartBase extends StatelessWidget {
   final int price;
   final String section;
   String averageRating;
-  final int userRating;
+  int userRating;
   final List<String> locations;
 
   @override
@@ -203,6 +203,7 @@ class BottomPartBase extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -253,6 +254,7 @@ class BottomPartBase extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -315,6 +317,7 @@ class BottomPartBase extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),

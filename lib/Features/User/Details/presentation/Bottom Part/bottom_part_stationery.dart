@@ -35,7 +35,7 @@ class BottomPartStationery extends StatelessWidget {
   final String section;
   final String gameObjectives;
   String averageRating;
-  final int userRating;
+  int userRating;
   final String specifications;
   final String materials;
   final List<String> locations;
@@ -277,6 +277,7 @@ class BottomPartStationery extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -327,6 +328,7 @@ class BottomPartStationery extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -389,6 +391,7 @@ class BottomPartStationery extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),

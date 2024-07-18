@@ -40,7 +40,7 @@ class BottomPartBook extends StatelessWidget {
   final String printtype;
   final String section;
   String averageRating;
-  final int userRating;
+  int userRating;
   final String targetage;
   final List<String> locations;
 
@@ -398,6 +398,7 @@ class BottomPartBook extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -448,6 +449,7 @@ class BottomPartBook extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -510,6 +512,7 @@ class BottomPartBook extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),

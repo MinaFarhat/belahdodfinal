@@ -36,7 +36,7 @@ class BottomPartGame extends StatelessWidget {
   final String publisher;
   final String section;
   String averageRating;
-  final int userRating;
+  int userRating;
   final String gameObjectives;
   final String materials;
   final int numofplayers;
@@ -300,6 +300,7 @@ class BottomPartGame extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -350,6 +351,7 @@ class BottomPartGame extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
@@ -412,6 +414,7 @@ class BottomPartGame extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (value) {
+                                userRating = value.toInt();
                                 context.read<RatingCubit>().rating(
                                       productId,
                                       value.toInt(),
