@@ -19,20 +19,26 @@ class ReactionCubit extends Cubit<ReactionState> {
   }
 
   void toggleLike() {
-    if (!state.isLike) {
-      emit(state.copyWith(
-          isLike: true, isDislike: false, likeCount: state.likeCount + 1));
-    } else {
+    if (state.isLike) {
       emit(state.copyWith(isLike: false, likeCount: state.likeCount - 1));
+    } else {
+      // Check if the user has already disliked the item
+      if (state.isDislike) {
+        emit(state.copyWith(isDislike: false));
+      }
+      emit(state.copyWith(isLike: true, likeCount: state.likeCount + 1));
     }
   }
 
   void toggleDislike() {
-    if (!state.isDislike) {
-      emit(state.copyWith(
-          isDislike: true, isLike: false, likeCount: state.likeCount - 1));
+    if (state.isDislike) {
+      emit(state.copyWith(isDislike: false));
     } else {
-      emit(state.copyWith(isDislike: false, likeCount: state.likeCount + 1));
+      // Check if the user has already liked the item
+      if (state.isLike) {
+        emit(state.copyWith(isLike: false, likeCount: state.likeCount - 1));
+      }
+      emit(state.copyWith(isDislike: true));
     }
   }
 

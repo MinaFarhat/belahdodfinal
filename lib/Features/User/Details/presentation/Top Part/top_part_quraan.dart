@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/DisLike%20Cubit/dis_like_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Like%20Cubit/like_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_state.dart';
@@ -278,17 +279,8 @@ class TopPartQuraan extends StatelessWidget {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            if (state.likeCount == 0) {
-                              Fluttertoast.showToast(
-                                msg:
-                                    "لا يمكنك وضع عدم إعجاب لأن عدد الأعجابات هو 0",
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
-                                backgroundColor: Colors.red,
-                              );
-                            } else {
-                              context.read<ReactionCubit>().toggleDislike();
-                            }
+                            context.read<ReactionCubit>().toggleDislike();
+                            context.read<DisLikeCubit>().disLike(productId);
                           },
                           child: Icon(
                             state.isDislike == false

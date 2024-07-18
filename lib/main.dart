@@ -4,6 +4,7 @@ import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
 import 'package:belahododfinal/Features/Auth/splashscreen.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Base%20Cubit/base_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_cubit.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/DisLike%20Cubit/dis_like_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Like%20Cubit/like_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart';
@@ -198,8 +199,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<RatingCubit>(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => getIt<LikeCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<DisLikeCubit>(),
         ),
       ],
       child: MaterialApp(

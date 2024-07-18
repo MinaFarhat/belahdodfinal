@@ -9,7 +9,8 @@ class EndPoints {
   static const String productDetailsUrl = "$baseUrl/showUser/";
   static const String getFavotitesUrl = "$baseUrl/favorite-products";
   static const String addToFavoriteUrl = "$baseUrl/favorite-products/";
-  static const String getSectionsAndProductsUrl = "$baseUrl/section-product";
+  static const String getSectionsAndProductsUrl =
+      "$baseUrl/section-product-user";
   static const String getProductsMainSectionUrl = "$baseUrl/section-products/";
   static const String getSubSectionsUrl = "$baseUrl/section_subsections/";
   static const String getProductsOfSubSectionUrl =
@@ -31,4 +32,5 @@ class EndPoints {
   static const String productDetailsVisitorUrl = "$baseUrl/showVisitor/";
   static const String ratingUrl = "$baseUrl/products/";
   static const String likeUrl = "$baseUrl/products/";
+  static const String disLikeUrl = "$baseUrl/products/";
 }
