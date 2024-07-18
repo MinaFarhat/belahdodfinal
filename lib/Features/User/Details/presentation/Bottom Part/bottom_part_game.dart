@@ -10,7 +10,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../cart/Manager/Add To Cart Cubit/addtocart_cubit.dart';
 
-class BottomPartGame extends StatefulWidget {
+class BottomPartGame extends StatelessWidget {
   const BottomPartGame({
     required this.productId,
     required this.title,
@@ -42,19 +42,6 @@ class BottomPartGame extends StatefulWidget {
   final List<String> locations;
 
   @override
-  State<BottomPartGame> createState() => _BottomPartGameState();
-}
-
-class _BottomPartGameState extends State<BottomPartGame> {
-  late String _averageRating;
-
-  @override
-  void initState() {
-    super.initState();
-    _averageRating = widget.averageRating;
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 12),
@@ -62,7 +49,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            widget.title,
+            title,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -75,7 +62,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.032,
             child: Text(
-              widget.subTitle,
+              subTitle,
               textDirection: TextDirection.rtl,
               maxLines: 5,
               style: TextStyle(
@@ -91,7 +78,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                widget.age,
+                age,
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -132,7 +119,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
                 ),
               ),
               Text(
-                " ${widget.price}",
+                " $price",
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -163,7 +150,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                widget.numofplayers.toString(),
+                numofplayers.toString(),
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -194,7 +181,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                widget.publisher,
+                publisher,
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -222,7 +209,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                widget.section,
+                section,
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -265,59 +252,172 @@ class _BottomPartGameState extends State<BottomPartGame> {
                         backgroundColor: Colors.red,
                       );
                     },
-                    success: (ratingentity) {
-                      setState(() {
-                        _averageRating = ratingentity.averageRating;
-                      });
-                    },
                   );
                 },
                 builder: (context, state) {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 12),
-                    child: Row(
-                      children: [
-                        Text(
-                          _averageRating,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: SharedPreferencesUtils().getisDark() == false
-                                ? Colors.black
-                                : Colors.white,
-                          ),
-                        ),
-                        RatingBar(
-                          minRating: 0,
-                          maxRating: 5,
-                          initialRating: widget.userRating.toDouble(),
-                          itemSize: 18,
-                          updateOnDrag: false,
-                          tapOnlyMode: true,
-                          itemPadding:
-                              const EdgeInsets.symmetric(horizontal: 2),
-                          ratingWidget: RatingWidget(
-                            full: Icon(
-                              PhosphorIcons.star(PhosphorIconsStyle.fill),
-                              size: 12,
-                              color: const Color(0xFFFB7A12),
+                  return state.maybeWhen(
+                    orElse: () {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Row(
+                          children: [
+                            Text(
+                              averageRating,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.black
+                                    : Colors.white,
+                              ),
                             ),
-                            half: Container(),
-                            empty: Icon(
-                              PhosphorIcons.star(PhosphorIconsStyle.regular),
-                              size: 12,
-                              color: const Color(0xFFFB7A12),
+                            RatingBar(
+                              minRating: 0,
+                              maxRating: 5,
+                              initialRating: userRating.toDouble(),
+                              itemSize: 18,
+                              updateOnDrag: false,
+                              tapOnlyMode: true,
+                              itemPadding:
+                                  const EdgeInsets.symmetric(horizontal: 2),
+                              ratingWidget: RatingWidget(
+                                full: Icon(
+                                  PhosphorIcons.star(PhosphorIconsStyle.fill),
+                                  size: 12,
+                                  color: const Color(0xFFFB7A12),
+                                ),
+                                half: Container(),
+                                empty: Icon(
+                                  PhosphorIcons.star(
+                                      PhosphorIconsStyle.regular),
+                                  size: 12,
+                                  color: const Color(0xFFFB7A12),
+                                ),
+                              ),
+                              onRatingUpdate: (value) {
+                                context.read<RatingCubit>().rating(
+                                      productId,
+                                      value.toInt(),
+                                    );
+                              },
                             ),
-                          ),
-                          onRatingUpdate: (value) {
-                            context.read<RatingCubit>().rating(
-                                  widget.productId,
-                                  value.toInt(),
-                                );
-                          },
+                          ],
                         ),
-                      ],
-                    ),
+                      );
+                    },
+                    initial: () {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Row(
+                          children: [
+                            Text(
+                              averageRating,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.black
+                                    : Colors.white,
+                              ),
+                            ),
+                            RatingBar(
+                              minRating: 0,
+                              maxRating: 5,
+                              initialRating: userRating.toDouble(),
+                              itemSize: 18,
+                              updateOnDrag: false,
+                              tapOnlyMode: true,
+                              itemPadding:
+                                  const EdgeInsets.symmetric(horizontal: 2),
+                              ratingWidget: RatingWidget(
+                                full: Icon(
+                                  PhosphorIcons.star(PhosphorIconsStyle.fill),
+                                  size: 12,
+                                  color: const Color(0xFFFB7A12),
+                                ),
+                                half: Container(),
+                                empty: Icon(
+                                  PhosphorIcons.star(
+                                      PhosphorIconsStyle.regular),
+                                  size: 12,
+                                  color: const Color(0xFFFB7A12),
+                                ),
+                              ),
+                              onRatingUpdate: (value) {
+                                context.read<RatingCubit>().rating(
+                                      productId,
+                                      value.toInt(),
+                                    );
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: CircularProgressIndicator(
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
+                          strokeWidth: 2,
+                          strokeAlign: 0,
+                        ),
+                      );
+                    },
+                    success: (ratingentity) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Row(
+                          children: [
+                            Text(
+                              ratingentity.averageRating,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.black
+                                    : Colors.white,
+                              ),
+                            ),
+                            RatingBar(
+                              minRating: 0,
+                              maxRating: 5,
+                              initialRating: userRating.toDouble(),
+                              itemSize: 18,
+                              updateOnDrag: false,
+                              tapOnlyMode: true,
+                              itemPadding:
+                                  const EdgeInsets.symmetric(horizontal: 2),
+                              ratingWidget: RatingWidget(
+                                full: Icon(
+                                  PhosphorIcons.star(PhosphorIconsStyle.fill),
+                                  size: 12,
+                                  color: const Color(0xFFFB7A12),
+                                ),
+                                half: Container(),
+                                empty: Icon(
+                                  PhosphorIcons.star(
+                                      PhosphorIconsStyle.regular),
+                                  size: 12,
+                                  color: const Color(0xFFFB7A12),
+                                ),
+                              ),
+                              onRatingUpdate: (value) {
+                                context.read<RatingCubit>().rating(
+                                      productId,
+                                      value.toInt(),
+                                    );
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   );
                 },
               ),
@@ -357,7 +457,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
                 width: MediaQuery.of(context).size.width * 0.98,
                 height: MediaQuery.of(context).size.height * 0.07,
                 child: Text(
-                  widget.gameObjectives,
+                  gameObjectives,
                   textDirection: TextDirection.rtl,
                   maxLines: 5,
                   style: TextStyle(
@@ -395,7 +495,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
                 width: MediaQuery.of(context).size.width * 0.98,
                 height: MediaQuery.of(context).size.height * 0.04,
                 child: Text(
-                  widget.materials,
+                  materials,
                   textDirection: TextDirection.rtl,
                   maxLines: 5,
                   style: TextStyle(
@@ -424,7 +524,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
           ),
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: widget.locations.length,
+            itemCount: locations.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return Padding(
@@ -435,7 +535,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
                     Row(
                       children: [
                         Text(
-                          widget.locations[index],
+                          locations[index],
                           style: TextStyle(
                             color: SharedPreferencesUtils().getisDark() == false
                                 ? Colors.grey.shade900
@@ -494,9 +594,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          context
-                              .read<AddtocartCubit>()
-                              .addtocart(widget.productId);
+                          context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.7,
@@ -536,9 +634,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          context
-                              .read<AddtocartCubit>()
-                              .addtocart(widget.productId);
+                          context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.7,
@@ -583,9 +679,7 @@ class _BottomPartGameState extends State<BottomPartGame> {
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         onTap: () {
-                          context
-                              .read<AddtocartCubit>()
-                              .addtocart(widget.productId);
+                          context.read<AddtocartCubit>().addtocart(productId);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.7,
