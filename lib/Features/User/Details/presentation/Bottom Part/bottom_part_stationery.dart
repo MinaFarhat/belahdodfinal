@@ -1,6 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Rating%20Cubit/rating_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -248,7 +249,12 @@ class BottomPartStationery extends StatelessWidget {
                           color: const Color(0xFFFB7A12),
                         ),
                       ),
-                      onRatingUpdate: (value) {},
+                      onRatingUpdate: (value) {
+                        context.read<RatingCubit>().rating(
+                              productId,
+                              value.toInt(),
+                            );
+                      },
                     ),
                   ],
                 ),

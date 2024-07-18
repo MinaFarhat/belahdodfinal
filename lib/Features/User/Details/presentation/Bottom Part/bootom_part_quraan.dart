@@ -1,6 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Rating%20Cubit/rating_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -304,7 +305,12 @@ class BootomPartQuraan extends StatelessWidget {
                           color: const Color(0xFFFB7A12),
                         ),
                       ),
-                      onRatingUpdate: (value) {},
+                      onRatingUpdate: (value) {
+                        context.read<RatingCubit>().rating(
+                              productId,
+                              value.toInt(),
+                            );
+                      },
                     ),
                   ],
                 ),
@@ -324,45 +330,6 @@ class BootomPartQuraan extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.001,
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.end,
-          //   children: [
-          //     Text(
-          //       "مستخدم",
-          //       style: TextStyle(
-          //         fontSize: 15,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? Colors.black
-          //             : Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //     Text(
-          //       " $numberwhofavorite",
-          //       style: TextStyle(
-          //         fontSize: 17,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? ColorConstant.mainColor
-          //             : ColorConstant.shadowColor,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //     Text(
-          //       " المنتج المفضل لدى",
-          //       style: TextStyle(
-          //         fontSize: 15,
-          //         color: SharedPreferencesUtils().getisDark() == false
-          //             ? Colors.black
-          //             : Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //   ],
-          // ),
-
-          // SizedBox(
-          //   height: MediaQuery.of(context).size.height * 0.0025,
-          // ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -421,19 +388,6 @@ class BootomPartQuraan extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // Padding(
-                    //   padding: const EdgeInsets.only(left: 12),
-                    //   child: InkWell(
-                    //     overlayColor:
-                    //         WidgetStateProperty.all(Colors.transparent),
-                    //     onTap: () {},
-                    //     child: Icon(
-                    //       PhosphorIcons.heart(PhosphorIconsStyle.regular),
-                    //       size: 24,
-                    //       color: ColorConstant.mainColor,
-                    //     ),
-                    //   ),
-                    // ),
                     Row(
                       children: [
                         Text(

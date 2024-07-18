@@ -29,4 +29,5 @@ class EndPoints {
   static const String getSectionAndProductsVisitorUrl =
       "$baseUrl/section-product";
   static const String productDetailsVisitorUrl = "$baseUrl/showVisitor/";
+  static const String ratingUrl = "$baseUrl/products/";
 }

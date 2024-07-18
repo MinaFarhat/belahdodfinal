@@ -6,6 +6,7 @@ import 'package:belahododfinal/Features/User/Details/Manager/Base%20Cubit/base_c
 import 'package:belahododfinal/Features/User/Details/Manager/Book%20Cubit/book_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Game%20Cubit/game_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Rating%20Cubit/rating_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
@@ -192,6 +193,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<StationeryVisitorCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<RatingCubit>(),
         ),
       ],
       child: MaterialApp(
