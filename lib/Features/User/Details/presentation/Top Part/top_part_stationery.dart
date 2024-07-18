@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/Details/Manager/Like%20Cubit/like_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_state.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/QR%20Generate/qrgenerate.dart';
@@ -321,8 +322,17 @@ class TopPartStationery extends StatelessWidget {
                                 msg: "تم تسجيل اعجابك",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
-                                backgroundColor: ColorConstant.mainColor,
+                                backgroundColor: Colors.green,
                               );
+                              context.read<LikeCubit>().like(productId);
+                            } else {
+                              Fluttertoast.showToast(
+                                msg: "تم إزالة تسجيل اعجابك",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                              );
+                              context.read<LikeCubit>().like(productId);
                             }
                           },
                           child: Icon(

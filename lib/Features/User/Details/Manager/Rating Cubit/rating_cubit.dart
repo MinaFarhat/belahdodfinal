@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/Details/data/Model/ratingentity.dart';
-import 'package:belahododfinal/Features/User/Details/data/Repostry/Rating/baserepositoryrating.dart';
+import 'package:belahododfinal/Features/User/Details/data/Repostry/Rating%20Repository/baserepositoryrating.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

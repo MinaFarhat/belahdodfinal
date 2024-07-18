@@ -1,7 +1,7 @@
 import 'package:belahododfinal/Core/Network/network_info.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/Details/data/Model/ratingentity.dart';
-import 'package:belahododfinal/Features/User/Details/data/Repostry/Rating/baserepositoryrating.dart';
+import 'package:belahododfinal/Features/User/Details/data/Repostry/Rating%20Repository/baserepositoryrating.dart';
 import 'package:belahododfinal/Features/User/Details/data/Web%20Service/ratingwebservice.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';

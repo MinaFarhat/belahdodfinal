@@ -30,4 +30,5 @@ class EndPoints {
       "$baseUrl/section-product";
   static const String productDetailsVisitorUrl = "$baseUrl/showVisitor/";
   static const String ratingUrl = "$baseUrl/products/";
+  static const String likeUrl = "$baseUrl/products/";
 }
