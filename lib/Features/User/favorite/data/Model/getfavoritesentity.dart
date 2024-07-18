@@ -20,6 +20,8 @@ class GetFavoritesEntity {
 class GetFavoritesData {
   @JsonKey(name: "id")
   final int favoriteProductId;
+  @JsonKey(name: "section_id")
+  final int sectionId;
   @JsonKey(name: "name")
   final String name;
   @JsonKey(name: "description")
@@ -28,7 +30,12 @@ class GetFavoritesData {
   final String image;
 
   GetFavoritesData(
-      this.favoriteProductId, this.name, this.description, this.image);
+    this.favoriteProductId,
+    this.sectionId,
+    this.name,
+    this.description,
+    this.image,
+  );
 
   factory GetFavoritesData.fromJson(Map<String, dynamic> json) =>
       _$GetFavoritesDataFromJson(json);

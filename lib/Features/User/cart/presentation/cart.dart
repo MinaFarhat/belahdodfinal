@@ -81,9 +81,11 @@ class _CartState extends State<Cart> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFECF2F8),
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? ColorConstant.shadowColor
+                          : Colors.grey.shade400,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
                       ),
@@ -98,6 +100,8 @@ class _CartState extends State<Cart> {
                             String imageUrl =
                                 'http://10.0.2.2:8000${getcartitemsentity.products[index].image}';
                             return CartItem(
+                              sectionId:
+                                  getcartitemsentity.products[index].sectionId,
                               image: imageUrl,
                               title: getcartitemsentity.products[index].name,
                               initialQuantity:

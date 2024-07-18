@@ -21,6 +21,7 @@ Map<String, dynamic> _$GetFavoritesEntityToJson(GetFavoritesEntity instance) =>
 GetFavoritesData _$GetFavoritesDataFromJson(Map<String, dynamic> json) =>
     GetFavoritesData(
       (json['id'] as num).toInt(),
+      (json['section_id'] as num).toInt(),
       json['name'] as String,
       json['description'] as String,
       json['image'] as String,
@@ -29,6 +30,7 @@ GetFavoritesData _$GetFavoritesDataFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$GetFavoritesDataToJson(GetFavoritesData instance) =>
     <String, dynamic>{
       'id': instance.favoriteProductId,
+      'section_id': instance.sectionId,
       'name': instance.name,
       'description': instance.description,
       'image': instance.image,

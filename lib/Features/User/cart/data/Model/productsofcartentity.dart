@@ -7,6 +7,8 @@ part 'productsofcartentity.g.dart';
 class ProductsofCartEntity {
   @JsonKey(name: "product_id")
   final int id;
+  @JsonKey(name: "section_id")
+  final int sectionId;
   @JsonKey(name: "name")
   final String name;
   @JsonKey(name: "price")
@@ -18,6 +20,7 @@ class ProductsofCartEntity {
 
   ProductsofCartEntity(
     this.id,
+    this.sectionId,
     this.name,
     this.price,
     this.quantity,

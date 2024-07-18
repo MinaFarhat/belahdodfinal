@@ -1,4 +1,9 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Delete%20Item%20From%20Cart%20Cubit/deleteitemfromcart_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Quantitiy%20Update%20Cubit/quantitiyupdate_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Quantity%20Cubit/quantity_cubit.dart';
@@ -19,6 +24,7 @@ class CartItem extends StatelessWidget {
   final int initialQuantity;
   final int price;
   final int id;
+  final int sectionId;
 
   const CartItem({
     required this.image,
@@ -26,6 +32,7 @@ class CartItem extends StatelessWidget {
     required this.initialQuantity,
     required this.price,
     required this.id,
+    required this.sectionId,
     super.key,
   });
 
@@ -38,6 +45,7 @@ class CartItem extends StatelessWidget {
         title: title,
         price: price,
         id: id,
+        sectionId: sectionId,
       ),
     );
   }
@@ -48,12 +56,14 @@ class CartItemView extends StatelessWidget {
   final String title;
   final int price;
   final int id;
+  final int sectionId;
 
   const CartItemView({
     required this.image,
     required this.title,
     required this.price,
     required this.id,
+    required this.sectionId,
     super.key,
   });
 
@@ -61,6 +71,49 @@ class CartItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       overlayColor: WidgetStateProperty.all(Colors.transparent),
+      onTap: () {
+        if (sectionId == 1) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsBook(
+                productID: id,
+              ),
+            ),
+          );
+        } else if (sectionId == 2) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsGame(
+                productID: id,
+              ),
+            ),
+          );
+        } else if (sectionId == 3) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsStationery(
+                productID: id,
+              ),
+            ),
+          );
+        } else if (sectionId == 4) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsQurans(
+                productID: id,
+              ),
+            ),
+          );
+        } else if (sectionId == 5 || sectionId > 5) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailsBase(
+                productID: id,
+              ),
+            ),
+          );
+        }
+      },
       onLongPress: () {
         showDialog(
           context: context,
