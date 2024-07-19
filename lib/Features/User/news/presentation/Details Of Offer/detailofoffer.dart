@@ -289,6 +289,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                             return Padding(
                               padding: const EdgeInsets.only(left: 8),
                               child: OfferItems(
+                                offerId: detailsofofferentity.offerId,
                                 image: imageUrl,
                                 productId: detailsofofferentity
                                     .productsofOffer[index]['id'],

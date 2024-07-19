@@ -49,21 +49,33 @@ class _UpdatesState extends State<Updates> {
               MaterialPageRoute(builder: (context) {
                 return const FavoriteList();
               }),
-            );
+            ).then((_) {
+              context.read<GetalloffersCubit>().offers();
+              context.read<NewsCubit>().getNews();
+              context.read<AdsCubit>().getAds();
+            });
           },
           ontapwishList: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
                 return const Cart();
               }),
-            );
+            ).then((_) {
+              context.read<GetalloffersCubit>().offers();
+              context.read<NewsCubit>().getNews();
+              context.read<AdsCubit>().getAds();
+            });
           },
           ontapName: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
                 return const Information();
               }),
-            );
+            ).then((_) {
+              context.read<GetalloffersCubit>().offers();
+              context.read<NewsCubit>().getNews();
+              context.read<AdsCubit>().getAds();
+            });
           },
         ),
         body: SingleChildScrollView(
@@ -390,7 +402,11 @@ class _UpdatesState extends State<Updates> {
                                       );
                                     },
                                   ),
-                                );
+                                ).then((_) {
+                                  context.read<GetalloffersCubit>().offers();
+                                  context.read<NewsCubit>().getNews();
+                                  context.read<AdsCubit>().getAds();
+                                });
                               },
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 8),

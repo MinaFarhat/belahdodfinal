@@ -31,7 +31,7 @@ class _FavoriteListState extends State<FavoriteList> {
               child: InkWell(
                 overlayColor: WidgetStateProperty.all(Colors.black),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.of(context).pop(true);
                 },
                 child: Icon(
                   PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),

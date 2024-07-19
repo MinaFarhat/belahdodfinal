@@ -1,6 +1,9 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/Products%20Of%20SubSections/Presentation/productsofsubsection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../Get SubSections Cubit/getsubsections_cubit.dart';
 
 // ignore: must_be_immutable
 class SubSectionItem extends StatelessWidget {
@@ -28,7 +31,8 @@ class SubSectionItem extends StatelessWidget {
               );
             },
           ),
-        );
+        ).then((_) =>
+            context.read<GetsubsectionsCubit>().getsubsections(sectionId));
       },
       child: Stack(
         children: [

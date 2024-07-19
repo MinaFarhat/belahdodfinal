@@ -41,45 +41,55 @@ class FavItem extends StatelessWidget {
       overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
         if (sectionId == 1) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBook(
-                productID: favoriteProductIid,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsBook(
+                    productID: favoriteProductIid,
+                  ),
+                ),
+              )
+              .then((_) => context.read<GetfavoritesCubit>().getFavorites());
         } else if (sectionId == 2) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsGame(
-                productID: favoriteProductIid,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsGame(
+                    productID: favoriteProductIid,
+                  ),
+                ),
+              )
+              .then((_) => context.read<GetfavoritesCubit>().getFavorites());
         } else if (sectionId == 3) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsStationery(
-                productID: favoriteProductIid,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsStationery(
+                    productID: favoriteProductIid,
+                  ),
+                ),
+              )
+              .then((_) => context.read<GetfavoritesCubit>().getFavorites());
         } else if (sectionId == 4) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsQurans(
-                productID: favoriteProductIid,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsQurans(
+                    productID: favoriteProductIid,
+                  ),
+                ),
+              )
+              .then((_) => context.read<GetfavoritesCubit>().getFavorites());
         } else if (sectionId == 5 || sectionId > 5) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBase(
-                productID: favoriteProductIid,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsBase(
+                    productID: favoriteProductIid,
+                  ),
+                ),
+              )
+              .then((_) => context.read<GetfavoritesCubit>().getFavorites());
         }
       },
       child: Padding(

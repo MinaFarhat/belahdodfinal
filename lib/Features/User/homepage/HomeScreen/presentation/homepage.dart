@@ -40,25 +40,25 @@ class _HomePageState extends State<HomePage> {
         extendBody: true,
         appBar: TopBar(
           ontapFav: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) {
-                return const FavoriteList();
-              }),
-            );
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(builder: (context) => const FavoriteList()),
+                )
+                .then((_) => context.read<SectionCubit>().sections());
           },
           ontapwishList: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
                 return const Cart();
               }),
-            );
+            ).then((_) => context.read<SectionCubit>().sections());
           },
           ontapName: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
                 return const Information();
               }),
-            );
+            ).then((_) => context.read<SectionCubit>().sections());
           },
         ),
         body: BlocConsumer<SectionCubit, SectionState>(

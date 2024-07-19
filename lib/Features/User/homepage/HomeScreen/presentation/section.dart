@@ -1,8 +1,10 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/presentation/item.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/subsectionsandproducts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../../../Core/constant/colors_constant.dart';
@@ -34,7 +36,6 @@ class Section extends StatelessWidget {
           child: InkWell(
             overlayColor: WidgetStateProperty.all(Colors.transparent),
             onTap: () {
-              // print(sectionId);
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
@@ -44,7 +45,7 @@ class Section extends StatelessWidget {
                     );
                   },
                 ),
-              );
+              ).then((_) => context.read<SectionCubit>().sections());
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

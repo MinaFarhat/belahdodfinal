@@ -1,5 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
@@ -7,18 +8,20 @@ import 'package:belahododfinal/Features/User/Details/presentation/details_book.d
 import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OfferItems extends StatelessWidget {
   final String image;
   final int productId;
   final int sectionId;
   final int minimumquantity;
-
+  final int offerId;
   const OfferItems({
     required this.image,
     required this.productId,
     required this.sectionId,
     required this.minimumquantity,
+    required this.offerId,
     super.key,
   });
 
@@ -76,35 +79,50 @@ class OfferItems extends StatelessWidget {
 
   void navigateToDetails(BuildContext context) {
     if (sectionId == 1) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => DetailsBook(productID: productId),
-        ),
-      );
+      Navigator.of(context)
+          .push(
+            MaterialPageRoute(
+              builder: (context) => DetailsBook(productID: productId),
+            ),
+          )
+          .then((_) =>
+              context.read<DetailsofofferCubit>().detailsofOffer(offerId));
     } else if (sectionId == 2) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => DetailsGame(productID: productId),
-        ),
-      );
+      Navigator.of(context)
+          .push(
+            MaterialPageRoute(
+              builder: (context) => DetailsGame(productID: productId),
+            ),
+          )
+          .then((_) =>
+              context.read<DetailsofofferCubit>().detailsofOffer(offerId));
     } else if (sectionId == 3) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => DetailsStationery(productID: productId),
-        ),
-      );
+      Navigator.of(context)
+          .push(
+            MaterialPageRoute(
+              builder: (context) => DetailsStationery(productID: productId),
+            ),
+          )
+          .then((_) =>
+              context.read<DetailsofofferCubit>().detailsofOffer(offerId));
     } else if (sectionId == 4) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => DetailsQurans(productID: productId),
-        ),
-      );
+      Navigator.of(context)
+          .push(
+            MaterialPageRoute(
+              builder: (context) => DetailsQurans(productID: productId),
+            ),
+          )
+          .then((_) =>
+              context.read<DetailsofofferCubit>().detailsofOffer(offerId));
     } else if (sectionId == 5 || sectionId > 5) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => DetailsBase(productID: productId),
-        ),
-      );
+      Navigator.of(context)
+          .push(
+            MaterialPageRoute(
+              builder: (context) => DetailsBase(productID: productId),
+            ),
+          )
+          .then((_) =>
+              context.read<DetailsofofferCubit>().detailsofOffer(offerId));
     }
   }
 }

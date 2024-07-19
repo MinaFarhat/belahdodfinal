@@ -144,12 +144,15 @@ class _ProductsOfSubSectionState extends State<ProductsOfSubSection> {
                               );
                             },
                           )
-                        : const Center(
+                        : Center(
                             child: Text(
                               "لا توجد منتجات بعد في هذا القسم",
                               style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.black,
+                                color: SharedPreferencesUtils().getisDark() ==
+                                        false
+                                    ? Colors.black
+                                    : Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

@@ -73,45 +73,55 @@ class CartItemView extends StatelessWidget {
       overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
         if (sectionId == 1) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBook(
-                productID: id,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsBook(
+                    productID: id,
+                  ),
+                ),
+              )
+              .then((_) => context.read<CartitemsCubit>().getcartitems());
         } else if (sectionId == 2) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsGame(
-                productID: id,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsGame(
+                    productID: id,
+                  ),
+                ),
+              )
+              .then((_) => context.read<CartitemsCubit>().getcartitems());
         } else if (sectionId == 3) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsStationery(
-                productID: id,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsStationery(
+                    productID: id,
+                  ),
+                ),
+              )
+              .then((_) => context.read<CartitemsCubit>().getcartitems());
         } else if (sectionId == 4) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsQurans(
-                productID: id,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsQurans(
+                    productID: id,
+                  ),
+                ),
+              )
+              .then((_) => context.read<CartitemsCubit>().getcartitems());
         } else if (sectionId == 5 || sectionId > 5) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBase(
-                productID: id,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsBase(
+                    productID: id,
+                  ),
+                ),
+              )
+              .then((_) => context.read<CartitemsCubit>().getcartitems());
         }
       },
       onLongPress: () {

@@ -1,7 +1,11 @@
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/News/newsdetails.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
 class NewTitle extends StatelessWidget {
@@ -29,7 +33,11 @@ class NewTitle extends StatelessWidget {
               );
             },
           ),
-        );
+        ).then((_) {
+          context.read<GetalloffersCubit>().offers();
+          context.read<NewsCubit>().getNews();
+          context.read<AdsCubit>().getAds();
+        });
       },
       child: Padding(
         padding: const EdgeInsets.only(right: 12, left: 12, top: 12),

@@ -6,6 +6,7 @@ import 'package:belahododfinal/Features/User/Details/presentation/details_game.d
 import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
 import 'package:belahododfinal/Features/User/favorite/Manager/Add%20To%20Favorites%20Cubit/addtofavorite_cubit.dart';
+import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,45 +40,55 @@ class _ItemState extends State<Item> {
         overlayColor: WidgetStateProperty.all(Colors.transparent),
         onTap: () {
           if (widget.index == 0) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DetailsBook(
-                  productID: widget.productID,
-                ),
-              ),
-            );
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsBook(
+                      productID: widget.productID,
+                    ),
+                  ),
+                )
+                .then((_) => context.read<SectionCubit>().sections());
           } else if (widget.index == 1) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DetailsGame(
-                  productID: widget.productID,
-                ),
-              ),
-            );
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsGame(
+                      productID: widget.productID,
+                    ),
+                  ),
+                )
+                .then((_) => context.read<SectionCubit>().sections());
           } else if (widget.index == 2) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DetailsStationery(
-                  productID: widget.productID,
-                ),
-              ),
-            );
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsStationery(
+                      productID: widget.productID,
+                    ),
+                  ),
+                )
+                .then((_) => context.read<SectionCubit>().sections());
           } else if (widget.index == 3) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DetailsQurans(
-                  productID: widget.productID,
-                ),
-              ),
-            );
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsQurans(
+                      productID: widget.productID,
+                    ),
+                  ),
+                )
+                .then((_) => context.read<SectionCubit>().sections());
           } else if (widget.index == 4 || widget.index > 4) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DetailsBase(
-                  productID: widget.productID,
-                ),
-              ),
-            );
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsBase(
+                      productID: widget.productID,
+                    ),
+                  ),
+                )
+                .then((_) => context.read<SectionCubit>().sections());
           }
         },
         child: Stack(
