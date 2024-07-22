@@ -170,6 +170,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                           String imageUrl =
                               'http://10.0.2.2:8000${orderdetailsentity.orderProducts[index].firstImage}';
                           return OrderItemDetails(
+                            orderId: widget.orderId,
                             image: imageUrl,
                             name: orderdetailsentity
                                 .orderProducts[index].productName,

@@ -1,17 +1,18 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../Order Details/presentation/orderdetails.dart';
+import '../Get Orders Cubit/get_orders_cubit.dart';
 
-// ignore: must_be_immutable
 class OrderItem extends StatelessWidget {
-  int orderId;
-  String date;
-  String stateDialog;
-  int totalPrice;
-  OrderItem({
+  final int orderId;
+  final String date;
+  final String stateDialog;
+  final int totalPrice;
+  const OrderItem({
     required this.orderId,
     required this.date,
     required this.stateDialog,
@@ -32,7 +33,7 @@ class OrderItem extends StatelessWidget {
               );
             },
           ),
-        );
+        ).then((_) => context.read<GetOrdersCubit>().getOrders());
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 12, right: 12, top: 8),

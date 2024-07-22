@@ -84,7 +84,7 @@ class _CartState extends State<Cart> {
                     decoration: BoxDecoration(
                       color: SharedPreferencesUtils().getisDark() == false
                           ? ColorConstant.shadowColor
-                          : Colors.grey.shade500,
+                          : Colors.grey.shade400,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),

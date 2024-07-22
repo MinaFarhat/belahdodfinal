@@ -1,7 +1,6 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/main%20orders/Get%20Orders%20Cubit/get_orders_cubit.dart';
-import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_search.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,26 +34,28 @@ class _OrdersState extends State<Orders> {
         extendBody: true,
         appBar: SimpleTopBar(
           name: "الطلبات",
-          leading: GestureDetector(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (_) {
-                  return const SearchDialog();
-                },
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Icon(
-                PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
-                color: SharedPreferencesUtils().getisDark() == false
-                    ? ColorConstant.mainColor
-                    : Colors.white,
-                size: 26,
-              ),
-            ),
-          ),
+          leading: Container(),
+          // InkWell(
+          //   overlayColor: WidgetStateProperty.all(Colors.transparent),
+          //   onTap: () {
+          //     showDialog(
+          //       context: context,
+          //       builder: (_) {
+          //         return const SearchDialog();
+          //       },
+          //     );
+          //   },
+          //   child: Padding(
+          //     padding: const EdgeInsets.only(left: 16),
+          //     child: Icon(
+          //       PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
+          //       color: SharedPreferencesUtils().getisDark() == false
+          //           ? ColorConstant.mainColor
+          //           : Colors.white,
+          //       size: 26,
+          //     ),
+          //   ),
+          // ),
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 16),

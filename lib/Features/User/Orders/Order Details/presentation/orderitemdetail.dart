@@ -7,23 +7,26 @@ import 'package:belahododfinal/Features/User/Details/presentation/details_statio
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/fine_of_order.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ignore: must_be_immutable
+import '../Order Details Cubit/order_details_cubit.dart';
+
 class OrderItemDetails extends StatelessWidget {
-  int productId;
-  int sectionId;
-  String image;
-  String name;
-  int price;
-  int quantity;
-
-  OrderItemDetails({
+  final int productId;
+  final int sectionId;
+  final String image;
+  final String name;
+  final int price;
+  final int quantity;
+  final int orderId;
+  const OrderItemDetails({
     required this.productId,
     required this.sectionId,
     required this.image,
     required this.name,
     required this.price,
     required this.quantity,
+    required this.orderId,
     super.key,
   });
 
@@ -33,45 +36,60 @@ class OrderItemDetails extends StatelessWidget {
       overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
         if (sectionId == 1) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBook(
-                productID: productId,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsBook(
+                    productID: productId,
+                  ),
+                ),
+              )
+              .then((_) =>
+                  context.read<OrderDetailsCubit>().orderDetails(orderId));
         } else if (sectionId == 2) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsGame(
-                productID: productId,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsGame(
+                    productID: productId,
+                  ),
+                ),
+              )
+              .then((_) =>
+                  context.read<OrderDetailsCubit>().orderDetails(orderId));
         } else if (sectionId == 3) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsStationery(
-                productID: productId,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsStationery(
+                    productID: productId,
+                  ),
+                ),
+              )
+              .then((_) =>
+                  context.read<OrderDetailsCubit>().orderDetails(orderId));
         } else if (sectionId == 4) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsQurans(
-                productID: productId,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsQurans(
+                    productID: productId,
+                  ),
+                ),
+              )
+              .then((_) =>
+                  context.read<OrderDetailsCubit>().orderDetails(orderId));
         } else if (sectionId == 5 || sectionId > 5) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBase(
-                productID: productId,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsBase(
+                    productID: productId,
+                  ),
+                ),
+              )
+              .then((_) =>
+                  context.read<OrderDetailsCubit>().orderDetails(orderId));
         }
       },
       child: Padding(
