@@ -1,4 +1,3 @@
-import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +57,7 @@ class NewsDetails extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  right: 16,
+                  right: 8,
                   top: 8,
                   child: InkWell(
                     overlayColor: WidgetStateProperty.all(Colors.transparent),
@@ -70,13 +69,17 @@ class NewsDetails extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.045,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.white.withOpacity(0.7),
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.white.withOpacity(0.7)
+                            : Colors.grey.shade900.withOpacity(0.8),
                       ),
                       child: Center(
                         child: Icon(
                           PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                           size: 28,
-                          color: ColorConstant.darkColor,
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                         ),
                       ),
                     ),
