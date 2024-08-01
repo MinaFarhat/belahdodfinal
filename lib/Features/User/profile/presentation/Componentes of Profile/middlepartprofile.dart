@@ -2,7 +2,6 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/main%20orders/presentation/order.dart';
 import 'package:belahododfinal/Features/User/Vouchers/Presentation/vouchers.dart';
-import 'package:belahododfinal/Features/User/profile/presentation/Language/chooselanguage.dart';
 import 'package:belahododfinal/main.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -24,49 +23,50 @@ class MiddlePartProfile extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        InkWell(
-          overlayColor: WidgetStateProperty.all(Colors.transparent),
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return const ChooseLanguage();
-                },
-              ),
-            );
-          },
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.24,
-            height: MediaQuery.of(context).size.height * 0.08,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
-              color: const Color(0xFF10D417),
-            ),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Column(
-                  children: [
-                    Icon(
-                      PhosphorIcons.translate(PhosphorIconsStyle.bold),
-                      color: Colors.grey.shade900,
-                      size: 28,
-                    ),
-                    const Text(
-                      "اللغة العربية",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
+        // InkWell(
+        //   overlayColor: WidgetStateProperty.all(Colors.transparent),
+        //   onTap: () {
+        //     Navigator.of(context).push(
+        //       MaterialPageRoute(
+        //         builder: (context) {
+        //           return const ChooseLanguage();
+        //         },
+        //       ),
+        //     );
+        //   },
+        //   child: Container(
+        //     width: MediaQuery.of(context).size.width * 0.24,
+        //     height: MediaQuery.of(context).size.height * 0.08,
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(6),
+        //       color: const Color(0xFF10D417),
+        //     ),
+        //     child: Center(
+        //       child: Padding(
+        //         padding: const EdgeInsets.only(top: 4),
+        //         child: Column(
+        //           children: [
+        //             Icon(
+        //               PhosphorIcons.translate(PhosphorIconsStyle.bold),
+        //               color: Colors.grey.shade900,
+        //               size: 28,
+        //             ),
+        //             const Text(
+        //               "اللغة العربية",
+        //               textAlign: TextAlign.center,
+        //               style: TextStyle(
+        //                 color: Colors.white,
+        //                 fontSize: 16,
+        //                 fontWeight: FontWeight.bold,
+        //               ),
+        //             ),
+        //           ],
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+
         InkWell(
           overlayColor: WidgetStateProperty.all(Colors.transparent),
           onTap: () {
@@ -81,7 +81,7 @@ class MiddlePartProfile extends StatelessWidget {
             );
           },
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.24,
+            width: MediaQuery.of(context).size.width * 0.28,
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
@@ -121,7 +121,7 @@ class MiddlePartProfile extends StatelessWidget {
             );
           },
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.24,
+            width: MediaQuery.of(context).size.width * 0.28,
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
@@ -175,7 +175,7 @@ class MiddlePartProfile extends StatelessWidget {
             );
           },
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.24,
+            width: MediaQuery.of(context).size.width * 0.28,
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
