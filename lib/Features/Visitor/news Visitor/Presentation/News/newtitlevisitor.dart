@@ -26,9 +26,7 @@ class Newtitlevisitor extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return NewsDetailsVisitor(
-                image: image,
-                title: title,
-                description: description,
+                newId: newsId,
               );
             },
           ),
