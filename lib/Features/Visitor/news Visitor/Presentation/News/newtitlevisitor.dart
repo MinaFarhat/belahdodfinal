@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class Newtitlevisitor extends StatelessWidget {
   final int newsId;
-  final String image;
   final String title;
+  final String image;
+  final String description;
   const Newtitlevisitor({
     required this.newsId,
-    required this.image,
     required this.title,
+    required this.image,
+    required this.description,
     super.key,
   });
 
@@ -25,7 +27,8 @@ class Newtitlevisitor extends StatelessWidget {
             builder: (context) {
               return NewsDetailsVisitor(
                 image: image,
-                text: title,
+                title: title,
+                description: description,
               );
             },
           ),
@@ -43,7 +46,7 @@ class Newtitlevisitor extends StatelessWidget {
                 overflow: TextOverflow.clip,
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: ColorConstant.darkColor,
                 ),

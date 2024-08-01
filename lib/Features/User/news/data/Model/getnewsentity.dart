@@ -20,6 +20,8 @@ class GetNewsEntity {
 class GetNewsData {
   @JsonKey(name: "id")
   final int newsId;
+  @JsonKey(name: "title")
+  final String newsTitle;
   @JsonKey(name: "description")
   final String newsDescription;
   @JsonKey(name: "image")
@@ -27,6 +29,7 @@ class GetNewsData {
 
   GetNewsData(
     this.newsId,
+    this.newsTitle,
     this.newsImage,
     this.newsDescription,
   );

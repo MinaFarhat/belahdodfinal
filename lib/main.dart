@@ -23,6 +23,7 @@ import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Produc
 import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
+import 'package:belahododfinal/Features/User/news/Manager/New%20Details%20Cubit/new_details_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
 import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
@@ -168,6 +169,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<NewsCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<NewDetailsCubit>(),
         ),
         BlocProvider(
           create: (context) => getIt<AdsCubit>(),

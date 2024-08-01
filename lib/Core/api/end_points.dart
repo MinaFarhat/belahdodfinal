@@ -19,6 +19,7 @@ class EndPoints {
   static const String getDetailsOfOfferUrl = "$baseUrl/offer/mobile/";
   static const String getAllOffersUrl = "$baseUrl/offer/index";
   static const String getAllNewsUrl = "$baseUrl/news/index";
+  static const String getNewDetailsUrl = "$baseUrl/news/";
   static const String getAllNotificationsUrl = "$baseUrl/notification/index";
   static const String getAllOrdersUrl = "$baseUrl/orders";
   static const String getOrderDetailsUrl = "$baseUrl/orders/";

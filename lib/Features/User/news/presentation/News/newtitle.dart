@@ -10,12 +10,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // ignore: must_be_immutable
 class NewTitle extends StatelessWidget {
   final int newsId;
-  final String image;
   final String title;
+  final String image;
+  final String description;
   const NewTitle({
     required this.newsId,
-    required this.image,
     required this.title,
+    required this.image,
+    required this.description,
     super.key,
   });
 
@@ -28,8 +30,7 @@ class NewTitle extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return NewsDetails(
-                image: image,
-                text: title,
+                newId: newsId,
               );
             },
           ),
@@ -51,7 +52,7 @@ class NewTitle extends StatelessWidget {
                 overflow: TextOverflow.clip,
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.grey.shade900

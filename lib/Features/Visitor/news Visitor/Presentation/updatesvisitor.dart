@@ -277,8 +277,10 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                                 'http://10.0.2.2:8000${getnewsentity.news[index].newsImage}';
                             return Newtitlevisitor(
                               newsId: getnewsentity.news[index].newsId,
+                              title: getnewsentity.news[index].newsTitle,
                               image: imageUrl,
-                              title: getnewsentity.news[index].newsDescription,
+                              description:
+                                  getnewsentity.news[index].newsDescription,
                             );
                           }),
                         ),

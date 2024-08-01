@@ -6,11 +6,13 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 class NewsDetailsVisitor extends StatelessWidget {
   const NewsDetailsVisitor({
     required this.image,
-    required this.text,
+    required this.title,
+    required this.description,
     super.key,
   });
   final String image;
-  final String text;
+  final String title;
+  final String description;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -54,7 +56,7 @@ class NewsDetailsVisitor extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  right: 16,
+                  right: 6,
                   top: 8,
                   child: InkWell(
                     overlayColor: WidgetStateProperty.all(Colors.transparent),
@@ -84,20 +86,38 @@ class NewsDetailsVisitor extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.01,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.4,
-                width: MediaQuery.of(context).size.width * 1,
-                child: Text(
-                  text,
-                  textDirection: TextDirection.rtl,
-                  maxLines: 50,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade900,
+              padding: const EdgeInsets.only(right: 12),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.04,
+                    width: MediaQuery.of(context).size.width * 1,
+                    child: Text(
+                      title,
+                      textDirection: TextDirection.rtl,
+                      maxLines: 2,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.04,
+                    width: MediaQuery.of(context).size.width * 1,
+                    child: Text(
+                      description,
+                      textDirection: TextDirection.rtl,
+                      maxLines: 50,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade900,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
