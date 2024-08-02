@@ -190,32 +190,38 @@ class _TopPartProfileState extends State<TopPartProfile> {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.006,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.85,
-              child: Text(
-                widget.location,
-                overflow: TextOverflow.ellipsis,
-                textDirection: TextDirection.rtl,
-                style: TextStyle(
-                  color: SharedPreferencesUtils().getisDark() == false
-                      ? Colors.grey.shade900
-                      : Colors.white,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Text(
+                    widget.location,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(
+                      color: SharedPreferencesUtils().getisDark() == false
+                          ? Colors.grey.shade900
+                          : Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(width: 2),
+                Icon(
+                  PhosphorIcons.navigationArrow(PhosphorIconsStyle.bold),
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : ColorConstant.shadowColor,
+                  size: 20,
+                ),
+              ],
             ),
-            Icon(
-              PhosphorIcons.navigationArrow(PhosphorIconsStyle.bold),
-              color: SharedPreferencesUtils().getisDark() == false
-                  ? ColorConstant.mainColor
-                  : ColorConstant.shadowColor,
-              size: 20,
-            ),
-          ],
+          ),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.006,
