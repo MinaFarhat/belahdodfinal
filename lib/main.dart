@@ -31,6 +31,7 @@ import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/O
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%202%20Cubit/get_user_info2_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
+import 'package:belahododfinal/Features/User/profile/Manager/Update%20Profile%20Photo%20Cubit/update_profile_photo_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Update%20User%20Info%20Cubit/update_user_info_cubit.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Search%20By%20QR%20Cubit/search_by_qr_cubit.dart';
 import 'package:belahododfinal/Features/User/search/Populer%20Products/Popular%20Products%20Cubit/popular_products_cubit.dart';
@@ -228,6 +229,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<UpdateUserInfoCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<UpdateProfilePhotoCubit>(),
         ),
       ],
       child: MaterialApp(

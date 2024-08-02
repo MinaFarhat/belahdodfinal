@@ -3,7 +3,11 @@ import 'dart:io';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Points/Presentation/points.dart';
+import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
+import 'package:belahododfinal/Features/User/profile/Manager/Update%20Profile%20Photo%20Cubit/update_profile_photo_cubit.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -40,7 +44,7 @@ class _TopPartProfileState extends State<TopPartProfile> {
                   : ColorConstant.shadowColor,
               radius: 55,
               backgroundImage: _selectedImage == null
-                  ? AssetImage(widget.imageProfile)
+                  ? CachedNetworkImageProvider(widget.imageProfile)
                   : FileImage(
                       File(_selectedImage!.path),
                     ),
@@ -235,7 +239,7 @@ class _TopPartProfileState extends State<TopPartProfile> {
                   return const PointsScreen();
                 },
               ),
-            );
+            ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -289,6 +293,9 @@ class _TopPartProfileState extends State<TopPartProfile> {
     if (pickedImage != null) {
       setState(() {
         _selectedImage = File(pickedImage.path);
+        context
+            .read<UpdateProfilePhotoCubit>()
+            .updateProfilePhoto(_selectedImage!);
       });
     }
   }

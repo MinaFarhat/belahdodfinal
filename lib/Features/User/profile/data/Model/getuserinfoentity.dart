@@ -9,6 +9,8 @@ class GetUserInfoEntity {
   final String userName;
   @JsonKey(name: "address")
   final String userAddress;
+  @JsonKey(name: "profile_picture")
+  final String? userProfilePicture;
   @JsonKey(name: "orders")
   final int userOrders;
   @JsonKey(name: "points")
@@ -19,6 +21,7 @@ class GetUserInfoEntity {
   GetUserInfoEntity(
     this.userName,
     this.userAddress,
+    this.userProfilePicture,
     this.userOrders,
     this.userPoints,
     this.userCoupons,

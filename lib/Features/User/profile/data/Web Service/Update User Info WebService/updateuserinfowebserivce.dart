@@ -7,8 +7,8 @@ abstract class UpdateUserInfoWebService {
   Future<UpdateUserInfoEntity> updateUserInfo(
     String name,
     String phoneNumber,
-    String city,
     String address,
+    String city,
   );
 }
 
@@ -20,7 +20,7 @@ class UpdateUserInfoWebServiceImpl implements UpdateUserInfoWebService {
 
   @override
   Future<UpdateUserInfoEntity> updateUserInfo(
-      String name, String phoneNumber, String city, String address) async {
+      String name, String phoneNumber, String address, String city) async {
     final response = await _apiConsumer.post(
       EndPoints.updateUserInfoUrl,
       body: {

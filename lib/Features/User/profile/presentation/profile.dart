@@ -88,6 +88,8 @@ class _ProfileState extends State<Profile> {
               );
             },
             success: (getuserinfoentity) {
+              String imageUrl =
+                  'http://10.0.2.2:8000${getuserinfoentity.userProfilePicture}';
               return Scaffold(
                 backgroundColor: SharedPreferencesUtils().getisDark() == false
                     ? Colors.white
@@ -105,7 +107,9 @@ class _ProfileState extends State<Profile> {
                         height: MediaQuery.of(context).size.height * 0.005,
                       ),
                       TopPartProfile(
-                        imageProfile: "assets/images/User-avatar.png",
+                        imageProfile: imageUrl.isEmpty
+                            ? "assets/images/User-avatar.png"
+                            : imageUrl,
                         nameUser: getuserinfoentity.userName,
                         location: getuserinfoentity.userAddress,
                         points: getuserinfoentity.userPoints.toString(),

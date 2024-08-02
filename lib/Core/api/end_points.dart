@@ -39,4 +39,5 @@ class EndPoints {
   static const String userInfoUrl = "$baseUrl/get-user-info";
   static const String userInfo2Url = "$baseUrl/get-settings";
   static const String updateUserInfoUrl = "$baseUrl/update-settings";
+  static const String updateProfilePicture = "$baseUrl/profile-picture";
 }

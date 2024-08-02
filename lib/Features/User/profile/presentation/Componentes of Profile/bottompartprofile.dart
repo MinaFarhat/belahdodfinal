@@ -1,11 +1,12 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
+import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Account%20Settings/accountsettings.dart';
-import 'package:belahododfinal/Features/User/profile/presentation/Change%20Password/enteroldpassword.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
 import 'package:belahododfinal/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class BottomPartProfile extends StatelessWidget {
@@ -38,7 +39,7 @@ class BottomPartProfile extends StatelessWidget {
         ),
         Container(
           width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.height * 0.25,
+          height: MediaQuery.of(context).size.height * 0.18,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: SharedPreferencesUtils().getisDark() == false
@@ -68,30 +69,30 @@ class BottomPartProfile extends StatelessWidget {
                         return const AccountSettings();
                       },
                     ),
-                  );
+                  ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
                 },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,
               ),
-              profileButton(
-                context: context,
-                color: const Color(0xFFD90E94),
-                icon: PhosphorIcons.detective(PhosphorIconsStyle.regular),
-                text: "تغيير كلمة المرور",
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return EnterOldPassword();
-                      },
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.005,
-              ),
+              // profileButton(
+              //   context: context,
+              //   color: const Color(0xFFD90E94),
+              //   icon: PhosphorIcons.detective(PhosphorIconsStyle.regular),
+              //   text: "تغيير كلمة المرور",
+              //   onTap: () {
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute(
+              //         builder: (context) {
+              //           return EnterOldPassword();
+              //         },
+              //       ),
+              //     );
+              //   },
+              // ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * 0.005,
+              // ),
               profileButton(
                 context: context,
                 color: const Color(0xFFFB7A12),
@@ -204,7 +205,7 @@ class BottomPartProfile extends StatelessWidget {
                   return const Information();
                 },
               ),
-            );
+            ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
           },
           child: Container(
             width: MediaQuery.of(context).size.width * 0.45,

@@ -2,8 +2,10 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/main%20orders/presentation/order.dart';
 import 'package:belahododfinal/Features/User/Vouchers/Presentation/vouchers.dart';
+import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
 import 'package:belahododfinal/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // ignore: must_be_immutable
@@ -118,7 +120,7 @@ class MiddlePartProfile extends StatelessWidget {
                   return const Vouchers();
                 },
               ),
-            );
+            ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
           },
           child: Container(
             width: MediaQuery.of(context).size.width * 0.28,
@@ -172,7 +174,7 @@ class MiddlePartProfile extends StatelessWidget {
                   return const Orders();
                 },
               ),
-            );
+            ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
           },
           child: Container(
             width: MediaQuery.of(context).size.width * 0.28,

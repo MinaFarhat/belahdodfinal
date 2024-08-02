@@ -17,7 +17,7 @@ class AccountSettings extends StatefulWidget {
     "حمص",
     "ريف دمشق",
     "إدلب",
-    "حماه",
+    "حماة",
     "اللاذقية",
     "طرطوس",
     "السويداء",
@@ -462,72 +462,257 @@ class _AccountSettingsState extends State<AccountSettings> {
                                 _numberController.text.isNotEmpty ||
                                 _regionController.text.isNotEmpty ||
                                 value != null
-                            ? InkWell(
-                                overlayColor:
-                                    WidgetStateProperty.all(Colors.transparent),
-                                onTap: () {
-                                  print(_nameController.text);
-                                  print(_numberController.text);
-                                  print(_regionController.text);
-                                  print(value);
-                                  print(getuserinfo2entity.userName);
-                                  print(getuserinfo2entity.userPhoneNumber);
-                                  print(getuserinfo2entity.userAddress);
-                                  print(getuserinfo2entity.userCity);
-                                  context
-                                      .read<UpdateUserInfoCubit>()
-                                      .updateUserInfo(
-                                        name: _nameController.text.isNotEmpty
-                                            ? _nameController.text
-                                            : getuserinfo2entity.userName,
-                                        phoneNumber:
-                                            _numberController.text.isNotEmpty
-                                                ? _numberController.text
-                                                : getuserinfo2entity
-                                                    .userPhoneNumber,
-                                        address: _regionController
-                                                .text.isNotEmpty
-                                            ? _regionController.text
-                                            : getuserinfo2entity.userAddress,
-                                        city: value == null
-                                            ? getuserinfo2entity.userCity
-                                            : value!,
-                                      );
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.06,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: ColorConstant.mainColor,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Text(
-                                        "إرسال",
-                                        style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
+                            ? BlocConsumer<UpdateUserInfoCubit,
+                                UpdateUserInfoState>(
+                                listener: (context, state) {
+                                  state.whenOrNull(
+                                    error: (networkExceptions) {
+                                      Fluttertoast.showToast(
+                                        msg: NetworkExceptions.getErrorMessage(
+                                          networkExceptions,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.02,
-                                      ),
-                                      Icon(
-                                        PhosphorIcons.paperPlane(
-                                            PhosphorIconsStyle.regular),
-                                        size: 24,
-                                        color: Colors.white,
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        backgroundColor: Colors.red,
+                                      );
+                                    },
+                                    success: (updateuserinfoentity) {
+                                      value = null;
+                                      Navigator.pop(context);
+                                    },
+                                  );
+                                },
+                                builder: (context, state) {
+                                  return state.maybeWhen(
+                                    orElse: () {
+                                      return InkWell(
+                                        overlayColor: WidgetStateProperty.all(
+                                            Colors.transparent),
+                                        onTap: () {
+                                          context
+                                              .read<UpdateUserInfoCubit>()
+                                              .updateUserInfo(
+                                                name: _nameController
+                                                        .text.isNotEmpty
+                                                    ? _nameController.text
+                                                    : getuserinfo2entity
+                                                        .userName,
+                                                phoneNumber: _numberController
+                                                        .text.isNotEmpty
+                                                    ? _numberController.text
+                                                    : getuserinfo2entity
+                                                        .userPhoneNumber,
+                                                address: _regionController
+                                                        .text.isNotEmpty
+                                                    ? _regionController.text
+                                                    : getuserinfo2entity
+                                                        .userAddress,
+                                                city: value == null
+                                                    ? getuserinfo2entity
+                                                        .userCity
+                                                    : value!,
+                                              );
+                                        },
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.06,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: ColorConstant.mainColor,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Text(
+                                                "إرسال",
+                                                style: TextStyle(
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.02,
+                                              ),
+                                              Icon(
+                                                PhosphorIcons.paperPlane(
+                                                    PhosphorIconsStyle.regular),
+                                                size: 24,
+                                                color: Colors.white,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    initial: () {
+                                      return InkWell(
+                                        overlayColor: WidgetStateProperty.all(
+                                            Colors.transparent),
+                                        onTap: () {
+                                          context
+                                              .read<UpdateUserInfoCubit>()
+                                              .updateUserInfo(
+                                                name: _nameController
+                                                        .text.isNotEmpty
+                                                    ? _nameController.text
+                                                    : getuserinfo2entity
+                                                        .userName,
+                                                phoneNumber: _numberController
+                                                        .text.isNotEmpty
+                                                    ? _numberController.text
+                                                    : getuserinfo2entity
+                                                        .userPhoneNumber,
+                                                address: _regionController
+                                                        .text.isNotEmpty
+                                                    ? _regionController.text
+                                                    : getuserinfo2entity
+                                                        .userAddress,
+                                                city: value == null
+                                                    ? getuserinfo2entity
+                                                        .userCity
+                                                    : value!,
+                                              );
+                                        },
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.06,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: ColorConstant.mainColor,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Text(
+                                                "إرسال",
+                                                style: TextStyle(
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.02,
+                                              ),
+                                              Icon(
+                                                PhosphorIcons.paperPlane(
+                                                    PhosphorIconsStyle.regular),
+                                                size: 24,
+                                                color: Colors.white,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    loading: () {
+                                      return Center(
+                                        child: CircularProgressIndicator(
+                                          color: SharedPreferencesUtils()
+                                                      .getisDark() ==
+                                                  false
+                                              ? ColorConstant.mainColor
+                                              : Colors.white,
+                                        ),
+                                      );
+                                    },
+                                    success: (updateuserinfoentity) {
+                                      return InkWell(
+                                        overlayColor: WidgetStateProperty.all(
+                                            Colors.transparent),
+                                        onTap: () {
+                                          context
+                                              .read<UpdateUserInfoCubit>()
+                                              .updateUserInfo(
+                                                name: _nameController
+                                                        .text.isNotEmpty
+                                                    ? _nameController.text
+                                                    : getuserinfo2entity
+                                                        .userName,
+                                                phoneNumber: _numberController
+                                                        .text.isNotEmpty
+                                                    ? _numberController.text
+                                                    : getuserinfo2entity
+                                                        .userPhoneNumber,
+                                                address: _regionController
+                                                        .text.isNotEmpty
+                                                    ? _regionController.text
+                                                    : getuserinfo2entity
+                                                        .userAddress,
+                                                city: value == null
+                                                    ? getuserinfo2entity
+                                                        .userCity
+                                                    : value!,
+                                              );
+                                        },
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.06,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: ColorConstant.mainColor,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Text(
+                                                "إرسال",
+                                                style: TextStyle(
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.02,
+                                              ),
+                                              Icon(
+                                                PhosphorIcons.paperPlane(
+                                                    PhosphorIconsStyle.regular),
+                                                size: 24,
+                                                color: Colors.white,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
                               )
                             : Container(),
                       ],
