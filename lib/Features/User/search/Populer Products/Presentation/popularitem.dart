@@ -1,28 +1,23 @@
-// ignore_for_file: avoid_print
-
 import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
+import 'package:belahododfinal/Features/User/search/Populer%20Products/Popular%20Products%20Cubit/popular_products_cubit.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PopularItem extends StatelessWidget {
-  final Map<String, dynamic> image1;
-  final Map<String, dynamic> image2;
-  final Map<String, dynamic> image3;
-  final Map<String, dynamic> image4;
-  final Map<String, dynamic> image5;
-  final int listSize;
+  final List<String> images;
+  final List<int> productIds;
+  final List<int> sectionIds;
   final bool isEven;
 
   const PopularItem({
-    required this.image1,
-    required this.image2,
-    required this.image3,
-    required this.image4,
-    required this.image5,
-    required this.listSize,
+    required this.images,
+    required this.productIds,
+    required this.sectionIds,
     required this.isEven,
     super.key,
   });
@@ -40,7 +35,7 @@ class PopularItem extends StatelessWidget {
 
   List<Widget> _buildEvenLayout(BuildContext context) {
     return [
-      _buildMainImage(context, image1),
+      _buildMainImage(context, images[0], productIds[0], sectionIds[0]),
       SizedBox(width: MediaQuery.of(context).size.width * 0.02),
       _buildSecondaryImages(context),
     ];
@@ -50,72 +45,47 @@ class PopularItem extends StatelessWidget {
     return [
       _buildSecondaryImages(context),
       SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-      _buildMainImage(context, image1),
+      _buildMainImage(context, images[0], productIds[0], sectionIds[0]),
     ];
   }
 
-  Widget _buildMainImage(BuildContext context, Map<String, dynamic> image) {
+  Widget _buildMainImage(
+      BuildContext context, String imageUrl, int productId, int sectionId) {
     return InkWell(
       onTap: () {
-        if (image["productId"] == 1) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBook(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        } else if (image["productId"] == 2) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsGame(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        } else if (image["productId"] == 3) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsStationery(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        } else if (image["productId"] == 4) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsQurans(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        } else if (image["productId"] == 5 || image["productId"] > 5) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBase(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        }
+        _navigateToDetails(context, productId, sectionId);
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.35,
         height: MediaQuery.of(context).size.height * 0.31,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(image["image"]),
+            image: CachedNetworkImageProvider(imageUrl),
             fit: BoxFit.cover,
+            onError: (exception, stackTrace) {
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.white,
+                      image: const DecorationImage(
+                        image: AssetImage("assets/images/logo.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),
@@ -127,17 +97,21 @@ class PopularItem extends StatelessWidget {
       children: [
         Row(
           children: [
-            _buildSecondaryImage(context, image2),
+            _buildSecondaryImage(
+                context, images[1], productIds[1], sectionIds[1]),
             SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-            _buildSecondaryImage(context, image3),
+            _buildSecondaryImage(
+                context, images[2], productIds[2], sectionIds[2]),
           ],
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.007),
         Row(
           children: [
-            _buildSecondaryImage(context, image4),
+            _buildSecondaryImage(
+                context, images[3], productIds[3], sectionIds[3]),
             SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-            _buildSecondaryImage(context, image5),
+            _buildSecondaryImage(
+                context, images[4], productIds[4], sectionIds[4]),
           ],
         ),
       ],
@@ -145,71 +119,68 @@ class PopularItem extends StatelessWidget {
   }
 
   Widget _buildSecondaryImage(
-      BuildContext context, Map<String, dynamic> image) {
+      BuildContext context, String imageUrl, int productId, int sectionId) {
     return InkWell(
       onTap: () {
-        if (image["productId"] == 1) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBook(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        } else if (image["productId"] == 2) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsGame(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        } else if (image["productId"] == 3) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsStationery(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        } else if (image["productId"] == 4) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsQurans(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        } else if (image["productId"] == 5 || image["productId"] > 5) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailsBase(
-                productID: image["sectionId"],
-              ),
-            ),
-          );
-          print(
-              'Secondary image tapped: Product ID: ${image["productId"]}, Section ID: ${image["sectionId"]}');
-        }
+        _navigateToDetails(context, productId, sectionId);
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.283,
         height: MediaQuery.of(context).size.height * 0.15,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(image["image"]),
+            image: CachedNetworkImageProvider(imageUrl),
             fit: BoxFit.cover,
+            onError: (exception, stackTrace) {
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.white,
+                      image: const DecorationImage(
+                        image: AssetImage("assets/images/logo.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),
     );
+  }
+
+  void _navigateToDetails(BuildContext context, int productId, int sectionId) {
+    Widget detailsPage;
+    switch (sectionId) {
+      case 1:
+        detailsPage = DetailsBook(productID: productId);
+        break;
+      case 2:
+        detailsPage = DetailsGame(productID: productId);
+        break;
+      case 3:
+        detailsPage = DetailsStationery(productID: productId);
+        break;
+      case 4:
+        detailsPage = DetailsQurans(productID: productId);
+        break;
+      default:
+        detailsPage = DetailsBase(productID: productId);
+    }
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => detailsPage))
+        .then((_) => context.read<PopularProductsCubit>().getPopularProducts());
   }
 }

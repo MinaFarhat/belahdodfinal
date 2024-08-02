@@ -34,4 +34,6 @@ class EndPoints {
   static const String ratingUrl = "$baseUrl/products/";
   static const String likeUrl = "$baseUrl/products/";
   static const String disLikeUrl = "$baseUrl/products/";
+  static const String popularProductsUrl = "$baseUrl/popular-products";
+  static const String searchByQRUrl = "$baseUrl/search-by-qr/";
 }

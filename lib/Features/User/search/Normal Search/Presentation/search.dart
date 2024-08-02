@@ -138,7 +138,7 @@ class _SearchState extends State<Search> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
-              PopularProducts(),
+              const PopularProducts(),
             ],
           ),
         ),
