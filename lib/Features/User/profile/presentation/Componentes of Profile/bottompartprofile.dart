@@ -1,6 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
+import 'package:belahododfinal/Features/User/profile/Manager/Delete%20Account%20Cubit/delete_account_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Account%20Settings/accountsettings.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
@@ -149,7 +150,9 @@ class BottomPartProfile extends StatelessWidget {
                           Navigator.pop(dialogContext);
                         },
                         ontapButton2: () {
+                          context.read<DeleteAccountCubit>().deleteAccount();
                           Navigator.pop(dialogContext);
+
                           SharedPreferencesUtils().removeToken();
                           SharedPreferencesUtils().setDark(false);
                           Navigator.of(context).pushAndRemoveUntil(

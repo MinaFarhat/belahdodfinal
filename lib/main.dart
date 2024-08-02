@@ -29,6 +29,7 @@ import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/On%20Arrival%20Cubit/on_arrival_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
+import 'package:belahododfinal/Features/User/profile/Manager/Delete%20Account%20Cubit/delete_account_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%202%20Cubit/get_user_info2_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Update%20Profile%20Photo%20Cubit/update_profile_photo_cubit.dart';
@@ -232,6 +233,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<UpdateProfilePhotoCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<DeleteAccountCubit>(),
         ),
       ],
       child: MaterialApp(
