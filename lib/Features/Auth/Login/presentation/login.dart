@@ -1,6 +1,5 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
-import 'package:belahododfinal/Features/Auth/Forgate%20Password/presentation/forgetpassword1.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
 import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
@@ -102,38 +101,38 @@ class LogIn extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
+                height: MediaQuery.of(context).size.height * 0.08,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return ForgetPassword1();
-                            },
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "هل نسيت كلمة المرور؟",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: ColorConstant.darkColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(right: 12),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.end,
+              //     children: [
+              //       GestureDetector(
+              //         onTap: () {
+              //           Navigator.of(context).push(
+              //             MaterialPageRoute(
+              //               builder: (context) {
+              //                 return ForgetPassword1();
+              //               },
+              //             ),
+              //           );
+              //         },
+              //         child: Text(
+              //           "هل نسيت كلمة المرور؟",
+              //           style: TextStyle(
+              //             fontSize: 16,
+              //             color: ColorConstant.darkColor,
+              //             fontWeight: FontWeight.bold,
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * 0.1,
+              // ),
               BlocConsumer<LoginCubit, LoginState>(
                 listener: (context, state) {
                   state.whenOrNull(

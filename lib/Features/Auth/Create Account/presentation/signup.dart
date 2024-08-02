@@ -1,8 +1,8 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
-import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/confirmnumber.dart';
 import 'package:belahododfinal/Features/Auth/Login/presentation/login.dart';
+import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_location.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_name.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_phone.dart';
@@ -191,7 +191,10 @@ class _SignupState extends State<Signup> {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) {
-                            return const ConfirmNumber();
+                            return WaitingScreen(
+                              screen: LogIn(),
+                              text: "جارٍ حفظ المعلومات",
+                            );
                           },
                         ),
                       );
