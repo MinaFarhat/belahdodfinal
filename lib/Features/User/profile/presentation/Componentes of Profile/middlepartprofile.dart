@@ -153,7 +153,7 @@ class MiddlePartProfile extends StatelessWidget {
                       numOfVouchers.toString(),
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 23,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -198,7 +198,7 @@ class MiddlePartProfile extends StatelessWidget {
                       numberOfOrder.toString(),
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 23,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
