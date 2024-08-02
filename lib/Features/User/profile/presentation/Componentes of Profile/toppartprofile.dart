@@ -5,6 +5,7 @@ import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Points/Presentation/points.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Update%20Profile%20Photo%20Cubit/update_profile_photo_cubit.dart';
+import 'package:belahododfinal/Features/User/profile/presentation/Componentes%20of%20Profile/showprofilephoto.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,18 +39,64 @@ class _TopPartProfileState extends State<TopPartProfile> {
       children: [
         Stack(
           children: [
-            CircleAvatar(
-              backgroundColor: SharedPreferencesUtils().getisDark() == false
-                  ? ColorConstant.mainColor
-                  : ColorConstant.shadowColor,
-              radius: 55,
-              backgroundImage: _selectedImage == null
-                  ? widget.imageProfile == null
-                      ? const AssetImage("assets/images/User-avatar.png")
-                      : CachedNetworkImageProvider(widget.imageProfile!)
-                  : FileImage(
-                      File(_selectedImage!.path),
-                    ),
+            InkWell(
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ShowProfilePhoto(
+                        profilePhoto: widget.imageProfile == null
+                            ? "assets/images/User-avatar.png"
+                            : widget.imageProfile!,
+                      );
+                    },
+                  ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.27,
+                height: MediaQuery.of(context).size.height * 0.128,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : ColorConstant.shadowColor,
+                  image: DecorationImage(
+                    image: _selectedImage == null
+                        ? widget.imageProfile == null
+                            ? const AssetImage("assets/images/User-avatar.png")
+                            : CachedNetworkImageProvider(widget.imageProfile!)
+                        : FileImage(_selectedImage!),
+                    fit: BoxFit.cover,
+                    onError: (exception, stackTrace) {
+                      Stack(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            height: MediaQuery.of(context).size.height * 0.12,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: Colors.white,
+                              image: const DecorationImage(
+                                image: AssetImage("assets/images/logo.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: Colors.black.withOpacity(0.3),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
             ),
             Positioned(
               bottom: 2,
