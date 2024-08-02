@@ -249,7 +249,10 @@ class _HomePageState extends State<HomePage> {
                                                             );
                                                           },
                                                         ),
-                                                      );
+                                                      ).then((_) => context
+                                                              .read<
+                                                                  SectionCubit>()
+                                                              .sections());
                                                     },
                                                     child: Container(
                                                       decoration: BoxDecoration(
