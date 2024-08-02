@@ -29,6 +29,7 @@ import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/On%20Arrival%20Cubit/on_arrival_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
+import 'package:belahododfinal/Features/User/search/Normal%20Search/Search%20By%20QR%20Cubit/search_by_qr_cubit.dart';
 import 'package:belahododfinal/Features/User/search/Populer%20Products/Popular%20Products%20Cubit/popular_products_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Manager/Base%20Visitor%20Cubit/base_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Manager/Book%20Visitor%20Cubit/book_visitor_cubit.dart';
@@ -212,6 +213,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<PopularProductsCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SearchByQrCubit>(),
         ),
       ],
       child: MaterialApp(
