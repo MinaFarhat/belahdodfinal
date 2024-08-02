@@ -150,18 +150,23 @@ class BottomPartProfile extends StatelessWidget {
                           Navigator.pop(dialogContext);
                         },
                         ontapButton2: () {
-                          context.read<DeleteAccountCubit>().deleteAccount();
                           Navigator.pop(dialogContext);
-
-                          SharedPreferencesUtils().removeToken();
-                          SharedPreferencesUtils().setDark(false);
-                          Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const MyApp();
-                              },
-                            ),
-                            (Route<dynamic> route) => false,
+                          context
+                              .read<DeleteAccountCubit>()
+                              .deleteAccount()
+                              .then(
+                            (success) {
+                              SharedPreferencesUtils().removeToken();
+                              SharedPreferencesUtils().setDark(false);
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const MyApp();
+                                  },
+                                ),
+                                (Route<dynamic> route) => false,
+                              );
+                            },
                           );
                         },
                       );
@@ -169,6 +174,7 @@ class BottomPartProfile extends StatelessWidget {
                   );
                 },
               ),
+
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,
               ),
