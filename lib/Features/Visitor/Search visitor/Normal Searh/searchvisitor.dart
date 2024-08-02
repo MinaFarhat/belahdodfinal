@@ -125,7 +125,7 @@ class _SearchVisitorState extends State<SearchVisitor> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
-              PopularProductsVisitor(),
+              const PopularProductsVisitor(),
             ],
           ),
         ),
