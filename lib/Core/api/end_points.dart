@@ -37,4 +37,6 @@ class EndPoints {
   static const String popularProductsUrl = "$baseUrl/popular-products";
   static const String searchByQRUrl = "$baseUrl/search-by-qr/";
   static const String userInfoUrl = "$baseUrl/get-user-info";
+  static const String userInfo2Url = "$baseUrl/get-settings";
+  static const String updateUserInfoUrl = "$baseUrl/update-settings";
 }
