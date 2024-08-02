@@ -168,7 +168,13 @@ class _UpdatesState extends State<Updates> {
                                                 );
                                               },
                                             ),
-                                          );
+                                          ).then((_) {
+                                            context
+                                                .read<GetalloffersCubit>()
+                                                .offers();
+                                            context.read<NewsCubit>().getNews();
+                                            context.read<AdsCubit>().getAds();
+                                          });
                                         },
                                         child: Container(
                                           width: MediaQuery.of(context)
