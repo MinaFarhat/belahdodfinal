@@ -107,9 +107,10 @@ class _ProfileState extends State<Profile> {
                         height: MediaQuery.of(context).size.height * 0.005,
                       ),
                       TopPartProfile(
-                        imageProfile: imageUrl.isEmpty
-                            ? "assets/images/User-avatar.png"
-                            : imageUrl,
+                        imageProfile:
+                            getuserinfoentity.userProfilePicture == null
+                                ? getuserinfoentity.userProfilePicture
+                                : imageUrl,
                         nameUser: getuserinfoentity.userName,
                         location: getuserinfoentity.userAddress,
                         points: getuserinfoentity.userPoints.toString(),

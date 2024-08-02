@@ -19,7 +19,7 @@ class TopPartProfile extends StatefulWidget {
     required this.points,
     super.key,
   });
-  final String imageProfile;
+  final String? imageProfile;
   final String nameUser;
   final String location;
   final String points;
@@ -44,7 +44,9 @@ class _TopPartProfileState extends State<TopPartProfile> {
                   : ColorConstant.shadowColor,
               radius: 55,
               backgroundImage: _selectedImage == null
-                  ? CachedNetworkImageProvider(widget.imageProfile)
+                  ? widget.imageProfile == null
+                      ? const AssetImage("assets/images/User-avatar.png")
+                      : CachedNetworkImageProvider(widget.imageProfile!)
                   : FileImage(
                       File(_selectedImage!.path),
                     ),
