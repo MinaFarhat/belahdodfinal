@@ -101,7 +101,7 @@ class LogIn extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.08,
+                height: MediaQuery.of(context).size.height * 0.13,
               ),
               // Padding(
               //   padding: const EdgeInsets.only(right: 12),
@@ -236,7 +236,7 @@ class LogIn extends StatelessWidget {
                 },
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
+                height: MediaQuery.of(context).size.height * 0.02,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
