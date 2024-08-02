@@ -3,9 +3,11 @@
 import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Presentation/searchpage.dart';
+import 'package:belahododfinal/Features/User/search/Populer%20Products/Popular%20Products%20Cubit/popular_products_cubit.dart';
 import 'package:belahododfinal/Features/User/search/Populer%20Products/Presentation/popularproducts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_beep/flutter_beep.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Search extends StatefulWidget {
@@ -72,7 +74,9 @@ class _SearchState extends State<Search> {
                                 return SearchPage();
                               },
                             ),
-                          );
+                          ).then((_) => context
+                              .read<PopularProductsCubit>()
+                              .getPopularProducts());
                         },
                         decoration: InputDecoration(
                           hintText: "أبحث",

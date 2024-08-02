@@ -1,10 +1,12 @@
 // ignore_for_file: avoid_print
 
 import 'package:barcode_scan2/platform_wrapper.dart';
+import 'package:belahododfinal/Features/User/search/Populer%20Products/Popular%20Products%20Cubit/popular_products_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Search%20visitor/Normal%20Searh/searchpagevisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Search%20visitor/Popular%20Products/popularproductsvisitor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_beep/flutter_beep.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class SearchVisitor extends StatefulWidget {
@@ -69,7 +71,9 @@ class _SearchVisitorState extends State<SearchVisitor> {
                                 return SearchPageVisitor();
                               },
                             ),
-                          );
+                          ).then((_) => context
+                              .read<PopularProductsCubit>()
+                              .getPopularProducts());
                         },
                         decoration: InputDecoration(
                           hintText: "أبحث",
