@@ -1,7 +1,6 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/Order%20Details/Order%20Details%20Cubit/order_details_cubit.dart';
-import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/fine_of_order.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
@@ -107,36 +106,37 @@ class _OrderDetailsState extends State<OrderDetails> {
                     : Colors.white,
                 appBar: SimpleTopBar(
                   name: "تفاصيل الطلبية",
-                  leading: Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: InkWell(
-                      overlayColor: WidgetStateProperty.all(Colors.transparent),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (dialogContext) {
-                            return DeleteDialog(
-                              title: "حذف الطلبية",
-                              subTitle: "هل تريد بالتأكيد حذف الطلبية؟",
-                              button1: "إلغاء",
-                              button2: "حذف",
-                              ontapButton1: () {
-                                Navigator.pop(dialogContext);
-                              },
-                              ontapButton2: () {},
-                            );
-                          },
-                        );
-                      },
-                      child: Icon(
-                        PhosphorIcons.trash(PhosphorIconsStyle.regular),
-                        color: SharedPreferencesUtils().getisDark() == false
-                            ? Colors.black
-                            : Colors.white,
-                        size: 24,
-                      ),
-                    ),
-                  ),
+                  // leading: Padding(
+                  //   padding: const EdgeInsets.only(left: 20),
+                  //   child: InkWell(
+                  //     overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  //     onTap: () {
+                  //       showDialog(
+                  //         context: context,
+                  //         builder: (dialogContext) {
+                  //           return DeleteDialog(
+                  //             title: "حذف الطلبية",
+                  //             subTitle: "هل تريد بالتأكيد حذف الطلبية؟",
+                  //             button1: "إلغاء",
+                  //             button2: "حذف",
+                  //             ontapButton1: () {
+                  //               Navigator.pop(dialogContext);
+                  //             },
+                  //             ontapButton2: () {},
+                  //           );
+                  //         },
+                  //       );
+                  //     },
+                  //     child: Icon(
+                  //       PhosphorIcons.trash(PhosphorIconsStyle.regular),
+                  //       color: SharedPreferencesUtils().getisDark() == false
+                  //           ? Colors.black
+                  //           : Colors.white,
+                  //       size: 24,
+                  //     ),
+                  //   ),
+                  // ),
+                  leading: Container(),
                   action: [
                     Padding(
                       padding: const EdgeInsets.only(right: 16),
