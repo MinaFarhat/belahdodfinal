@@ -85,7 +85,8 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
                       return Column(
                         children: [
                           FavItem(
-                            sectionId: getfavoritesentity.favorites[index].sectionId,
+                            sectionId:
+                                getfavoritesentity.favorites[index].sectionId,
                             image: imageUrl,
                             title: getfavoritesentity.favorites[index].name,
                             subtitle:
