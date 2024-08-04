@@ -29,7 +29,7 @@ class ProfileVisitor extends StatelessWidget {
             InkWell(
               overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: () {
-                Navigator.of(context).pushReplacement(
+                Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
                       return const Signup();
