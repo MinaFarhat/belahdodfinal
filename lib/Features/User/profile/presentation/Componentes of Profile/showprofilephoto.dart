@@ -8,7 +8,7 @@ class ShowProfilePhoto extends StatelessWidget {
     required this.profilePhoto,
     super.key,
   });
-  final String profilePhoto;
+  final String? profilePhoto;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,9 +47,11 @@ class ShowProfilePhoto extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.8,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-                    profilePhoto,
-                  ),
+                  image: profilePhoto == null
+                      ? const AssetImage("assets/images/User-avatar.png")
+                      : CachedNetworkImageProvider(
+                          profilePhoto!,
+                        ),
                   fit: BoxFit.contain,
                   onError: (exception, stackTrace) {
                     Stack(

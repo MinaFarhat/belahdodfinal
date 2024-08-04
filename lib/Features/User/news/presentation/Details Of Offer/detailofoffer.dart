@@ -4,6 +4,7 @@ import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%20Cubit/detailsofoffer_cubit.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/priceection.dart';
 import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/offeritems.dart';
+import 'package:belahododfinal/Features/User/payment/Address/Presentation/send_order.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/square_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -382,7 +383,15 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                         icon:
                             PhosphorIcons.handshake(PhosphorIconsStyle.regular),
                         text: "تأكيد الشراء",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const SendOrder();
+                              },
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

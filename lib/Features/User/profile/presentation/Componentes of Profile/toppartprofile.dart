@@ -46,9 +46,7 @@ class _TopPartProfileState extends State<TopPartProfile> {
                   MaterialPageRoute(
                     builder: (context) {
                       return ShowProfilePhoto(
-                        profilePhoto: widget.imageProfile == null
-                            ? "assets/images/User-avatar.png"
-                            : widget.imageProfile!,
+                        profilePhoto: widget.imageProfile,
                       );
                     },
                   ),
