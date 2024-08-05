@@ -113,7 +113,7 @@ class _ProfileState extends State<Profile> {
                                 : imageUrl,
                         nameUser: getuserinfoentity.userName,
                         location: getuserinfoentity.userAddress,
-                        points: getuserinfoentity.userPoints.toString(),
+                        balance: getuserinfoentity.userPoints.toString(),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.018,
@@ -121,6 +121,7 @@ class _ProfileState extends State<Profile> {
                       MiddlePartProfile(
                         numberOfOrder: getuserinfoentity.userOrders,
                         numOfVouchers: getuserinfoentity.userCoupons,
+                        points: getuserinfoentity.userPoints,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.018,

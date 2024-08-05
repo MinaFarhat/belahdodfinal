@@ -3,7 +3,6 @@ import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Vouchers/Presentation/Add%20Voucher/addvoucher.dart';
 import 'package:belahododfinal/Features/User/Vouchers/Presentation/Vouchers%20Shape/voucherdata.dart';
 import 'package:belahododfinal/Features/User/Vouchers/Presentation/Vouchers%20Shape/vouchersshape.dart';
-import 'package:belahododfinal/Features/Widgets/Static%20Widgets/dialog_delete.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -67,36 +66,38 @@ class _VouchersState extends State<Vouchers> {
             : Colors.grey.shade900,
         appBar: SimpleTopBar(
           name: "القسائم",
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: InkWell(
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (dialogContext) {
-                    return DeleteDialog(
-                      title: "حذف قسيمة",
-                      subTitle: "هل تريد بالتأكيد حذف القسيمة؟",
-                      button1: "إلغاء",
-                      button2: "حذف",
-                      ontapButton1: () {
-                        Navigator.pop(dialogContext);
-                      },
-                      ontapButton2: () {},
-                    );
-                  },
-                );
-              },
-              child: Icon(
-                PhosphorIcons.trash(PhosphorIconsStyle.regular),
-                color: SharedPreferencesUtils().getisDark() == false
-                    ? Colors.black
-                    : Colors.white,
-                size: 24,
-              ),
-            ),
-          ),
+          leading: Container(),
+          // leading: Padding(
+          //   padding: const EdgeInsets.only(left: 20),
+          //   child: InkWell(
+          //     overlayColor: WidgetStateProperty.all(Colors.transparent),
+          //     onTap: () {
+          //       showDialog(
+          //         context: context,
+          //         builder: (dialogContext) {
+          //           return DeleteDialog(
+          //             title: "حذف قسيمة",
+          //             subTitle: "هل تريد بالتأكيد حذف القسيمة؟",
+          //             button1: "إلغاء",
+          //             button2: "حذف",
+          //             ontapButton1: () {
+          //               Navigator.pop(dialogContext);
+          //             },
+          //             ontapButton2: () {},
+          //           );
+          //         },
+          //       );
+          //     },
+          //     child: Icon(
+          //       PhosphorIcons.trash(PhosphorIconsStyle.regular),
+          //       color: SharedPreferencesUtils().getisDark() == false
+          //           ? Colors.black
+          //           : Colors.white,
+          //       size: 24,
+          //     ),
+          //   ),
+          // ),
+
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 16),

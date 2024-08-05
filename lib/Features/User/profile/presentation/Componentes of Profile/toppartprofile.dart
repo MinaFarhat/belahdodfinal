@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
-import 'package:belahododfinal/Features/User/Points/Presentation/points.dart';
-import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Update%20Profile%20Photo%20Cubit/update_profile_photo_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Componentes%20of%20Profile/showprofilephoto.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -17,13 +15,13 @@ class TopPartProfile extends StatefulWidget {
     required this.imageProfile,
     required this.nameUser,
     required this.location,
-    required this.points,
+    required this.balance,
     super.key,
   });
   final String? imageProfile;
   final String nameUser;
   final String location;
-  final String points;
+  final String balance;
   @override
   State<TopPartProfile> createState() => _TopPartProfileState();
 }
@@ -277,59 +275,47 @@ class _TopPartProfileState extends State<TopPartProfile> {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.006,
         ),
-        InkWell(
-          overlayColor: WidgetStateProperty.all(Colors.transparent),
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return const PointsScreen();
-                },
-              ),
-            ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "نقطة",
-                overflow: TextOverflow.ellipsis,
-                textDirection: TextDirection.rtl,
-                style: TextStyle(
-                  color: SharedPreferencesUtils().getisDark() == false
-                      ? Colors.grey.shade900
-                      : Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.01,
-              ),
-              Text(
-                widget.points,
-                overflow: TextOverflow.ellipsis,
-                textDirection: TextDirection.rtl,
-                style: TextStyle(
-                  color: SharedPreferencesUtils().getisDark() == false
-                      ? Colors.grey.shade900
-                      : Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.01,
-              ),
-              Icon(
-                PhosphorIcons.currencyEth(PhosphorIconsStyle.regular),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "ل.س",
+              overflow: TextOverflow.ellipsis,
+              textDirection: TextDirection.rtl,
+              style: TextStyle(
                 color: SharedPreferencesUtils().getisDark() == false
-                    ? ColorConstant.mainColor
-                    : ColorConstant.shadowColor,
+                    ? Colors.grey.shade900
+                    : Colors.white,
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.01,
+            ),
+            Text(
+              widget.balance,
+              overflow: TextOverflow.ellipsis,
+              textDirection: TextDirection.rtl,
+              style: TextStyle(
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? Colors.grey.shade900
+                    : Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.01,
+            ),
+            Icon(
+              PhosphorIcons.coins(PhosphorIconsStyle.regular),
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? ColorConstant.mainColor
+                  : ColorConstant.shadowColor,
+            ),
+          ],
         ),
       ],
     );

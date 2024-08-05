@@ -1,6 +1,7 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/main%20orders/presentation/order.dart';
+import 'package:belahododfinal/Features/User/Points/Presentation/points.dart';
 import 'package:belahododfinal/Features/User/Vouchers/Presentation/vouchers.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
 import 'package:belahododfinal/main.dart';
@@ -13,11 +14,12 @@ class MiddlePartProfile extends StatelessWidget {
   MiddlePartProfile({
     required this.numberOfOrder,
     required this.numOfVouchers,
+    required this.points,
     super.key,
   });
   final int numberOfOrder;
   final int numOfVouchers;
-
+  final int points;
   bool isDark = SharedPreferencesUtils().getisDark()!;
 
   @override
@@ -68,7 +70,60 @@ class MiddlePartProfile extends StatelessWidget {
         //     ),
         //   ),
         // ),
-
+        InkWell(
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return const PointsScreen();
+                },
+              ),
+            ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
+          },
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.24,
+            height: MediaQuery.of(context).size.height * 0.08,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                transform: const GradientRotation(10),
+                tileMode: TileMode.clamp,
+                colors: [
+                  Colors.deepPurple.shade700,
+                  ColorConstant.shadowColor,
+                ],
+              ),
+            ),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Column(
+                  children: [
+                    Text(
+                      "النقاط",
+                      style: TextStyle(
+                        color: Colors.grey.shade900,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      points.toString(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
         InkWell(
           overlayColor: WidgetStateProperty.all(Colors.transparent),
           onTap: () {
@@ -83,7 +138,7 @@ class MiddlePartProfile extends StatelessWidget {
             );
           },
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.28,
+            width: MediaQuery.of(context).size.width * 0.24,
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
@@ -123,7 +178,7 @@ class MiddlePartProfile extends StatelessWidget {
             ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
           },
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.28,
+            width: MediaQuery.of(context).size.width * 0.24,
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
@@ -177,7 +232,7 @@ class MiddlePartProfile extends StatelessWidget {
             ).then((_) => context.read<GetUserInfoCubit>().getUserInfo());
           },
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.28,
+            width: MediaQuery.of(context).size.width * 0.24,
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
