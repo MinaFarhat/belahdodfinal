@@ -2,6 +2,7 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
+import 'package:belahododfinal/Features/User/payment/Address/Send%20Offer%20Cubit/send_offer_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Presentation/dynamic_location_field.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/failtocreateorderdialog.dart';
@@ -12,8 +13,13 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class SendOrder extends StatefulWidget {
-  const SendOrder({super.key});
-
+  const SendOrder({
+    required this.isOffer,
+    required this.offerId,
+    super.key,
+  });
+  final bool isOffer;
+  final int offerId;
   @override
   State<SendOrder> createState() => _SendOrderState();
 }
@@ -147,193 +153,387 @@ class _SendOrderState extends State<SendOrder> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.04,
               ),
-              BlocConsumer<SendOrderCubit, SendOrderState>(
-                listener: (context, state) {
-                  state.whenOrNull(
-                    error: (networkExceptions) {
-                      Fluttertoast.showToast(
-                        msg: NetworkExceptions.getErrorMessage(
-                          networkExceptions,
-                        ),
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.red,
-                      );
-                    },
-                    success: (sendorderentity) {
-                      if (sendorderentity.isSend == true) {
-                        Fluttertoast.showToast(
-                          msg: sendorderentity.message,
-                          toastLength: Toast.LENGTH_LONG,
-                          gravity: ToastGravity.BOTTOM,
-                          backgroundColor: Colors.green,
+              widget.isOffer == false
+                  ? BlocConsumer<SendOrderCubit, SendOrderState>(
+                      listener: (context, state) {
+                        state.whenOrNull(
+                          error: (networkExceptions) {
+                            Fluttertoast.showToast(
+                              msg: NetworkExceptions.getErrorMessage(
+                                networkExceptions,
+                              ),
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.BOTTOM,
+                              backgroundColor: Colors.red,
+                            );
+                          },
+                          success: (sendorderentity) {
+                            if (sendorderentity.isSend == true) {
+                              Fluttertoast.showToast(
+                                msg: sendorderentity.message,
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.green,
+                              );
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const Mynavbar();
+                                  },
+                                ),
+                              );
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return FialToCreateOrderDialog(
+                                    detailsOfFail:
+                                        sendorderentity.detailsOfMessage,
+                                    message: sendorderentity.message,
+                                  );
+                                },
+                              );
+                            }
+                          },
                         );
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const Mynavbar();
-                            },
-                          ),
-                        );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return FialToCreateOrderDialog(
-                              detailsOfFail: sendorderentity.detailsOfMessage,
-                              message: sendorderentity.message,
+                      },
+                      builder: (context, state) {
+                        return state.maybeWhen(
+                          orElse: () {
+                            return InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
+                              onTap: () {
+                                if (_regionKey.currentState!.validate()) {
+                                  context.read<SendOrderCubit>().sendOrder(
+                                        DynamicLocationField.cityId!,
+                                        _regionController.text,
+                                        _notesController.text,
+                                      );
+                                }
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.06,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: ColorConstant.mainColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "إرسال",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.01,
+                                    ),
+                                    Icon(
+                                      PhosphorIcons.paperPlaneTilt(
+                                          PhosphorIconsStyle.regular),
+                                      size: 22,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          initial: () {
+                            return InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
+                              onTap: () {
+                                if (_regionKey.currentState!.validate()) {
+                                  context.read<SendOrderCubit>().sendOrder(
+                                        DynamicLocationField.cityId!,
+                                        _regionController.text,
+                                        _notesController.text,
+                                      );
+                                }
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.06,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: ColorConstant.mainColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "إرسال",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.01,
+                                    ),
+                                    Icon(
+                                      PhosphorIcons.paperPlaneTilt(
+                                          PhosphorIconsStyle.regular),
+                                      size: 22,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          loading: () {
+                            return CircularProgressIndicator(
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : Colors.white,
+                            );
+                          },
+                          success: (sendorderentity) {
+                            return InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
+                              onTap: () {
+                                context.read<SendOrderCubit>().sendOrder(
+                                      DynamicLocationField.cityId!,
+                                      _regionController.text,
+                                      _notesController.text,
+                                    );
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.06,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: ColorConstant.mainColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "إرسال",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.01,
+                                    ),
+                                    Icon(
+                                      PhosphorIcons.paperPlaneTilt(
+                                          PhosphorIconsStyle.regular),
+                                      size: 22,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             );
                           },
                         );
-                      }
-                    },
-                  );
-                },
-                builder: (context, state) {
-                  return state.maybeWhen(
-                    orElse: () {
-                      return InkWell(
-                        overlayColor:
-                            WidgetStateProperty.all(Colors.transparent),
-                        onTap: () {
-                          if (_regionKey.currentState!.validate()) {
-                            context.read<SendOrderCubit>().sendOrder(
-                                  DynamicLocationField.cityId!,
-                                  _regionController.text,
-                                  _notesController.text,
-                                );
-                          }
-                        },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: ColorConstant.mainColor,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "إرسال",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                      },
+                    )
+                  : BlocConsumer<SendOfferCubit, SendOfferState>(
+                      listener: (context, state) {
+                        state.whenOrNull(
+                          error: (networkExceptions) {
+                            Fluttertoast.showToast(
+                              msg: NetworkExceptions.getErrorMessage(
+                                networkExceptions,
+                              ),
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.BOTTOM,
+                              backgroundColor: Colors.red,
+                            );
+                          },
+                          success: (sendofferentity) {
+                            Fluttertoast.showToast(
+                              msg: "تم إنشاء الطلب بنجاح",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.BOTTOM,
+                              backgroundColor: Colors.green,
+                            );
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const Mynavbar();
+                                },
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      builder: (context, state) {
+                        return state.maybeWhen(
+                          orElse: () {
+                            return InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
+                              onTap: () {
+                                if (_regionKey.currentState!.validate()) {
+                                  context.read<SendOfferCubit>().sendOffer(
+                                        DynamicLocationField.cityId!,
+                                        _regionController.text,
+                                        _notesController.text,
+                                        widget.offerId,
+                                      );
+                                }
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.06,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: ColorConstant.mainColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "إرسال",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.01,
+                                    ),
+                                    Icon(
+                                      PhosphorIcons.paperPlaneTilt(
+                                          PhosphorIconsStyle.regular),
+                                      size: 22,
+                                      color: Colors.white,
+                                    ),
+                                  ],
                                 ),
                               ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.01,
-                              ),
-                              Icon(
-                                PhosphorIcons.paperPlaneTilt(
-                                    PhosphorIconsStyle.regular),
-                                size: 22,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                    initial: () {
-                      return InkWell(
-                        overlayColor:
-                            WidgetStateProperty.all(Colors.transparent),
-                        onTap: () {
-                          if (_regionKey.currentState!.validate()) {
-                            context.read<SendOrderCubit>().sendOrder(
-                                  DynamicLocationField.cityId!,
-                                  _regionController.text,
-                                  _notesController.text,
-                                );
-                          }
-                        },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: ColorConstant.mainColor,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "إرسال",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                            );
+                          },
+                          initial: () {
+                            return InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
+                              onTap: () {
+                                if (_regionKey.currentState!.validate()) {
+                                  context.read<SendOfferCubit>().sendOffer(
+                                        DynamicLocationField.cityId!,
+                                        _regionController.text,
+                                        _notesController.text,
+                                        widget.offerId,
+                                      );
+                                }
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.06,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: ColorConstant.mainColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "إرسال",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.01,
+                                    ),
+                                    Icon(
+                                      PhosphorIcons.paperPlaneTilt(
+                                          PhosphorIconsStyle.regular),
+                                      size: 22,
+                                      color: Colors.white,
+                                    ),
+                                  ],
                                 ),
                               ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.01,
-                              ),
-                              Icon(
-                                PhosphorIcons.paperPlaneTilt(
-                                    PhosphorIconsStyle.regular),
-                                size: 22,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                    loading: () {
-                      return CircularProgressIndicator(
-                        color: SharedPreferencesUtils().getisDark() == false
-                            ? ColorConstant.mainColor
-                            : Colors.white,
-                      );
-                    },
-                    success: (sendorderentity) {
-                      return InkWell(
-                        overlayColor:
-                            WidgetStateProperty.all(Colors.transparent),
-                        onTap: () {
-                          context.read<SendOrderCubit>().sendOrder(
-                                DynamicLocationField.cityId!,
-                                _regionController.text,
-                                _notesController.text,
-                              );
-                        },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: ColorConstant.mainColor,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "إرسال",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                            );
+                          },
+                          loading: () {
+                            return CircularProgressIndicator(
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : Colors.white,
+                            );
+                          },
+                          success: (sendorderentity) {
+                            return InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
+                              onTap: () {
+                                context.read<SendOfferCubit>().sendOffer(
+                                      DynamicLocationField.cityId!,
+                                      _regionController.text,
+                                      _notesController.text,
+                                      widget.offerId,
+                                    );
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.06,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: ColorConstant.mainColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "إرسال",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.01,
+                                    ),
+                                    Icon(
+                                      PhosphorIcons.paperPlaneTilt(
+                                          PhosphorIconsStyle.regular),
+                                      size: 22,
+                                      color: Colors.white,
+                                    ),
+                                  ],
                                 ),
                               ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.01,
-                              ),
-                              Icon(
-                                PhosphorIcons.paperPlaneTilt(
-                                    PhosphorIconsStyle.regular),
-                                size: 22,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
             ],
           ),
         ),

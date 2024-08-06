@@ -387,7 +387,10 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
-                                return const SendOrder();
+                                return SendOrder(
+                                  isOffer: true,
+                                  offerId: widget.offerId,
+                                );
                               },
                             ),
                           );

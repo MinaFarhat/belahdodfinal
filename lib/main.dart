@@ -28,6 +28,7 @@ import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20C
 import 'package:belahododfinal/Features/User/news/Manager/New%20Details%20Cubit/new_details_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
 import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.dart';
+import 'package:belahododfinal/Features/User/payment/Address/Send%20Offer%20Cubit/send_offer_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/On%20Arrival%20Cubit/on_arrival_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
@@ -244,6 +245,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<CreateVoucherCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SendOfferCubit>(),
         ),
       ],
       child: MaterialApp(
