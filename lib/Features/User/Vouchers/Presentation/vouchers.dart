@@ -310,7 +310,8 @@ class _VouchersState extends State<Vouchers> {
                                 return const AddVoucher();
                               },
                             ),
-                          );
+                          ).then((_) =>
+                              context.read<GetVouchersCubit>().getVouchers());
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.7,
