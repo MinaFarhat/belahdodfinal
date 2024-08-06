@@ -197,7 +197,18 @@ class VouchersShape extends StatelessWidget {
               ),
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.07,
-                right: MediaQuery.of(context).size.width * 0.125,
+                right: (percent == 0 ||
+                        percent == 1 ||
+                        percent == 2 ||
+                        percent == 3 ||
+                        percent == 4 ||
+                        percent == 5 ||
+                        percent == 6 ||
+                        percent == 7 ||
+                        percent == 8 ||
+                        percent == 9)
+                    ? MediaQuery.of(context).size.width * 0.23
+                    : MediaQuery.of(context).size.width * 0.125,
                 child: Text(
                   "$percent",
                   style: TextStyle(

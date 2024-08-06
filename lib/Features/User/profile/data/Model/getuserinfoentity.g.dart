@@ -14,6 +14,7 @@ GetUserInfoEntity _$GetUserInfoEntityFromJson(Map<String, dynamic> json) =>
       (json['orders'] as num).toInt(),
       (json['points'] as num).toInt(),
       (json['coupons'] as num).toInt(),
+      (json['balance'] as num).toInt(),
     );
 
 Map<String, dynamic> _$GetUserInfoEntityToJson(GetUserInfoEntity instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$GetUserInfoEntityToJson(GetUserInfoEntity instance) =>
       'orders': instance.userOrders,
       'points': instance.userPoints,
       'coupons': instance.userCoupons,
+      'balance': instance.userBalance,
     };

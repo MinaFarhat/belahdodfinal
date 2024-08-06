@@ -144,7 +144,7 @@ class VoucherData extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      ":تاريخ الأنتهاء",
+                      ":تاريخ الإنشاء",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -233,16 +233,19 @@ class VoucherData extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.004,
                     ),
-                    Text(
-                      "ألف",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: SharedPreferencesUtils().getisDark() == false
-                            ? ColorConstant.mainColor
-                            : ColorConstant.shadowColor,
-                      ),
-                    ),
+                    size.startsWith("0")
+                        ? Container()
+                        : Text(
+                            "ألف",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : ColorConstant.shadowColor,
+                            ),
+                          ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.004,
                     ),
@@ -291,16 +294,19 @@ class VoucherData extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.004,
                     ),
-                    Text(
-                      "ألف",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: SharedPreferencesUtils().getisDark() == false
-                            ? ColorConstant.mainColor
-                            : ColorConstant.shadowColor,
-                      ),
-                    ),
+                    available.startsWith("0")
+                        ? Container()
+                        : Text(
+                            "ألف",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : ColorConstant.shadowColor,
+                            ),
+                          ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.004,
                     ),
@@ -349,16 +355,19 @@ class VoucherData extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.004,
                     ),
-                    Text(
-                      "ألف",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: SharedPreferencesUtils().getisDark() == false
-                            ? ColorConstant.mainColor
-                            : ColorConstant.shadowColor,
-                      ),
-                    ),
+                    consumer.startsWith("0")
+                        ? Container()
+                        : Text(
+                            "ألف",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  SharedPreferencesUtils().getisDark() == false
+                                      ? ColorConstant.mainColor
+                                      : ColorConstant.shadowColor,
+                            ),
+                          ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.004,
                     ),

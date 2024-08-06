@@ -113,7 +113,7 @@ class _ProfileState extends State<Profile> {
                                 : imageUrl,
                         nameUser: getuserinfoentity.userName,
                         location: getuserinfoentity.userAddress,
-                        balance: getuserinfoentity.userPoints.toString(),
+                        balance: getuserinfoentity.userBalance.toString(),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.018,

@@ -17,6 +17,8 @@ class GetUserInfoEntity {
   final int userPoints;
   @JsonKey(name: "coupons")
   final int userCoupons;
+  @JsonKey(name: "balance")
+  final int userBalance;
 
   GetUserInfoEntity(
     this.userName,
@@ -25,6 +27,7 @@ class GetUserInfoEntity {
     this.userOrders,
     this.userPoints,
     this.userCoupons,
+    this.userBalance,
   );
 
   factory GetUserInfoEntity.fromJson(Map<String, dynamic> json) =>

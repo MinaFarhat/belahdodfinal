@@ -41,4 +41,6 @@ class EndPoints {
   static const String updateUserInfoUrl = "$baseUrl/update-settings";
   static const String updateProfilePicture = "$baseUrl/profile-picture";
   static const String deleteAccountUrl = "$baseUrl/user";
+  static const String getVouchersUrl = "$baseUrl/coupon/index";
+  static const String createVoucherUrl = "$baseUrl/coupon/create";
 }
