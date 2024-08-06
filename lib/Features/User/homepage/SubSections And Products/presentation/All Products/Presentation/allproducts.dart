@@ -82,43 +82,45 @@ class _AllProductsState extends State<AllProducts> {
               return SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.9,
-                child:
-                    getproductsmainsectionentity.productsMainSection.isNotEmpty
-                        ? GridView.builder(
-                            padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).size.height * 0.13,
-                            ),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              childAspectRatio: 3 / 4,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                            ),
-                            itemCount: getproductsmainsectionentity
-                                .productsMainSection.length,
-                            itemBuilder: (context, index) {
-                              String imageUrl =
-                                  'http://10.0.2.2:8000${getproductsmainsectionentity.productsMainSection[index].productImage}';
-                              return ProductItem(
-                                image: imageUrl,
-                                sectionId: getproductsmainsectionentity
-                                    .productsMainSection[index].sectionId,
-                                productId: getproductsmainsectionentity
-                                    .productsMainSection[index].productId,
-                              );
-                            },
-                          )
-                        : const Center(
-                            child: Text(
-                              "لا توجد منتجات بعد في هذا القسم",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                child: getproductsmainsectionentity
+                        .productsMainSection.isNotEmpty
+                    ? GridView.builder(
+                        padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).size.height * 0.13,
+                        ),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: 3 / 4,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                        ),
+                        itemCount: getproductsmainsectionentity
+                            .productsMainSection.length,
+                        itemBuilder: (context, index) {
+                          String imageUrl =
+                              'http://10.0.2.2:8000${getproductsmainsectionentity.productsMainSection[index].productImage}';
+                          return ProductItem(
+                            image: imageUrl,
+                            sectionId: getproductsmainsectionentity
+                                .productsMainSection[index].sectionId,
+                            productId: getproductsmainsectionentity
+                                .productsMainSection[index].productId,
+                          );
+                        },
+                      )
+                    : Center(
+                        child: Text(
+                          "لا توجد منتجات بعد في هذا القسم",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? Colors.black
+                                : Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
+                        ),
+                      ),
               );
             },
           );

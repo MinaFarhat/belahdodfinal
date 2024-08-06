@@ -3,6 +3,7 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Check%20Balance%20Cubit/check_balance_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,9 +28,242 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
 
   @override
   void initState() {
+    context.read<CheckBalanceCubit>().checkBalance();
     super.initState();
     buttonActions = [
-      (context) {},
+      (context) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return Dialog(
+              backgroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.24,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.white
+                      : Colors.grey.shade900,
+                ),
+                child: BlocConsumer<CheckBalanceCubit, CheckBalanceState>(
+                  listener: (context, state) {
+                    state.whenOrNull(
+                      error: (networkExceptions) {
+                        Fluttertoast.showToast(
+                          msg: NetworkExceptions.getErrorMessage(
+                            networkExceptions,
+                          ),
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                        );
+                      },
+                    );
+                  },
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                      orElse: () {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? ColorConstant.mainColor
+                                : Colors.white,
+                          ),
+                        );
+                      },
+                      initial: () {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? ColorConstant.mainColor
+                                : Colors.white,
+                          ),
+                        );
+                      },
+                      loading: () {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: SharedPreferencesUtils().getisDark() == false
+                                ? ColorConstant.mainColor
+                                : Colors.white,
+                          ),
+                        );
+                      },
+                      success: (checkbalanceentity) {
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 16, right: 12, left: 12),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "ل.س",
+                                        textDirection: TextDirection.rtl,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold,
+                                          color: SharedPreferencesUtils()
+                                                      .getisDark() ==
+                                                  false
+                                              ? Colors.grey.shade900
+                                              : Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.01,
+                                      ),
+                                      checkbalanceentity.balance
+                                              .toString()
+                                              .startsWith("0")
+                                          ? Container()
+                                          : Text(
+                                              "ألف",
+                                              textDirection: TextDirection.rtl,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                                color: SharedPreferencesUtils()
+                                                            .getisDark() ==
+                                                        false
+                                                    ? Colors.grey.shade900
+                                                    : Colors.white,
+                                              ),
+                                            ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.01,
+                                      ),
+                                      SizedBox(
+                                        width: checkbalanceentity.balance
+                                                .toString()
+                                                .startsWith("0")
+                                            ? MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.04
+                                            : MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.1,
+                                        child: Text(
+                                          checkbalanceentity.balance.toString(),
+                                          textDirection: TextDirection.rtl,
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: SharedPreferencesUtils()
+                                                        .getisDark() ==
+                                                    false
+                                                ? Colors.grey.shade900
+                                                : Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        "الرصيد الذي لديك هو: ",
+                                        textDirection: TextDirection.rtl,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: SharedPreferencesUtils()
+                                                      .getisDark() ==
+                                                  false
+                                              ? Colors.grey.shade900
+                                              : Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.005,
+                                  ),
+                                  Text(
+                                    "هل انت متأكد انك تريد اختيار طريقة الدفع عن طريق المحفظة الإلكترونية؟",
+                                    textDirection: TextDirection.rtl,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: SharedPreferencesUtils()
+                                                  .getisDark() ==
+                                              false
+                                          ? Colors.grey.shade900
+                                          : Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                            ),
+                            InkWell(
+                              overlayColor:
+                                  WidgetStateProperty.all(Colors.transparent),
+                              onTap: () {},
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.06,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: ColorConstant.mainColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "تأكيد",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.01,
+                                    ),
+                                    Icon(
+                                      PhosphorIcons.handCoins(
+                                          PhosphorIconsStyle.regular),
+                                      size: 22,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            );
+          },
+        );
+      },
       (context) {},
       (context) {
         showDialog(
@@ -629,7 +863,7 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        checkBoxPay(methodName: "Cash Mobile", buttonIndex: 0),
+        checkBoxPay(methodName: "المحفظة الإلكترونية", buttonIndex: 0),
         checkBoxPay(methodName: "قسائم بلا حدود", buttonIndex: 1),
         checkBoxPay(methodName: "الدفع عن طريق الهرم", buttonIndex: 2),
         checkBoxPay(methodName: "ضد الدفع", buttonIndex: 3),

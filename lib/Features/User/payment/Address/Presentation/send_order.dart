@@ -363,19 +363,28 @@ class _SendOrderState extends State<SendOrder> {
                             );
                           },
                           success: (sendofferentity) {
-                            Fluttertoast.showToast(
-                              msg: "تم إنشاء الطلب بنجاح",
-                              toastLength: Toast.LENGTH_LONG,
-                              gravity: ToastGravity.BOTTOM,
-                              backgroundColor: Colors.green,
-                            );
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return const Mynavbar();
-                                },
-                              ),
-                            );
+                            if (sendofferentity.isSent) {
+                              Fluttertoast.showToast(
+                                msg: sendofferentity.message,
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.green,
+                              );
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const Mynavbar();
+                                  },
+                                ),
+                              );
+                            } else {
+                              Fluttertoast.showToast(
+                                msg: sendofferentity.message,
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                              );
+                            }
                           },
                         );
                       },

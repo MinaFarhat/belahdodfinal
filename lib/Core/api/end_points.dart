@@ -44,4 +44,5 @@ class EndPoints {
   static const String getVouchersUrl = "$baseUrl/coupon/index";
   static const String createVoucherUrl = "$baseUrl/coupon/create";
   static const String sendOfferUrl = "$baseUrl/offer/checkout/";
+  static const String checkBalance = "$baseUrl/check-balance";
 }

@@ -195,108 +195,140 @@ class _VouchersState extends State<Vouchers> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
-                      CarouselSlider(
-                        options: CarouselOptions(
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          aspectRatio: 6 / 4,
-                          viewportFraction: 1,
-                          enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                          padEnds: true,
-                          initialPage: i,
-                          pageSnapping: true,
-                          height: MediaQuery.of(context).size.height * 0.4,
-                          disableCenter: true,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              i = index;
-                            });
-                          },
-                        ),
-                        items: getvoucherentity.vouchers.map((v) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        VouchersShape(
-                                          percent: getvoucherentity.vouchers[i]
-                                              .voucherPercentageConsumedValue,
-                                        ),
-                                      ],
-                                    ),
-                                    Positioned(
-                                      right: 65,
-                                      bottom: 65,
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.065,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.03,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          color: SharedPreferencesUtils()
-                                                      .getisDark() ==
-                                                  false
-                                              ? Colors.white
-                                              : Colors.grey.shade900,
-                                        ),
+                      getvoucherentity.vouchers.isNotEmpty
+                          ? CarouselSlider(
+                              options: CarouselOptions(
+                                autoPlayCurve: Curves.fastOutSlowIn,
+                                aspectRatio: 6 / 4,
+                                viewportFraction: 1,
+                                enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                                padEnds: true,
+                                initialPage: i,
+                                pageSnapping: true,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.4,
+                                disableCenter: true,
+                                onPageChanged: (index, reason) {
+                                  setState(() {
+                                    i = index;
+                                  });
+                                },
+                              ),
+                              items: getvoucherentity.vouchers.map((v) {
+                                return Builder(
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                    ),
-                                    Positioned(
-                                      left: 65,
-                                      bottom: 65,
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.065,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.03,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          color: SharedPreferencesUtils()
-                                                      .getisDark() ==
-                                                  false
-                                              ? Colors.white
-                                              : Colors.grey.shade900,
-                                        ),
+                                      child: Stack(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              VouchersShape(
+                                                percent: getvoucherentity
+                                                    .vouchers[i]
+                                                    .voucherPercentageConsumedValue,
+                                              ),
+                                            ],
+                                          ),
+                                          Positioned(
+                                            right: 65,
+                                            bottom: 65,
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.065,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.03,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                color: SharedPreferencesUtils()
+                                                            .getisDark() ==
+                                                        false
+                                                    ? Colors.white
+                                                    : Colors.grey.shade900,
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            left: 65,
+                                            bottom: 65,
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.065,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.03,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                color: SharedPreferencesUtils()
+                                                            .getisDark() ==
+                                                        false
+                                                    ? Colors.white
+                                                    : Colors.grey.shade900,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                  ],
+                                    );
+                                  },
+                                );
+                              }).toList(),
+                            )
+                          : Padding(
+                              padding: EdgeInsets.only(
+                                top: MediaQuery.of(context).size.height * 0.25,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "لا توجد قسائم بعد",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color:
+                                        SharedPreferencesUtils().getisDark() ==
+                                                false
+                                            ? Colors.black
+                                            : Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              );
-                            },
-                          );
-                        }).toList(),
-                      ),
+                              ),
+                            ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
                       ),
-                      VoucherData(
-                        size: getvoucherentity.vouchers[i].voucherTotalValue
-                            .toString(),
-                        available: getvoucherentity
-                            .vouchers[i].voucherAvailableValue
-                            .toString(),
-                        consumer: getvoucherentity
-                            .vouchers[i].voucherConsumerValue
-                            .toString(),
-                        sender: getvoucherentity.vouchers[i].voucherSender,
-                        receiver: getvoucherentity.vouchers[i].voucherReceiver,
-                        date: getvoucherentity.vouchers[i].voucherCreatedAt,
-                      ),
+                      getvoucherentity.vouchers.isNotEmpty
+                          ? VoucherData(
+                              size: getvoucherentity
+                                  .vouchers[i].voucherTotalValue
+                                  .toString(),
+                              available: getvoucherentity
+                                  .vouchers[i].voucherAvailableValue
+                                  .toString(),
+                              consumer: getvoucherentity
+                                  .vouchers[i].voucherConsumerValue
+                                  .toString(),
+                              sender:
+                                  getvoucherentity.vouchers[i].voucherSender,
+                              receiver:
+                                  getvoucherentity.vouchers[i].voucherReceiver,
+                              date:
+                                  getvoucherentity.vouchers[i].voucherCreatedAt,
+                            )
+                          : Container(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.035,
                       ),
