@@ -87,7 +87,7 @@ class FineOfOrder extends StatelessWidget {
                     width: 3,
                   ),
                   Text(
-                    "${paramter.toString()} الف",
+                    paramter.toString(),
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       fontSize: 16,

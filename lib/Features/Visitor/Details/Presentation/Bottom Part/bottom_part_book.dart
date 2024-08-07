@@ -122,7 +122,7 @@ class BottomPartBookVisitor extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const Text(
-                "ألف ليرة سورية",
+                "ليرة سورية",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 14,

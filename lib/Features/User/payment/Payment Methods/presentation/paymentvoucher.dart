@@ -13,8 +13,11 @@ import '../../../Vouchers/Presentation/Vouchers Shape/voucherdata.dart';
 import '../../../Vouchers/Presentation/Vouchers Shape/vouchersshape.dart';
 
 class PaymentVoucher extends StatefulWidget {
-  const PaymentVoucher({super.key});
-
+  const PaymentVoucher({
+    required this.orderId,
+    super.key,
+  });
+  final int orderId;
   @override
   State<PaymentVoucher> createState() => _PaymentVoucherState();
 }

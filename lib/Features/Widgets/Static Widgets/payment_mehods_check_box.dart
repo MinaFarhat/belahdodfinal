@@ -5,6 +5,7 @@ import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Check%20Balance%20Cubit/check_balance_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Wallet%20Cubit/wallet_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/paymentvoucher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -220,42 +221,211 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.04,
                             ),
-                            InkWell(
-                              overlayColor:
-                                  WidgetStateProperty.all(Colors.transparent),
-                              onTap: () {},
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.06,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: ColorConstant.mainColor,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "تأكيد",
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
+                            BlocConsumer<WalletCubit, WalletState>(
+                              listener: (context, state) {
+                                state.whenOrNull(
+                                  error: (networkExceptions) {
+                                    Fluttertoast.showToast(
+                                      msg: NetworkExceptions.getErrorMessage(
+                                        networkExceptions,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.01,
-                                    ),
-                                    Icon(
-                                      PhosphorIcons.handCoins(
-                                          PhosphorIconsStyle.regular),
-                                      size: 22,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                              ),
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.BOTTOM,
+                                      backgroundColor: Colors.red,
+                                    );
+                                  },
+                                  success: (onarrivalentity) {
+                                    if (onarrivalentity.isSent == true) {
+                                      Fluttertoast.showToast(
+                                        msg: onarrivalentity.message,
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        backgroundColor: Colors.green,
+                                      );
+                                      Navigator.of(context).pushAndRemoveUntil(
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return const Mynavbar();
+                                          },
+                                        ),
+                                        (Route<dynamic> route) => false,
+                                      );
+                                    } else {
+                                      Fluttertoast.showToast(
+                                        msg: onarrivalentity.message,
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        backgroundColor: Colors.red,
+                                      );
+                                    }
+                                  },
+                                );
+                              },
+                              builder: (context, state) {
+                                return state.maybeWhen(
+                                  orElse: () {
+                                    return InkWell(
+                                      overlayColor: WidgetStateProperty.all(
+                                          Colors.transparent),
+                                      onTap: () {
+                                        context
+                                            .read<WalletCubit>()
+                                            .wallet(widget.orderId);
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.06,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          color: ColorConstant.mainColor,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Text(
+                                              "تأكيد",
+                                              style: TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                            ),
+                                            Icon(
+                                              PhosphorIcons.handCoins(
+                                                  PhosphorIconsStyle.regular),
+                                              size: 22,
+                                              color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  initial: () {
+                                    return InkWell(
+                                      overlayColor: WidgetStateProperty.all(
+                                          Colors.transparent),
+                                      onTap: () {
+                                        context
+                                            .read<WalletCubit>()
+                                            .wallet(widget.orderId);
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.06,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          color: ColorConstant.mainColor,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Text(
+                                              "تأكيد",
+                                              style: TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                            ),
+                                            Icon(
+                                              PhosphorIcons.handCoins(
+                                                  PhosphorIconsStyle.regular),
+                                              size: 22,
+                                              color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  loading: () {
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        color: SharedPreferencesUtils()
+                                                    .getisDark() ==
+                                                false
+                                            ? ColorConstant.mainColor
+                                            : Colors.white,
+                                      ),
+                                    );
+                                  },
+                                  success: (walletentity) {
+                                    return InkWell(
+                                      overlayColor: WidgetStateProperty.all(
+                                          Colors.transparent),
+                                      onTap: () {
+                                        context
+                                            .read<WalletCubit>()
+                                            .wallet(widget.orderId);
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.06,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          color: ColorConstant.mainColor,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Text(
+                                              "تأكيد",
+                                              style: TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                            ),
+                                            Icon(
+                                              PhosphorIcons.handCoins(
+                                                  PhosphorIconsStyle.regular),
+                                              size: 22,
+                                              color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
                             ),
                           ],
                         );
@@ -272,7 +442,9 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return PaymentVoucher();
+              return PaymentVoucher(
+                orderId: widget.orderId,
+              );
             },
           ),
         );

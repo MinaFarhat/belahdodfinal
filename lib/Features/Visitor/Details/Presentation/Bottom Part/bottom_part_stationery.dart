@@ -64,7 +64,7 @@ class BottomPartStationeryVisitor extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const Text(
-                "ألف ليرة سورية",
+                "ليرة سورية",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 14,
@@ -73,8 +73,8 @@ class BottomPartStationeryVisitor extends StatelessWidget {
               ),
               Text(
                 " $price",
-                style: TextStyle(
-                  color: ColorConstant.mainColor,
+                style: const TextStyle(
+                  color: Colors.black,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),

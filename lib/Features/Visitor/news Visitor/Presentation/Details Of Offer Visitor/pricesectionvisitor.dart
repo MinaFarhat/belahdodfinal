@@ -30,7 +30,7 @@ class PriceSectionVisitor extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      discountedPrice.toStringAsFixed(3),
+                      discountedPrice.toString(),
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 19,
@@ -52,7 +52,7 @@ class PriceSectionVisitor extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     DiagonalStrikethroughVisitor(
-                      text: originalPrice.toStringAsFixed(3),
+                      text: originalPrice.toString(),
                       style: TextStyle(
                         color: Colors.grey.shade700,
                         fontSize: 16,
