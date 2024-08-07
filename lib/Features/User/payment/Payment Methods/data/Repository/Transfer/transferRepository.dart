@@ -21,11 +21,11 @@ class TransferRepositoryImpl implements BaseRepositoryTransfer {
 
   @override
   Future<Either<NetworkExceptions, TransferEntity>> sendTransferImage(
-      File transferImage) async {
+      File transferImage, int orderId) async {
     if (await _networkInfo.isConnected) {
       try {
         final response =
-            await _transferWebService.sendTransferImage(transferImage);
+            await _transferWebService.sendTransferImage(transferImage, orderId);
 
         return Right(response);
       } catch (e) {

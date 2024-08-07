@@ -4,7 +4,7 @@ import 'package:belahododfinal/Features/User/payment/Payment%20Methods/data/Mode
 import 'package:injectable/injectable.dart';
 
 abstract class OnArrivalWebService {
-  Future<OnArrivalEntity> onArrival();
+  Future<OnArrivalEntity> onArrival(int orderId);
 }
 
 @Singleton(as: OnArrivalWebService)
@@ -14,9 +14,9 @@ class OnArrivalWebServiceImpl implements OnArrivalWebService {
   OnArrivalWebServiceImpl(this._apiConsumer);
 
   @override
-  Future<OnArrivalEntity> onArrival() async {
+  Future<OnArrivalEntity> onArrival(int orderId) async {
     final response = await _apiConsumer.post(
-      EndPoints.onArrivalPaymentMethodeUrl,
+      "${EndPoints.onArrivalPaymentMethodeUrl}$orderId",
     );
     return OnArrivalEntity.fromJson(response);
   }

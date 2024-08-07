@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class TransferWebService {
-  Future<TransferEntity> sendTransferImage(File transferImage);
+  Future<TransferEntity> sendTransferImage(File transferImage, int orderId);
 }
 
 @Singleton(as: TransferWebService)
@@ -24,10 +24,11 @@ class TransferWebServiceImpl implements TransferWebService {
   }
 
   @override
-  Future<TransferEntity> sendTransferImage(File transferImage) async {
+  Future<TransferEntity> sendTransferImage(
+      File transferImage, int orderId) async {
     final fromData = await formAddFile(transferImage);
     final response = await _apiConsumer.post(
-      EndPoints.transferPaymentMethodeUrl,
+      "${EndPoints.transferPaymentMethodeUrl}$orderId",
       body: fromData,
     );
     return TransferEntity.fromJson(response);

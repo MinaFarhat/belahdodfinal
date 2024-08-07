@@ -5,6 +5,7 @@ import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Check%20Balance%20Cubit/check_balance_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/paymentvoucher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -14,8 +15,11 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../User/payment/Payment Methods/Manager/On Arrival Cubit/on_arrival_cubit.dart';
 
 class PaymentMethodsCheckBox extends StatefulWidget {
-  const PaymentMethodsCheckBox({super.key});
-
+  const PaymentMethodsCheckBox({
+    required this.orderId,
+    super.key,
+  });
+  final int orderId;
   @override
   State<PaymentMethodsCheckBox> createState() => _PaymentMethodsCheckBoxState();
 }
@@ -264,7 +268,15 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
           },
         );
       },
-      (context) {},
+      (context) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return PaymentVoucher();
+            },
+          ),
+        );
+      },
       (context) {
         showDialog(
           context: context,
@@ -456,19 +468,29 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                 );
                               },
                               success: (transferentity) {
-                                Fluttertoast.showToast(
-                                  msg: "تم إرسال الطلب بنجاح",
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.BOTTOM,
-                                  backgroundColor: Colors.green,
-                                );
-                                Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return const Mynavbar();
-                                    },
-                                  ),
-                                );
+                                if (transferentity.isSent == true) {
+                                  Fluttertoast.showToast(
+                                    msg: transferentity.message,
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    backgroundColor: Colors.green,
+                                  );
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return const Mynavbar();
+                                      },
+                                    ),
+                                    (Route<dynamic> route) => false,
+                                  );
+                                } else {
+                                  Fluttertoast.showToast(
+                                    msg: transferentity.message,
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    backgroundColor: Colors.red,
+                                  );
+                                }
                               },
                             );
                           },
@@ -482,6 +504,7 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                         .read<TransferCubit>()
                                         .sendTransferImage(
                                           selectedImage!,
+                                          widget.orderId,
                                         );
                                   },
                                   child: Container(
@@ -530,6 +553,7 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                         .read<TransferCubit>()
                                         .sendTransferImage(
                                           selectedImage!,
+                                          widget.orderId,
                                         );
                                   },
                                   child: Container(
@@ -589,6 +613,7 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                         .read<TransferCubit>()
                                         .sendTransferImage(
                                           selectedImage!,
+                                          widget.orderId,
                                         );
                                   },
                                   child: Container(
@@ -641,7 +666,6 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
           },
         );
       },
-      (context) {},
       (context) {
         showDialog(
           context: context,
@@ -694,20 +718,30 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                               backgroundColor: Colors.red,
                             );
                           },
-                          success: (transferentity) {
-                            Fluttertoast.showToast(
-                              msg: "تم إرسال الطلب بنجاح",
-                              toastLength: Toast.LENGTH_LONG,
-                              gravity: ToastGravity.BOTTOM,
-                              backgroundColor: Colors.green,
-                            );
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return const Mynavbar();
-                                },
-                              ),
-                            );
+                          success: (onarrivalentity) {
+                            if (onarrivalentity.isSent == true) {
+                              Fluttertoast.showToast(
+                                msg: onarrivalentity.message,
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.green,
+                              );
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const Mynavbar();
+                                  },
+                                ),
+                                (Route<dynamic> route) => false,
+                              );
+                            } else {
+                              Fluttertoast.showToast(
+                                msg: onarrivalentity.message,
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                              );
+                            }
                           },
                         );
                       },
@@ -718,7 +752,9 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                               overlayColor:
                                   WidgetStateProperty.all(Colors.transparent),
                               onTap: () {
-                                context.read<OnArrivalCubit>().onArrival();
+                                context
+                                    .read<OnArrivalCubit>()
+                                    .onArrival(widget.orderId);
                               },
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
@@ -759,7 +795,9 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                               overlayColor:
                                   WidgetStateProperty.all(Colors.transparent),
                               onTap: () {
-                                context.read<OnArrivalCubit>().onArrival();
+                                context
+                                    .read<OnArrivalCubit>()
+                                    .onArrival(widget.orderId);
                               },
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
@@ -810,7 +848,9 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                               overlayColor:
                                   WidgetStateProperty.all(Colors.transparent),
                               onTap: () {
-                                context.read<OnArrivalCubit>().onArrival();
+                                context
+                                    .read<OnArrivalCubit>()
+                                    .onArrival(widget.orderId);
                               },
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
@@ -866,8 +906,7 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
         checkBoxPay(methodName: "المحفظة الإلكترونية", buttonIndex: 0),
         checkBoxPay(methodName: "قسائم بلا حدود", buttonIndex: 1),
         checkBoxPay(methodName: "الدفع عن طريق الهرم", buttonIndex: 2),
-        checkBoxPay(methodName: "ضد الدفع", buttonIndex: 3),
-        checkBoxPay(methodName: "الدفع عند التسليم", buttonIndex: 4),
+        checkBoxPay(methodName: "الدفع عند التسليم", buttonIndex: 3),
       ],
     );
   }

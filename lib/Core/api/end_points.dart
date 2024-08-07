@@ -24,8 +24,6 @@ class EndPoints {
   static const String getAllOrdersUrl = "$baseUrl/orders";
   static const String getOrderDetailsUrl = "$baseUrl/orders/";
   static const String addressUrl = "$baseUrl/order/address";
-  static const String onArrivalPaymentMethodeUrl = "$baseUrl/order/on_arrival";
-  static const String transferPaymentMethodeUrl = "$baseUrl/order/transfer";
   static const String searchResultsUrl = "$baseUrl/search?name=";
   static const String getAllCitiesUrl = "$baseUrl/city";
   static const String getSectionAndProductsVisitorUrl =
@@ -45,4 +43,10 @@ class EndPoints {
   static const String createVoucherUrl = "$baseUrl/coupon/create";
   static const String sendOfferUrl = "$baseUrl/offer/checkout/";
   static const String checkBalance = "$baseUrl/check-balance";
+  static const String onArrivalPaymentMethodeUrl = "$baseUrl/order/on_arrival/";
+  static const String transferPaymentMethodeUrl = "$baseUrl/order/transfer/";
+  static const String walletPaymentMethodeUrl =
+      "$baseUrl/check-out-with-wallet/";
+  static const String voucherPaymentMethodeUrl =
+      "$baseUrl/check-out-with-coupon/";
 }

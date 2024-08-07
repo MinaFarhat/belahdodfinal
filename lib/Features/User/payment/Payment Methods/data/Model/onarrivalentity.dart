@@ -7,8 +7,10 @@ part 'onarrivalentity.g.dart';
 class OnArrivalEntity {
   @JsonKey(name: "message")
   final String message;
+  @JsonKey(name: "is_sent")
+  final bool isSent;
 
-  OnArrivalEntity(this.message);
+  OnArrivalEntity(this.message, this.isSent);
   factory OnArrivalEntity.fromJson(Map<String, dynamic> json) =>
       _$OnArrivalEntityFromJson(json);
 

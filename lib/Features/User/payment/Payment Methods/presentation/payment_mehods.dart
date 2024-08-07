@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class PaymentMethods extends StatelessWidget {
-  const PaymentMethods({super.key});
-
+  const PaymentMethods({
+    required this.orderId,
+    super.key,
+  });
+  final int orderId;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,7 +30,7 @@ class PaymentMethods extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       child: Icon(
-                        PhosphorIcons.arrowRight(PhosphorIconsStyle.bold),
+                        PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                         size: 26,
                         color: SharedPreferencesUtils().getisDark() == false
                             ? Colors.grey.shade900
@@ -68,7 +71,9 @@ class PaymentMethods extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-              const PaymentMethodsCheckBox(),
+              PaymentMethodsCheckBox(
+                orderId: orderId,
+              ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.015,
               ),

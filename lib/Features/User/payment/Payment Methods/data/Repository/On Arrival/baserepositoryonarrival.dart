@@ -3,5 +3,5 @@ import 'package:belahododfinal/Features/User/payment/Payment%20Methods/data/Mode
 import 'package:dartz/dartz.dart';
 
 abstract class BaseRepositoryOnArrival {
-  Future<Either<NetworkExceptions, OnArrivalEntity>> onArrival();
+  Future<Either<NetworkExceptions, OnArrivalEntity>> onArrival(int orderId);
 }

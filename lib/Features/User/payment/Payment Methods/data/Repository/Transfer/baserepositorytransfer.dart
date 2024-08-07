@@ -7,5 +7,6 @@ import 'package:dartz/dartz.dart';
 abstract class BaseRepositoryTransfer {
   Future<Either<NetworkExceptions, TransferEntity>> sendTransferImage(
     File transferImage,
+    int orderId,
   );
 }

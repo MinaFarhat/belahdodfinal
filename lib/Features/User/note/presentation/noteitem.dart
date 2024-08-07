@@ -12,12 +12,14 @@ class NotificationItem extends StatelessWidget {
   String title;
   String subtitle;
   bool isRead;
+  int orderId;
   NotificationItem({
     required this.noteId,
     required this.noteType,
     required this.title,
     required this.subtitle,
     required this.isRead,
+    required this.orderId,
     super.key,
   });
 
@@ -30,7 +32,7 @@ class NotificationItem extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return const PaymentMethods();
+                return  PaymentMethods(orderId: orderId,);
               },
             ),
           );

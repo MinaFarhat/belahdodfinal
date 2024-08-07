@@ -7,8 +7,9 @@ part 'transferentity.g.dart';
 class TransferEntity {
   @JsonKey(name: "message")
   final String message;
-
-  TransferEntity(this.message);
+  @JsonKey(name: "is_sent")
+  final bool isSent;
+  TransferEntity(this.message, this.isSent);
   factory TransferEntity.fromJson(Map<String, dynamic> json) =>
       _$TransferEntityFromJson(json);
 

@@ -15,10 +15,10 @@ class OnArrivalCubit extends Cubit<OnArrivalState> {
 
   final BaseRepositoryOnArrival _baseRepositoryOnArrival;
 
-  Future<void> onArrival() async {
+  Future<void> onArrival(int orderId) async {
     emit(const OnArrivalState.loading());
 
-    final response = await _baseRepositoryOnArrival.onArrival();
+    final response = await _baseRepositoryOnArrival.onArrival(orderId);
 
     response.fold((l) => emit(OnArrivalState.error(l)),
         (r) => emit(OnArrivalState.success(r)));

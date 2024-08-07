@@ -18,10 +18,11 @@ class OnArrivalRepositoryImpl implements BaseRepositoryOnArrival {
         _onArrivalWebService = onArrivalWebService;
 
   @override
-  Future<Either<NetworkExceptions, OnArrivalEntity>> onArrival() async {
+  Future<Either<NetworkExceptions, OnArrivalEntity>> onArrival(
+      int orderId) async {
     if (await _networkInfo.isConnected) {
       try {
-        final response = await _onArrivalWebService.onArrival();
+        final response = await _onArrivalWebService.onArrival(orderId);
 
         return Right(response);
       } catch (e) {
