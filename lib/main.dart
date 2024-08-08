@@ -35,7 +35,6 @@ import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/O
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Pay%20By%20Voucher%20Cubit/pay_by_voucher_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Wallet%20Cubit/wallet_cubit.dart';
-import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/payment_mehods.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Delete%20Account%20Cubit/delete_account_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%202%20Cubit/get_user_info2_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Get%20User%20Info%20Cubit/get_user_info_cubit.dart';
@@ -273,9 +272,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: PaymentMethods(
-          orderId: 1,
-        ),
+        home: SplashScreen(),
       ),
     );
   }
