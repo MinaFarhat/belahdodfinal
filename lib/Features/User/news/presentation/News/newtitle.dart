@@ -68,6 +68,7 @@ class NewTitle extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.12,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
+                color: Colors.grey.shade400,
                 image: DecorationImage(
                   image: CachedNetworkImageProvider(image),
                   fit: BoxFit.cover,
