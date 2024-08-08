@@ -161,19 +161,11 @@ class _CartState extends State<Cart> {
                                     : Colors.white,
                               ),
                             ),
-                            // Text(
-                            //   " ألف",
-                            //   style: TextStyle(
-                            //     fontSize: 14,
-                            //     fontWeight: FontWeight.bold,
-                            //     color: ColorConstant.darkColor,
-                            //   ),
-                            // ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.01,
                             ),
                             Text(
-                              getcartitemsentity.totalPrice.toStringAsFixed(3),
+                              getcartitemsentity.totalPrice.toString(),
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,

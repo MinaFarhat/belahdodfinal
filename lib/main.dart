@@ -32,6 +32,7 @@ import 'package:belahododfinal/Features/User/payment/Address/Send%20Offer%20Cubi
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Check%20Balance%20Cubit/check_balance_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/On%20Arrival%20Cubit/on_arrival_cubit.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Pay%20By%20Voucher%20Cubit/pay_by_voucher_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Wallet%20Cubit/wallet_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/payment_mehods.dart';
@@ -258,6 +259,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<WalletCubit>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<PayByVoucherCubit>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -269,7 +273,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: colorCustom,
           useMaterial3: true,
         ),
-        home: SplashScreen(),
+        home: PaymentMethods(
+          orderId: 1,
+        ),
       ),
     );
   }

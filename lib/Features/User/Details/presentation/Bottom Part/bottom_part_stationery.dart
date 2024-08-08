@@ -77,7 +77,7 @@ class BottomPartStationery extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                "ألف ليرة سورية",
+                "ليرة سورية",
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black
@@ -90,8 +90,8 @@ class BottomPartStationery extends StatelessWidget {
                 " $price",
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
-                      ? ColorConstant.mainColor
-                      : ColorConstant.shadowColor,
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),

@@ -1,6 +1,8 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/navbar.dart';
+import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Pay%20By%20Voucher%20Cubit/pay_by_voucher_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -265,42 +267,220 @@ class _PaymentVoucherState extends State<PaymentVoucher> {
                         height: MediaQuery.of(context).size.height * 0.035,
                       ),
                       getvoucherentity.vouchers.isNotEmpty
-                          ? InkWell(
-                              overlayColor:
-                                  WidgetStateProperty.all(Colors.transparent),
-                              onTap: () {},
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.7,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.07,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  color: ColorConstant.mainColor,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "أختيار",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold,
+                          ? BlocConsumer<PayByVoucherCubit, PayByVoucherState>(
+                              listener: (context, state) {
+                                state.whenOrNull(
+                                  error: (networkExceptions) {
+                                    Fluttertoast.showToast(
+                                      msg: NetworkExceptions.getErrorMessage(
+                                        networkExceptions,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.01,
-                                    ),
-                                    Icon(
-                                      PhosphorIcons.sparkle(
-                                          PhosphorIconsStyle.regular),
-                                      size: 24,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                              ),
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.BOTTOM,
+                                      backgroundColor: Colors.red,
+                                    );
+                                  },
+                                  success: (paybyvoucherentty) {
+                                    if (paybyvoucherentty.isSent == true) {
+                                      Fluttertoast.showToast(
+                                        msg: paybyvoucherentty.message,
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        backgroundColor: Colors.green,
+                                      );
+                                      Navigator.of(context).pushAndRemoveUntil(
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return const Mynavbar();
+                                          },
+                                        ),
+                                        (Route<dynamic> route) => false,
+                                      );
+                                    } else {
+                                      Fluttertoast.showToast(
+                                        msg: paybyvoucherentty.message,
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        backgroundColor: Colors.red,
+                                      );
+                                    }
+                                  },
+                                );
+                              },
+                              builder: (context, state) {
+                                return state.maybeWhen(
+                                  orElse: () {
+                                    return InkWell(
+                                      overlayColor: WidgetStateProperty.all(
+                                          Colors.transparent),
+                                      onTap: () {
+                                        context
+                                            .read<PayByVoucherCubit>()
+                                            .payByVoucher(
+                                                widget.orderId,
+                                                getvoucherentity
+                                                    .vouchers[i].voucherId);
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.7,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.07,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          color: ColorConstant.mainColor,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Text(
+                                              "أختيار",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                            ),
+                                            Icon(
+                                              PhosphorIcons.sparkle(
+                                                  PhosphorIconsStyle.regular),
+                                              size: 24,
+                                              color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  initial: () {
+                                    return InkWell(
+                                      overlayColor: WidgetStateProperty.all(
+                                          Colors.transparent),
+                                      onTap: () {
+                                        context
+                                            .read<PayByVoucherCubit>()
+                                            .payByVoucher(
+                                                widget.orderId,
+                                                getvoucherentity
+                                                    .vouchers[i].voucherId);
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.7,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.07,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          color: ColorConstant.mainColor,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Text(
+                                              "أختيار",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                            ),
+                                            Icon(
+                                              PhosphorIcons.sparkle(
+                                                  PhosphorIconsStyle.regular),
+                                              size: 24,
+                                              color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  loading: () {
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        color: SharedPreferencesUtils()
+                                                    .getisDark() ==
+                                                false
+                                            ? ColorConstant.mainColor
+                                            : Colors.white,
+                                      ),
+                                    );
+                                  },
+                                  success: (paybyvoucherentity) {
+                                    return InkWell(
+                                      overlayColor: WidgetStateProperty.all(
+                                          Colors.transparent),
+                                      onTap: () {
+                                        context
+                                            .read<PayByVoucherCubit>()
+                                            .payByVoucher(
+                                                widget.orderId,
+                                                getvoucherentity
+                                                    .vouchers[i].voucherId);
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.7,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.07,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          color: ColorConstant.mainColor,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Text(
+                                              "أختيار",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                            ),
+                                            Icon(
+                                              PhosphorIcons.sparkle(
+                                                  PhosphorIconsStyle.regular),
+                                              size: 24,
+                                              color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
                             )
                           : Container(),
                     ],

@@ -291,23 +291,23 @@ class _TopPartProfileState extends State<TopPartProfile> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.01,
-            ),
-            widget.balance.startsWith("0")
-                ? Container()
-                : Text(
-                    "ألف",
-                    overflow: TextOverflow.ellipsis,
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(
-                      color: SharedPreferencesUtils().getisDark() == false
-                          ? Colors.grey.shade900
-                          : Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+            // SizedBox(
+            //   width: MediaQuery.of(context).size.width * 0.01,
+            // ),
+            // widget.balance.startsWith("0")
+            //     ? Container()
+            //     : Text(
+            //         "ألف",
+            //         overflow: TextOverflow.ellipsis,
+            //         textDirection: TextDirection.rtl,
+            //         style: TextStyle(
+            //           color: SharedPreferencesUtils().getisDark() == false
+            //               ? Colors.grey.shade900
+            //               : Colors.white,
+            //           fontSize: 18,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.01,
             ),

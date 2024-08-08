@@ -310,8 +310,11 @@ class CartItemView extends StatelessWidget {
                               : Colors.white,
                         ),
                       ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.008,
+                      ),
                       Text(
-                        " ${price.ceilToDouble().toStringAsFixed(2)}",
+                        price.toString(),
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

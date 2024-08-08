@@ -148,17 +148,40 @@ class OrderItem extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Text(
-                                      totalPrice.toStringAsFixed(3),
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: SharedPreferencesUtils()
-                                                    .getisDark() ==
-                                                false
-                                            ? Colors.grey.shade900
-                                            : Colors.white,
-                                      ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "ل.س",
+                                          textDirection: TextDirection.rtl,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: SharedPreferencesUtils()
+                                                        .getisDark() ==
+                                                    false
+                                                ? Colors.black
+                                                : Colors.white,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.008,
+                                        ),
+                                        Text(
+                                          totalPrice.toString(),
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: SharedPreferencesUtils()
+                                                        .getisDark() ==
+                                                    false
+                                                ? Colors.grey.shade900
+                                                : Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(
                                       width: 2,

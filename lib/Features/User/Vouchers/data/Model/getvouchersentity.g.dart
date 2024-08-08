@@ -20,6 +20,7 @@ Map<String, dynamic> _$GetVouchersEntityToJson(GetVouchersEntity instance) =>
 
 GetVouchersData _$GetVouchersDataFromJson(Map<String, dynamic> json) =>
     GetVouchersData(
+      (json['id'] as num).toInt(),
       (json['total_value'] as num).toInt(),
       (json['value_left'] as num).toInt(),
       (json['value_consumed'] as num).toInt(),
@@ -31,6 +32,7 @@ GetVouchersData _$GetVouchersDataFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$GetVouchersDataToJson(GetVouchersData instance) =>
     <String, dynamic>{
+      'id': instance.voucherId,
       'total_value': instance.voucherTotalValue,
       'value_left': instance.voucherAvailableValue,
       'value_consumed': instance.voucherConsumerValue,

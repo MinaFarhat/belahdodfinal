@@ -130,41 +130,10 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                             MediaQuery.of(context).size.width *
                                                 0.01,
                                       ),
-                                      checkbalanceentity.balance
-                                              .toString()
-                                              .startsWith("0")
-                                          ? Container()
-                                          : Text(
-                                              "ألف",
-                                              textDirection: TextDirection.rtl,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                                color: SharedPreferencesUtils()
-                                                            .getisDark() ==
-                                                        false
-                                                    ? Colors.grey.shade900
-                                                    : Colors.white,
-                                              ),
-                                            ),
                                       SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.01,
-                                      ),
-                                      SizedBox(
-                                        width: checkbalanceentity.balance
-                                                .toString()
-                                                .startsWith("0")
-                                            ? MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.04
-                                            : MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.1,
+                                                0.2,
                                         child: Text(
                                           checkbalanceentity.balance.toString(),
                                           textDirection: TextDirection.rtl,

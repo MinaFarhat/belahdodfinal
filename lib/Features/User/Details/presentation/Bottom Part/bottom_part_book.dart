@@ -143,7 +143,7 @@ class BottomPartBook extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                "ألف ليرة سورية",
+                "ليرة سورية",
                 style: TextStyle(
                   color: SharedPreferencesUtils().getisDark() == false
                       ? Colors.black

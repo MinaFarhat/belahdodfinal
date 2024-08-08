@@ -37,7 +37,7 @@ class PriceSection extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      discountedPrice.toStringAsFixed(3),
+                      discountedPrice.toString(),
                       style: TextStyle(
                         color: SharedPreferencesUtils().getisDark() == false
                             ? Colors.black
@@ -63,7 +63,7 @@ class PriceSection extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     DiagonalStrikethrough(
-                      text: originalPrice.toStringAsFixed(3),
+                      text: originalPrice.toString(),
                       style: TextStyle(
                         color: SharedPreferencesUtils().getisDark() == false
                             ? Colors.grey.shade700

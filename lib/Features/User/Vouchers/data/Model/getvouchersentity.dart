@@ -18,6 +18,8 @@ class GetVouchersEntity {
 
 @JsonSerializable()
 class GetVouchersData {
+  @JsonKey(name: "id")
+  final int voucherId;
   @JsonKey(name: "total_value")
   final int voucherTotalValue;
   @JsonKey(name: "value_left")
@@ -34,6 +36,7 @@ class GetVouchersData {
   final String voucherCreatedAt;
 
   GetVouchersData(
+    this.voucherId,
     this.voucherTotalValue,
     this.voucherAvailableValue,
     this.voucherConsumerValue,
