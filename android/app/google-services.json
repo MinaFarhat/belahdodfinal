@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "582451328930",
+    "project_id": "bellahdod",
+    "storage_bucket": "bellahdod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582451328930:android:2d754d48b8676a649f24fb",
+        "android_client_info": {
+          "package_name": "com.example.belahododfinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwsYHO0pVI9NhFb24O9dv2oM6Ai9RmtzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

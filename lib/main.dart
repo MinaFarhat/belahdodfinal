@@ -1,3 +1,8 @@
+// ignore_for_file: avoid_print
+
+import 'dart:io';
+
+import 'package:belahododfinal/Core/utils/notification/notification_viewer.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/cubit/createaccount_cubit.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
@@ -50,6 +55,8 @@ import 'package:belahododfinal/Features/Visitor/Details/Manager/Stationery%20Vis
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/cubit/section_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Dynamic%20Widgets/Dynamic%20Field%20Location/Get%20Cities%20Cubit/get_cities_cubit.dart';
 import 'package:belahododfinal/injection.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,9 +65,51 @@ import 'Features/User/Orders/Order Details/Order Details Cubit/order_details_cub
 import 'Features/User/Orders/main orders/Get Orders Cubit/get_orders_cubit.dart';
 import 'Features/User/search/Normal Search/Searh Results Cubit/search_results_cubit.dart';
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
+Future<void> _backgroundHandler(RemoteMessage message) async {
+  print('Received message in background: ${message.data}');
+  if (message.notification != null) {
+    print('Notification Title: ${message.notification!.title}');
+    print('Notification Body: ${message.notification!.body}');
+  }
+}
+
+Future<void> requestPermission() async {
+  NotificationSettings settings =
+      await FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    badge: true,
+    sound: true,
+    provisional: false,
+  );
+
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    print('User granted permission.');
+  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+    print('User granted provisional permission.');
+  } else {
+    print('User denied or has not accepted permission.');
+  }
+}
+
 void main() async {
   await configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await requestPermission();
+
+  // await configureDependencies();
+  await NotificationViewer.initialize();
+  HttpOverrides.global = MyHttpOverrides();
+  FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
   await SharedPreferencesUtils().init();
   SharedPreferencesUtils().getisDark() ??
       SharedPreferencesUtils().setDark(false);
