@@ -82,6 +82,14 @@ Future<void> _backgroundHandler(RemoteMessage message) async {
   }
 }
 
+Future<void> _forgroundHandler(RemoteMessage message) async {
+  print('Received message in forground: ${message.data}');
+  if (message.notification != null) {
+    print('Notification Title: ${message.notification!.title}');
+    print('Notification Body: ${message.notification!.body}');
+  }
+}
+
 Future<void> requestPermission() async {
   NotificationSettings settings =
       await FirebaseMessaging.instance.requestPermission(
@@ -108,6 +116,7 @@ void main() async {
   await NotificationViewer.initialize();
   HttpOverrides.global = MyHttpOverrides();
   FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
+  FirebaseMessaging.onMessageOpenedApp.listen(_forgroundHandler);
   await SharedPreferencesUtils().init();
   SharedPreferencesUtils().getisDark() ??
       SharedPreferencesUtils().setDark(false);
