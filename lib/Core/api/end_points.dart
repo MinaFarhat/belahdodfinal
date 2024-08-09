@@ -14,7 +14,7 @@ class EndPoints {
   static const String getProductsMainSectionUrl = "$baseUrl/section-products/";
   static const String getSubSectionsUrl = "$baseUrl/section_subsections/";
   static const String getProductsOfSubSectionUrl =
-      "$baseUrl/products/by-subsection/";
+      "$baseUrl/products/get-by-subsection/";
   static const String getAdsUrl = "$baseUrl/ad/index";
   static const String getDetailsOfOfferUrl = "$baseUrl/offer/mobile/";
   static const String getAllOffersUrl = "$baseUrl/offer/index";

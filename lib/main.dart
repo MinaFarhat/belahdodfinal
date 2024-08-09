@@ -105,8 +105,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await requestPermission();
-
-  // await configureDependencies();
   await NotificationViewer.initialize();
   HttpOverrides.global = MyHttpOverrides();
   FirebaseMessaging.onBackgroundMessage(_backgroundHandler);

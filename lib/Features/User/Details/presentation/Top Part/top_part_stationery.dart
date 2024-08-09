@@ -64,7 +64,7 @@ class TopPartStationery extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.5,
                         decoration: BoxDecoration(
-                          color: Colors.transparent,
+                          color: Colors.grey.shade400,
                           image: DecorationImage(
                             image: CachedNetworkImageProvider(imageUrl),
                             fit: BoxFit.cover,

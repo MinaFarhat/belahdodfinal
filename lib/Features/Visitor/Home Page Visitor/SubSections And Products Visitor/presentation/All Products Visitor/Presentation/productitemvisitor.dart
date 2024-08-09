@@ -83,7 +83,7 @@ class ProductItemVisitor extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: Colors.white,
+                          color: Colors.grey.shade400,
                           image: const DecorationImage(
                             image: AssetImage("assets/images/logo.png"),
                             fit: BoxFit.cover,

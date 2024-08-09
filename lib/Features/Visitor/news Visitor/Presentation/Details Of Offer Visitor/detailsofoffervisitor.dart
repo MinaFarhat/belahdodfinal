@@ -105,6 +105,7 @@ class _DetailsOfOfferVisitorState extends State<DetailsOfOfferVisitor> {
                                     MediaQuery.of(context).size.height * 0.45,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18),
+                                  color: Colors.grey.shade400,
                                   image: DecorationImage(
                                     image: CachedNetworkImageProvider(
                                         widget.offerImage),
