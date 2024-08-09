@@ -6,5 +6,6 @@ abstract class BaseReposotryLogin {
   Future<Either<NetworkExceptions, LoginEntity>> login(
     String name,
     String password,
+    String deviceToken,
   );
 }

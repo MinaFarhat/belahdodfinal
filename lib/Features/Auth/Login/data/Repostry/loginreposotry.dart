@@ -19,10 +19,11 @@ class LoginReposotryImpl implements BaseReposotryLogin {
 
   @override
   Future<Either<NetworkExceptions, LoginEntity>> login(
-      String name, String password) async {
+      String name, String password, String deviceToken) async {
     if (await _networkInfo.isConnected) {
       try {
-        final response = await _loginWebService.login(name, password);
+        final response =
+            await _loginWebService.login(name, password, deviceToken);
         return Right(response);
       } catch (e) {
         return Left(NetworkExceptions.getException(e));

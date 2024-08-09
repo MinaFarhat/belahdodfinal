@@ -1,7 +1,7 @@
 class EndPoints {
   static const String baseUrl = "http://10.0.2.2:8000/api";
   static const String createAccountUrl = "$baseUrl/register";
-  static const String loginUrl = "$baseUrl/login";
+  static const String loginUrl = "$baseUrl/login-mobile";
   static const String addToCartUrl = "$baseUrl/cart/";
   static const String cartItemsUrl = "$baseUrl/cart";
   static const String deleteItemFromCartUrl = "$baseUrl/cart/";

@@ -1,9 +1,12 @@
+// ignore_for_file: avoid_print
+
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
 import 'package:belahododfinal/Features/Auth/Login/cubit/login_cubit.dart';
 import 'package:belahododfinal/Features/Auth/waitingscreen.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/field_name.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -19,6 +22,11 @@ class LogIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<String?> fetchDeviceToken() async {
+      String? token = await FirebaseMessaging.instance.getToken();
+      return token;
+    }
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -165,13 +173,17 @@ class LogIn extends StatelessWidget {
                       return InkWell(
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
-                        onTap: () {
+                        onTap: () async {
                           if (_fullnamekey.currentState!.validate() &&
                               _passwordkey.currentState!.validate()) {
+                            final deviceToken = await fetchDeviceToken();
+                            // ignore: use_build_context_synchronously
                             context.read<LoginCubit>().emitLogin(
                                   _fullnamecontroller.text,
                                   _passwordcontroller.text,
+                                  deviceToken!,
                                 );
+                            print("The device token is:$deviceToken");
                           }
                         },
                         child: Container(
@@ -198,13 +210,17 @@ class LogIn extends StatelessWidget {
                       return InkWell(
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
-                        onTap: () {
+                        onTap: () async {
                           if (_fullnamekey.currentState!.validate() &&
                               _passwordkey.currentState!.validate()) {
+                            final deviceToken = await fetchDeviceToken();
+                            // ignore: use_build_context_synchronously
                             context.read<LoginCubit>().emitLogin(
                                   _fullnamecontroller.text,
                                   _passwordcontroller.text,
+                                  deviceToken!,
                                 );
+                            print("The device token is:$deviceToken");
                           }
                         },
                         child: Container(

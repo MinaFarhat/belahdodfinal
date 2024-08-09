@@ -7,6 +7,7 @@ abstract class LoginWebService {
   Future<LoginEntity> login(
     String name,
     String password,
+    String deviceToken,
   );
 }
 
@@ -17,12 +18,13 @@ class LoginWebServiceImpl implements LoginWebService {
   LoginWebServiceImpl(this._apiConsumer);
 
   @override
-  Future<LoginEntity> login(String name, String password) async {
+  Future<LoginEntity> login(String name, String password,String deviceToken) async {
     final response = await _apiConsumer.post(
       EndPoints.loginUrl,
       body: {
         "name": name,
         "password": password,
+        "device_token":deviceToken,
       },
     );
     return LoginEntity.fromJson(response);
