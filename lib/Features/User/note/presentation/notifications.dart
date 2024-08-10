@@ -1,6 +1,6 @@
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
-import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.dart';
+import 'package:belahododfinal/Features/User/note/Manager/Get%20Notification%20Cubit/get_notifications_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -117,7 +117,18 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                       .getNotifications[index].noteDescription,
                                   isRead: getnotificationsentity
                                       .getNotifications[index].isRead,
-                                  orderId: 1,
+                                  orderId: getnotificationsentity
+                                      .getNotifications[index].orderId,
+                                  userId: getnotificationsentity
+                                      .getNotifications[index].userId,
+                                  sectionId: getnotificationsentity
+                                      .getNotifications[index].sectionId,
+                                  productId: getnotificationsentity
+                                      .getNotifications[index].productId,
+                                  newsId: getnotificationsentity
+                                      .getNotifications[index].newsId,
+                                  offerId: getnotificationsentity
+                                      .getNotifications[index].offerId,
                                 ),
                                 index ==
                                         getnotificationsentity

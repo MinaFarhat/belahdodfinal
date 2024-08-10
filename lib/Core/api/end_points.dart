@@ -49,4 +49,6 @@ class EndPoints {
       "$baseUrl/check-out-with-wallet/";
   static const String voucherPaymentMethodeUrl =
       "$baseUrl/check-out-with-coupon/";
+  static const String changeStateNotificationUrl =
+      "$baseUrl/notification/change_state/";
 }

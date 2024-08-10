@@ -15,11 +15,9 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 // ignore: must_be_immutable
 class DetailsOfOffer extends StatefulWidget {
   const DetailsOfOffer({
-    required this.offerImage,
     required this.offerId,
     super.key,
   });
-  final String offerImage;
   final int offerId;
 
   @override
@@ -102,6 +100,8 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
               );
             },
             success: (detailsofofferentity) {
+              String imageUrl =
+                  'http://10.0.2.2:8000${detailsofofferentity.offerImage}';
               return Scaffold(
                 backgroundColor: SharedPreferencesUtils().getisDark() == false
                     ? Colors.white
@@ -123,7 +123,8 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                                   color: Colors.grey.shade400,
                                   image: DecorationImage(
                                     image: CachedNetworkImageProvider(
-                                        widget.offerImage),
+                                      imageUrl,
+                                    ),
                                     fit: BoxFit.cover,
                                     onError: (exception, stackTrace) {
                                       Stack(

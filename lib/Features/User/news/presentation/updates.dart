@@ -423,7 +423,6 @@ class _UpdatesState extends State<Updates> {
                                       return DetailsOfOffer(
                                         offerId: getalloffersentity
                                             .offers[index].offerId,
-                                        offerImage: imageUrl,
                                       );
                                     },
                                   ),

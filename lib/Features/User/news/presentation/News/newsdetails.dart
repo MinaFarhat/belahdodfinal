@@ -166,7 +166,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                             overlayColor:
                                 WidgetStateProperty.all(Colors.transparent),
                             onTap: () {
-                              Navigator.of(context).pop();
+                              Navigator.pop(context);
                             },
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.1,

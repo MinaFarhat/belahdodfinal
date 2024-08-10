@@ -28,6 +28,12 @@ GetNotificationsData _$GetNotificationsDataFromJson(
       json['description'] as String,
       json['is_read'] as bool,
       (json['type'] as num).toInt(),
+      (json['order_id'] as num?)?.toInt(),
+      (json['user_id'] as num?)?.toInt(),
+      (json['section_id'] as num?)?.toInt(),
+      (json['product_id'] as num?)?.toInt(),
+      (json['news_id'] as num?)?.toInt(),
+      (json['offer_id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$GetNotificationsDataToJson(
@@ -38,4 +44,10 @@ Map<String, dynamic> _$GetNotificationsDataToJson(
       'description': instance.noteDescription,
       'is_read': instance.isRead,
       'type': instance.noteType,
+      'order_id': instance.orderId,
+      'user_id': instance.userId,
+      'section_id': instance.sectionId,
+      'product_id': instance.productId,
+      'news_id': instance.newsId,
+      'offer_id': instance.offerId,
     };

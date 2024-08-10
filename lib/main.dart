@@ -32,7 +32,8 @@ import 'package:belahododfinal/Features/User/news/Manager/Details%20of%20Offer%2
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/New%20Details%20Cubit/new_details_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/News%20Cubit/news_cubit.dart';
-import 'package:belahododfinal/Features/User/note/cubit/get_notifications_cubit.dart';
+import 'package:belahododfinal/Features/User/note/Manager/Change%20State%20Notification%20Cubit/change_state_note_cubit.dart';
+import 'package:belahododfinal/Features/User/note/Manager/Get%20Notification%20Cubit/get_notifications_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Offer%20Cubit/send_offer_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Address/Send%20Order%20Cubit/send_order_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Check%20Balance%20Cubit/check_balance_cubit.dart';
@@ -320,6 +321,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<PayByVoucherCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<ChangeStateNoteCubit>(),
         ),
       ],
       child: MaterialApp(

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
-import 'package:belahododfinal/Features/User/navbar.dart';
+// import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Check%20Balance%20Cubit/check_balance_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Transfer%20Cubit/transfer_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Wallet%20Cubit/wallet_cubit.dart';
@@ -211,14 +211,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                         gravity: ToastGravity.BOTTOM,
                                         backgroundColor: Colors.green,
                                       );
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return const Mynavbar();
-                                          },
-                                        ),
-                                        (Route<dynamic> route) => false,
-                                      );
+                                      Navigator.of(context).pop();
+                                      Navigator.of(context).pop();
                                     } else {
                                       Fluttertoast.showToast(
                                         msg: onarrivalentity.message,
@@ -616,14 +610,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                     gravity: ToastGravity.BOTTOM,
                                     backgroundColor: Colors.green,
                                   );
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return const Mynavbar();
-                                      },
-                                    ),
-                                    (Route<dynamic> route) => false,
-                                  );
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pop();
                                 } else {
                                   Fluttertoast.showToast(
                                     msg: transferentity.message,
@@ -867,14 +855,8 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                 gravity: ToastGravity.BOTTOM,
                                 backgroundColor: Colors.green,
                               );
-                              Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return const Mynavbar();
-                                  },
-                                ),
-                                (Route<dynamic> route) => false,
-                              );
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pop();
                             } else {
                               Fluttertoast.showToast(
                                 msg: onarrivalentity.message,

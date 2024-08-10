@@ -11,6 +11,8 @@ class DetailsofOfferEntity {
   final String offerName;
   @JsonKey(name: "description")
   final String offerDescription;
+  @JsonKey(name: "first_image")
+  final String offerImage;
   @JsonKey(name: "duration")
   final int offerDuration;
   @JsonKey(name: "items")
@@ -24,6 +26,7 @@ class DetailsofOfferEntity {
     this.offerId,
     this.offerName,
     this.offerDescription,
+    this.offerImage,
     this.offerDuration,
     this.productsofOffer,
     this.offerOldPrice,

@@ -1,25 +1,43 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
-import 'package:belahododfinal/Features/User/navbar.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
+import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
+import 'package:belahododfinal/Features/User/news/presentation/Details%20Of%20Offer/detailofoffer.dart';
+import 'package:belahododfinal/Features/User/news/presentation/News/newsdetails.dart';
+import 'package:belahododfinal/Features/User/note/Manager/Change%20State%20Notification%20Cubit/change_state_note_cubit.dart';
+import 'package:belahododfinal/Features/User/note/Manager/Get%20Notification%20Cubit/get_notifications_cubit.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/presentation/payment_mehods.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-// ignore: must_be_immutable
 class NotificationItem extends StatelessWidget {
-  int noteId;
-  int noteType;
-  String title;
-  String subtitle;
-  bool isRead;
-  int orderId;
-  NotificationItem({
+  final int noteId;
+  final int noteType;
+  final String title;
+  final String subtitle;
+  final bool isRead;
+  final int? orderId;
+  final int? userId;
+  final int? sectionId;
+  final int? productId;
+  final int? newsId;
+  final int? offerId;
+  const NotificationItem({
     required this.noteId,
     required this.noteType,
     required this.title,
     required this.subtitle,
     required this.isRead,
     required this.orderId,
+    required this.userId,
+    required this.sectionId,
+    required this.productId,
+    required this.newsId,
+    required this.offerId,
     super.key,
   });
 
@@ -29,21 +47,99 @@ class NotificationItem extends StatelessWidget {
       overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
         if (noteType == 1) {
+          context.read<ChangeStateNoteCubit>().changeStateNote(noteId);
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return  PaymentMethods(orderId: orderId,);
+                return PaymentMethods(
+                  orderId: orderId!,
+                );
               },
             ),
-          );
-        } else {
-          Navigator.of(context).pushReplacement(
+          ).then(
+              (_) => context.read<GetNotificationsCubit>().getNotifications());
+        } else if (noteType == 2) {
+          context.read<ChangeStateNoteCubit>().changeStateNote(noteId);
+          Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return const Mynavbar();
+                return DetailsOfOffer(
+                  offerId: offerId!,
+                );
               },
             ),
-          );
+          ).then(
+              (_) => context.read<GetNotificationsCubit>().getNotifications());
+        } else if (noteType == 3) {
+          context.read<ChangeStateNoteCubit>().changeStateNote(noteId);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return NewsDetails(
+                  newId: newsId!,
+                );
+              },
+            ),
+          ).then(
+              (_) => context.read<GetNotificationsCubit>().getNotifications());
+        } else if (noteType == 4) {
+          context.read<ChangeStateNoteCubit>().changeStateNote(noteId);
+          if (sectionId == 1) {
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsBook(
+                      productID: productId!,
+                    ),
+                  ),
+                )
+                .then((_) =>
+                    context.read<GetNotificationsCubit>().getNotifications());
+          } else if (sectionId == 2) {
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsGame(
+                      productID: productId!,
+                    ),
+                  ),
+                )
+                .then((_) =>
+                    context.read<GetNotificationsCubit>().getNotifications());
+          } else if (sectionId == 3) {
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsStationery(
+                      productID: productId!,
+                    ),
+                  ),
+                )
+                .then((_) =>
+                    context.read<GetNotificationsCubit>().getNotifications());
+          } else if (sectionId == 4) {
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsQurans(
+                      productID: productId!,
+                    ),
+                  ),
+                )
+                .then((_) =>
+                    context.read<GetNotificationsCubit>().getNotifications());
+          } else if (sectionId == 5 || sectionId! > 5) {
+            Navigator.of(context)
+                .push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailsBase(
+                      productID: productId!,
+                    ),
+                  ),
+                )
+                .then((_) =>
+                    context.read<GetNotificationsCubit>().getNotifications());
+          }
         }
       },
       child: Padding(

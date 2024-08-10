@@ -28,6 +28,18 @@ class GetNotificationsData {
   final bool isRead;
   @JsonKey(name: "type")
   final int noteType;
+  @JsonKey(name: "order_id")
+  final int? orderId;
+  @JsonKey(name: "user_id")
+  final int? userId;
+  @JsonKey(name: "section_id")
+  final int? sectionId;
+  @JsonKey(name: "product_id")
+  final int? productId;
+  @JsonKey(name: "news_id")
+  final int? newsId;
+  @JsonKey(name: "offer_id")
+  final int? offerId;
 
   GetNotificationsData(
     this.noteId,
@@ -35,6 +47,12 @@ class GetNotificationsData {
     this.noteDescription,
     this.isRead,
     this.noteType,
+    this.orderId,
+    this.userId,
+    this.sectionId,
+    this.productId,
+    this.newsId,
+    this.offerId,
   );
   factory GetNotificationsData.fromJson(Map<String, dynamic> json) =>
       _$GetNotificationsDataFromJson(json);

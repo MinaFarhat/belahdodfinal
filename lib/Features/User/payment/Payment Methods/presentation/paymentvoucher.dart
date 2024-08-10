@@ -1,7 +1,6 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
-import 'package:belahododfinal/Features/User/navbar.dart';
 import 'package:belahododfinal/Features/User/payment/Payment%20Methods/Manager/Pay%20By%20Voucher%20Cubit/pay_by_voucher_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -288,14 +287,8 @@ class _PaymentVoucherState extends State<PaymentVoucher> {
                                         gravity: ToastGravity.BOTTOM,
                                         backgroundColor: Colors.green,
                                       );
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return const Mynavbar();
-                                          },
-                                        ),
-                                        (Route<dynamic> route) => false,
-                                      );
+                                      Navigator.of(context).pop();
+                                      Navigator.of(context).pop();
                                     } else {
                                       Fluttertoast.showToast(
                                         msg: paybyvoucherentty.message,
