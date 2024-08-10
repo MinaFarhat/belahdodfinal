@@ -82,11 +82,12 @@ Future<void> _backgroundHandler(RemoteMessage message) async {
   }
 }
 
-Future<void> _forgroundHandler(RemoteMessage message) async {
-  print('Received message in forground: ${message.data}');
+Future<void> _foregroundHandler(RemoteMessage message) async {
+  print('Received message in foreground: ${message.data}');
   if (message.notification != null) {
     print('Notification Title: ${message.notification!.title}');
     print('Notification Body: ${message.notification!.body}');
+    await NotificationViewer.display(message);
   }
 }
 
@@ -116,7 +117,10 @@ void main() async {
   await NotificationViewer.initialize();
   HttpOverrides.global = MyHttpOverrides();
   FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
-  FirebaseMessaging.onMessageOpenedApp.listen(_forgroundHandler);
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+    await _foregroundHandler(message);
+  });
+  FirebaseMessaging.onMessageOpenedApp.listen(_foregroundHandler);
   await SharedPreferencesUtils().init();
   SharedPreferencesUtils().getisDark() ??
       SharedPreferencesUtils().setDark(false);
