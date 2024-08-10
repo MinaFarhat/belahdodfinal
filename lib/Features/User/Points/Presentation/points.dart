@@ -1,3 +1,5 @@
+import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Features/User/Points/Presentation/Replace%20the%20Points%20for%20Voucher/replacepoints.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -9,16 +11,14 @@ class PointsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              transform: GradientRotation(50),
+              transform: const GradientRotation(50),
               colors: [
-                Color(0xFFEC0E0E),
-                Color(0xFFE0E40E),
-                Color(0xFF10D417),
-                Color(0xFF0D75F0),
+                Colors.deepPurple.shade700,
+                ColorConstant.shadowColor,
               ],
             ),
           ),
@@ -59,7 +59,7 @@ class PointsScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.035,
+                height: MediaQuery.of(context).size.height * 0.07,
               ),
               buildSection(
                 context: context,
@@ -69,17 +69,17 @@ class PointsScreen extends StatelessWidget {
                     'يساعد نظام أصدقاء بلا حدود على إعطاء العملاء نقاط ولاء من أجل استعمالها بعمليات الشراء أو الاستبدال داخل التطبيق.',
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.025,
+                height: MediaQuery.of(context).size.height * 0.04,
               ),
               buildSection(
                 context: context,
                 icon: Icons.help_outline,
                 title: 'كيف تحصل على النقاط؟',
                 content:
-                    'يمكنك الحصول على نقاط إضافية بعد القيام بعدد معين من عمليات الشراء داخل التطبيق أو من خلال إنفاق مبلغ معين داخل التطبيق أو من خلال مشاركة التطبيق بين أصدقائك.',
+                    'يمكنك الحصول على نقاط إضافية بعد القيام بعدد معين من عمليات الشراء داخل التطبيق أو من خلال إنفاق مبلغ معين داخل التطبيق .',
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.025,
+                height: MediaQuery.of(context).size.height * 0.04,
               ),
               buildSection(
                 context: context,
@@ -90,38 +90,58 @@ class PointsScreen extends StatelessWidget {
                 extraContent: Column(
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.008,
+                      height: MediaQuery.of(context).size.height * 0.015,
                     ),
                     buildButton(
                       context: context,
                       text: 'استبدال النقاط للحصول على قسيمة',
-                      ontap: () {},
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.016,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.85,
-                      child: Text(
-                        "يمكنك استبدال النقاط للحصول على كود حسم يسمح لك بالحصول على حسم عند عملية شراء منتج داخل التطبيق.",
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          color: Colors.grey.shade900,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.008,
-                    ),
-                    buildButton(
-                      context: context,
-                      text: 'استبدال النقاط للحصول على كود خصم',
-                      ontap: () {},
+                      ontap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const ReplacePoints();
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
+                // extraContent: Column(
+                //   children: [
+                //     SizedBox(
+                //       height: MediaQuery.of(context).size.height * 0.008,
+                //     ),
+                //     buildButton(
+                //       context: context,
+                //       text: 'استبدال النقاط للحصول على قسيمة',
+                //       ontap: () {},
+                //     ),
+                //     SizedBox(
+                //       height: MediaQuery.of(context).size.height * 0.016,
+                //     ),
+                //     SizedBox(
+                //       width: MediaQuery.of(context).size.width * 0.85,
+                //       child: Text(
+                //         "يمكنك استبدال النقاط للحصول على كود حسم يسمح لك بالحصول على حسم عند عملية شراء منتج داخل التطبيق.",
+                //         textDirection: TextDirection.rtl,
+                //         style: TextStyle(
+                //           color: Colors.grey.shade900,
+                //           fontSize: 17,
+                //           fontWeight: FontWeight.bold,
+                //         ),
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       height: MediaQuery.of(context).size.height * 0.008,
+                //     ),
+                //     buildButton(
+                //       context: context,
+                //       text: 'استبدال النقاط للحصول على كود خصم',
+                //       ontap: () {},
+                //     ),
+                //   ],
+                // ),
               ),
             ],
           ),

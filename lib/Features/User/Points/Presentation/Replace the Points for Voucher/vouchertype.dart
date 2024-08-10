@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class VouchersShape extends StatelessWidget {
-  const VouchersShape({
-    required this.percent,
+class VoucherType extends StatelessWidget {
+  const VoucherType({
+    required this.size,
     super.key,
   });
-  final int percent;
+  final int size;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,7 +16,7 @@ class VouchersShape extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.4,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            gradient: (percent >= 0 && percent <= 30)
+            gradient: (size == 100)
                 ? const LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -26,7 +26,7 @@ class VouchersShape extends StatelessWidget {
                         Color(0xFF60DA15),
                         Colors.yellowAccent,
                       ])
-                : (percent >= 31 && percent <= 60)
+                : (size == 150)
                     ? const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
@@ -36,7 +36,7 @@ class VouchersShape extends StatelessWidget {
                             Color(0xFFBE15DA),
                             Colors.pink,
                           ])
-                    : (percent >= 61 && percent <= 90)
+                    : (size == 200)
                         ? LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
@@ -47,16 +47,27 @@ class VouchersShape extends StatelessWidget {
                               const Color(0xFFDA1515),
                             ],
                           )
-                        : const LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            tileMode: TileMode.mirror,
-                            colors: [
-                              Color(0xFFDA1955),
-                              Color(0xFFFB7A12),
-                              Color(0xFFFF0D57),
-                            ],
-                          ),
+                        : (size == 250)
+                            ? const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                tileMode: TileMode.mirror,
+                                colors: [
+                                  Color(0xFFDA1955),
+                                  Color(0xFFFB7A12),
+                                  Color(0xFFFF0D57),
+                                ],
+                              )
+                            : const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                tileMode: TileMode.mirror,
+                                colors: [
+                                  Color(0xFFFFD700),
+                                  Color(0xFFFFC300),
+                                  Color(0xFFB8860B),
+                                ],
+                              ),
           ),
           child: Stack(
             children: [
@@ -197,51 +208,65 @@ class VouchersShape extends StatelessWidget {
               ),
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.07,
-                right: (percent == 0 ||
-                        percent == 1 ||
-                        percent == 2 ||
-                        percent == 3 ||
-                        percent == 4 ||
-                        percent == 5 ||
-                        percent == 6 ||
-                        percent == 7 ||
-                        percent == 8 ||
-                        percent == 9)
-                    ? MediaQuery.of(context).size.width * 0.23
-                    : MediaQuery.of(context).size.width * 0.125,
-                child: Text(
-                  "$percent",
-                  style: TextStyle(
-                    fontSize: 120,
-                    color: Colors.grey.shade300.withOpacity(0.35),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                right: MediaQuery.of(context).size.width * 0.05,
+                child: size == 300
+                    ? Text(
+                        size.toString(),
+                        style: TextStyle(
+                          fontSize: 120,
+                          color: Colors.grey.shade300.withOpacity(0.6),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    : Text(
+                        size.toString(),
+                        style: TextStyle(
+                          fontSize: 120,
+                          color: Colors.grey.shade300.withOpacity(0.35),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
               ),
               Positioned(
-                top: MediaQuery.of(context).size.height * 0.18,
-                right: MediaQuery.of(context).size.width * 0.24,
-                child: Text(
-                  "%$percent",
-                  style: const TextStyle(
-                    fontSize: 40,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                top: MediaQuery.of(context).size.height * 0.2,
+                right: MediaQuery.of(context).size.width * 0.19,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      "ألف",
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.015,
+                    ),
+                    Text(
+                      size.toString(),
+                      style: const TextStyle(
+                        fontSize: 40,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.255,
-                right: MediaQuery.of(context).size.width * 0.225,
-                child: const Text(
-                  "الإستهلاك",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   top: MediaQuery.of(context).size.height * 0.255,
+              //   right: MediaQuery.of(context).size.width * 0.225,
+              //   child: const Text(
+              //     "الإستهلاك",
+              //     style: TextStyle(
+              //       fontSize: 18,
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.305,
                 child: SizedBox(

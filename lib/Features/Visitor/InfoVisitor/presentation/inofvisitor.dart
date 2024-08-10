@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -21,15 +22,13 @@ class _InformationVisitorState extends State<InformationVisitor> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color(0xFFEC0E0E),
-                Color(0xFFE0E40E),
-                Color(0xFF10D417),
-                Color(0xFF0D75F0),
+                Colors.deepPurple.shade700,
+                ColorConstant.shadowColor,
               ],
             ),
           ),
@@ -59,7 +58,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
                     overflow: TextOverflow.visible,
                     style: TextStyle(
                       color: Colors.grey.shade900,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -134,7 +133,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
                         "مكان دار الحافظ",
                         style: TextStyle(
                           color: Colors.grey.shade900,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -144,7 +143,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
                       Icon(
                         PhosphorIcons.mapPin(PhosphorIconsStyle.regular),
                         color: Colors.white,
-                        size: 28,
+                        size: 24,
                       ),
                     ],
                   ),
@@ -163,7 +162,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
                         "معلومات التواصل",
                         style: TextStyle(
                           color: Colors.grey.shade900,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -173,7 +172,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
                       Icon(
                         PhosphorIcons.headset(PhosphorIconsStyle.regular),
                         color: Colors.white,
-                        size: 28,
+                        size: 24,
                       ),
                     ],
                   ),
@@ -189,7 +188,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
                           "P.O.Box:",
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -200,7 +199,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
                           "31453",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -211,7 +210,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
                           ":ص.ب",
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -245,7 +244,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
             subtitle,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -256,7 +255,7 @@ class _InformationVisitorState extends State<InformationVisitor> {
             title,
             style: const TextStyle(
               color: Colors.black,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),
