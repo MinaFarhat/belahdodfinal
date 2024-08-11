@@ -176,12 +176,13 @@ class LogIn extends StatelessWidget {
                         onTap: () async {
                           if (_fullnamekey.currentState!.validate() &&
                               _passwordkey.currentState!.validate()) {
-                            final deviceToken = await fetchDeviceToken();
+                            final deviceToken =
+                                await fetchDeviceToken() ?? 'unknown';
                             // ignore: use_build_context_synchronously
                             context.read<LoginCubit>().emitLogin(
                                   _fullnamecontroller.text,
                                   _passwordcontroller.text,
-                                  deviceToken!,
+                                  deviceToken,
                                 );
                             print("The device token is:$deviceToken");
                           }
@@ -213,12 +214,13 @@ class LogIn extends StatelessWidget {
                         onTap: () async {
                           if (_fullnamekey.currentState!.validate() &&
                               _passwordkey.currentState!.validate()) {
-                            final deviceToken = await fetchDeviceToken();
+                            final deviceToken =
+                                await fetchDeviceToken() ?? 'unknown';
                             // ignore: use_build_context_synchronously
                             context.read<LoginCubit>().emitLogin(
                                   _fullnamecontroller.text,
                                   _passwordcontroller.text,
-                                  deviceToken!,
+                                  deviceToken,
                                 );
                             print("The device token is:$deviceToken");
                           }
@@ -246,6 +248,44 @@ class LogIn extends StatelessWidget {
                     loading: () {
                       return CircularProgressIndicator(
                         color: ColorConstant.mainColor,
+                      );
+                    },
+                    success: (loginEntity) {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () async {
+                          if (_fullnamekey.currentState!.validate() &&
+                              _passwordkey.currentState!.validate()) {
+                            final deviceToken =
+                                await fetchDeviceToken() ?? 'unknown';
+                            // ignore: use_build_context_synchronously
+                            context.read<LoginCubit>().emitLogin(
+                                  _fullnamecontroller.text,
+                                  _passwordcontroller.text,
+                                  deviceToken,
+                                );
+                            print("The device token is:$deviceToken");
+                          }
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          height: MediaQuery.of(context).size.height * 0.065,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: ColorConstant.mainColor,
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "تسجيل الدخول",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
                       );
                     },
                   );

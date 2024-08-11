@@ -163,7 +163,7 @@ class NotificationItem extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.001,
+                  height: MediaQuery.of(context).size.height * 0.005,
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.72,
@@ -184,12 +184,12 @@ class NotificationItem extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.005,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.7,
+                  width: MediaQuery.of(context).size.width * 0.72,
                   child: Text(
                     subtitle,
                     textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
-                    maxLines: 5,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -207,23 +207,38 @@ class NotificationItem extends StatelessWidget {
             Stack(
               children: [
                 CircleAvatar(
-                  radius: 35,
-                  backgroundColor: Colors.blue,
-                  // backgroundImage: AssetImage("assets/images/notification.png"),
-                  child: Icon(
-                    PhosphorIcons.newspaper(PhosphorIconsStyle.regular),
-                  ),
+                  radius: 32,
+                  backgroundImage: noteType == 1
+                      ? const AssetImage("assets/images/payment.png")
+                      : noteType == 2
+                          ? const AssetImage(
+                              "assets/images/offer1Notification.png")
+                          : noteType == 3
+                              ? const AssetImage("assets/images/news.png")
+                              : const AssetImage("assets/images/product.png"),
+                  backgroundColor: noteType == 1
+                      ? Colors.green.shade500
+                      : noteType == 2
+                          ? Colors.blueAccent.shade100
+                          : noteType == 3
+                              ? Colors.yellow.shade500
+                              : ColorConstant.mainColor,
                 ),
                 Positioned(
                   bottom: 2,
                   child: Center(
                     child: CircleAvatar(
                       radius: 12,
-                      backgroundColor: ColorConstant.mainColor,
+                      backgroundColor:
+                          SharedPreferencesUtils().getisDark() == false
+                              ? Colors.grey.shade900
+                              : Colors.white,
                       child: Icon(
                         PhosphorIcons.bellRinging(PhosphorIconsStyle.regular),
                         size: 18,
-                        color: Colors.white,
+                        color: SharedPreferencesUtils().getisDark() == false
+                            ? Colors.white
+                            : Colors.grey.shade900,
                       ),
                     ),
                   ),
