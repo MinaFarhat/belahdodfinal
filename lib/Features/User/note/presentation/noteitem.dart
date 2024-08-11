@@ -175,7 +175,7 @@ class NotificationItem extends StatelessWidget {
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: SharedPreferencesUtils().getisDark() == false
-                          ? Colors.grey.shade900
+                          ? Colors.black
                           : Colors.white,
                     ),
                   ),
@@ -194,7 +194,7 @@ class NotificationItem extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: SharedPreferencesUtils().getisDark() == false
-                          ? Colors.grey.shade600
+                          ? Colors.grey.shade900
                           : Colors.grey.shade400,
                     ),
                   ),
@@ -206,9 +206,13 @@ class NotificationItem extends StatelessWidget {
             ),
             Stack(
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 35,
-                  backgroundImage: AssetImage("assets/images/notification.png"),
+                  backgroundColor: Colors.blue,
+                  // backgroundImage: AssetImage("assets/images/notification.png"),
+                  child: Icon(
+                    PhosphorIcons.newspaper(PhosphorIconsStyle.regular),
+                  ),
                 ),
                 Positioned(
                   bottom: 2,
