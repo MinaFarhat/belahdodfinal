@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/search/Populer%20Products/Popular%20Products%20Cubit/popular_products_cubit.dart';
@@ -73,7 +74,7 @@ class _PopularProductsVisitorState extends State<PopularProductsVisitor> {
                   final startIndex = index * 5;
                   final images = popularproductsentity.popularProducts
                       .sublist(startIndex, startIndex + 5)
-                      .map((e) => 'http://10.0.2.2:8000${e.productImage}')
+                      .map((e) => '${EndPoints.imageUrl}${e.productImage}')
                       .toList();
                   final productIds = popularproductsentity.popularProducts
                       .sublist(startIndex, startIndex + 5)

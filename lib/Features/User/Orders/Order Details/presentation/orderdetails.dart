@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Orders/Order%20Details/Order%20Details%20Cubit/order_details_cubit.dart';
@@ -168,7 +169,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       itemBuilder: (context, index) {
                         if (index < orderdetailsentity.orderProducts.length) {
                           String imageUrl =
-                              'http://10.0.2.2:8000${orderdetailsentity.orderProducts[index].firstImage}';
+                              '${EndPoints.imageUrl}${orderdetailsentity.orderProducts[index].firstImage}';
                           return OrderItemDetails(
                             orderId: widget.orderId,
                             image: imageUrl,

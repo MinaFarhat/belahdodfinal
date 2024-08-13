@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/DisLike%20Cubit/dis_like_cubit.dart';
@@ -58,7 +59,7 @@ class TopPartBase extends StatelessWidget {
                   },
                 ),
                 items: photos.map((i) {
-                  String imageUrl = 'http://10.0.2.2:8000$i';
+                  String imageUrl = '${EndPoints.imageUrl}$i';
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(

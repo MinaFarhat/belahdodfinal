@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
@@ -81,7 +82,7 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
                     itemCount: getfavoritesentity.favorites.length,
                     itemBuilder: ((context, index) {
                       String imageUrl =
-                          'http://10.0.2.2:8000${getfavoritesentity.favorites[index].image}';
+                          '${EndPoints.imageUrl}${getfavoritesentity.favorites[index].image}';
                       return Column(
                         children: [
                           FavItem(

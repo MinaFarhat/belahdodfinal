@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Cart%20Items%20Cubit/cartitems_cubit.dart';
@@ -83,8 +84,8 @@ class _CartState extends State<Cart> {
                     height: double.infinity,
                     decoration: BoxDecoration(
                       color: SharedPreferencesUtils().getisDark() == false
-                          ? ColorConstant.shadowColor
-                          : Colors.grey.shade400,
+                          ? ColorConstant.mainColor
+                          : ColorConstant.shadowColor,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
@@ -98,7 +99,7 @@ class _CartState extends State<Cart> {
                         itemBuilder: (context, index) {
                           if (index < getcartitemsentity.products.length) {
                             String imageUrl =
-                                'http://10.0.2.2:8000${getcartitemsentity.products[index].image}';
+                                '${EndPoints.imageUrl}${getcartitemsentity.products[index].image}';
                             return CartItem(
                               sectionId:
                                   getcartitemsentity.products[index].sectionId,

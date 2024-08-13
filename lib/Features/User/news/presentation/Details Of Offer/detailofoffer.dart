@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
@@ -101,7 +102,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
             },
             success: (detailsofofferentity) {
               String imageUrl =
-                  'http://10.0.2.2:8000${detailsofofferentity.offerImage}';
+                  '${EndPoints.imageUrl}${detailsofofferentity.offerImage}';
               return Scaffold(
                 backgroundColor: SharedPreferencesUtils().getisDark() == false
                     ? Colors.white
@@ -288,7 +289,7 @@ class _DetailsOfOfferState extends State<DetailsOfOffer> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             String imageUrl =
-                                'http://10.0.2.2:8000${detailsofofferentity.productsofOffer[index]['image']}';
+                                '${EndPoints.imageUrl}${detailsofofferentity.productsofOffer[index]['image']}';
                             return Padding(
                               padding: const EdgeInsets.only(left: 8),
                               child: OfferItems(

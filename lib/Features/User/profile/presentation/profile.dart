@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
@@ -89,7 +90,7 @@ class _ProfileState extends State<Profile> {
             },
             success: (getuserinfoentity) {
               String imageUrl =
-                  'http://10.0.2.2:8000${getuserinfoentity.userProfilePicture}';
+                  '${EndPoints.imageUrl}${getuserinfoentity.userProfilePicture}';
               return Scaffold(
                 backgroundColor: SharedPreferencesUtils().getisDark() == false
                     ? Colors.white

@@ -290,7 +290,7 @@ class FavItem extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.36,
                     height: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: Colors.grey.shade400,
                       borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(20),
                         bottomRight: Radius.circular(20),

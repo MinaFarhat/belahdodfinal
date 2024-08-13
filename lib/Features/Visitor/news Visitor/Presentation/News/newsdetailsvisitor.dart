@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/news/Manager/New%20Details%20Cubit/new_details_cubit.dart';
@@ -67,7 +68,7 @@ class _NewsDetailsVisitorState extends State<NewsDetailsVisitor> {
               },
               success: (getnewdetailsentity) {
                 String imageUrl =
-                    'http://10.0.2.2:8000${getnewdetailsentity.newsImage}';
+                    '${EndPoints.imageUrl}${getnewdetailsentity.newsImage}';
                 return Column(
                   children: [
                     Stack(

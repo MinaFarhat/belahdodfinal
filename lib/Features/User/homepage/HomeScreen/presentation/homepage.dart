@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
@@ -231,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             items: getadsentity.ads.map((ad) {
                                               String imageUrl =
-                                                  'http://10.0.2.2:8000${ad.adImage}';
+                                                  '${EndPoints.imageUrl}${ad.adImage}';
                                               return Builder(
                                                 builder:
                                                     (BuildContext context) {

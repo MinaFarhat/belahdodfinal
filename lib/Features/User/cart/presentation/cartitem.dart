@@ -332,9 +332,7 @@ class CartItemView extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.32,
               height: MediaQuery.of(context).size.height * 0.15,
               decoration: BoxDecoration(
-                color: SharedPreferencesUtils().getisDark() == false
-                    ? Colors.white
-                    : Colors.grey.shade900,
+                color: Colors.grey.shade400,
                 borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(13),
                   bottomRight: Radius.circular(13),

@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
@@ -195,7 +196,7 @@ class SearchPage extends StatelessWidget {
                                       searchresultsentity
                                           .searchResults.length) {
                                     String imageUrl =
-                                        'http://10.0.2.2:8000${searchresultsentity.searchResults[index].productImage}';
+                                        '${EndPoints.imageUrl}${searchresultsentity.searchResults[index].productImage}';
                                     return SearchItem(
                                       productId: searchresultsentity
                                           .searchResults[index].productId,

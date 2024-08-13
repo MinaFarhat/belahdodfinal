@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
@@ -77,7 +78,7 @@ class _NewsDetailsState extends State<NewsDetails> {
               },
               success: (getnewdetailsentity) {
                 String imageUrl =
-                    'http://10.0.2.2:8000${getnewdetailsentity.newsImage}';
+                    '${EndPoints.imageUrl}${getnewdetailsentity.newsImage}';
                 return Column(
                   children: [
                     Stack(
@@ -99,7 +100,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                                           0.4,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(25),
-                                        color: Colors.white,
+                                        color: Colors.grey.shade400,
                                         image: DecorationImage(
                                           image: CachedNetworkImageProvider(
                                             getnewdetailsentity.newsImage,

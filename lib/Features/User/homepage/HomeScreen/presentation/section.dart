@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/cubit/section_cubit.dart';
 import 'package:belahododfinal/Features/User/homepage/HomeScreen/data/Model/productentity.dart';
@@ -95,7 +96,7 @@ class Section extends StatelessWidget {
             shrinkWrap: true,
             itemCount: products.length,
             itemBuilder: (context, i) {
-              String imageUrl = 'http://10.0.2.2:8000${products[i].image}';
+              String imageUrl = '${EndPoints.imageUrl}${products[i].image}';
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Item(

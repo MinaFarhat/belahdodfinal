@@ -108,7 +108,7 @@ class _ItemState extends State<Item> {
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25),
-                            color: Colors.white,
+                            color: Colors.transparent,
                             image: const DecorationImage(
                               image: AssetImage("assets/images/logo.png"),
                               fit: BoxFit.cover,

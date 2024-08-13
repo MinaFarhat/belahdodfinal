@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Reaction%20Cubit/reaction_cubit.dart';
@@ -39,7 +40,7 @@ class TopPartQuraanVisitor extends StatelessWidget {
                   },
                 ),
                 items: photos.map((i) {
-                  String imageUrl = 'http://10.0.2.2:8000$i';
+                  String imageUrl = '${EndPoints.imageUrl}$i';
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(

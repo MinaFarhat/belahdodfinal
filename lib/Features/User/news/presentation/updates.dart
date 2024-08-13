@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
@@ -155,7 +156,7 @@ class _UpdatesState extends State<Updates> {
                                   return Builder(
                                     builder: (BuildContext context) {
                                       String imageUrl =
-                                          'http://10.0.2.2:8000${ad.adImage}';
+                                          '${EndPoints.imageUrl}${ad.adImage}';
                                       return InkWell(
                                         overlayColor: WidgetStateProperty.all(
                                             Colors.transparent),
@@ -184,12 +185,13 @@ class _UpdatesState extends State<Updates> {
                                           margin: const EdgeInsets.symmetric(
                                               horizontal: 6),
                                           decoration: BoxDecoration(
-                                            color: Colors.transparent,
+                                            color: Colors.grey.shade400,
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             image: DecorationImage(
                                               image: CachedNetworkImageProvider(
-                                                  imageUrl),
+                                                imageUrl,
+                                              ),
                                               fit: BoxFit.cover,
                                               onError: (exception, stackTrace) {
                                                 Stack(
@@ -324,7 +326,7 @@ class _UpdatesState extends State<Updates> {
                           itemCount: getnewsentity.news.length,
                           itemBuilder: ((context, index) {
                             String imageUrl =
-                                'http://10.0.2.2:8000${getnewsentity.news[index].newsImage}';
+                                '${EndPoints.imageUrl}${getnewsentity.news[index].newsImage}';
                             return NewTitle(
                               newsId: getnewsentity.news[index].newsId,
                               title: getnewsentity.news[index].newsTitle,
@@ -412,7 +414,7 @@ class _UpdatesState extends State<Updates> {
                           itemCount: getalloffersentity.offers.length,
                           itemBuilder: (context, index) {
                             String imageUrl =
-                                'http://10.0.2.2:8000${getalloffersentity.offers[index].image}';
+                                '${EndPoints.imageUrl}${getalloffersentity.offers[index].image}';
                             return InkWell(
                               overlayColor:
                                   WidgetStateProperty.all(Colors.transparent),
@@ -439,7 +441,7 @@ class _UpdatesState extends State<Updates> {
                                       MediaQuery.of(context).size.width * 0.4,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(25),
-                                    color: Colors.white,
+                                    color: Colors.grey.shade400,
                                     image: DecorationImage(
                                       image:
                                           CachedNetworkImageProvider(imageUrl),
@@ -455,7 +457,7 @@ class _UpdatesState extends State<Updates> {
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(25),
-                                                color: Colors.white,
+                                                color: Colors.transparent,
                                                 image: const DecorationImage(
                                                   image: AssetImage(
                                                       "assets/images/logo.png"),

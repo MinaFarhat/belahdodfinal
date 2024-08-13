@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Auth/Create%20Account/presentation/signup.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/QR%20Generate/qrgeneratevisitor.dart';
@@ -39,7 +40,7 @@ class TopPartGameVisitor extends StatelessWidget {
                   },
                 ),
                 items: photos.map((i) {
-                  String imageUrl = 'http://10.0.2.2:8000$i';
+                  String imageUrl = '${EndPoints.imageUrl}$i';
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(

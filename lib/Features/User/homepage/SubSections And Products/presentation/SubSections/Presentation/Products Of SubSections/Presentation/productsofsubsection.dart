@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
@@ -133,7 +134,7 @@ class _ProductsOfSubSectionState extends State<ProductsOfSubSection> {
                                 .productsofsubsection.length,
                             itemBuilder: (context, index) {
                               String imageUrl =
-                                  'http://10.0.2.2:8000${getproductsofsubsectionentity.productsofsubsection[index].image}';
+                                  '${EndPoints.imageUrl}${getproductsofsubsectionentity.productsofsubsection[index].image}';
                               return ProductItemOfSubSection(
                                 image: imageUrl,
                                 isFavorite: false,

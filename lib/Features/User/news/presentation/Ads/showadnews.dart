@@ -47,6 +47,7 @@ class ShowAdNews extends StatelessWidget {
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.8,
               decoration: BoxDecoration(
+                color: Colors.grey.shade400,
                 image: DecorationImage(
                   image: CachedNetworkImageProvider(
                     image,

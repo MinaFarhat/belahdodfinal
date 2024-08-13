@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/homepage/SubSections%20And%20Products/presentation/SubSections/Presentation/Products%20Of%20SubSections/Get%20Products%20of%20SubSection%20Cubit/getproductsofsubsection_cubit.dart';
@@ -124,7 +125,7 @@ class _ProductsOfSubSectionVisitorState
                                 .productsofsubsection.length,
                             itemBuilder: (context, index) {
                               String imageUrl =
-                                  'http://10.0.2.2:8000${getproductsofsubsectionentity.productsofsubsection[index].image}';
+                                  '${EndPoints.imageUrl}${getproductsofsubsectionentity.productsofsubsection[index].image}';
                               return ProductItemOfSubSectionVisitor(
                                 image: imageUrl,
                                 isFavorite: false,

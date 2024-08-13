@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/SubSections%20And%20Products%20Visitor/presentation/All%20Products%20Visitor/Presentation/productitemvisitor.dart';
@@ -93,7 +94,7 @@ class _AllProductsVisitorState extends State<AllProductsVisitor> {
                                 .productsMainSection.length,
                             itemBuilder: (context, index) {
                               String imageUrl =
-                                  'http://10.0.2.2:8000${getproductsmainsectionentity.productsMainSection[index].productImage}';
+                                  '${EndPoints.imageUrl}${getproductsmainsectionentity.productsMainSection[index].productImage}';
                               return ProductItemVisitor(
                                 image: imageUrl,
                                 sectionId: getproductsmainsectionentity

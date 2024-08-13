@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Searh%20Results%20Cubit/search_results_cubit.dart';
@@ -164,7 +165,7 @@ class SearchPageVisitor extends StatelessWidget {
                                       searchresultsentity
                                           .searchResults.length) {
                                     String imageUrl =
-                                        'http://10.0.2.2:8000${searchresultsentity.searchResults[index].productImage}';
+                                        '${EndPoints.imageUrl}${searchresultsentity.searchResults[index].productImage}';
                                     return SearchItemVisitor(
                                       productId: searchresultsentity
                                           .searchResults[index].productId,

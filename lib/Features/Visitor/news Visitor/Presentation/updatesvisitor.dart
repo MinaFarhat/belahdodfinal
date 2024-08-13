@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
@@ -134,7 +135,7 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                                   return Builder(
                                     builder: (BuildContext context) {
                                       String imageUrl =
-                                          'http://10.0.2.2:8000${ad.adImage}';
+                                          '${EndPoints.imageUrl}${ad.adImage}';
                                       return InkWell(
                                         overlayColor: WidgetStateProperty.all(
                                             Colors.transparent),
@@ -162,7 +163,8 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                                                 BorderRadius.circular(20),
                                             image: DecorationImage(
                                               image: CachedNetworkImageProvider(
-                                                  imageUrl),
+                                                imageUrl,
+                                              ),
                                               fit: BoxFit.cover,
                                               onError: (exception, stackTrace) {
                                                 Stack(
@@ -291,7 +293,7 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                           itemCount: getnewsentity.news.length,
                           itemBuilder: ((context, index) {
                             String imageUrl =
-                                'http://10.0.2.2:8000${getnewsentity.news[index].newsImage}';
+                                '${EndPoints.imageUrl}${getnewsentity.news[index].newsImage}';
                             return Newtitlevisitor(
                               newsId: getnewsentity.news[index].newsId,
                               title: getnewsentity.news[index].newsTitle,
@@ -371,7 +373,7 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                           itemCount: getalloffersentity.offers.length,
                           itemBuilder: (context, index) {
                             String imageUrl =
-                                'http://10.0.2.2:8000${getalloffersentity.offers[index].image}';
+                                '${EndPoints.imageUrl}${getalloffersentity.offers[index].image}';
                             return InkWell(
                               overlayColor:
                                   WidgetStateProperty.all(Colors.transparent),

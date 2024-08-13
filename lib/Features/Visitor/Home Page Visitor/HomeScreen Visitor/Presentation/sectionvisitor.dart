@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/Presentation/itemvisitor.dart';
 import 'package:belahododfinal/Features/Visitor/Home%20Page%20Visitor/HomeScreen%20Visitor/data/Model/productvisitorentity.dart';
@@ -84,7 +85,7 @@ class SectionVisitor extends StatelessWidget {
             shrinkWrap: true,
             itemCount: products.length,
             itemBuilder: (context, i) {
-              String imageUrl = 'http://10.0.2.2:8000${products[i].image}';
+              String imageUrl = '${EndPoints.imageUrl}${products[i].image}';
               return Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: ItemVisitor(

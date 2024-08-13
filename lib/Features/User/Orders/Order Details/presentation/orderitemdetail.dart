@@ -113,7 +113,7 @@ class OrderItemDetails extends StatelessWidget {
                     topLeft: Radius.circular(20),
                     bottomLeft: Radius.circular(20),
                   ),
-                  color: Colors.black,
+                  color: Colors.grey.shade400,
                   image: DecorationImage(
                     image: CachedNetworkImageProvider(image),
                     fit: BoxFit.cover,
