@@ -4,6 +4,7 @@ import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/profile/Manager/Update%20Profile%20Photo%20Cubit/update_profile_photo_cubit.dart';
 import 'package:belahododfinal/Features/User/profile/presentation/Componentes%20of%20Profile/showprofilephoto.dart';
+import 'package:belahododfinal/Features/User/wallet/presentation/wallet.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -275,64 +276,76 @@ class _TopPartProfileState extends State<TopPartProfile> {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.006,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "ل.س",
-              overflow: TextOverflow.ellipsis,
-              textDirection: TextDirection.rtl,
-              style: TextStyle(
-                color: SharedPreferencesUtils().getisDark() == false
-                    ? Colors.grey.shade900
-                    : Colors.white,
-                fontSize: 13,
-                fontWeight: FontWeight.bold,
+        InkWell(
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return Wallet();
+                },
               ),
-            ),
-            // SizedBox(
-            //   width: MediaQuery.of(context).size.width * 0.01,
-            // ),
-            // widget.balance.startsWith("0")
-            //     ? Container()
-            //     : Text(
-            //         "ألف",
-            //         overflow: TextOverflow.ellipsis,
-            //         textDirection: TextDirection.rtl,
-            //         style: TextStyle(
-            //           color: SharedPreferencesUtils().getisDark() == false
-            //               ? Colors.grey.shade900
-            //               : Colors.white,
-            //           fontSize: 18,
-            //           fontWeight: FontWeight.bold,
-            //         ),
-            //       ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.01,
-            ),
-            Text(
-              widget.balance,
-              overflow: TextOverflow.ellipsis,
-              textDirection: TextDirection.rtl,
-              style: TextStyle(
-                color: SharedPreferencesUtils().getisDark() == false
-                    ? Colors.grey.shade900
-                    : Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            );
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "ل.س",
+                overflow: TextOverflow.ellipsis,
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.01,
-            ),
-            Icon(
-              PhosphorIcons.coins(PhosphorIconsStyle.regular),
-              color: SharedPreferencesUtils().getisDark() == false
-                  ? ColorConstant.mainColor
-                  : ColorConstant.shadowColor,
-            ),
-          ],
+              // SizedBox(
+              //   width: MediaQuery.of(context).size.width * 0.01,
+              // ),
+              // widget.balance.startsWith("0")
+              //     ? Container()
+              //     : Text(
+              //         "ألف",
+              //         overflow: TextOverflow.ellipsis,
+              //         textDirection: TextDirection.rtl,
+              //         style: TextStyle(
+              //           color: SharedPreferencesUtils().getisDark() == false
+              //               ? Colors.grey.shade900
+              //               : Colors.white,
+              //           fontSize: 18,
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.01,
+              ),
+              Text(
+                widget.balance,
+                overflow: TextOverflow.ellipsis,
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? Colors.grey.shade900
+                      : Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.01,
+              ),
+              Icon(
+                PhosphorIcons.coins(PhosphorIconsStyle.regular),
+                color: SharedPreferencesUtils().getisDark() == false
+                    ? ColorConstant.mainColor
+                    : ColorConstant.shadowColor,
+              ),
+            ],
+          ),
         ),
       ],
     );
