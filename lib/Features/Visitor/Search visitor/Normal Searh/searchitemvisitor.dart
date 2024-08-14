@@ -1,4 +1,3 @@
-import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_base.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_book.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_game.dart';
@@ -74,7 +73,7 @@ class SearchItemVisitor extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: ColorConstant.mainColor,
+              color: Colors.grey.shade400,
               image: DecorationImage(
                 image: CachedNetworkImageProvider(productImage),
                 fit: BoxFit.cover,

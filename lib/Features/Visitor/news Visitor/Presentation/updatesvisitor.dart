@@ -158,7 +158,7 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                                           margin: const EdgeInsets.symmetric(
                                               horizontal: 6),
                                           decoration: BoxDecoration(
-                                            color: Colors.transparent,
+                                            color: Colors.grey.shade400,
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             image: DecorationImage(
@@ -397,7 +397,7 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                                       MediaQuery.of(context).size.width * 0.4,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(25),
-                                    color: Colors.white,
+                                    color: Colors.grey.shade400,
                                     image: DecorationImage(
                                       image:
                                           CachedNetworkImageProvider(imageUrl),
@@ -413,7 +413,7 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(25),
-                                                color: Colors.white,
+                                                color: Colors.grey.shade400,
                                                 image: const DecorationImage(
                                                   image: AssetImage(
                                                       "assets/images/logo.png"),

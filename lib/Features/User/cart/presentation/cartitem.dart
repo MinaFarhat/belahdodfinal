@@ -173,6 +173,7 @@ class CartItemView extends StatelessWidget {
                               id,
                               context.read<QuantityCubit>().state.quantity,
                             );
+                        context.read<CartitemsCubit>().getcartitems();
                       } else {
                         Fluttertoast.showToast(
                           msg: "لقد وصلت الى الحد المسموح به ",
@@ -233,6 +234,7 @@ class CartItemView extends StatelessWidget {
                               id,
                               context.read<QuantityCubit>().state.quantity,
                             );
+                        context.read<CartitemsCubit>().getcartitems();
                       } else {
                         Fluttertoast.showToast(
                           msg: "لايمكنك إنقاص من كمية هذا المنتج",

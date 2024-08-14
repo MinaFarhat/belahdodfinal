@@ -59,6 +59,7 @@ class PopularItemVisitor extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.35,
         height: MediaQuery.of(context).size.height * 0.31,
         decoration: BoxDecoration(
+          color: Colors.grey.shade400,
           image: DecorationImage(
             image: CachedNetworkImageProvider(imageUrl),
             fit: BoxFit.cover,
@@ -128,6 +129,7 @@ class PopularItemVisitor extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.283,
         height: MediaQuery.of(context).size.height * 0.15,
         decoration: BoxDecoration(
+          color: Colors.grey.shade400,
           image: DecorationImage(
             image: CachedNetworkImageProvider(imageUrl),
             fit: BoxFit.cover,

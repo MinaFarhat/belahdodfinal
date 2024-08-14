@@ -315,7 +315,7 @@ class TopPartStationery extends StatelessWidget {
                                 msg: "تم تسجيل اعجابك",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
-                                backgroundColor: Colors.green,
+                                backgroundColor: ColorConstant.mainColor,
                               );
                               context.read<LikeCubit>().like(productId);
                             } else {

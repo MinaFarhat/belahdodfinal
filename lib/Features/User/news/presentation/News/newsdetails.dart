@@ -87,6 +87,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                           width: double.infinity,
                           height: MediaQuery.of(context).size.height * 0.4,
                           decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
                             image: DecorationImage(
                               image: CachedNetworkImageProvider(
                                 imageUrl,
