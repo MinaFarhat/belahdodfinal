@@ -151,6 +151,7 @@ class PopularItem extends StatelessWidget {
           imageUrl: imageUrl,
           imageBuilder: (context, imageProvider) => Container(
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
               image: DecorationImage(
                 image: imageProvider,
                 fit: BoxFit.cover,
