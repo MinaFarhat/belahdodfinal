@@ -477,8 +477,23 @@ class _AccountSettingsState extends State<AccountSettings> {
                                       );
                                     },
                                     success: (updateuserinfoentity) {
-                                      value = null;
-                                      Navigator.pop(context);
+                                      if (updateuserinfoentity.isSent == true) {
+                                        Fluttertoast.showToast(
+                                          msg: updateuserinfoentity.message,
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          backgroundColor: Colors.green,
+                                        );
+                                        value = null;
+                                        Navigator.pop(context);
+                                      } else {
+                                        Fluttertoast.showToast(
+                                          msg: updateuserinfoentity.message,
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          backgroundColor: Colors.red,
+                                        );
+                                      }
                                     },
                                   );
                                 },

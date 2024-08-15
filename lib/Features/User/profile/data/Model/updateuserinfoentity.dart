@@ -5,10 +5,15 @@ part 'updateuserinfoentity.g.dart';
 
 @JsonSerializable()
 class UpdateUserInfoEntity {
+  @JsonKey(name: "is_sent")
+  final bool isSent;
   @JsonKey(name: "message")
   final String message;
 
-  UpdateUserInfoEntity(this.message);
+  UpdateUserInfoEntity(
+    this.isSent,
+    this.message,
+  );
 
   factory UpdateUserInfoEntity.fromJson(Map<String, dynamic> json) =>
       _$UpdateUserInfoEntityFromJson(json);
