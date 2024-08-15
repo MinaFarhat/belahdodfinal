@@ -60,13 +60,14 @@ class PopularItem extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.35,
         height: MediaQuery.of(context).size.height * 0.31,
         decoration: BoxDecoration(
-          color: Colors.grey.shade400,
+          borderRadius: BorderRadius.circular(4),
+          color: Colors.white,
         ),
         child: CachedNetworkImage(
           imageUrl: imageUrl,
           imageBuilder: (context, imageProvider) => Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(4),
               image: DecorationImage(
                 image: imageProvider,
                 fit: BoxFit.cover,
@@ -84,7 +85,7 @@ class PopularItem extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.35,
                 height: MediaQuery.of(context).size.height * 0.31,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(4),
                   color: Colors.white,
                   image: const DecorationImage(
                     image: AssetImage("assets/images/logo.png"),
@@ -96,7 +97,7 @@ class PopularItem extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.35,
                 height: MediaQuery.of(context).size.height * 0.31,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(4),
                   color: Colors.black.withOpacity(0.1),
                 ),
               ),
@@ -143,7 +144,8 @@ class PopularItem extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.283,
         height: MediaQuery.of(context).size.height * 0.15,
         decoration: BoxDecoration(
-          color: Colors.grey.shade400,
+          borderRadius: BorderRadius.circular(4),
+          color: Colors.white,
         ),
         child: CachedNetworkImage(
           imageUrl: imageUrl,
@@ -165,7 +167,7 @@ class PopularItem extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width * 0.283,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(4),
                   color: Colors.white,
                   image: const DecorationImage(
                     image: AssetImage("assets/images/logo.png"),
@@ -176,7 +178,7 @@ class PopularItem extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width * 0.283,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(4),
                   color: Colors.black.withOpacity(0.1),
                 ),
               ),

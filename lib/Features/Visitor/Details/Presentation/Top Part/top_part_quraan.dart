@@ -43,20 +43,39 @@ class TopPartQuraanVisitor extends StatelessWidget {
                   String imageUrl = '${EndPoints.imageUrl}$i';
                   return Builder(
                     builder: (BuildContext context) {
-                      return Container(
+                      return SizedBox(
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.5,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade400,
-                          image: DecorationImage(
-                            image: CachedNetworkImageProvider(imageUrl),
-                            fit: BoxFit.cover,
-                            onError: (exception, stackTrace) {
-                              Stack(
-                                children: [
-                                  Container(
+                        child: CachedNetworkImage(
+                          imageUrl: imageUrl,
+                          imageBuilder: (context, imageProvider) => Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) => Container(
+                            color: Colors.grey.shade400,
+                            child: Center(
+                              child: CircularProgressIndicator(
+                                color: ColorConstant.mainColor,
+                              ),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            color: Colors.white,
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                Center(
+                                  child: Container(
                                     width:
                                         MediaQuery.of(context).size.width * 0.4,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.4,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(25),
                                       color: Colors.white,
@@ -67,17 +86,12 @@ class TopPartQuraanVisitor extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(25),
-                                      color: Colors.black.withOpacity(0.3),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
+                                ),
+                                Container(
+                                  color: Colors.black.withOpacity(0.1),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

@@ -32,10 +32,39 @@ class OfferItemVisitor extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.4,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: Colors.grey.shade400,
-              image: DecorationImage(
-                image: CachedNetworkImageProvider(image),
-                fit: BoxFit.cover,
+            ),
+            child: CachedNetworkImage(
+              imageUrl: image,
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.white,
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              placeholder: (context, url) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.white,
+                ),
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: ColorConstant.mainColor,
+                  ),
+                ),
+              ),
+              errorWidget: (context, url, error) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.white,
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/logo.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
           ),

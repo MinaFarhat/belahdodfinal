@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_base.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_book.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Presentation/details_game.dart';
@@ -68,39 +69,46 @@ class SearchItemVisitor extends StatelessWidget {
       },
       child: Column(
         children: [
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.45,
             height: MediaQuery.of(context).size.height * 0.2,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.grey.shade400,
-              image: DecorationImage(
-                image: CachedNetworkImageProvider(productImage),
-                fit: BoxFit.cover,
-                onError: (exception, stackTrace) {
-                  Stack(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.white,
-                          image: const DecorationImage(
-                            image: AssetImage("assets/images/logo.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.black.withOpacity(0.3),
-                        ),
-                      ),
-                    ],
-                  );
-                },
+            child: CachedNetworkImage(
+              imageUrl: productImage,
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              placeholder: (context, url) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                ),
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: ColorConstant.mainColor,
+                  ),
+                ),
+              ),
+              errorWidget: (context, url, error) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/logo.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.black.withOpacity(0.1),
+                  ),
+                ),
               ),
             ),
           ),

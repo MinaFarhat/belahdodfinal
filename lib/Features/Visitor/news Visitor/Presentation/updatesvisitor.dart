@@ -158,53 +158,56 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                                           margin: const EdgeInsets.symmetric(
                                               horizontal: 6),
                                           decoration: BoxDecoration(
-                                            color: Colors.grey.shade400,
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            image: DecorationImage(
-                                              image: CachedNetworkImageProvider(
-                                                imageUrl,
+                                          ),
+                                          child: CachedNetworkImage(
+                                            imageUrl: imageUrl,
+                                            imageBuilder:
+                                                (context, imageProvider) =>
+                                                    Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                image: DecorationImage(
+                                                  image: imageProvider,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
-                                              fit: BoxFit.cover,
-                                              onError: (exception, stackTrace) {
-                                                Stack(
-                                                  children: [
+                                            ),
+                                            placeholder: (context, url) =>
+                                                Container(
+                                              color: Colors.white,
+                                              child: Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color:
+                                                      ColorConstant.mainColor,
+                                                ),
+                                              ),
+                                            ),
+                                            errorWidget:
+                                                (context, url, error) =>
                                                     Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.4,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25),
-                                                        color: Colors.white,
-                                                        image:
-                                                            const DecorationImage(
-                                                          image: AssetImage(
-                                                              "assets/images/logo.png"),
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.4,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25),
-                                                        color: Colors.black
-                                                            .withOpacity(0.3),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                image: const DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/logo.png"),
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.black
+                                                        .withOpacity(0.1),
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -397,45 +400,46 @@ class _UpdatesVisitorState extends State<UpdatesVisitor> {
                                       MediaQuery.of(context).size.width * 0.4,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(25),
-                                    color: Colors.grey.shade400,
-                                    image: DecorationImage(
-                                      image:
-                                          CachedNetworkImageProvider(imageUrl),
-                                      fit: BoxFit.cover,
-                                      onError: (exception, stackTrace) {
-                                        Stack(
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.4,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(25),
-                                                color: Colors.grey.shade400,
-                                                image: const DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/logo.png"),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.4,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(25),
-                                                color: Colors.black
-                                                    .withOpacity(0.3),
-                                              ),
-                                            ),
-                                          ],
-                                        );
-                                      },
+                                    color: Colors.white,
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: imageUrl,
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(25),
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    placeholder: (context, url) => Center(
+                                      child: CircularProgressIndicator(
+                                        color: ColorConstant.mainColor,
+                                      ),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(25),
+                                        color: Colors.white,
+                                        image: const DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/logo.png"),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                            color:
+                                                Colors.black.withOpacity(0.1),
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),

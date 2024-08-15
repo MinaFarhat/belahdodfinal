@@ -78,15 +78,39 @@ class _ItemVisitorState extends State<ItemVisitor> {
             width: MediaQuery.of(context).size.width * 0.4,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: Colors.grey.shade400,
-              image: DecorationImage(
-                image: CachedNetworkImageProvider(widget.image),
-                fit: BoxFit.cover,
-                onError: (exception, stackTrace) {
-                  Stack(
-                    children: [
-                      Container(
+            ),
+            child: CachedNetworkImage(
+              imageUrl: widget.image,
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.white,
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              placeholder: (context, url) => Container(
+                color: Colors.white,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: ColorConstant.mainColor,
+                  ),
+                ),
+              ),
+              errorWidget: (context, url, error) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.white,
+                ),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Center(
+                      child: Container(
                         width: MediaQuery.of(context).size.width * 0.4,
+                        height: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
                           color: Colors.white,
@@ -96,16 +120,15 @@ class _ItemVisitorState extends State<ItemVisitor> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.black.withOpacity(0.3),
-                        ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.black.withOpacity(0.1),
                       ),
-                    ],
-                  );
-                },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
