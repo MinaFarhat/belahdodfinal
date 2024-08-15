@@ -75,7 +75,7 @@ class SearchItem extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: Colors.grey.shade400,
+              color: Colors.white,
             ),
             child: CachedNetworkImage(
               imageUrl: productImage,
