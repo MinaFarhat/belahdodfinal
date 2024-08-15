@@ -83,81 +83,66 @@ class _NewsDetailsState extends State<NewsDetails> {
                   children: [
                     Stack(
                       children: [
-                        Container(
+                        SizedBox(
                           width: double.infinity,
                           height: MediaQuery.of(context).size.height * 0.4,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade400,
-                            image: DecorationImage(
-                              image: CachedNetworkImageProvider(
-                                imageUrl,
+                          child: CachedNetworkImage(
+                            imageUrl: imageUrl,
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                              fit: BoxFit.cover,
-                              onError: (exception, stackTrace) {
-                                Stack(
-                                  children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.4,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(25),
-                                        color: Colors.grey.shade400,
-                                        image: DecorationImage(
-                                          image: CachedNetworkImageProvider(
-                                            getnewdetailsentity.newsImage,
-                                          ),
-                                          fit: BoxFit.cover,
-                                          onError: (exception, stackTrace) {
-                                            Stack(
-                                              children: [
-                                                Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.4,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25),
-                                                    color: Colors.white,
-                                                    image:
-                                                        const DecorationImage(
-                                                      image: AssetImage(
-                                                          "assets/images/logo.png"),
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.4,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25),
-                                                    color: Colors.black
-                                                        .withOpacity(0.3),
-                                                  ),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ),
+                            ),
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(
+                                color: ColorConstant.mainColor,
+                              ),
+                            ),
+                            errorWidget: (context, url, error) => Stack(
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.4,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    image: DecorationImage(
+                                      image: CachedNetworkImageProvider(
+                                          getnewdetailsentity.newsImage),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: double.infinity,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.4,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.1),
+                                  ),
+                                ),
+                                Center(
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.4,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(25),
+                                      color: Colors.white,
+                                      image: const DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/logo.png"),
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.4,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(25),
-                                        color: Colors.black.withOpacity(0.3),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),

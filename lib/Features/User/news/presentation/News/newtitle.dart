@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
@@ -69,33 +70,44 @@ class NewTitle extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.grey.shade400,
-                image: DecorationImage(
-                  image: CachedNetworkImageProvider(image),
-                  fit: BoxFit.cover,
-                  onError: (exception, stackTrace) {
-                    Stack(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: Colors.white,
-                            image: const DecorationImage(
-                              image: AssetImage("assets/images/logo.png"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+              ),
+              child: CachedNetworkImage(
+                imageUrl: image,
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(
+                    color: ColorConstant.mainColor,
+                  ),
+                ),
+                errorWidget: (context, url, error) => Stack(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        image: const DecorationImage(
+                          image: AssetImage("assets/images/logo.png"),
+                          fit: BoxFit.cover,
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: Colors.black.withOpacity(0.3),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.black.withOpacity(0.3),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

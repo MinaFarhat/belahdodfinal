@@ -61,41 +61,38 @@ class TopPartGame extends StatelessWidget {
                   String imageUrl = '${EndPoints.imageUrl}$i';
                   return Builder(
                     builder: (BuildContext context) {
-                      return Container(
+                      return SizedBox(
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.5,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade400,
-                          image: DecorationImage(
-                            image: CachedNetworkImageProvider(imageUrl),
-                            fit: BoxFit.cover,
-                            onError: (exception, stackTrace) {
-                              Stack(
-                                children: [
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(25),
-                                      color: Colors.white,
-                                      image: const DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/logo.png"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(25),
-                                      color: Colors.black.withOpacity(0.3),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
+                        child: CachedNetworkImage(
+                          imageUrl: imageUrl,
+                          imageBuilder: (context, imageProvider) => Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) => Center(
+                            child: CircularProgressIndicator(
+                              color: ColorConstant.mainColor,
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: AssetImage("assets/images/logo.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: Center(
+                              child: Container(
+                                color: Colors.black.withOpacity(0.1),
+                              ),
+                            ),
                           ),
                         ),
                       );

@@ -1,3 +1,4 @@
+import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_base.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_book.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_game.dart';
@@ -87,38 +88,42 @@ class ProductItem extends StatelessWidget {
                   .getProductsMainSection(sectionId));
         }
       },
-      child: Container(
+      child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: Colors.grey.shade400,
-          image: DecorationImage(
-            image: CachedNetworkImageProvider(image),
-            fit: BoxFit.cover,
-            onError: (exception, stackTrace) {
-              Stack(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.white,
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/logo.png"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.black.withOpacity(0.3),
-                    ),
-                  ),
-                ],
-              );
-            },
+        child: CachedNetworkImage(
+          imageUrl: image,
+          imageBuilder: (context, imageProvider) => Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              color: Colors.white,
+              image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          placeholder: (context, url) => Center(
+            child: CircularProgressIndicator(
+              color: ColorConstant.mainColor,
+            ),
+          ),
+          errorWidget: (context, url, error) => Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              color: Colors.white,
+              image: const DecorationImage(
+                image: AssetImage("assets/images/logo.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.black.withOpacity(0.1),
+                ),
+              ),
+            ),
           ),
         ),
       ),

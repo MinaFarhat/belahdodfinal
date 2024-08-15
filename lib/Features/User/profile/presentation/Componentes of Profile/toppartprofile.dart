@@ -59,40 +59,66 @@ class _TopPartProfileState extends State<TopPartProfile> {
                   color: SharedPreferencesUtils().getisDark() == false
                       ? ColorConstant.mainColor
                       : ColorConstant.shadowColor,
-                  image: DecorationImage(
-                    image: _selectedImage == null
-                        ? widget.imageProfile == null
-                            ? const AssetImage("assets/images/User-avatar.png")
-                            : CachedNetworkImageProvider(widget.imageProfile!)
-                        : FileImage(_selectedImage!),
-                    fit: BoxFit.cover,
-                    onError: (exception, stackTrace) {
-                      Stack(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.25,
-                            height: MediaQuery.of(context).size.height * 0.12,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: Colors.white,
-                              image: const DecorationImage(
-                                image: AssetImage("assets/images/logo.png"),
-                                fit: BoxFit.cover,
+                ),
+                child: _selectedImage == null
+                    ? widget.imageProfile == null
+                        ? const Image(
+                            image: AssetImage("assets/images/User-avatar.png"),
+                            fit: BoxFit.cover,
+                          )
+                        : CachedNetworkImage(
+                            imageUrl: widget.imageProfile!,
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: Colors.black.withOpacity(0.3),
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(
+                                color: ColorConstant.mainColor,
+                              ),
                             ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
+                            errorWidget: (context, url, error) => Stack(
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.27,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.128,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.white,
+                                    image: const DecorationImage(
+                                      image:
+                                          AssetImage("assets/images/logo.png"),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.27,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.128,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.black.withOpacity(0.1),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.file(
+                          _selectedImage!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
               ),
             ),
             Positioned(
