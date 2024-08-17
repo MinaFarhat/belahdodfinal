@@ -21,8 +21,7 @@ class DetailsQuransVisitor extends StatefulWidget {
 
 class _DetailsQuransVisitorState extends State<DetailsQuransVisitor> {
   List<String> locations = [
-    "دار الحافظ(دمشق)",
-    "العلماء الصغار(دمشق)",
+    "دمشق/الحلبوني/شارع المكتبات",
   ];
 
   @override

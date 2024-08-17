@@ -21,8 +21,7 @@ class DetailsBookVisitor extends StatefulWidget {
 
 class _DetailsBookVisitorState extends State<DetailsBookVisitor> {
   List<String> locations = [
-    "دار الحافظ(دمشق)",
-    "العلماء الصغار(دمشق)",
+    "دمشق/الحلبوني/شارع المكتبات",
   ];
 
   @override
