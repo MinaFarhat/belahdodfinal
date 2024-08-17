@@ -185,7 +185,7 @@ class _UpdatesState extends State<Updates> {
                                           margin: const EdgeInsets.symmetric(
                                               horizontal: 6),
                                           decoration: BoxDecoration(
-                                            color: Colors.grey.shade400,
+                                            color: Colors.white,
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
@@ -453,7 +453,7 @@ class _UpdatesState extends State<Updates> {
                                       MediaQuery.of(context).size.width * 0.4,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(25),
-                                    color: Colors.grey.shade400,
+                                    color: Colors.white,
                                   ),
                                   child: CachedNetworkImage(
                                     imageUrl: imageUrl,
