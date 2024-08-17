@@ -15,6 +15,7 @@ import 'package:belahododfinal/Features/User/Details/Manager/Like%20Cubit/like_c
 import 'package:belahododfinal/Features/User/Details/Manager/Quraan%20Cubit/quraan_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Rating%20Cubit/rating_cubit.dart';
 import 'package:belahododfinal/Features/User/Details/Manager/Stationery%20Cubit/stationery_cubit.dart';
+import 'package:belahododfinal/Features/User/Points/Swap%20Points%20Cubit/swap_cubit.dart';
 import 'package:belahododfinal/Features/User/Vouchers/Manager/Create%20Voucher%20Cubit/create_voucher_cubit.dart';
 import 'package:belahododfinal/Features/User/Vouchers/Manager/Get%20Vouchers%20Cubit/get_vouchers_cubit.dart';
 import 'package:belahododfinal/Features/User/cart/Manager/Add%20To%20Cart%20Cubit/addtocart_cubit.dart';
@@ -328,6 +329,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<AddBalanceCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SwapCubit>(),
         ),
       ],
       child: MaterialApp(

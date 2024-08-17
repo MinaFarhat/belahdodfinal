@@ -1,9 +1,13 @@
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/Points/Presentation/Replace%20the%20Points%20for%20Voucher/voucherdatapoint.dart';
 import 'package:belahododfinal/Features/User/Points/Presentation/Replace%20the%20Points%20for%20Voucher/vouchertype.dart';
+import 'package:belahododfinal/Features/User/Points/Swap%20Points%20Cubit/swap_cubit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../../Widgets/Static Widgets/simple_top_bar.dart';
@@ -187,49 +191,201 @@ class _ReplacePointsState extends State<ReplacePoints> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.16,
               ),
-              InkWell(
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-                onTap: () {},
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    color: ColorConstant.mainColor,
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      transform: const GradientRotation(30),
-                      colors: [
-                        ColorConstant.shadowColor,
-                        ColorConstant.shadowColor,
-                        // Colors.deepPurple.shade700,
-                        // Colors.deepPurple.shade700,
-                      ],
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "أستبدال",
-                        style: TextStyle(
-                          color: Colors.deepPurple.shade700,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
+              BlocConsumer<SwapCubit, SwapState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    error: (networkExceptions) {
+                      Fluttertoast.showToast(
+                        msg: NetworkExceptions.getErrorMessage(
+                          networkExceptions,
                         ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.01,
-                      ),
-                      Icon(
-                        PhosphorIcons.arrowsLeftRight(PhosphorIconsStyle.fill),
-                        size: 24,
-                        color: Colors.deepPurple.shade700,
-                      ),
-                    ],
-                  ),
-                ),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                      );
+                    },
+                    success: (swapentity) {
+                      if (swapentity.isSent == true) {
+                        Fluttertoast.showToast(
+                          msg: swapentity.message,
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.green,
+                        );
+                      } else {
+                        Fluttertoast.showToast(
+                          msg: swapentity.message,
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                        );
+                      }
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          context
+                              .read<SwapCubit>()
+                              .swapPoints(vouchers[i]['size']);
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.07,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            color: ColorConstant.mainColor,
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              transform: const GradientRotation(30),
+                              colors: [
+                                ColorConstant.shadowColor,
+                                ColorConstant.shadowColor,
+                              ],
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "أستبدال",
+                                style: TextStyle(
+                                  color: Colors.deepPurple.shade700,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.01,
+                              ),
+                              Icon(
+                                PhosphorIcons.arrowsLeftRight(
+                                    PhosphorIconsStyle.fill),
+                                size: 24,
+                                color: Colors.deepPurple.shade700,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    initial: () {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          context
+                              .read<SwapCubit>()
+                              .swapPoints(vouchers[i]['size']);
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.07,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            color: ColorConstant.mainColor,
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              transform: const GradientRotation(30),
+                              colors: [
+                                ColorConstant.shadowColor,
+                                ColorConstant.shadowColor,
+                              ],
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "أستبدال",
+                                style: TextStyle(
+                                  color: Colors.deepPurple.shade700,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.01,
+                              ),
+                              Icon(
+                                PhosphorIcons.arrowsLeftRight(
+                                    PhosphorIconsStyle.fill),
+                                size: 24,
+                                color: Colors.deepPurple.shade700,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: SharedPreferencesUtils().getisDark() == false
+                              ? ColorConstant.mainColor
+                              : Colors.white,
+                        ),
+                      );
+                    },
+                    success: (swapentity) {
+                      return InkWell(
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        onTap: () {
+                          context
+                              .read<SwapCubit>()
+                              .swapPoints(vouchers[i]['size']);
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.07,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            color: ColorConstant.mainColor,
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              transform: const GradientRotation(30),
+                              colors: [
+                                ColorConstant.shadowColor,
+                                ColorConstant.shadowColor,
+                              ],
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "أستبدال",
+                                style: TextStyle(
+                                  color: Colors.deepPurple.shade700,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.01,
+                              ),
+                              Icon(
+                                PhosphorIcons.arrowsLeftRight(
+                                    PhosphorIconsStyle.fill),
+                                size: 24,
+                                color: Colors.deepPurple.shade700,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),
