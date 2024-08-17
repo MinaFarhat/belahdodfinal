@@ -48,6 +48,7 @@ import 'package:belahododfinal/Features/User/profile/Manager/Update%20Profile%20
 import 'package:belahododfinal/Features/User/profile/Manager/Update%20User%20Info%20Cubit/update_user_info_cubit.dart';
 import 'package:belahododfinal/Features/User/search/Normal%20Search/Search%20By%20QR%20Cubit/search_by_qr_cubit.dart';
 import 'package:belahododfinal/Features/User/search/Populer%20Products/Popular%20Products%20Cubit/popular_products_cubit.dart';
+import 'package:belahododfinal/Features/User/wallet/Add%20Balance%20Cubit/add_balance_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Manager/Base%20Visitor%20Cubit/base_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Manager/Book%20Visitor%20Cubit/book_visitor_cubit.dart';
 import 'package:belahododfinal/Features/Visitor/Details/Manager/Game%20Visitor%20Cubit/game_visitor_cubit.dart';
@@ -324,6 +325,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<ChangeStateNoteCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AddBalanceCubit>(),
         ),
       ],
       child: MaterialApp(

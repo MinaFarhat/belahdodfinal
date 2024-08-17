@@ -17,11 +17,11 @@ class TransferCubit extends Cubit<TransferState> {
 
   final BaseRepositoryTransfer _baseRepositoryTransfer;
 
-  Future<void> sendTransferImage(File transferImage,int orderId) async {
+  Future<void> sendTransferImage(File transferImage, int orderId) async {
     emit(const TransferState.loading());
 
     final response =
-        await _baseRepositoryTransfer.sendTransferImage(transferImage,orderId);
+        await _baseRepositoryTransfer.sendTransferImage(transferImage, orderId);
 
     response.fold((l) => emit(TransferState.error(l)),
         (r) => emit(TransferState.success(r)));

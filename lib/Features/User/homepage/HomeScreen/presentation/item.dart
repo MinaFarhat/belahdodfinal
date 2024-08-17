@@ -19,11 +19,13 @@ class Item extends StatefulWidget {
   final int index;
   final int productID;
   bool isFavorite;
+  final int sectionId;
   Item({
     required this.image,
     required this.index,
     required this.productID,
     required this.isFavorite,
+    required this.sectionId,
     super.key,
   });
 
@@ -39,7 +41,7 @@ class _ItemState extends State<Item> {
       child: InkWell(
         overlayColor: WidgetStateProperty.all(Colors.transparent),
         onTap: () {
-          if (widget.index == 0) {
+          if (widget.sectionId == 1) {
             Navigator.of(context)
                 .push(
                   MaterialPageRoute(
@@ -49,7 +51,7 @@ class _ItemState extends State<Item> {
                   ),
                 )
                 .then((_) => context.read<SectionCubit>().sections());
-          } else if (widget.index == 1) {
+          } else if (widget.sectionId == 2) {
             Navigator.of(context)
                 .push(
                   MaterialPageRoute(
@@ -59,7 +61,7 @@ class _ItemState extends State<Item> {
                   ),
                 )
                 .then((_) => context.read<SectionCubit>().sections());
-          } else if (widget.index == 2) {
+          } else if (widget.sectionId == 3) {
             Navigator.of(context)
                 .push(
                   MaterialPageRoute(
@@ -69,7 +71,7 @@ class _ItemState extends State<Item> {
                   ),
                 )
                 .then((_) => context.read<SectionCubit>().sections());
-          } else if (widget.index == 3) {
+          } else if (widget.sectionId == 4) {
             Navigator.of(context)
                 .push(
                   MaterialPageRoute(
@@ -79,7 +81,7 @@ class _ItemState extends State<Item> {
                   ),
                 )
                 .then((_) => context.read<SectionCubit>().sections());
-          } else if (widget.index == 4 || widget.index > 4) {
+          } else if (widget.sectionId == 5 || widget.sectionId > 5) {
             Navigator.of(context)
                 .push(
                   MaterialPageRoute(

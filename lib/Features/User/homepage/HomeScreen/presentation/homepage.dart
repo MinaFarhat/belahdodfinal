@@ -119,6 +119,7 @@ class _HomePageState extends State<HomePage> {
 
                     final isFavorites =
                         products.map((product) => product.isFavorite).toList();
+
                     return Column(
                       children: [
                         Section(

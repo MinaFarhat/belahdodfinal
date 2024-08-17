@@ -102,6 +102,7 @@ class Section extends StatelessWidget {
                 child: Item(
                   productID: productIDs[i],
                   image: imageUrl,
+                  sectionId: sectionId!,
                   isFavorite: isFavorite[i],
                   index: sectionNumber == 0
                       ? 0

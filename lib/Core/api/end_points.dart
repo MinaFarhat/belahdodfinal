@@ -52,4 +52,5 @@ class EndPoints {
       "$baseUrl/check-out-with-coupon/";
   static const String changeStateNotificationUrl =
       "$baseUrl/notification/change_state/";
+  static const String addBalanceUrl = "$baseUrl/balance-request";
 }

@@ -1,9 +1,13 @@
 import 'dart:io';
 
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
+import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/User/wallet/Add%20Balance%20Cubit/add_balance_cubit.dart';
 import 'package:belahododfinal/Features/Widgets/Static%20Widgets/simple_top_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -422,51 +426,295 @@ class Wallet extends StatelessWidget {
                                                   .height *
                                               0.04,
                                         ),
-                                        InkWell(
-                                          splashColor: Colors.transparent,
-                                          onTap: () {},
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.5,
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.06,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                              color: ColorConstant.mainColor,
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                const Text(
-                                                  "إرسال",
-                                                  style: TextStyle(
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white,
+                                        BlocConsumer<AddBalanceCubit,
+                                            AddBalanceState>(
+                                          listener: (context, state) {
+                                            state.whenOrNull(
+                                              error: (networkExceptions) {
+                                                Fluttertoast.showToast(
+                                                  msg: NetworkExceptions
+                                                      .getErrorMessage(
+                                                    networkExceptions,
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.01,
-                                                ),
-                                                Icon(
-                                                  PhosphorIcons.paperPlaneTilt(
-                                                      PhosphorIconsStyle
-                                                          .regular),
-                                                  size: 22,
-                                                  color: Colors.white,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
+                                                  toastLength:
+                                                      Toast.LENGTH_LONG,
+                                                  gravity: ToastGravity.BOTTOM,
+                                                  backgroundColor: Colors.red,
+                                                );
+                                              },
+                                              success: (addbalanceentity) {
+                                                if (addbalanceentity.success ==
+                                                    true) {
+                                                  Fluttertoast.showToast(
+                                                    msg:
+                                                        "تم إرسال صورة الحوالة بنجاح",
+                                                    toastLength:
+                                                        Toast.LENGTH_LONG,
+                                                    gravity:
+                                                        ToastGravity.BOTTOM,
+                                                    backgroundColor:
+                                                        Colors.green,
+                                                  );
+                                                  Navigator.of(context).pop();
+                                                  Navigator.of(context).pop();
+                                                } else {
+                                                  Fluttertoast.showToast(
+                                                    msg: "فشلت عملية الإرسال",
+                                                    toastLength:
+                                                        Toast.LENGTH_LONG,
+                                                    gravity:
+                                                        ToastGravity.BOTTOM,
+                                                    backgroundColor: Colors.red,
+                                                  );
+                                                }
+                                              },
+                                            );
+                                          },
+                                          builder: (context, state) {
+                                            return state.maybeWhen(
+                                              orElse: () {
+                                                return InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  onTap: () {
+                                                    if (selectedImage == null) {
+                                                      Fluttertoast.showToast(
+                                                        msg:
+                                                            "يجب عليك اختيار او التقاط صورة الحوالة التي لديك",
+                                                        toastLength:
+                                                            Toast.LENGTH_LONG,
+                                                        gravity:
+                                                            ToastGravity.BOTTOM,
+                                                        backgroundColor:
+                                                            Colors.red,
+                                                      );
+                                                    } else {
+                                                      context
+                                                          .read<
+                                                              AddBalanceCubit>()
+                                                          .addBalance(
+                                                              selectedImage!);
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.5,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.06,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              30),
+                                                      color: ColorConstant
+                                                          .mainColor,
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        const Text(
+                                                          "إرسال",
+                                                          style: TextStyle(
+                                                            fontSize: 17,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.01,
+                                                        ),
+                                                        Icon(
+                                                          PhosphorIcons
+                                                              .paperPlaneTilt(
+                                                                  PhosphorIconsStyle
+                                                                      .regular),
+                                                          size: 22,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              initial: () {
+                                                return InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  onTap: () {
+                                                    if (selectedImage == null) {
+                                                      Fluttertoast.showToast(
+                                                        msg:
+                                                            "يجب عليك اختيار او التقاط صورة الحوالة التي لديك",
+                                                        toastLength:
+                                                            Toast.LENGTH_LONG,
+                                                        gravity:
+                                                            ToastGravity.BOTTOM,
+                                                        backgroundColor:
+                                                            Colors.red,
+                                                      );
+                                                    } else {
+                                                      context
+                                                          .read<
+                                                              AddBalanceCubit>()
+                                                          .addBalance(
+                                                              selectedImage!);
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.5,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.06,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              30),
+                                                      color: ColorConstant
+                                                          .mainColor,
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        const Text(
+                                                          "إرسال",
+                                                          style: TextStyle(
+                                                            fontSize: 17,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.01,
+                                                        ),
+                                                        Icon(
+                                                          PhosphorIcons
+                                                              .paperPlaneTilt(
+                                                                  PhosphorIconsStyle
+                                                                      .regular),
+                                                          size: 22,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              loading: () {
+                                                return Center(
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: SharedPreferencesUtils()
+                                                                .getisDark() ==
+                                                            false
+                                                        ? ColorConstant
+                                                            .mainColor
+                                                        : Colors.white,
+                                                  ),
+                                                );
+                                              },
+                                              success: (addbalanceentity) {
+                                                return InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  onTap: () {
+                                                    if (selectedImage == null) {
+                                                      Fluttertoast.showToast(
+                                                        msg:
+                                                            "يجب عليك اختيار او التقاط صورة الحوالة التي لديك",
+                                                        toastLength:
+                                                            Toast.LENGTH_LONG,
+                                                        gravity:
+                                                            ToastGravity.BOTTOM,
+                                                        backgroundColor:
+                                                            Colors.red,
+                                                      );
+                                                    } else {
+                                                      context
+                                                          .read<
+                                                              AddBalanceCubit>()
+                                                          .addBalance(
+                                                              selectedImage!);
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.5,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.06,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              30),
+                                                      color: ColorConstant
+                                                          .mainColor,
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        const Text(
+                                                          "إرسال",
+                                                          style: TextStyle(
+                                                            fontSize: 17,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.01,
+                                                        ),
+                                                        Icon(
+                                                          PhosphorIcons
+                                                              .paperPlaneTilt(
+                                                                  PhosphorIconsStyle
+                                                                      .regular),
+                                                          size: 22,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
                                       ],
                                     ),

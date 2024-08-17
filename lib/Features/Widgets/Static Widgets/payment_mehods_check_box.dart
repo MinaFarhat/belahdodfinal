@@ -629,12 +629,22 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                 return InkWell(
                                   splashColor: Colors.transparent,
                                   onTap: () {
-                                    context
-                                        .read<TransferCubit>()
-                                        .sendTransferImage(
-                                          selectedImage!,
-                                          widget.orderId,
-                                        );
+                                    if (selectedImage == null) {
+                                      Fluttertoast.showToast(
+                                        msg:
+                                            "يجب عليك اختيار او التقاط صورة الحوالة التي لديك",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        backgroundColor: Colors.red,
+                                      );
+                                    } else {
+                                      context
+                                          .read<TransferCubit>()
+                                          .sendTransferImage(
+                                            selectedImage!,
+                                            widget.orderId,
+                                          );
+                                    }
                                   },
                                   child: Container(
                                     width:
@@ -678,12 +688,22 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                 return InkWell(
                                   splashColor: Colors.transparent,
                                   onTap: () {
-                                    context
-                                        .read<TransferCubit>()
-                                        .sendTransferImage(
-                                          selectedImage!,
-                                          widget.orderId,
-                                        );
+                                    if (selectedImage == null) {
+                                      Fluttertoast.showToast(
+                                        msg:
+                                            "يجب عليك اختيار او التقاط صورة الحوالة التي لديك",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        backgroundColor: Colors.red,
+                                      );
+                                    } else {
+                                      context
+                                          .read<TransferCubit>()
+                                          .sendTransferImage(
+                                            selectedImage!,
+                                            widget.orderId,
+                                          );
+                                    }
                                   },
                                   child: Container(
                                     width:
@@ -738,12 +758,22 @@ class _PaymentMethodsCheckBoxState extends State<PaymentMethodsCheckBox> {
                                 return InkWell(
                                   splashColor: Colors.transparent,
                                   onTap: () {
-                                    context
-                                        .read<TransferCubit>()
-                                        .sendTransferImage(
-                                          selectedImage!,
-                                          widget.orderId,
-                                        );
+                                    if (selectedImage == null) {
+                                      Fluttertoast.showToast(
+                                        msg:
+                                            "يجب عليك اختيار او التقاط صورة الحوالة التي لديك",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        backgroundColor: Colors.red,
+                                      );
+                                    } else {
+                                      context
+                                          .read<TransferCubit>()
+                                          .sendTransferImage(
+                                            selectedImage!,
+                                            widget.orderId,
+                                          );
+                                    }
                                   },
                                   child: Container(
                                     width:
