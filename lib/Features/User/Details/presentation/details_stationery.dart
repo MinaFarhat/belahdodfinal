@@ -21,9 +21,8 @@ class DetailsStationery extends StatefulWidget {
 }
 
 class _DetailsStationeryState extends State<DetailsStationery> {
-  List<String> locations = [
-    "دار الحافظ(دمشق)",
-    "العلماء الصغار(دمشق)",
+ List<String> locations = [
+    "دمشق/الحلبوني/شارع المكتبات",
   ];
 
   @override

@@ -535,7 +535,7 @@ class BottomPartGame extends StatelessWidget {
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.only(top: 6),
+                padding: const EdgeInsets.only(top: 3),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [

@@ -22,8 +22,7 @@ class DetailsGame extends StatefulWidget {
 
 class _DetailsGameState extends State<DetailsGame> {
   List<String> locations = [
-    "دار الحافظ(دمشق)",
-    "العلماء الصغار(دمشق)",
+    "دمشق/الحلبوني/شارع المكتبات",
   ];
 
   @override
