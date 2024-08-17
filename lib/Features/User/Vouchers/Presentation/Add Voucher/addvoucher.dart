@@ -162,7 +162,7 @@ class _AddVoucherState extends State<AddVoucher> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      "ملاحظات إضافية",
+                      ":قل شيئاً للمستقبل",
                       style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
