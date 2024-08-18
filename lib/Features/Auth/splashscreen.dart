@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
 import 'package:belahododfinal/Features/User/navbar.dart';
@@ -12,24 +13,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 5), () async {
-      await _preferencesUtils.init();
-      final token = _preferencesUtils.getToken();
-
-      Navigator.pushReplacement(
-        // ignore: use_build_context_synchronously
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            if (token != null) {
-              return const Mynavbar();
-            } else {
-              return const Mynavbarvisitor();
-            }
-          },
-        ),
-      );
-    });
+    _navigateAfterDelay(context);
 
     return SafeArea(
       child: Scaffold(
@@ -72,6 +56,96 @@ class SplashScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Future<void> _navigateAfterDelay(BuildContext context) async {
+    await Future.delayed(const Duration(seconds: 5));
+
+    // ConnectivityResult, not List<ConnectivityResult>
+    final List<ConnectivityResult> results =
+        await Connectivity().checkConnectivity();
+
+    if (results.isNotEmpty) {
+      final ConnectivityResult result = results.first;
+
+      if (result == ConnectivityResult.none) {
+        // ignore: use_build_context_synchronously
+        _showNoInternetDialog(context);
+      } else {
+        await _preferencesUtils.init();
+        final token = _preferencesUtils.getToken();
+
+        Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              if (token != null) {
+                return const Mynavbar();
+              } else {
+                return const Mynavbarvisitor();
+              }
+            },
+          ),
+        );
+      }
+    } else {
+      // ignore: use_build_context_synchronously
+      _showNoInternetDialog(context);
+    }
+  }
+
+  void _showNoInternetDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: SharedPreferencesUtils().getisDark() == false
+              ? Colors.white
+              : Colors.grey.shade900,
+          title: Text(
+            "لا يوجد اتصال بالأنترنت",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? Colors.black
+                  : Colors.white,
+            ),
+          ),
+          content: Text(
+            "رجاءً تحقق من اتصالك بالأنترنت ثم حاول مرة أخرى",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: SharedPreferencesUtils().getisDark() == false
+                  ? Colors.grey.shade900
+                  : Colors.grey.shade300,
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "موافق",
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: SharedPreferencesUtils().getisDark() == false
+                      ? ColorConstant.mainColor
+                      : ColorConstant.shadowColor,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
