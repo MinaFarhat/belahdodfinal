@@ -23,7 +23,8 @@ class LoginCubit extends Cubit<LoginState> {
     String deviceToken,
   ) async {
     emit(const LoginState.loading());
-    final response = await _baseReposotryLogin.login(name, password,deviceToken);
+    final response =
+        await _baseReposotryLogin.login(name, password, deviceToken);
 
     response.fold(
       (l) => emit(LoginState.error(l)),

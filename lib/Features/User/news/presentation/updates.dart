@@ -1,6 +1,7 @@
 import 'package:belahododfinal/Core/api/end_points.dart';
 import 'package:belahododfinal/Core/error/network_exceptions.dart';
 import 'package:belahododfinal/Core/utils/shared_preference_utils.dart';
+import 'package:belahododfinal/Features/Auth/Is%20Client/Is%20Client%20Cubit/is_client_cubit.dart';
 import 'package:belahododfinal/Features/User/Info/presentation/inof.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Ads%20Cubit/ads_cubit.dart';
 import 'package:belahododfinal/Features/User/news/Manager/Get%20All%20Offers%20Cubit/getalloffers_cubit.dart';
@@ -34,6 +35,7 @@ class _UpdatesState extends State<Updates> {
     context.read<GetalloffersCubit>().offers();
     context.read<NewsCubit>().getNews();
     context.read<AdsCubit>().getAds();
+    context.read<IsClientCubit>().isClient();
     super.initState();
   }
 
@@ -353,25 +355,7 @@ class _UpdatesState extends State<Updates> {
                   );
                 },
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 12, top: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "العروض",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: SharedPreferencesUtils().getisDark() == false
-                            ? Colors.grey.shade900
-                            : Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              BlocConsumer<GetalloffersCubit, GetalloffersState>(
+              BlocConsumer<IsClientCubit, IsClientState>(
                 listener: (context, state) {
                   state.whenOrNull(
                     error: (networkExceptions) {
@@ -389,128 +373,226 @@ class _UpdatesState extends State<Updates> {
                 builder: (context, state) {
                   return state.maybeWhen(
                     orElse: () {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: SharedPreferencesUtils().getisDark() == false
-                              ? ColorConstant.mainColor
-                              : Colors.white,
-                        ),
-                      );
+                      return Container();
                     },
                     initial: () {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: SharedPreferencesUtils().getisDark() == false
-                              ? ColorConstant.mainColor
-                              : Colors.white,
-                        ),
-                      );
+                      return Container();
                     },
                     loading: () {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: SharedPreferencesUtils().getisDark() == false
-                              ? ColorConstant.mainColor
-                              : Colors.white,
-                        ),
-                      );
+                      return Container();
                     },
-                    success: (getalloffersentity) {
-                      return SizedBox(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.24,
-                        child: ListView.builder(
-                          padding: const EdgeInsets.all(8),
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemCount: getalloffersentity.offers.length,
-                          itemBuilder: (context, index) {
-                            String imageUrl =
-                                '${EndPoints.imageUrl}${getalloffersentity.offers[index].image}';
-                            return InkWell(
-                              overlayColor:
-                                  WidgetStateProperty.all(Colors.transparent),
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return DetailsOfOffer(
-                                        offerId: getalloffersentity
-                                            .offers[index].offerId,
-                                      );
-                                    },
-                                  ),
-                                ).then((_) {
-                                  context.read<GetalloffersCubit>().offers();
-                                  context.read<NewsCubit>().getNews();
-                                  context.read<AdsCubit>().getAds();
-                                });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(25),
-                                    color: Colors.white,
-                                  ),
-                                  child: CachedNetworkImage(
-                                    imageUrl: imageUrl,
-                                    imageBuilder: (context, imageProvider) =>
-                                        Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(25),
-                                        image: DecorationImage(
-                                          image: imageProvider,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    placeholder: (context, url) => Center(
-                                      child: CircularProgressIndicator(
-                                        color: ColorConstant.mainColor,
-                                      ),
-                                    ),
-                                    errorWidget: (context, url, error) => Stack(
-                                      children: [
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.4,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                            color: Colors.transparent,
-                                            image: const DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/logo.png"),
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.4,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                            color:
-                                                Colors.black.withOpacity(0.3),
-                                          ),
-                                        ),
-                                      ],
+                    success: (iscliententity) {
+                      if (iscliententity.isClient == true) {
+                        return Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 12, top: 16),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "العروض",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: SharedPreferencesUtils()
+                                                  .getisDark() ==
+                                              false
+                                          ? Colors.grey.shade900
+                                          : Colors.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                            );
-                          },
-                        ),
-                      );
+                            ),
+                            BlocConsumer<GetalloffersCubit, GetalloffersState>(
+                              listener: (context, state) {
+                                state.whenOrNull(
+                                  error: (networkExceptions) {
+                                    Fluttertoast.showToast(
+                                      msg: NetworkExceptions.getErrorMessage(
+                                        networkExceptions,
+                                      ),
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.BOTTOM,
+                                      backgroundColor: Colors.red,
+                                    );
+                                  },
+                                );
+                              },
+                              builder: (context, state) {
+                                return state.maybeWhen(
+                                  orElse: () {
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        color: SharedPreferencesUtils()
+                                                    .getisDark() ==
+                                                false
+                                            ? ColorConstant.mainColor
+                                            : Colors.white,
+                                      ),
+                                    );
+                                  },
+                                  initial: () {
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        color: SharedPreferencesUtils()
+                                                    .getisDark() ==
+                                                false
+                                            ? ColorConstant.mainColor
+                                            : Colors.white,
+                                      ),
+                                    );
+                                  },
+                                  loading: () {
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        color: SharedPreferencesUtils()
+                                                    .getisDark() ==
+                                                false
+                                            ? ColorConstant.mainColor
+                                            : Colors.white,
+                                      ),
+                                    );
+                                  },
+                                  success: (getalloffersentity) {
+                                    return SizedBox(
+                                      width: double.infinity,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.24,
+                                      child: ListView.builder(
+                                        padding: const EdgeInsets.all(8),
+                                        scrollDirection: Axis.horizontal,
+                                        shrinkWrap: true,
+                                        itemCount:
+                                            getalloffersentity.offers.length,
+                                        itemBuilder: (context, index) {
+                                          String imageUrl =
+                                              '${EndPoints.imageUrl}${getalloffersentity.offers[index].image}';
+                                          return InkWell(
+                                            overlayColor:
+                                                WidgetStateProperty.all(
+                                                    Colors.transparent),
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) {
+                                                    return DetailsOfOffer(
+                                                      offerId:
+                                                          getalloffersentity
+                                                              .offers[index]
+                                                              .offerId,
+                                                    );
+                                                  },
+                                                ),
+                                              ).then((_) {
+                                                context
+                                                    .read<GetalloffersCubit>()
+                                                    .offers();
+                                                context
+                                                    .read<NewsCubit>()
+                                                    .getNews();
+                                                context
+                                                    .read<AdsCubit>()
+                                                    .getAds();
+                                              });
+                                            },
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8),
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.4,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(25),
+                                                  color: Colors.white,
+                                                ),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: imageUrl,
+                                                  imageBuilder: (context,
+                                                          imageProvider) =>
+                                                      Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25),
+                                                      image: DecorationImage(
+                                                        image: imageProvider,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      color: ColorConstant
+                                                          .mainColor,
+                                                    ),
+                                                  ),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          Stack(
+                                                    children: [
+                                                      Container(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.4,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(25),
+                                                          color: Colors
+                                                              .transparent,
+                                                          image:
+                                                              const DecorationImage(
+                                                            image: AssetImage(
+                                                                "assets/images/logo.png"),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.4,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(25),
+                                                          color: Colors.black
+                                                              .withOpacity(0.3),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ],
+                        );
+                      } else {
+                        return Container();
+                      }
                     },
                   );
                 },

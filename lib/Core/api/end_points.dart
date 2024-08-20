@@ -54,4 +54,5 @@ class EndPoints {
       "$baseUrl/notification/change_state/";
   static const String addBalanceUrl = "$baseUrl/balance-request";
   static const String swapPointsUrl = "$baseUrl/points/swap";
+  static const String isClientUrl = "$baseUrl/is-user-client";
 }
