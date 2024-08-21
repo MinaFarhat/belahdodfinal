@@ -7,7 +7,6 @@ import 'package:belahododfinal/Features/User/Details/presentation/details_game.d
 import 'package:belahododfinal/Features/User/Details/presentation/details_qurans.dart';
 import 'package:belahododfinal/Features/User/Details/presentation/details_stationery.dart';
 import 'package:belahododfinal/Features/User/favorite/Manager/Get%20Favorites%20Cubit/getfavorites_cubit.dart';
-import 'package:belahododfinal/Features/Widgets/Static%20Widgets/stars_rate.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -239,28 +238,28 @@ class FavItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              "(${numberwhorates.toString()})",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: SharedPreferencesUtils().getisDark() ==
-                                        false
-                                    ? Colors.grey.shade900
-                                    : Colors.white,
-                              ),
-                            ),
-                            StarsRate(
-                              numberofstars: numberofstars,
-                            ),
-                          ],
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 4),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.end,
+                      //     children: [
+                      //       Text(
+                      //         "(${numberwhorates.toString()})",
+                      //         style: TextStyle(
+                      //           fontSize: 12,
+                      //           fontWeight: FontWeight.bold,
+                      //           color: SharedPreferencesUtils().getisDark() ==
+                      //                   false
+                      //               ? Colors.grey.shade900
+                      //               : Colors.white,
+                      //         ),
+                      //       ),
+                      //       StarsRate(
+                      //         numberofstars: numberofstars,
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                       Padding(
                         padding: const EdgeInsets.only(top: 6),
                         child: SizedBox(
