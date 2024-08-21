@@ -57,12 +57,13 @@ class _WaitingScreenState extends State<WaitingScreen> {
       if (result == ConnectivityResult.none) {
         _showNoInternetDialog();
       } else {
-        Navigator.pushReplacement(
+        Navigator.pushAndRemoveUntil(
           // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(
             builder: (context) => widget.screen,
           ),
+          (Route<dynamic> route) => false,
         );
       }
     } else {

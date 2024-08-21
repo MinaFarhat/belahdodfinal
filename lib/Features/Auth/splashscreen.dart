@@ -76,7 +76,7 @@ class SplashScreen extends StatelessWidget {
         await _preferencesUtils.init();
         final token = _preferencesUtils.getToken();
 
-        Navigator.pushReplacement(
+        Navigator.pushAndRemoveUntil(
           // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(
@@ -88,6 +88,7 @@ class SplashScreen extends StatelessWidget {
               }
             },
           ),
+          (Route<dynamic> route) => false,
         );
       }
     } else {
