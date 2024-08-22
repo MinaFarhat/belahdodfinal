@@ -7,7 +7,7 @@ class ProductVisitorEntity {
   @JsonKey(name: "id")
   final int id;
   @JsonKey(name: "first_image")
-  final String image;
+  final String ?image;
 
   ProductVisitorEntity(
     this.id,

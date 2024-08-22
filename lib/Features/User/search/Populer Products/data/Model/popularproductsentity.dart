@@ -22,7 +22,7 @@ class PopularProductsData {
   @JsonKey(name: "section_id")
   final int sectionId;
   @JsonKey(name: "image")
-  final String productImage;
+  final String? productImage;
 
   PopularProductsData(
     this.productId,

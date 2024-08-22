@@ -7,7 +7,7 @@ class ProductEntity {
   @JsonKey(name: "id")
   final int id;
   @JsonKey(name: "first_image")
-  final String image;
+  final String? image;
   @JsonKey(name: "is_favorite")
   final bool isFavorite;
 

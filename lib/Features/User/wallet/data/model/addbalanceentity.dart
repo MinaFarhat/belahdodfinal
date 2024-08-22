@@ -14,7 +14,7 @@ class AddBalanceEntity {
   @JsonKey(name: "user_id")
   final int userId;
   @JsonKey(name: "image")
-  final List<String> images;
+  final List<String>? images;
 
   AddBalanceEntity(
     this.balanceId,

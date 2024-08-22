@@ -86,7 +86,7 @@ class _DetailsStationeryState extends State<DetailsStationery> {
                 return ListView(
                   children: [
                     TopPartStationery(
-                      photos: stationeryentity.images,
+                      photos: stationeryentity.images!,
                       productId: widget.productID,
                       barcode: stationeryentity.barcode,
                       isFavorite: stationeryentity.isFavorite,

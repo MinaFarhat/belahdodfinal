@@ -77,7 +77,7 @@ class _DetailsGameVisitorState extends State<DetailsGameVisitor> {
                 return ListView(
                   children: [
                     TopPartGameVisitor(
-                      photos: gamevisitorentity.images,
+                      photos: gamevisitorentity.images!,
                       productId: widget.productID,
                       barcode: gamevisitorentity.barcode,
                       likeCount: gamevisitorentity.likeCount,

@@ -86,7 +86,7 @@ class _DetailsQuransState extends State<DetailsQurans> {
                 return ListView(
                   children: [
                     TopPartQuraan(
-                      photos: quraanentity.images,
+                      photos: quraanentity.images!,
                       productId: widget.productID,
                       barcode: quraanentity.barcode,
                       isFavorite: quraanentity.isFavorite,

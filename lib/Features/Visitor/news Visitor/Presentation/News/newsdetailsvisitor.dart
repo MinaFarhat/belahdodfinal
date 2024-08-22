@@ -99,7 +99,7 @@ class _NewsDetailsVisitorState extends State<NewsDetailsVisitor> {
                               color: Colors.white,
                               child: Center(
                                 child: CachedNetworkImage(
-                                  imageUrl: getnewdetailsentity.newsImage,
+                                  imageUrl: getnewdetailsentity.newsImage!,
                                   imageBuilder: (context, imageProvider) =>
                                       Container(
                                     decoration: BoxDecoration(

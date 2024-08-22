@@ -25,7 +25,7 @@ class SearchResultsData {
   @JsonKey(name: "name")
   final String productName;
   @JsonKey(name: "first_image")
-  final String productImage;
+  final String? productImage;
 
   SearchResultsData(
     this.productId,

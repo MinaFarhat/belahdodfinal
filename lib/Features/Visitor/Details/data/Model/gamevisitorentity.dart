@@ -14,7 +14,7 @@ class GameVisitorEntity {
   @JsonKey(name: "price")
   final int price;
   @JsonKey(name: "images")
-  final List<String> images;
+  final List<String>? images;
   @JsonKey(name: "game_target_age")
   final String age;
   @JsonKey(name: "game_goals")

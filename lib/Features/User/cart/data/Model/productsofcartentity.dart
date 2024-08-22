@@ -16,7 +16,7 @@ class ProductsofCartEntity {
   @JsonKey(name: "quantity")
   final int quantity;
   @JsonKey(name: "image")
-  final String image;
+  final String? image;
 
   ProductsofCartEntity(
     this.id,

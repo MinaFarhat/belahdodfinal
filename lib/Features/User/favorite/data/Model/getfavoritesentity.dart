@@ -27,7 +27,7 @@ class GetFavoritesData {
   @JsonKey(name: "description")
   final String description;
   @JsonKey(name: "image")
-  final String image;
+  final String? image;
 
   GetFavoritesData(
     this.favoriteProductId,

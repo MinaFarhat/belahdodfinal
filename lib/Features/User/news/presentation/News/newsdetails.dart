@@ -112,7 +112,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                                     color: Colors.white,
                                     image: DecorationImage(
                                       image: CachedNetworkImageProvider(
-                                          getnewdetailsentity.newsImage),
+                                          getnewdetailsentity.newsImage!),
                                       fit: BoxFit.cover,
                                     ),
                                   ),

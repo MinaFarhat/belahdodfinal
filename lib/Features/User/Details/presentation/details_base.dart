@@ -103,7 +103,7 @@ class _DetailsBaseState extends State<DetailsBase> {
                     return ListView(
                       children: [
                         TopPartBase(
-                          photos: baseentity.images,
+                          photos: baseentity.images!,
                           productId: widget.productID,
                           barcode: baseentity.barcode,
                           isFavorite: baseentity.isFavorite,

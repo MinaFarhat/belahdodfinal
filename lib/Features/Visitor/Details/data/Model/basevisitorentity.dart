@@ -14,7 +14,7 @@ class BaseVisitorEntity {
   @JsonKey(name: "price")
   final int price;
   @JsonKey(name: "images")
-  final List<String> images;
+  final List<String>? images;
   @JsonKey(name: "section_name")
   final String sectionName;
   @JsonKey(name: "like_count")

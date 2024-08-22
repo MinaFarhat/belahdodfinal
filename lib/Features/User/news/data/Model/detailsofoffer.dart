@@ -12,7 +12,7 @@ class DetailsofOfferEntity {
   @JsonKey(name: "description")
   final String offerDescription;
   @JsonKey(name: "first_image")
-  final String offerImage;
+  final String ?offerImage;
   @JsonKey(name: "duration")
   final int offerDuration;
   @JsonKey(name: "items")

@@ -14,7 +14,7 @@ class StationeryVisitorEntity {
   @JsonKey(name: "price")
   final int price;
   @JsonKey(name: "images")
-  final List<String> images;
+  final List<String>? images;
   @JsonKey(name: "stationery_goals")
   final String gameObjectives;
   @JsonKey(name: "stationery_materials")

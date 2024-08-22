@@ -91,6 +91,7 @@ class SectionVisitor extends StatelessWidget {
                 child: ItemVisitor(
                   productID: productIDs[i],
                   image: imageUrl,
+                  sectionId: sectionId!,
                   index: sectionNumber == 0
                       ? 0
                       : sectionNumber == 1

@@ -25,7 +25,7 @@ class GetNewsData {
   @JsonKey(name: "description")
   final String newsDescription;
   @JsonKey(name: "image")
-  final String newsImage;
+  final String? newsImage;
 
   GetNewsData(
     this.newsId,

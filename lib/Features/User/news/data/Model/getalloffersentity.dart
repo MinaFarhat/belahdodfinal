@@ -27,7 +27,7 @@ class GetAllOffersData {
   @JsonKey(name: "discount_rate")
   final int offerDiscountRate;
   @JsonKey(name: "image")
-  final String image;
+  final String ?image;
 
   GetAllOffersData(
     this.offerId,

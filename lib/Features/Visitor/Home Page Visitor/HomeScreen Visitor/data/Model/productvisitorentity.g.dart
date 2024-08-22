@@ -10,7 +10,7 @@ ProductVisitorEntity _$ProductVisitorEntityFromJson(
         Map<String, dynamic> json) =>
     ProductVisitorEntity(
       (json['id'] as num).toInt(),
-      json['first_image'] as String,
+      json['first_image'] as String?,
     );
 
 Map<String, dynamic> _$ProductVisitorEntityToJson(

@@ -12,7 +12,7 @@ class GetNewDetailsEntity {
   @JsonKey(name: "description")
   final String newsDescription;
   @JsonKey(name: "image")
-  final String newsImage;
+  final String ?newsImage;
 
   GetNewDetailsEntity(
     this.newsId,

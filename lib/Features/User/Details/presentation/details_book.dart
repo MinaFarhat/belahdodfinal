@@ -86,7 +86,7 @@ class _DetailsBookState extends State<DetailsBook> {
                 return ListView(
                   children: [
                     TopPartBook(
-                      photos: bookentity.images,
+                      photos: bookentity.images!,
                       productId: widget.productID,
                       barcode: bookentity.barcode,
                       isFavorite: bookentity.isFavorite,

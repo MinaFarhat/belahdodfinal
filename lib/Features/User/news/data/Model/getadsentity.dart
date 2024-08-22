@@ -20,7 +20,7 @@ class GetAdsData {
   @JsonKey(name: "id")
   final int adId;
   @JsonKey(name: "image")
-  final String adImage;
+  final String ?adImage;
 
   GetAdsData(this.adId, this.adImage);
   factory GetAdsData.fromJson(Map<String, dynamic> json) =>

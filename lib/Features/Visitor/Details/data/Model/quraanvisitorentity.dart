@@ -14,7 +14,7 @@ class QuraanVisitorEntity {
   @JsonKey(name: "price")
   final int price;
   @JsonKey(name: "images")
-  final List<String> images;
+  final List<String>? images;
   @JsonKey(name: "quran_publisher")
   final String publisher;
   @JsonKey(name: "quran_size")

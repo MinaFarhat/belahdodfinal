@@ -14,10 +14,12 @@ class ItemVisitor extends StatefulWidget {
   String image;
   int index;
   int productID;
+  final int sectionId;
   ItemVisitor({
     required this.image,
     required this.index,
     required this.productID,
+    required this.sectionId,
     super.key,
   });
 
@@ -30,7 +32,7 @@ class _ItemVisitorState extends State<ItemVisitor> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (widget.index == 0) {
+        if (widget.sectionId == 1) {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => DetailsBookVisitor(
@@ -38,7 +40,7 @@ class _ItemVisitorState extends State<ItemVisitor> {
               ),
             ),
           );
-        } else if (widget.index == 1) {
+        } else if (widget.sectionId == 2) {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => DetailsGameVisitor(
@@ -46,7 +48,7 @@ class _ItemVisitorState extends State<ItemVisitor> {
               ),
             ),
           );
-        } else if (widget.index == 2) {
+        } else if (widget.sectionId == 3) {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => DetailsStationeryVisitor(
@@ -54,7 +56,7 @@ class _ItemVisitorState extends State<ItemVisitor> {
               ),
             ),
           );
-        } else if (widget.index == 3) {
+        } else if (widget.sectionId == 4) {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => DetailsQuransVisitor(
@@ -62,7 +64,7 @@ class _ItemVisitorState extends State<ItemVisitor> {
               ),
             ),
           );
-        } else if (widget.index == 4 || widget.index > 4) {
+        } else if (widget.sectionId == 5 || widget.sectionId > 5) {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => DetailsBaseVisitor(

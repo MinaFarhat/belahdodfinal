@@ -12,7 +12,7 @@ class OrderProductsEntity {
   @JsonKey(name: "product_name")
   final String productName;
   @JsonKey(name: "first_image")
-  final String firstImage;
+  final String? firstImage;
   @JsonKey(name: "price")
   final int price;
   @JsonKey(name: "quantity")
