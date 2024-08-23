@@ -77,7 +77,9 @@ class _DetailsBookVisitorState extends State<DetailsBookVisitor> {
                 return ListView(
                   children: [
                     TopPartBookVisitor(
-                      photos: bookvisitorentity.images!,
+                      photos: bookvisitorentity.images == null
+                          ? ["assets/images/logo.png"]
+                          : bookvisitorentity.images!,
                       productId: widget.productID,
                       barcode: bookvisitorentity.barcode,
                       likeCount: bookvisitorentity.likeCount,

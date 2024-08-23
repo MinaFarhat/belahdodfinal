@@ -21,7 +21,7 @@ Map<String, dynamic> _$GetNewsEntityToJson(GetNewsEntity instance) =>
 GetNewsData _$GetNewsDataFromJson(Map<String, dynamic> json) => GetNewsData(
       (json['id'] as num).toInt(),
       json['title'] as String,
-      json['image'] as String,
+      json['image'] as String?,
       json['description'] as String,
     );
 

@@ -19,7 +19,7 @@ Map<String, dynamic> _$GetAdsEntityToJson(GetAdsEntity instance) =>
 
 GetAdsData _$GetAdsDataFromJson(Map<String, dynamic> json) => GetAdsData(
       (json['id'] as num).toInt(),
-      json['image'] as String,
+      json['image'] as String?,
     );
 
 Map<String, dynamic> _$GetAdsDataToJson(GetAdsData instance) =>

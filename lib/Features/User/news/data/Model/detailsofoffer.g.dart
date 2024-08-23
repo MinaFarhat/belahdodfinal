@@ -12,7 +12,7 @@ DetailsofOfferEntity _$DetailsofOfferEntityFromJson(
       (json['id'] as num).toInt(),
       json['name'] as String,
       json['description'] as String,
-      json['first_image'] as String,
+      json['first_image'] as String?,
       (json['duration'] as num).toInt(),
       (json['items'] as List<dynamic>)
           .map((e) => e as Map<String, dynamic>)

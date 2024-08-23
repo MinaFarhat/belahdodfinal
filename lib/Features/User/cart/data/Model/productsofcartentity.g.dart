@@ -14,7 +14,7 @@ ProductsofCartEntity _$ProductsofCartEntityFromJson(
       json['name'] as String,
       (json['price'] as num).toInt(),
       (json['quantity'] as num).toInt(),
-      json['image'] as String,
+      json['image'] as String?,
     );
 
 Map<String, dynamic> _$ProductsofCartEntityToJson(

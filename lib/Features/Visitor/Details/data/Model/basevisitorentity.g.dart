@@ -12,7 +12,7 @@ BaseVisitorEntity _$BaseVisitorEntityFromJson(Map<String, dynamic> json) =>
       json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
-      (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['section_name'] as String,
       (json['like_count'] as num).toInt(),
       json['average_rating'] as String,

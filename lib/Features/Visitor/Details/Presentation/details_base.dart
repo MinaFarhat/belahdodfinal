@@ -94,7 +94,9 @@ class _DetailsBaseVisitorState extends State<DetailsBaseVisitor> {
                     return ListView(
                       children: [
                         TopPartBaseVisitor(
-                          photos: basevisitorentity.images!,
+                          photos: basevisitorentity.images == null
+                              ? ["assets/images/logo.png"]
+                              : basevisitorentity.images!,
                           productId: widget.productID,
                           barcode: basevisitorentity.barcode,
                           likeCount: basevisitorentity.likeCount,

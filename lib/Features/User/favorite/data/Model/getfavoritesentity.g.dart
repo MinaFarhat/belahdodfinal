@@ -24,7 +24,7 @@ GetFavoritesData _$GetFavoritesDataFromJson(Map<String, dynamic> json) =>
       (json['section_id'] as num).toInt(),
       json['name'] as String,
       json['description'] as String,
-      json['image'] as String,
+      json['image'] as String?,
     );
 
 Map<String, dynamic> _$GetFavoritesDataToJson(GetFavoritesData instance) =>

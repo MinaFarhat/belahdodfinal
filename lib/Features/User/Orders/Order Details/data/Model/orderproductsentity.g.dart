@@ -11,7 +11,7 @@ OrderProductsEntity _$OrderProductsEntityFromJson(Map<String, dynamic> json) =>
       (json['product_id'] as num).toInt(),
       (json['section_id'] as num).toInt(),
       json['product_name'] as String,
-      json['first_image'] as String,
+      json['first_image'] as String?,
       (json['price'] as num).toInt(),
       (json['quantity'] as num).toInt(),
     );

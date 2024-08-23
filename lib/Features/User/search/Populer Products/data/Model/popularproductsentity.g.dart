@@ -24,7 +24,7 @@ PopularProductsData _$PopularProductsDataFromJson(Map<String, dynamic> json) =>
     PopularProductsData(
       (json['product_id'] as num).toInt(),
       (json['section_id'] as num).toInt(),
-      json['image'] as String,
+      json['image'] as String?,
     );
 
 Map<String, dynamic> _$PopularProductsDataToJson(

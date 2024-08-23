@@ -33,7 +33,7 @@ class GetProductsMainSectionData {
   @JsonKey(name: "name")
   final String productName;
   @JsonKey(name: "first_image")
-  final String productImage;
+  final String ?productImage;
 
   GetProductsMainSectionData(
     this.productId,

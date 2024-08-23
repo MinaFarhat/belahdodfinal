@@ -77,7 +77,9 @@ class _DetailsQuransVisitorState extends State<DetailsQuransVisitor> {
                 return ListView(
                   children: [
                     TopPartQuraanVisitor(
-                      photos: quraanvisitorentity.images!,
+                      photos: quraanvisitorentity.images == null
+                          ? ["assets/images/logo.png"]
+                          : quraanvisitorentity.images!,
                       productId: widget.productID,
                       barcode: quraanvisitorentity.barcode,
                       likeCount: quraanvisitorentity.likeCount,

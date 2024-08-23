@@ -12,7 +12,7 @@ GameVisitorEntity _$GameVisitorEntityFromJson(Map<String, dynamic> json) =>
       json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
-      (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['game_target_age'] as String,
       json['game_goals'] as String,
       json['game_materials'] as String,

@@ -11,7 +11,7 @@ GetNewDetailsEntity _$GetNewDetailsEntityFromJson(Map<String, dynamic> json) =>
       (json['id'] as num).toInt(),
       json['title'] as String,
       json['description'] as String,
-      json['image'] as String,
+      json['image'] as String?,
     );
 
 Map<String, dynamic> _$GetNewDetailsEntityToJson(

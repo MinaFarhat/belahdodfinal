@@ -24,7 +24,7 @@ GetAllOffersData _$GetAllOffersDataFromJson(Map<String, dynamic> json) =>
       json['name'] as String,
       json['description'] as String,
       (json['discount_rate'] as num).toInt(),
-      json['image'] as String,
+      json['image'] as String?,
     );
 
 Map<String, dynamic> _$GetAllOffersDataToJson(GetAllOffersData instance) =>

@@ -12,7 +12,7 @@ StationeryEntity _$StationeryEntityFromJson(Map<String, dynamic> json) =>
       json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
-      (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['stationery_goals'] as String,
       json['stationery_materials'] as String,
       json['stationery_manufacturer'] as String,

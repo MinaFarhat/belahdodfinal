@@ -22,7 +22,7 @@ class GetProductsofSubSectionData {
   @JsonKey(name: "name")
   final String name;
   @JsonKey(name: "first_image")
-  final String image;
+  final String? image;
 
   GetProductsofSubSectionData(this.productsId, this.name, this.image);
 

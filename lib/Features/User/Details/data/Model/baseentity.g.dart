@@ -11,7 +11,7 @@ BaseEntity _$BaseEntityFromJson(Map<String, dynamic> json) => BaseEntity(
       json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
-      (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['section_name'] as String,
       json['is_favorite'] as bool,
       json['is_liked'] as bool,

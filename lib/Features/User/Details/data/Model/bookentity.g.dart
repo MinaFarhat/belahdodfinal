@@ -11,7 +11,7 @@ BookEntity _$BookEntityFromJson(Map<String, dynamic> json) => BookEntity(
       json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
-      (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['book_author'] as String,
       json['book_translator'] as String,
       json['book_dimensions'] as String,

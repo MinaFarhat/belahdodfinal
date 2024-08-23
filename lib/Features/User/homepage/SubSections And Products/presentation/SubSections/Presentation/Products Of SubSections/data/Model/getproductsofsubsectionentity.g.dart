@@ -26,7 +26,7 @@ GetProductsofSubSectionData _$GetProductsofSubSectionDataFromJson(
     GetProductsofSubSectionData(
       (json['id'] as num).toInt(),
       json['name'] as String,
-      json['first_image'] as String,
+      json['first_image'] as String?,
     );
 
 Map<String, dynamic> _$GetProductsofSubSectionDataToJson(

@@ -11,7 +11,7 @@ QuraanEntity _$QuraanEntityFromJson(Map<String, dynamic> json) => QuraanEntity(
       json['barcode'] as String,
       json['description'] as String,
       (json['price'] as num).toInt(),
-      (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['quran_publisher'] as String,
       json['quran_size'] as String,
       (json['quran_num_of_pages'] as num).toInt(),

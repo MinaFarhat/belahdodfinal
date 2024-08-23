@@ -12,7 +12,7 @@ AddBalanceEntity _$AddBalanceEntityFromJson(Map<String, dynamic> json) =>
       json['success'] as bool,
       json['message'] as String,
       (json['user_id'] as num).toInt(),
-      (json['image'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['image'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$AddBalanceEntityToJson(AddBalanceEntity instance) =>

@@ -198,6 +198,12 @@ class _SignupState extends State<Signup> {
                           },
                         ),
                       );
+                      Fluttertoast.showToast(
+                        msg: "لقد حصلت على 100 نقطة لقيامك بإنشاء حساب",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.green,
+                      );
                     },
                   );
                 },

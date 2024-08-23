@@ -9,7 +9,7 @@ part of 'productentity.dart';
 ProductEntity _$ProductEntityFromJson(Map<String, dynamic> json) =>
     ProductEntity(
       (json['id'] as num).toInt(),
-      json['first_image'] as String,
+      json['first_image'] as String?,
       json['is_favorite'] as bool,
     );
 

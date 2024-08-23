@@ -62,9 +62,16 @@ class _TopPartProfileState extends State<TopPartProfile> {
                 ),
                 child: _selectedImage == null
                     ? widget.imageProfile == null
-                        ? const Image(
-                            image: AssetImage("assets/images/User-avatar.png"),
-                            fit: BoxFit.cover,
+                        ? Container(
+                            width: MediaQuery.of(context).size.width * 0.1,
+                            height: MediaQuery.of(context).size.height * 0.11,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/images/User-avatar.png"),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
                           )
                         : CachedNetworkImage(
                             imageUrl: widget.imageProfile!,
