@@ -86,7 +86,9 @@ class _DetailsGameState extends State<DetailsGame> {
                 return ListView(
                   children: [
                     TopPartGame(
-                      photos: gameentity.images!,
+                      photos: gameentity.images == null
+                          ? ["assets/images/logo.png"]
+                          : gameentity.images!,
                       productId: widget.productID,
                       barcode: gameentity.barcode,
                       isFavorite: gameentity.isFavorite,

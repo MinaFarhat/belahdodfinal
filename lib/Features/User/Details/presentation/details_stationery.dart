@@ -21,7 +21,7 @@ class DetailsStationery extends StatefulWidget {
 }
 
 class _DetailsStationeryState extends State<DetailsStationery> {
- List<String> locations = [
+  List<String> locations = [
     "دمشق/الحلبوني/شارع المكتبات",
   ];
 
@@ -86,7 +86,9 @@ class _DetailsStationeryState extends State<DetailsStationery> {
                 return ListView(
                   children: [
                     TopPartStationery(
-                      photos: stationeryentity.images!,
+                      photos: stationeryentity.images == null
+                          ? ["assets/images/logo.png"]
+                          : stationeryentity.images!,
                       productId: widget.productID,
                       barcode: stationeryentity.barcode,
                       isFavorite: stationeryentity.isFavorite,
