@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:belahododfinal/Core/constant/colors_constant.dart';
